@@ -1,0 +1,39 @@
+{
+  "abilities": [
+    {
+      "id":"command1", 
+      "label":"Command 1", 
+      "description":"Infantry commanders can issue command policies from the general infantry policy and Vlast infantry policy charts."},
+    {}
+  ],
+  "weapons": [
+    {
+      "id":"ak204", 
+      "name": "AK 204", 
+      "type": "ballistic", 
+      "mountedOrCarries": "c", 
+      "tags":["small arms"], 
+      "rof": 2, 
+      "range":
+      {
+        "min":0,
+        "max":14,
+        "melee": false
+      }, 
+      "damage":1
+    },
+    {
+      "id":"infantryCQC", 
+      "name": "Infantry CQC", 
+      "type": "kinetic", 
+      "mountedOrCarries": "m", 
+      "tags":["small arms"], 
+      "rof": 1, 
+      "range":
+      {
+        "melee": true
+      }, 
+      "damage":1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "vlast": {
+    "commandPolicies": [
+      {
+        "name": "Only Cowards Retreat!",
+        "rule": "Choose a friendly infantry unit and immediately destroy one model in the unit. That unit immediately gains +3 to its break value until the end of the turn and immediately makes a rally check if it has a broken marker on it."
+      },
+      {
+        "name": "Engage The Enemy",
+        "rule": "Choose a friendly non-transport vehicle unit and immediately move D3 inches, vehicles may not change their facing when utilizing this move. The unit will be slowed by difficult terrain as normal and cannot enter dangerous terrain."
+      },
+      {
+        "name": "Redeploy to the Front",
+        "rule": "Choose a friendly infantry unit that has been upgraded with transport vehicles. All infantry models within 1” of their unit’s transport vehicles may immediately embark. If the chosen infantry unit is already embarked within their transport vehicles, they may disembark within 3” of their vehicles."
+      }
+    ],
+    "hq": [
+      {
+        "name": "Vlast Infantry Commander",
+        "basePoints": 35,
+        "move": 6,
+        "totalIntegrity": 3,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["Infantry"],
+        "breakValue": 10,
+        "squadComposition": "1 Base",
+        "weapons": 
+      }
+    ]
+  }
+}
