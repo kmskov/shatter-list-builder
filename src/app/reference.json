@@ -1,10 +1,47 @@
 {
   "abilities": [
     {
-      "id":"command1", 
+      "id":"infantryCommand1", 
       "label":"Command 1", 
-      "description":"Infantry commanders can issue command policies from the general infantry policy and Vlast infantry policy charts."},
-    {}
+      "type": "passive",
+      "description":"Infantry commanders can issue command policies from the general infantry policy and Vlast infantry policy charts."
+    },
+    {
+      "id":"infantryCommand2", 
+      "label":"Command 2", 
+      "type": "passive",
+      "description":"Infantry commanders can issue command policies from the general infantry policy and Vlast infantry policy charts."
+    },
+    {
+      "id":"infantryCommand3", 
+      "label":"Command 3", 
+      "type": "passive",
+      "description":"Infantry commanders can issue command policies from the general infantry policy and Vlast infantry policy charts."
+    },
+    {
+      "id":"vehicleCommand1", 
+      "label":"Command 1", 
+      "type": "passive",
+      "description":"Tank commanders can issue command policies from the general vehicle policy and Vlast vehicle policy charts."
+    },
+    {
+      "id":"vehicleCommand2", 
+      "label":"Command 2", 
+      "type": "passive",
+      "description":"Tank commanders can issue command policies from the general vehicle policy and Vlast vehicle policy charts."
+    },
+    {
+      "id":"vehicleCommand3", 
+      "label":"Command 3", 
+      "type": "passive",
+      "description":"Tank commanders can issue command policies from the general vehicle policy and Vlast vehicle policy charts."
+    },
+    {
+      "id":"weakFrame", 
+      "label":"Weak Frame", 
+      "type": "passive",
+      "description":"Weak Frame description."
+    }
   ],
   "weapons": [
     {
@@ -34,6 +71,107 @@
         "melee": true
       }, 
       "damage":1
+    },
+    {
+      "id":"antiTankGrenade", 
+      "name": "Anti-Tank Grenade", 
+      "type": "explosive", 
+      "mountedOrCarries": "c", 
+      "tags":["pierce 1", "anti-vehicle device"], 
+      "rof": 1, 
+      "range":
+      {
+        "melee": true
+      }, 
+      "damage": 2
+    },
+    {
+      "id":"rpg204", 
+      "name": "RPG 204", 
+      "type": "explosive", 
+      "mountedOrCarries": "c", 
+      "tags":["pierce 2", "disposable 1"], 
+      "rof": 1, 
+      "range":
+      {
+        "min":0,
+        "max":16,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    {
+      "id":"heavyAcceleratorCannon", 
+      "name": "Heavy Accelerator Cannon", 
+      "type": "ballistic", 
+      "mountedOrCarries": "m", 
+      "tags":["pierce 2", "reload quick", "turret"], 
+      "rof": 1, 
+      "range":
+      {
+        "min":8,
+        "max":30,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    {
+      "id":"vehicleSRPK", 
+      "name": "Vehicle SRPK", 
+      "type": "ballistic", 
+      "mountedOrCarries": "m", 
+      "tags":["anti-air"], 
+      "rof": 3, 
+      "range":
+      {
+        "min":8,
+        "max":30,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    {
+      "id":"tankCQC", 
+      "name": "Tank CQC", 
+      "type": "kinetic", 
+      "mountedOrCarries": "m", 
+      "tags":[], 
+      "rof": 1, 
+      "range":
+      {
+        "melee": true
+      }, 
+      "damage": 1
+    },
+    {
+      "id":"sa14", 
+      "name": "SA 14", 
+      "type": "ballistic", 
+      "mountedOrCarries": "m", 
+      "tags":["pierce 2", "anti-air", "reload quick"], 
+      "rof": 1, 
+      "range":
+      {
+        "min":6,
+        "max":24,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    {
+      "id":"infantrySRPK", 
+      "name": "SRPK", 
+      "type": "ballistic", 
+      "mountedOrCarries": "c", 
+      "tags":["reload quick"], 
+      "rof": 3, 
+      "range":
+      {
+        "min":8,
+        "max":30,
+        "melee": false
+      }, 
+      "damage": 1
     }
   ]
 }

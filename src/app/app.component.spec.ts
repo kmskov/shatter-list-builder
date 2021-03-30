@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'CrystallumListBuilder'`, () => {
+  it(`should have as title 'ProjectShatterListBuilder'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('CrystallumListBuilder');
+    expect(app.title).toEqual('ProjectShatterListBuilder');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('CrystallumListBuilder app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('ProjectShatterListBuilder app is running!');
   });
 });
