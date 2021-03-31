@@ -1,1 +1,30 @@
-<h2>{{unitEntry}}</h2>
+<div *ngIf="unitEntry">
+
+  <table>
+    <tr>
+      <td><h2 class="unit.title">{{unitEntry.name}}</h2></td>
+      <td><h2 class="unit.points">Points: {{unitEntry.basePoints}}</h2></td>
+    </tr>
+    <tr>
+      <td>Move: {{unitEntry.move}}</td>
+      <td>Defense: ( {{unitEntry.defense.dice}}D {{unitEntry.defense.save}} )</td>
+    </tr>
+    <tr>
+      <td>Unit Tags: <span *ngFor="let tag of unitEntry.unitTags">{{tag}}</span></td>
+      <td>Break Value: {{unitEntry.breakValue}}</td>
+    </tr>
+    <tr>
+      <td>Weapons: <span *ngFor="let weapon of currentWeaponNames; let isLast=last">{{weapon}}{{isLast ? '' : ', '}}</span></td>
+      <td>Unit Composition: {{unitEntry.squadComposition}}</td>
+    </tr>
+    <tr><td>Abilities:</td></tr>
+    <tr>
+
+    </tr>
+    <tr><td>Upgrades:</td></tr>
+    <tr *ngFor="let upgrade of unitEntry.upgrades">
+      <td>{{upgrade.label}}</td>
+    </tr>
+  </table>
+
+</div>
