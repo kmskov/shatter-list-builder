@@ -53,4 +53,27 @@
     </li>
   </ul>
 
+  <table class="weapon-summary">
+    <tr class="attribute-title">Weapons:</tr>
+    <tr class="header">
+      <td>Name</td>
+      <td>Type</td>
+      <td>Mounted or Carried</td>
+      <td>Tags</td>
+      <td>Rate of Fire</td>
+      <td>Range</td>
+      <td>Damage</td>
+    </tr>
+    <tr class="weapon-entry" *ngFor="let weaponEntry of weaponEntries">
+      <td>{{weaponEntry.name}}</td>
+      <td>{{weaponEntry.type | titlecase}}</td>
+      <td>{{weaponEntry.mountedOrCarried | uppercase}}</td>
+      <td><span *ngFor="let tag of weaponEntry.tags; let isLast=last">{{tag | titlecase}}{{isLast ? '' : ', '}}</span></td>
+      <td>{{weaponEntry.rof}}</td>
+      <td *ngIf="weaponEntry.range.melee===true;else range">M</td>
+      <ng-template #range>{{weaponEntry.range.min}}-{{weaponEntry.range.max}}</ng-template>
+      <td>{{weaponEntry.damage}}</td>
+    </tr>
+  </table>
+
 </div>

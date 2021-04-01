@@ -25,7 +25,7 @@ export class UnitEntryComponent implements OnInit {
   ngOnInit() {
     console.log('unit-entry.ngOnInit starting');
 
-    this.unitEntry = factions.vlast.hq[0];
+    this.unitEntry = factions.vlast.hq[1];
 
     this.loadWeapons();
 

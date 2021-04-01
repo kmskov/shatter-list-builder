@@ -48,7 +48,7 @@
       "id":"ak204", 
       "name": "AK 204", 
       "type": "ballistic", 
-      "mountedOrCarries": "c", 
+      "mountedOrCarried": "c", 
       "tags":["small arms"], 
       "rof": 2, 
       "range":
@@ -63,7 +63,7 @@
       "id":"infantryCQC", 
       "name": "Infantry CQC", 
       "type": "kinetic", 
-      "mountedOrCarries": "m", 
+      "mountedOrCarried": "m", 
       "tags":["small arms"], 
       "rof": 1, 
       "range":
@@ -76,7 +76,7 @@
       "id":"antiTankGrenade", 
       "name": "Anti-Tank Grenade", 
       "type": "explosive", 
-      "mountedOrCarries": "c", 
+      "mountedOrCarried": "c", 
       "tags":["pierce 1", "anti-vehicle device"], 
       "rof": 1, 
       "range":
@@ -89,7 +89,7 @@
       "id":"rpg204", 
       "name": "RPG 204", 
       "type": "explosive", 
-      "mountedOrCarries": "c", 
+      "mountedOrCarried": "c", 
       "tags":["pierce 2", "disposable 1"], 
       "rof": 1, 
       "range":
@@ -104,7 +104,7 @@
       "id":"heavyAcceleratorCannon", 
       "name": "Heavy Accelerator Cannon", 
       "type": "ballistic", 
-      "mountedOrCarries": "m", 
+      "mountedOrCarried": "m", 
       "tags":["pierce 2", "reload quick", "turret"], 
       "rof": 1, 
       "range":
@@ -119,7 +119,7 @@
       "id":"vehicleSRPK", 
       "name": "Vehicle SRPK", 
       "type": "ballistic", 
-      "mountedOrCarries": "m", 
+      "mountedOrCarried": "m", 
       "tags":["anti-air"], 
       "rof": 3, 
       "range":
@@ -134,7 +134,7 @@
       "id":"tankCQC", 
       "name": "Tank CQC", 
       "type": "kinetic", 
-      "mountedOrCarries": "m", 
+      "mountedOrCarried": "m", 
       "tags":[], 
       "rof": 1, 
       "range":
@@ -147,7 +147,7 @@
       "id":"sa14", 
       "name": "SA 14", 
       "type": "ballistic", 
-      "mountedOrCarries": "m", 
+      "mountedOrCarried": "m", 
       "tags":["pierce 2", "anti-air", "reload quick"], 
       "rof": 1, 
       "range":
@@ -162,7 +162,7 @@
       "id":"infantrySRPK", 
       "name": "SRPK", 
       "type": "ballistic", 
-      "mountedOrCarries": "c", 
+      "mountedOrCarried": "c", 
       "tags":["reload quick"], 
       "rof": 3, 
       "range":
