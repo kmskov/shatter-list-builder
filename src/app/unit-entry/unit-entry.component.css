@@ -1,0 +1,90 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.unit-entry {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  background-color: .2196F3;
+  padding: 10px;
+}
+
+.unit-title {
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+
+.unit-total-points {
+  grid-column-start: 2;
+  grid-row-start: 1;
+}
+.unit-move {
+  grid-column-start: 1;
+  grid-row-start: 2;
+}
+
+.unit-defense {
+  grid-column-start: 2;
+  grid-row-start: 2;
+}
+
+.unit-tags {
+  grid-column-start: 1;
+  grid-row-start: 3;
+}
+
+.unit-breakvalue {
+  grid-column-start: 2;
+  grid-row-start: 3;
+}
+
+.unit-weapons {
+  grid-column-start: 1;
+  grid-row-start: 4;
+}
+
+.unit-composition {
+  grid-column-start: 2;
+  grid-row-start: 4;
+}
+
+.unit-integrity {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 5;
+}
+
+.unit-abilities {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  grid-row-start: 6;
+}
+
+.unit-upgrades {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  grid-row-start: 7;
+}
+
+.attribute-title {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.attribute {
+
+}
+
+button.upgrade {
+  margin-right: 5px;
+}
+
+.integrity-box {
+  border-style: solid;
+  border-width: thin;
+  margin-right: 3px;
+  padding: 2px 6px;
+}

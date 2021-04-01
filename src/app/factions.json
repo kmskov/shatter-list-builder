@@ -45,11 +45,15 @@
           },
           {
             "label": "The command base may either upgrade its command value to 2 for 25 pts.",
-            "cost": 25 
+            "cost": 25,
+            "mutuallyExclusive": true,
+            "ability": "infantryCommand2"
           },
           {
             "label": "The command base may either upgrade its command value to 3 for 50 pts.",
-            "cost": 50
+            "cost": 50,
+            "mutuallyExclusive": true,
+            "ability": "infantryCommand3"
           }
         ]
       },
@@ -74,11 +78,15 @@
         "upgrades": [
           {
             "label": "The command base may either upgrade its command value to 2 for 25 pts.",
-            "cost": 25 
+            "cost": 25,
+            "mutuallyExclusive": true,
+            "ability": "vehicleCommand2"
           },
           {
             "label": "The command base may either upgrade its command value to 3 for 50 pts.",
-            "cost": 50
+            "cost": 50,
+            "mutuallyExclusive": true,
+            "ability": "vehicleCommand3"
           }
         ]
       }

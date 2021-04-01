@@ -1,5 +1,6 @@
 import { UnitDefense } from './unit-defense';
 import { UnitUpgrade } from './unit-upgrade';
+import { UnitCriticalThreshold } from './unit-critical-threshold';
 
 export interface UnitEntry {
   name: string;
@@ -9,8 +10,9 @@ export interface UnitEntry {
   defense: UnitDefense;
   unitTags: string[];
   breakValue: number;
+  criticalThreshold?: UnitCriticalThreshold[];
   squadComposition: string;
   weapons: string[];
   abilities: string[];
-  upgrades: UnitUpgrade;
+  upgrades: UnitUpgrade[];
 }

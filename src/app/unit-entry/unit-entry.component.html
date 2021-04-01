@@ -1,30 +1,56 @@
-<div *ngIf="unitEntry">
+<div *ngIf="unitEntry" class="unit-entry">
 
-  <table>
-    <tr>
-      <td><h2 class="unit.title">{{unitEntry.name}}</h2></td>
-      <td><h2 class="unit.points">Points: {{unitEntry.basePoints}}</h2></td>
-    </tr>
-    <tr>
-      <td>Move: {{unitEntry.move}}</td>
-      <td>Defense: ( {{unitEntry.defense.dice}}D {{unitEntry.defense.save}} )</td>
-    </tr>
-    <tr>
-      <td>Unit Tags: <span *ngFor="let tag of unitEntry.unitTags">{{tag}}</span></td>
-      <td>Break Value: {{unitEntry.breakValue}}</td>
-    </tr>
-    <tr>
-      <td>Weapons: <span *ngFor="let weapon of currentWeaponNames; let isLast=last">{{weapon}}{{isLast ? '' : ', '}}</span></td>
-      <td>Unit Composition: {{unitEntry.squadComposition}}</td>
-    </tr>
-    <tr><td>Abilities:</td></tr>
-    <tr>
+  <h2 class="unit-title">{{unitEntry.name}}</h2>
+  <h2 class="unit-total-points">Points: {{unitEntry.basePoints}}</h2>
 
-    </tr>
-    <tr><td>Upgrades:</td></tr>
-    <tr *ngFor="let upgrade of unitEntry.upgrades">
-      <td>{{upgrade.label}}</td>
-    </tr>
-  </table>
+  <div class="unit-move">
+    <span class="attribute-title">Move:</span>
+    <span class="attribute">{{unitEntry.move}}</span>
+  </div>
+
+  <div class="unit-defense">
+    <span class="attribute-title">Defense:</span>
+    <span class="attribute">( {{unitEntry.defense.dice}}D {{unitEntry.defense.save}} )</span>
+  </div>
+
+  <div class="unit-tags">
+    <span class="attribute-title">Unit Tags:</span>
+    <span *ngFor="let tag of unitEntry.unitTags">{{tag}}</span>
+  </div>
+
+  <div class="unit-breakvalue">
+    <span class="attribute-title">Break Value:</span>
+    <span class="attribute">{{unitEntry.breakValue}}</span>
+  </div>
+
+  <div class="unit-weapons">
+    <span class="attribute-title">Weapons:</span>
+    <span *ngFor="let weapon of currentWeaponNames; let isLast=last" class="attribute">{{weapon}}{{isLast ? '' : ', '}}</span>
+  </div>
+
+  <div class="unit-composition">
+    <span class="attribute-title">Unit Composition:</span>
+    <span class="attribute">{{unitEntry.squadComposition}}</span>
+  </div>
+
+  <div class="unit-integrity">
+    <span class="attribute-title">Integrity:</span>
+    <span *ngFor="let curr of integrity; let i=index;" class="attribute integrity-box">&nbsp;</span>
+  </div>
+
+  <ul class="unit-abilities">
+    <span class="attribute-title">Abilities:</span>
+    <li *ngFor="let ability of abilityEntries">
+      <span class="attribute">{{ability.label}} ({{ability.type | titlecase}}) - {{ability.description}}</span>
+    </li>
+  </ul>
+
+  <ul class="unit-upgrades">
+    <span class="attribute-title">Upgrades:</span>
+    <li *ngFor="let upgrade of unitEntry.upgrades">
+      <button (click)="addUpgrade(upgrade)" class="upgrade">+</button>
+      <span class="attribute">{{upgrade.label}}</span>
+    </li>
+  </ul>
 
 </div>
