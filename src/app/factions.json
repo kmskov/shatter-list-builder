@@ -67,7 +67,7 @@
         },
         "criticalThreshold": [
           { "box": 4,
-            "effect": "Reactor Damanged"
+            "effect": "Reactor Damaged"
           }
         ],
         "unitTags": ["Vehicle (Tracked)"],

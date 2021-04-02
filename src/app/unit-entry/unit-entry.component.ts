@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import * as factions from '../factions.json';
-import * as reference from '../reference.json';
-import { UnitEntry } from '../unit-entry';
+import { Component, OnInit, Input } from '@angular/core';
+import factions from '../factions.json';
+import reference from '../reference.json';
+import { UnitEntry } from './unit-entry';
 
 @Component({
   selector: 'app-unit-entry',
@@ -9,6 +9,10 @@ import { UnitEntry } from '../unit-entry';
   styleUrls: ['./unit-entry.component.css']
 })
 export class UnitEntryComponent implements OnInit {
+
+  @Input() faction: string;
+  @Input() unitType: string;
+  @Input() unitTypeIndex: number;
 
   unitEntry: UnitEntry;
   weaponIds: string[] = [];
@@ -18,21 +22,26 @@ export class UnitEntryComponent implements OnInit {
   abilityEntries: any[] = [];
   currentAbilityNames: string[] = [];
 
-  integrity: number[] = [];
+  integrity: string[] = [];
 
   constructor() { }
 
   ngOnInit() {
     console.log('unit-entry.ngOnInit starting');
 
-    this.unitEntry = factions.vlast.hq[1];
+    this.unitEntry = factions[this.faction][this.unitType][this.unitTypeIndex];
 
     this.loadWeapons();
 
     this.loadAbilities();
 
-    for (let i = 1; i <= this.unitEntry.totalIntegrity; i++) {
-      this.integrity.push(i);
+    for (let i = 1, j = 0; i <= this.unitEntry.totalIntegrity; i++) {
+      if ("criticalThreshold" in this.unitEntry && i === this.unitEntry.criticalThreshold[j].box) {
+        this.integrity.push(this.unitEntry.criticalThreshold[j].effect);
+        j = j++;
+      } else {
+        this.integrity.push("normal");
+      }
     }
 
     console.log('unit-entry.ngOnInit finished');

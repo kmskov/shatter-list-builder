@@ -35,7 +35,7 @@
 
   <div class="unit-integrity">
     <span class="attribute-title">Integrity:</span>
-    <span *ngFor="let curr of integrity; let i=index;" class="attribute integrity-box">&nbsp;</span>
+    <span *ngFor="let curr of integrity; let i=index;" class="attribute integrity-box" [class.threshold]="curr != 'normal'">&nbsp;</span>
   </div>
 
   <ul class="unit-abilities">
