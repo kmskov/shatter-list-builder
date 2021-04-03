@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Project Shatter - List Builder';
 
-  currFaction = 'vlast';
+  currFactionName = 'vlast';
   currUnitType = 'hq';
   currUnitTypeIndex = 0;
 

@@ -1,1 +1,8 @@
-<p>unit-selector works!</p>
+<div class="unit-selector">
+
+  <ul *ngFor="let unitType of unitTypes">
+    <span class="unit-type">{{unitType.label}}</span>
+    <li *ngFor="let unit of faction[unitType.id]" class="unit-name">{{unit.name}}</li>
+  </ul>
+
+</div>
