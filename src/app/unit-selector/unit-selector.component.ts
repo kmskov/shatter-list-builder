@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UnitType } from '../unit-type';
+import { UnitSelection } from '../unit-selection';
 import factions from '../factions.json';
 import rosters from '../rosters.json';
 
@@ -16,6 +17,8 @@ export class UnitSelectorComponent implements OnInit {
 
   unitTypes: UnitType[];
 
+  @Output() unitSelectionEvent = new EventEmitter<UnitSelection>();
+
   constructor() { }
 
   ngOnInit() {
@@ -28,6 +31,13 @@ export class UnitSelectorComponent implements OnInit {
     this.faction = factions[this.factionName];
 
     console.log('unit-selector.ngOnInit finished');
+  }
+
+  addUnit(faction: string, unitType: string, index: number) {
+    //TODO implement
+    console.log('addUnit: ' + faction + ', ' + unitType + ', ' + index)
+    let unitSelection = {factionName: faction, unitType: unitType, index: index};
+    this.unitSelectionEvent.emit(unitSelection)
   }
 
 }

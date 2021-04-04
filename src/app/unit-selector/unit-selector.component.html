@@ -1,8 +1,13 @@
-<div class="unit-selector">
-
-  <ul *ngFor="let unitType of unitTypes">
-    <span class="unit-type">{{unitType.label}}</span>
-    <li *ngFor="let unit of faction[unitType.id]" class="unit-name">{{unit.name}}</li>
-  </ul>
-
-</div>
+<mat-expansion-panel *ngFor="let unitType of unitTypes" hideToggle [expanded]="true">
+  <mat-expansion-panel-header >
+    <mat-panel-title>
+      {{unitType.label}}
+    </mat-panel-title>
+    <mat-panel-description>
+      {{unitType.min}}-{{unitType.max}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <mat-action-list>
+    <button mat-list-item *ngFor="let unit of faction[unitType.id]; let i = index" class="unit-name" (click)="addUnit(factionName, unitType.id, i)">{{unit.name}}</button>
+  </mat-action-list>
+</mat-expansion-panel>

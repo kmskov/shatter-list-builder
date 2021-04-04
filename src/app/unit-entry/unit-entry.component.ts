@@ -29,12 +29,18 @@ export class UnitEntryComponent implements OnInit {
   ngOnInit() {
     console.log('unit-entry.ngOnInit starting');
 
+    console.log('faction: ' + this.faction + ', unitType: ' + this.unitType + ', index: ' + this.unitTypeIndex);
+
     this.unitEntry = factions[this.faction][this.unitType][this.unitTypeIndex];
 
     this.loadWeapons();
-
     this.loadAbilities();
+    this.loadIntegrity();
 
+    console.log('unit-entry.ngOnInit finished');
+  }
+
+  loadIntegrity(): void {
     for (let i = 1, j = 0; i <= this.unitEntry.totalIntegrity; i++) {
       if ("criticalThreshold" in this.unitEntry && i === this.unitEntry.criticalThreshold[j].box) {
         this.integrity.push(this.unitEntry.criticalThreshold[j].effect);
@@ -43,8 +49,6 @@ export class UnitEntryComponent implements OnInit {
         this.integrity.push("normal");
       }
     }
-
-    console.log('unit-entry.ngOnInit finished');
   }
 
   loadWeapons(): void {

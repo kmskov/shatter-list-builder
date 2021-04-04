@@ -1,9 +1,10 @@
-<div class="main">
+<h1>{{title}}</h1>
 
-  <h1>{{title}}</h1>
+<div fxLayout="row" fxLayoutAlign="start start" class="flex main">
 
-  <app-unit-selector [factionName]="currFactionName"></app-unit-selector>
+  <app-unit-selector fxFlex="40" [factionName]="currFactionName" (unitSelectionEvent)="addUnit($event)"></app-unit-selector>
 
-  <app-unit-entry [faction]="currFactionName" [unitType]="currUnitType" [unitTypeIndex]="currUnitTypeIndex"></app-unit-entry>
-
+  <div fxFlex fxLayout="column" fxLayoutAlight="start center" class="flex unit-entries">
+    <app-unit-entry *ngFor="let unit of currentList" [faction]="unit.factionName" [unitType]="unit.unitType" [unitTypeIndex]="unit.index"></app-unit-entry>
+  </div>
 </div>

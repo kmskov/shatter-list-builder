@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UnitSelection } from './unit-selection';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,18 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Project Shatter - List Builder';
 
-  currFactionName = 'vlast';
-  currUnitType = 'hq';
-  currUnitTypeIndex = 0;
+   currFactionName = 'vlast';
+  // currUnitType: string;
+  // currUnitTypeIndex: number;
 
-  // [faction]="currFaction" [unitType]="currUnitType" [unitTypeIndex]="currUnitTypeIndex"
+  currentList: UnitSelection[] = [];
+
+  addUnit(unitSelection: UnitSelection) {
+    console.log('AppComponent.addUnit: ' + JSON.stringify(unitSelection));
+    // this.currFactionName = unitSelection.faction;
+    // this.currUnitType = unitSelection.unitType;
+    // this.currUnitTypeIndex = unitSelection.index;
+
+    this.currentList.push(unitSelection);
+  }
 }
