@@ -1,68 +1,76 @@
 <mat-card *ngIf="unitEntry" class="unit-entry">
 
-  <mat-card-header>
-    <mat-card-title class="unit-title">{{unitEntry.name}}</mat-card-title>
-    <mat-card-title class="unit-total-points">{{unitEntry.basePoints}}</mat-card-title>
+  <mat-card-header fxLayout="row">
+    <mat-card-title fxFlex class="unit-title">{{unitEntry.name}}</mat-card-title>
+    <mat-card-title fxFlex="20" class="unit-total-points">{{unitEntry.basePoints}}</mat-card-title>
+    <mat-card-actions fxFlex="10">
+      <button mat-icon-button color="warn">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
   </mat-card-header>
 
   <mat-card-content>
-    <div class="flex" fxLayoutGap>
-      <div fxFlex="50" class="unit-move">
-        <h4 class="attribute-title">Move:</h4>
+    <div class="flex" fxLayout="row wrap" fxLayoutGap="10px">
+
+      <div fxFlex="40" fxLayout="row" class="unit-move">
+        <h4 class="attribute-title">Move: </h4>
         <p class="attribute">{{unitEntry.move}}</p>
       </div>
 
-      <div class="unit-defense">
-        <h4 class="attribute-title">Defense:</h4>
+      <div fxFlex="40" fxLayout="row" class="unit-defense">
+        <h4 class="attribute-title">Defense: </h4>
         <p class="attribute">( {{unitEntry.defense.dice}}D {{unitEntry.defense.save}} )</p>
       </div>
 
-      <div class="unit-tags">
-        <h4 class="attribute-title">Unit Tags:</h4>
+      <div fxFlex="40" fxLayout="row" class="unit-tags">
+        <h4 class="attribute-title">Unit Tags: </h4>
         <p *ngFor="let tag of unitEntry.unitTags">{{tag}}</p>
       </div>
 
-      <div class="unit-breakvalue">
-        <h4 class="attribute-title">Break Value:</h4>
+      <div fxFlex="40" fxLayout="row" class="unit-breakvalue">
+        <h4 class="attribute-title">Break Value: </h4>
         <p class="attribute">{{unitEntry.breakValue}}</p>
       </div>
 
-      <div class="unit-weapons">
-        <h4 class="attribute-title">Weapons:</h4>
+      <div fxFlex="40" fxLayout="row wrap" class="unit-weapons">
+        <h4 class="attribute-title">Weapons: </h4>
         <p *ngFor="let weapon of currentWeaponNames; let isLast=last" class="attribute">{{weapon}}{{isLast ? '' : ', '}}</p>
       </div>
 
-      <div class="unit-composition">
-        <h4 class="attribute-title">Unit Composition:</h4>
+      <div fxFlex="40" fxLayout="row" class="unit-composition">
+        <h4 class="attribute-title">Unit Composition: </h4>
         <p class="attribute">{{unitEntry.squadComposition}}</p>
       </div>
 
-      <div class="unit-integrity">
-        <h4 class="attribute-title">Integrity:</h4>
+      <div fxFlex="90" fxLayout="row" class="unit-integrity">
+        <h4 class="attribute-title">Integrity: </h4>
         <p *ngFor="let curr of integrity; let i=index;" class="attribute integrity-box" [class.threshold]="curr != 'normal'">&nbsp;</p>
       </div>
 
-      <div>
+      <div fxFlex="90" fxLayout="column">
         <mat-list class="unit-abilities">
-          <h4 class="attribute-title">Abilities:</h4>
+          <h4 class="attribute-title">Abilities: </h4>
           <mat-list-item *ngFor="let ability of abilityEntries">
             <p class="attribute">{{ability.label}} ({{ability.type | titlecase}}) - {{ability.description}}</p>
           </mat-list-item>
         </mat-list>
       </div>
 
-      <div>
-        <mat-list class="unit-upgrades">
-          <h4 class="attribute-title">Upgrades:</h4>
+      <div fxFlex="90" fxLayout="column">
+        <h4 class="attribute-title">Upgrades: </h4>
+        <mat-list class="unit-upgrades" dense>
           <mat-list-item *ngFor="let upgrade of unitEntry.upgrades">
-            <button (click)="addUpgrade(upgrade)" class="upgrade">+</button>
+            <button mat-icon-button color="accent" (click)="addUpgrade(upgrade)" class="upgrade">
+              <mat-icon>add</mat-icon>
+            </button>
             <p class="attribute">{{upgrade.label}}</p>
           </mat-list-item>
         </mat-list>
       </div>
 
-      <div>
-        <h4 class="attribute-title">Weapons:</h4>
+      <div fxFlex="90" fxLayout="column">
+        <h4 class="attribute-title">Weapons: </h4>
 
         <table mat-table [dataSource]="weaponEntries" class="weapon-summary">
 
@@ -90,7 +98,7 @@
             <th mat-header-cell *matHeaderCellDef> Range </th>
             <ng-container *matCellDef="let weapon">
               <td mat-cell *ngIf="weapon.range.melee===true;else range">M</td>
-              <ng-template #range>{{weapon.range.min}}-{{weapon.range.max}}</ng-template>
+              <ng-template #range>{{weapon.range.min}}-{{weapon.range.max}}"</ng-template>
             </ng-container>
           </ng-container>
 
@@ -105,11 +113,5 @@
       </div>
     </div>
   </mat-card-content>
-
-  <mat-card-actions alight="start">
-    <button mat-icon-button color="warn">
-      <mat-icon>delete</mat-icon>
-    </button>
-  </mat-card-actions>
 
 </mat-card>

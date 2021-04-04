@@ -2,10 +2,6 @@
   display: flex;
 }
 
-h4 {
-  float: left;
-}
-
 mat-card {
   width: 100%;
   height: 100%;
