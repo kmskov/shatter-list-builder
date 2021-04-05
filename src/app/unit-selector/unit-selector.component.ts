@@ -32,7 +32,6 @@ export class UnitSelectorComponent implements OnInit {
   }
 
   addUnit(faction: string, unitType: string, index: number) {
-    //TODO implement
     console.log('addUnit: ' + faction + ', ' + unitType + ', ' + index)
     let unitSelection = {factionName: faction, unitType: unitType, index: index};
     this.unitSelectionEvent.emit(unitSelection)
