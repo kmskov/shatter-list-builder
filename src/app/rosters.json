@@ -35,6 +35,10 @@
       "label": "Special",
       "min": 0,
       "max": 1
+    },
+    {
+      "id": "transport",
+      "label": "Transport"
     }
   ]
 }

@@ -26,8 +26,6 @@ export class UnitSelectorComponent implements OnInit {
 
     this.unitTypes = rosters.base;
 
-  //  console.log(JSON.stringify(this.unitTypes));
-
     this.faction = factions[this.factionName];
 
     console.log('unit-selector.ngOnInit finished');
