@@ -37,3 +37,7 @@ h4, p {
 .threshold {
   border-color: red;
 }
+
+.remove-unit {
+  float: right;
+}

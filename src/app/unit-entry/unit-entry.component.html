@@ -1,16 +1,13 @@
-<mat-card *ngIf="unitEntry" class="unit-entry">
+<mat-expansion-panel *ngIf="unitEntry" class="unit-entry" hideToggle [expanded]="true">
 
-  <mat-card-title fxLayout="row" class="unit-title">
-    <span fxFlex class="unit-title">{{unitEntry.name}}</span>
-    <span fxFlex="20" class="unit-total-points">{{unitEntry.basePoints}}</span>
-    <mat-card-actions fxFlex="10">
-      <button mat-icon-button color="warn">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </mat-card-actions>
-  </mat-card-title>
+  <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center" >
+    <mat-panel-title class="unit-title"><h2>{{unitEntry.name}}</h2></mat-panel-title>
+    <mat-panel-description fxFlex="20" class="unit-total-points"><h2>{{unitEntry.basePoints}}</h2></mat-panel-description>
+    <button mat-icon-button fxFlex="10" color="warn" (click)="removeUnit()">
+      <mat-icon class="remove-unit">delete</mat-icon>
+    </button>
+  </mat-expansion-panel-header>
 
-  <mat-card-content>
     <div class="flex" fxLayout="row wrap" fxLayoutGap="10px grid" fxFill>
 
       <div fxFlex="50" fxLayout="row" class="unit-move">
@@ -65,7 +62,7 @@
         <h4 class="attribute-title">Upgrades:</h4>
         <mat-list class="unit-upgrades" dense>
           <mat-list-item class="unit-upgrades" *ngFor="let upgrade of unitEntry.upgrades">
-            <button mat-icon-button color="accent" (click)="addUpgrade(upgrade)" class="upgrade">
+            <button mat-icon-button (click)="addUpgrade(upgrade)" class="upgrade">
               <mat-icon>add</mat-icon>
             </button>
             <p class="attribute">{{upgrade.label}}</p>
@@ -116,6 +113,5 @@
         </table>
       </div>
     </div>
-  </mat-card-content>
 
-</mat-card>
+</mat-expansion-panel>

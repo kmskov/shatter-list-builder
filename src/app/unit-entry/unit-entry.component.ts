@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import factions from '../factions.json';
 import reference from '../reference.json';
 import { UnitEntry } from './unit-entry';
+import { UnitSelection } from '../unit-selection';
 
 @Component({
   selector: 'app-unit-entry',
@@ -10,9 +11,7 @@ import { UnitEntry } from './unit-entry';
 })
 export class UnitEntryComponent implements OnInit {
 
-  @Input() faction: string;
-  @Input() unitType: string;
-  @Input() unitTypeIndex: number;
+  @Input() unitSelection: UnitSelection;
 
   unitEntry: UnitEntry;
   weaponIds: string[] = [];
@@ -24,14 +23,16 @@ export class UnitEntryComponent implements OnInit {
 
   integrity: string[] = [];
 
+  @Output() unitRemovalEvent = new EventEmitter<UnitSelection>();
+
   constructor() { }
 
   ngOnInit() {
     console.log('unit-entry.ngOnInit starting');
 
-    console.log('faction: ' + this.faction + ', unitType: ' + this.unitType + ', index: ' + this.unitTypeIndex);
+    console.log('faction: ' + this.unitSelection.factionName + ', unitType: ' + this.unitSelection.unitType + ', index: ' + this.unitSelection.index);
 
-    this.unitEntry = factions[this.faction][this.unitType][this.unitTypeIndex];
+    this.unitEntry = factions[this.unitSelection.factionName][this.unitSelection.unitType][this.unitSelection.index];
 
     this.loadWeapons();
     this.loadAbilities();
@@ -90,6 +91,10 @@ export class UnitEntryComponent implements OnInit {
 
   addUpgrade(upgrade: any): void {
     this.unitEntry.basePoints += upgrade.cost;
+  }
+
+  removeUnit(): void {
+    this.unitRemovalEvent.emit(this.unitSelection);
   }
 
 }

@@ -5,6 +5,6 @@
   <app-unit-selector fxFlex="40" [factionName]="currFactionName" (unitSelectionEvent)="addUnit($event)"></app-unit-selector>
 
   <div fxFlex fxLayout="column" fxLayoutAlight="start center" class="flex unit-entries">
-    <app-unit-entry *ngFor="let unit of currentList" [faction]="unit.factionName" [unitType]="unit.unitType" [unitTypeIndex]="unit.index"></app-unit-entry>
+    <app-unit-entry *ngFor="let unit of currentList" [unitSelection]="unit" (unitRemovalEvent)="removeUnit($event)"></app-unit-entry>
   </div>
 </div>
