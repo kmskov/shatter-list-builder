@@ -25,7 +25,7 @@
         },
         "unitTags": ["Infantry"],
         "breakValue": 10,
-        "squadComposition": "1 Base",
+        "squadComposition": 1,
         "weapons": ["ak204", "infantryCQC"],
         "abilities": ["infantryCommand1"],
         "upgrades": [
@@ -46,13 +46,13 @@
           {
             "label": "The command base may either upgrade its command value to 2 for 25 pts.",
             "cost": 25,
-            "mutuallyExclusive": true,
+            "mutuallyExclusive": ["infantryCommand1", "infantryCommand3"],
             "ability": "infantryCommand2"
           },
           {
             "label": "The command base may either upgrade its command value to 3 for 50 pts.",
             "cost": 50,
-            "mutuallyExclusive": true,
+            "mutuallyExclusive": ["infantryCommand1", "infantryCommand2"],
             "ability": "infantryCommand3"
           }
         ]
@@ -72,20 +72,20 @@
         ],
         "unitTags": ["Vehicle (Tracked)"],
         "breakValue": 10,
-        "squadComposition": "1 Vehicle",
+        "squadComposition": 1,
         "weapons": ["heavyAcceleratorCannon", "vehicleSRPK", "tankCQC"],
         "abilities": ["vehicleCommand1", "weakFrame"],
         "upgrades": [
           {
             "label": "The command base may either upgrade its command value to 2 for 25 pts.",
             "cost": 25,
-            "mutuallyExclusive": true,
+            "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"],
             "ability": "vehicleCommand2"
           },
           {
             "label": "The command base may either upgrade its command value to 3 for 50 pts.",
             "cost": 50,
-            "mutuallyExclusive": true,
+            "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"],
             "ability": "vehicleCommand3"
           }
         ]
@@ -102,14 +102,14 @@
         },
         "unitTags": ["Infantry"],
         "breakValue": 8,
-        "squadComposition": "3 Bases",
+        "squadComposition": 3,
         "weapons": ["ak204", "infantryCQC"],
         "abilities": [],
         "upgrades": [
           {
             "label": "Add up to 3 more infantry bases at 10 pts per base.",
             "cost": 10,
-            "limit": "3"
+            "limit": 3
           },
           {
             "label": "Arm all bases with anti-tank grenades at 5 pts per base.",
@@ -125,19 +125,20 @@
           },
           {
             "label": "All bases in the unit may be mounted in transports (see transport unit entry)",
-            "cost": 65 
+            "cost": 65,
+            "limit": "baseCount"
           },
           {
             "label": "Replace a single infantry base with an SA 14 team for 30 pts.",
             "cost": 30,
             "weapon": "sa14",
-            "mutuallyExclusive": true
+            "mutuallyExclusive": ["infantrySRPK"]
           },
           {
             "label": "Replace a single infantry base with an SRPK team for 35 pts.",
             "cost": 35,
             "weapon": "infantrySRPK",
-            "mutuallyExclusive":true
+            "mutuallyExclusive": ["sa14"]
           }
         ]
       }

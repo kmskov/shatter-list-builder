@@ -34,7 +34,7 @@ export class UnitEntryComponent implements OnInit {
 
     this.unitEntry = factions[this.unitSelection.factionName][this.unitSelection.unitType][this.unitSelection.index];
 
-    this.loadWeapons();
+    this.loadWeaponsAndUpgrades();
     this.loadAbilities();
     this.loadIntegrity();
 
@@ -52,7 +52,7 @@ export class UnitEntryComponent implements OnInit {
     }
   }
 
-  loadWeapons(): void {
+  loadWeaponsAndUpgrades(): void {
     this.unitEntry.weapons.forEach(weapon => {
       this.weaponIds.push(weapon);
     });
@@ -60,6 +60,11 @@ export class UnitEntryComponent implements OnInit {
       if (upgradeEntry.hasOwnProperty('weapon')) {
         this.weaponIds.push(upgradeEntry.weapon);
       }
+      if (!upgradeEntry.hasOwnProperty('limit')) {
+        upgradeEntry.limit = 1;
+      }
+      upgradeEntry.current = 0;
+      upgradeEntry.diabled = false;
     });
 
     this.weaponIds.forEach(weaponId => {
@@ -68,6 +73,18 @@ export class UnitEntryComponent implements OnInit {
 
       if ( this.unitEntry.weapons.indexOf(weaponEntry.id) > -1) {
         this.currentWeaponNames.push(weaponEntry.name);
+      }
+    });
+
+    this.weaponEntries.sort(function(a: any, b: any) {
+      if(a.range.melee===true && b.range.melee === true) {
+        return 0;
+      } else if(a.range.melee===true && b.range.melee !== true) {
+        return 1;
+      } else if (b.range.melee===true && a.range.melee !== true) {
+        return -1;
+      } else {
+        return a.range.max - b.range.max;
       }
     });
   }
@@ -91,6 +108,14 @@ export class UnitEntryComponent implements OnInit {
 
   addUpgrade(upgrade: any): void {
     this.unitEntry.basePoints += upgrade.cost;
+    upgrade.current += 1;
+  }
+
+  removeUpgrade(upgrade: any): void {
+    this.unitEntry.basePoints -= upgrade.cost;
+    if(upgrade.current > 0) {
+      upgrade.current -= 1;
+    }
   }
 
   removeUnit(): void {

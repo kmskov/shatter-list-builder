@@ -2,21 +2,41 @@
   display: flex;
 }
 
+h4, p {
+  margin: 0;
+}
+
+.mat-icon-button {
+  width: auto;
+  height: auto;
+}
+
 mat-card {
   width: 100%;
   height: 100%;
 }
 
-h4, p {
-  margin: 0;
-}
-
-.unit-upgrades .mat-list-item {
-  height: 20px;
-}
-
 .mat-card-actions {
   padding: 0;
+}
+
+.integrity-box {
+  border-style: solid;
+  border-width: thin;
+  margin-right: 3px;
+  padding: 2px 6px;
+}
+
+.remove-unit {
+  float: right;
+}
+
+table {
+  width: 100%;
+}
+
+.threshold {
+  border-color: red;
 }
 
 .unit-title {
@@ -27,17 +47,10 @@ h4, p {
   margin: auto;
 }
 
-.integrity-box {
-  border-style: solid;
-  border-width: thin;
-  margin-right: 3px;
-  padding: 2px 6px;
+.unit-upgrades .mat-list-item {
+  height: 30px;
 }
 
-.threshold {
-  border-color: red;
-}
-
-.remove-unit {
-  float: right;
+.weapon-summary {
+  margin: 0;
 }

@@ -11,7 +11,7 @@ export interface UnitEntry {
   unitTags: string[];
   breakValue: number;
   criticalThreshold?: UnitCriticalThreshold[];
-  squadComposition: string;
+  squadComposition: number;
   weapons: string[];
   abilities: string[];
   upgrades: UnitUpgrade[];

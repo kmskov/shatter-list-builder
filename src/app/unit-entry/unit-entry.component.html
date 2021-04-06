@@ -39,7 +39,7 @@
 
       <div fxFlex="50" fxLayout="row" class="unit-composition">
         <h4 class="attribute-title">Unit Composition:</h4>
-        <p fxFlexOffset="5" class="attribute">{{unitEntry.squadComposition}}</p>
+        <p fxFlexOffset="5" class="attribute">{{unitEntry.squadComposition}} Teams</p>
       </div>
 
       <div fxFlex="100" fxLayout="row" class="unit-integrity">
@@ -61,9 +61,12 @@
       <div fxFlex="100" fxLayout="column">
         <h4 class="attribute-title">Upgrades:</h4>
         <mat-list class="unit-upgrades" dense>
-          <mat-list-item class="unit-upgrades" *ngFor="let upgrade of unitEntry.upgrades">
+          <mat-list-item class="unit-upgrade" *ngFor="let upgrade of unitEntry.upgrades">
+            <button mat-icon-button (click)="removeUpgrade(upgrade)" class="upgrade" [disabled]="upgrade.current == 0">
+              <mat-icon>remove_circle_outline</mat-icon>
+            </button>
             <button mat-icon-button (click)="addUpgrade(upgrade)" class="upgrade">
-              <mat-icon>add</mat-icon>
+              <mat-icon>add_circle_outline</mat-icon>
             </button>
             <p class="attribute">{{upgrade.label}}</p>
           </mat-list-item>
@@ -71,9 +74,9 @@
       </div>
 
       <div fxFlex="100" fxLayout="column">
-        <h4 fxFlex class="attribute-title">Weapons:</h4>
+        <h4 class="attribute-title">Weapons:</h4>
 
-        <table fxFlex mat-table [dataSource]="weaponEntries" class="weapon-summary">
+        <table mat-table [dataSource]="weaponEntries" class="weapon-summary">
 
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef> Name </th>
@@ -99,7 +102,7 @@
             <th mat-header-cell *matHeaderCellDef> Range </th>
             <ng-container *matCellDef="let weapon">
               <td mat-cell *ngIf="weapon.range.melee===true;else range">M</td>
-              <ng-template #range>{{weapon.range.min}}-{{weapon.range.max}}"</ng-template>
+              <ng-template #range><td mat-cell>{{weapon.range.min}}-{{weapon.range.max}}"</td></ng-template>
             </ng-container>
           </ng-container>
 
