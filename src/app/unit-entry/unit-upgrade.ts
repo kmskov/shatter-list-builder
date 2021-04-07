@@ -2,10 +2,11 @@ export interface UnitUpgrade {
   label: string;
   cost: number;
   current?: number; //how many of these have been selected so far
-  diabled?: boolean; //can this be selected currently
-  limit?: number;
+  disabled?: boolean; //can this be selected currently
+  limit?: any;
+  limitValue?: number;
   multiplier?: string;
-  weapon?: string;
+  weapon?: string; 
   mutuallyExclusive?: string[];
   ability?: string;
 }

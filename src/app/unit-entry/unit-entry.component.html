@@ -61,11 +61,11 @@
       <div fxFlex="100" fxLayout="column">
         <h4 class="attribute-title">Upgrades:</h4>
         <mat-list class="unit-upgrades" dense>
-          <mat-list-item class="unit-upgrade" *ngFor="let upgrade of unitEntry.upgrades">
-            <button mat-icon-button (click)="removeUpgrade(upgrade)" class="upgrade" [disabled]="upgrade.current == 0">
+          <mat-list-item class="unit-upgrade" *ngFor="let upgrade of unitEntry.upgrades" [disabled]="upgrade.disabled">
+            <button mat-icon-button (click)="removeUpgrade(upgrade)" class="upgrade" [disabled]="upgrade.disabled || upgrade.current == 0">
               <mat-icon>remove_circle_outline</mat-icon>
             </button>
-            <button mat-icon-button (click)="addUpgrade(upgrade)" class="upgrade">
+            <button mat-icon-button (click)="addUpgrade(upgrade)" class="upgrade" [disabled]="upgrade.disabled || upgrade.current == upgrade.limitValue">
               <mat-icon>add_circle_outline</mat-icon>
             </button>
             <p class="attribute">{{upgrade.label}}</p>

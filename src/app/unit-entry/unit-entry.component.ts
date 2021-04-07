@@ -3,6 +3,7 @@ import factions from '../factions.json';
 import reference from '../reference.json';
 import { UnitEntry } from './unit-entry';
 import { UnitSelection } from '../unit-selection';
+import { UnitUpgrade } from './unit-upgrade';
 
 @Component({
   selector: 'app-unit-entry',
@@ -61,10 +62,14 @@ export class UnitEntryComponent implements OnInit {
         this.weaponIds.push(upgradeEntry.weapon);
       }
       if (!upgradeEntry.hasOwnProperty('limit')) {
-        upgradeEntry.limit = 1;
+        upgradeEntry.limitValue = 1;
+      } else if (upgradeEntry.limit === 'baseCount') {
+        upgradeEntry.limitValue = this.unitEntry.squadComposition;
+      } else { // it's a number
+        upgradeEntry.limitValue = upgradeEntry.limit;
       }
       upgradeEntry.current = 0;
-      upgradeEntry.diabled = false;
+      upgradeEntry.disabled = false;
     });
 
     this.weaponIds.forEach(weaponId => {
@@ -106,15 +111,73 @@ export class UnitEntryComponent implements OnInit {
     });
   }
 
-  addUpgrade(upgrade: any): void {
-    this.unitEntry.basePoints += upgrade.cost;
+  addUpgrade(upgrade: UnitUpgrade): void {
+    let costMultiplier = this.getUpgradeCostMultiplier(upgrade);
+    this.unitEntry.basePoints += (costMultiplier * upgrade.cost);
+    
     upgrade.current += 1;
+    
+    this.disableMutExUpgrades(upgrade, true);
+    
+    if (upgrade.hasOwnProperty('weapon')) {
+        this.currentWeaponNames.push(reference.weapons.find(i => i.id === upgrade.weapon).name); 
+    } else if (upgrade.hasOwnProperty('ability')) {
+        this.currentAbilityNames.push(reference.abilities.find(i => i.id === upgrade.ability).label); 
+    }
   }
 
-  removeUpgrade(upgrade: any): void {
-    this.unitEntry.basePoints -= upgrade.cost;
+  removeUpgrade(upgrade: UnitUpgrade): void {
+    let costMultiplier = this.getUpgradeCostMultiplier(upgrade);
+    this.unitEntry.basePoints -= (costMultiplier * upgrade.cost);
+    
     if(upgrade.current > 0) {
       upgrade.current -= 1;
+    }
+
+    this.disableMutExUpgrades(upgrade, false);
+
+    if (upgrade.hasOwnProperty('weapon')) {
+      let label = reference.weapons.find(i => i.id === upgrade.weapon).name;
+      const index = this.currentWeaponNames.indexOf(label, 0);
+      if (index > -1) {
+        this.currentWeaponNames.splice(index, 1);
+      }
+    } else if (upgrade.hasOwnProperty('ability')) {
+      let label = reference.abilities.find(i => i.id === upgrade.ability).label;
+      const index = this.currentAbilityNames.indexOf(label, 0);
+      if (index > -1) {
+        this.currentAbilityNames.splice(index, 1);
+      }
+    }
+  }
+
+  getUpgradeCostMultiplier(upgrade: UnitUpgrade): number {
+    if(upgrade.multiplier === 'baseCount') {
+      return this.unitEntry.squadComposition;
+    } else if (!isNaN(parseInt(upgrade.multiplier))) {
+      return parseInt(upgrade.multiplier);
+    } else {
+      return 1;
+    }
+  }
+
+  disableMutExUpgrades(upgrade: UnitUpgrade, isAdd: boolean): void {
+    if (upgrade.hasOwnProperty('mutuallyExclusive')) {
+      let mutExUpgrades = upgrade.mutuallyExclusive;
+
+      let mutExProperty: string;
+      if (upgrade.hasOwnProperty('weapon')) {
+        mutExProperty = 'weapon'; 
+      } else if (upgrade.hasOwnProperty('ability')) {
+        mutExProperty = 'ability';
+      }
+      
+      this.unitEntry.upgrades.forEach(upgrade => {
+        //Find each upgrade that matches the mutex property and where that property value is named in this upgrades list of mutex upgrades
+        if(upgrade.hasOwnProperty(mutExProperty) && mutExUpgrades.includes(upgrade[mutExProperty])) {
+          upgrade.disabled = isAdd;
+        }
+      });
     }
   }
 
