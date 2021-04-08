@@ -30,30 +30,47 @@
         "abilities": ["infantryCommand1"],
         "upgrades": [
           {
-            "label": "The command base may be mounted in a transport (see transport unit entry).",
-            "cost": 65 
+            "label": "The command base may be mounted in a BMP-770 Transport (see transport unit entry).",
+            "cost": 65,
+            "upgradeType": {
+              "type": "transport",
+              "id": "BMP-770 Transport",
+              "mutuallyExclusive": ["BTR-551 Transport"]
+            }
           },
           {
             "label": "Arm the command base with anti-tank grenades at 5 pts.",
             "cost": 5,
-            "weapon": "antiTankGrenade"
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankGrenade"
+            }
           },
           {
             "label": "Arm the command base with an RPG 204 at 10 pts.",
             "cost": 10,
-            "weapon": "rpg204"
+            "upgradeType": {
+              "type": "weapon",
+              "id": "rpg204"
+            }
           },
           {
             "label": "The command base may either upgrade its command value to 2 for 25 pts.",
             "cost": 25,
-            "mutuallyExclusive": ["infantryCommand1", "infantryCommand3"],
-            "ability": "infantryCommand2"
+            "upgradeType": {
+              "type": "ability",
+              "id": "infantryCommand2",
+              "mutuallyExclusive": ["infantryCommand1", "infantryCommand3"]
+            }
           },
           {
             "label": "The command base may either upgrade its command value to 3 for 50 pts.",
             "cost": 50,
-            "mutuallyExclusive": ["infantryCommand1", "infantryCommand2"],
-            "ability": "infantryCommand3"
+            "upgradeType": {
+              "type": "ability",
+              "id": "infantryCommand3",
+              "mutuallyExclusive": ["infantryCommand1", "infantryCommand2"]
+            }
           }
         ]
       },
@@ -79,14 +96,20 @@
           {
             "label": "The command base may either upgrade its command value to 2 for 25 pts.",
             "cost": 25,
-            "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"],
-            "ability": "vehicleCommand2"
+            "upgradeType": {
+              "type": "ability",
+              "id": "vehicleCommand2",
+              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+            }
           },
           {
             "label": "The command base may either upgrade its command value to 3 for 50 pts.",
             "cost": 50,
-            "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"],
-            "ability": "vehicleCommand3"
+            "upgradeType": {
+              "type": "ability",
+              "id": "vehicleCommand3",
+              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+            }
           }
         ]
       }
@@ -109,36 +132,56 @@
           {
             "label": "Add up to 3 more infantry bases at 10 pts per base.",
             "cost": 10,
-            "limit": 3
+            "limit": 3,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          },
+          {
+            "label": "All bases in the unit may be mounted in BMP-770 Transports (see transport unit entry)",
+            "cost": 65,
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "BMP-770 Transport",
+              "mutuallyExclusive": ["BTR-551 Transport"]
+            }
           },
           {
             "label": "Arm all bases with anti-tank grenades at 5 pts per base.",
             "cost": 5,
             "multiplier": "baseCount",
-            "weapon": "antiTankGrenade"
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankGrenade"
+            }
           },
           {
             "label": "Arm any base with an RPG-204 at 10 pts per base.",
             "cost": 10,
             "limit": "baseCount",
-            "weapon": "rpg204"
-          },
-          {
-            "label": "All bases in the unit may be mounted in transports (see transport unit entry)",
-            "cost": 65,
-            "limit": "baseCount"
+            "upgradeType": {
+              "type": "weapon",
+              "id": "rpg204"
+            }
           },
           {
             "label": "Replace a single infantry base with an SA 14 team for 30 pts.",
             "cost": 30,
-            "weapon": "sa14",
-            "mutuallyExclusive": ["infantrySRPK"]
+            "upgradeType": {
+              "type": "weapon",
+              "id": "sa14",
+              "mutuallyExclusive": ["infantrySRPK"]
+            }
           },
           {
             "label": "Replace a single infantry base with an SRPK team for 35 pts.",
             "cost": 35,
-            "weapon": "infantrySRPK",
-            "mutuallyExclusive": ["sa14"]
+            "upgradeType": {
+              "type": "weapon",
+              "id": "infantrySRPK",
+              "mutuallyExclusive": ["sa14"]
+            }
           }
         ]
       }

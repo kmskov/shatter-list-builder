@@ -69,6 +69,7 @@
               <mat-icon>add_circle_outline</mat-icon>
             </button>
             <p class="attribute">{{upgrade.label}}</p>
+            <p class="upgrade-current" *ngIf="upgrade.current > 0">[{{upgrade.current}}]</p>
           </mat-list-item>
         </mat-list>
       </div>

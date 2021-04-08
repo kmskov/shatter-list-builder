@@ -1,7 +1,3 @@
-import { UnitDefense } from './unit-defense';
-import { UnitUpgrade } from './unit-upgrade';
-import { UnitCriticalThreshold } from './unit-critical-threshold';
-
 export interface UnitEntry {
   name: string;
   basePoints: number;
@@ -16,3 +12,37 @@ export interface UnitEntry {
   abilities: string[];
   upgrades: UnitUpgrade[];
 }
+
+export interface UnitDefense {
+  dice: number;
+  save: string;
+}
+
+export interface UnitCriticalThreshold {
+  box: number,
+  effect: string
+}
+
+
+export interface UnitUpgrade {
+  label: string;
+  
+  current?: number; //how many of these have been selected so far
+  disabled?: boolean; //can this be selected currently
+
+  limit?: any;
+  limitValue?: number;
+
+  cost: number;
+  multiplier?: string;
+  
+  upgradeType: UnitUpgradeType;
+}
+
+export interface UnitUpgradeType {
+    type: string;
+    id?: string;
+    mutuallyExclusive?: string[];
+}
+
+

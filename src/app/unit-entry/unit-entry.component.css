@@ -51,6 +51,10 @@ table {
   height: 30px;
 }
 
+.upgrade-current {
+  margin-left: 5px;
+}
+
 .weapon-summary {
   margin: 0;
 }

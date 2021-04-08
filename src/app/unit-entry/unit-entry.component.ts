@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import factions from '../factions.json';
 import reference from '../reference.json';
-import { UnitEntry } from './unit-entry';
+import { UnitEntry, UnitUpgrade } from './unit-entry';
 import { UnitSelection } from '../unit-selection';
-import { UnitUpgrade } from './unit-upgrade';
 
 @Component({
   selector: 'app-unit-entry',
@@ -58,8 +57,8 @@ export class UnitEntryComponent implements OnInit {
       this.weaponIds.push(weapon);
     });
     this.unitEntry.upgrades.forEach(upgradeEntry => {
-      if (upgradeEntry.hasOwnProperty('weapon')) {
-        this.weaponIds.push(upgradeEntry.weapon);
+      if (upgradeEntry.upgradeType.hasOwnProperty('weapon')) {
+        this.weaponIds.push(upgradeEntry.upgradeType.id);
       }
       if (!upgradeEntry.hasOwnProperty('limit')) {
         upgradeEntry.limitValue = 1;
@@ -119,11 +118,18 @@ export class UnitEntryComponent implements OnInit {
     
     this.disableMutExUpgrades(upgrade, true);
     
-    if (upgrade.hasOwnProperty('weapon')) {
-        this.currentWeaponNames.push(reference.weapons.find(i => i.id === upgrade.weapon).name); 
-    } else if (upgrade.hasOwnProperty('ability')) {
-        this.currentAbilityNames.push(reference.abilities.find(i => i.id === upgrade.ability).label); 
-    }
+    switch(upgrade.upgradeType.type) {
+      case 'weapon':
+        this.currentWeaponNames.push(reference.weapons.find(i => i.id === upgrade.upgradeType.id).name);
+        break;
+      case 'ability':
+        this.currentAbilityNames.push(reference.abilities.find(i => i.id === upgrade.upgradeType.id).label);
+        break;
+      case 'extraBase':
+        this.unitEntry.squadComposition += 1;
+        break;
+      default:
+    } 
   }
 
   removeUpgrade(upgrade: UnitUpgrade): void {
@@ -136,19 +142,25 @@ export class UnitEntryComponent implements OnInit {
 
     this.disableMutExUpgrades(upgrade, false);
 
-    if (upgrade.hasOwnProperty('weapon')) {
-      let label = reference.weapons.find(i => i.id === upgrade.weapon).name;
-      const index = this.currentWeaponNames.indexOf(label, 0);
-      if (index > -1) {
-        this.currentWeaponNames.splice(index, 1);
-      }
-    } else if (upgrade.hasOwnProperty('ability')) {
-      let label = reference.abilities.find(i => i.id === upgrade.ability).label;
-      const index = this.currentAbilityNames.indexOf(label, 0);
-      if (index > -1) {
-        this.currentAbilityNames.splice(index, 1);
-      }
-    }
+    let index = -1;
+    switch(upgrade.upgradeType.type) {
+      case 'weapon':
+        index = this.currentWeaponNames.indexOf(reference.weapons.find(i => i.id === upgrade.upgradeType.id).name, 0);
+        if (index > -1) {
+          this.currentWeaponNames.splice(index, 1);
+        }
+        break;
+      case 'ability':
+        index = this.currentAbilityNames.indexOf(reference.abilities.find(i => i.id === upgrade.upgradeType.id).label, 0);
+        if (index > -1) {
+          this.currentAbilityNames.splice(index, 1);
+        }
+        break;
+      case 'extraBase':
+        this.unitEntry.squadComposition -= 1;
+        break;
+      default:
+    } 
   }
 
   getUpgradeCostMultiplier(upgrade: UnitUpgrade): number {
@@ -162,19 +174,12 @@ export class UnitEntryComponent implements OnInit {
   }
 
   disableMutExUpgrades(upgrade: UnitUpgrade, isAdd: boolean): void {
-    if (upgrade.hasOwnProperty('mutuallyExclusive')) {
-      let mutExUpgrades = upgrade.mutuallyExclusive;
+    if (upgrade.upgradeType.hasOwnProperty('mutuallyExclusive')) {
+      let mutExUpgrades = upgrade.upgradeType.mutuallyExclusive;
 
-      let mutExProperty: string;
-      if (upgrade.hasOwnProperty('weapon')) {
-        mutExProperty = 'weapon'; 
-      } else if (upgrade.hasOwnProperty('ability')) {
-        mutExProperty = 'ability';
-      }
-      
       this.unitEntry.upgrades.forEach(upgrade => {
         //Find each upgrade that matches the mutex property and where that property value is named in this upgrades list of mutex upgrades
-        if(upgrade.hasOwnProperty(mutExProperty) && mutExUpgrades.includes(upgrade[mutExProperty])) {
+        if(upgrade.upgradeType.hasOwnProperty(upgrade.upgradeType.type) && mutExUpgrades.includes(upgrade[upgrade.upgradeType.type])) {
           upgrade.disabled = isAdd;
         }
       });
