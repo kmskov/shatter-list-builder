@@ -95,21 +95,21 @@
           </ng-container>
 
           <ng-container matColumnDef="rof">
-            <th mat-header-cell *matHeaderCellDef> Rate of Fire </th>
-            <td mat-cell *matCellDef="let weapon"> {{weapon.rof}} </td>
+            <th mat-header-cell class="center-text" *matHeaderCellDef> Rate of Fire </th>
+            <td mat-cell class="center-text" *matCellDef="let weapon"> {{weapon.rof}} </td>
           </ng-container>
 
           <ng-container matColumnDef="range">
-            <th mat-header-cell *matHeaderCellDef> Range </th>
+            <th mat-header-cell class="center-text" *matHeaderCellDef> Range </th>
             <ng-container *matCellDef="let weapon">
-              <td mat-cell *ngIf="weapon.range.melee===true;else range">M</td>
-              <ng-template #range><td mat-cell>{{weapon.range.min}}-{{weapon.range.max}}"</td></ng-template>
+              <td mat-cell class="center-text" *ngIf="weapon.range.melee===true;else range">M</td>
+              <ng-template #range><td mat-cell class="center-text">{{weapon.range.min}}-{{weapon.range.max}}"</td></ng-template>
             </ng-container>
           </ng-container>
 
           <ng-container matColumnDef="damage">
-            <th mat-header-cell *matHeaderCellDef> Damage </th>
-            <td mat-cell *matCellDef="let weapon"> {{weapon.damage}} </td>
+            <th mat-header-cell class="center-text" *matHeaderCellDef> Damage </th>
+            <td mat-cell class="center-text" *matCellDef="let weapon"> {{weapon.damage}} </td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="['name','type','tags','rof','range','damage']"></tr>

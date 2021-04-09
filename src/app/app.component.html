@@ -1,10 +1,11 @@
-<h1>{{title}}</h1>
+<div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="grid" fxFill >
+  <h1 fxFlex="50" fxFlexOffset="10">{{title}}</h1>
+  <h2 fxFlex="20">Faction: {{currFactionName | titlecase}}</h2>
+  <h2 fxFlex="20">Total Points: {{currPointsTotal}}</h2>
 
-<div fxLayout="row" fxLayoutAlign="start start" class="flex main">
-
-  <app-unit-selector fxFlex="40" [factionName]="currFactionName" (unitSelectionEvent)="addUnit($event)"></app-unit-selector>
+  <app-unit-selector fxFlex="35" [factionName]="currFactionName" (unitSelectionEvent)="addUnit($event)"></app-unit-selector>
 
   <div fxFlex fxLayout="column" fxLayoutAlight="start center" class="flex unit-entries">
-    <app-unit-entry *ngFor="let unit of currentList" [unitSelection]="unit" (unitRemovalEvent)="removeUnit($event)"></app-unit-entry>
+    <app-unit-entry *ngFor="let unit of currentList" [unitSelection]="unit" (unitRemovalEvent)="removeUnit($event)" (pointsUpdateEvent)="updatePoints($event)"></app-unit-entry>
   </div>
 </div>

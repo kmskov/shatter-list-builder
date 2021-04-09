@@ -24,13 +24,12 @@ export class UnitEntryComponent implements OnInit {
   integrity: string[] = [];
 
   @Output() unitRemovalEvent = new EventEmitter<UnitSelection>();
+  @Output() pointsUpdateEvent = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() {
     console.log('unit-entry.ngOnInit starting');
-
-    console.log('faction: ' + this.unitSelection.factionName + ', unitType: ' + this.unitSelection.unitType + ', index: ' + this.unitSelection.index);
 
     this.unitEntry = factions[this.unitSelection.factionName][this.unitSelection.unitType][this.unitSelection.index];
 
@@ -38,6 +37,7 @@ export class UnitEntryComponent implements OnInit {
     this.loadAbilities();
     this.loadIntegrity();
 
+    this.unitEntry.currentPoints = 0;
     this.recalcTotalUnitPoints();
 
     console.log('unit-entry.ngOnInit finished');
@@ -175,7 +175,8 @@ export class UnitEntryComponent implements OnInit {
 
   recalcTotalUnitPoints(): void {
 
-    let totalPoints = this.unitEntry.basePoints;// * this.unitEntry.squadComposition;
+    var difference:number = 0;
+    let totalPoints = this.unitEntry.basePoints;
 
     this.unitEntry.upgrades.forEach(upg => {
       if(upg.current > 0) {
@@ -187,7 +188,9 @@ export class UnitEntryComponent implements OnInit {
       }
     });
 
+    difference = totalPoints - this.unitEntry.currentPoints;
     this.unitEntry.currentPoints = totalPoints;
+    this.updateListPoints(difference);
   }
 
   disableMutExUpgrades(currUpgrade: UnitUpgrade, disable: boolean): void {
@@ -205,6 +208,10 @@ export class UnitEntryComponent implements OnInit {
 
   removeUnit(): void {
     this.unitRemovalEvent.emit(this.unitSelection);
+  }
+
+  updateListPoints(difference: number): void {
+    this.pointsUpdateEvent.emit(difference);
   }
 
 }
