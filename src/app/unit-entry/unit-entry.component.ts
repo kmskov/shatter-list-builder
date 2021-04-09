@@ -38,6 +38,8 @@ export class UnitEntryComponent implements OnInit {
     this.loadAbilities();
     this.loadIntegrity();
 
+    this.recalcTotalUnitPoints();
+
     console.log('unit-entry.ngOnInit finished');
   }
 
@@ -57,9 +59,10 @@ export class UnitEntryComponent implements OnInit {
       this.weaponIds.push(weapon);
     });
     this.unitEntry.upgrades.forEach(upgradeEntry => {
-      if (upgradeEntry.upgradeType.hasOwnProperty('weapon')) {
+      if (upgradeEntry.upgradeType.type == 'weapon') {
         this.weaponIds.push(upgradeEntry.upgradeType.id);
       }
+
       if (!upgradeEntry.hasOwnProperty('limit')) {
         upgradeEntry.limitValue = 1;
       } else if (upgradeEntry.limit === 'baseCount') {
@@ -67,6 +70,7 @@ export class UnitEntryComponent implements OnInit {
       } else { // it's a number
         upgradeEntry.limitValue = upgradeEntry.limit;
       }
+
       upgradeEntry.current = 0;
       upgradeEntry.disabled = false;
     });
@@ -111,31 +115,35 @@ export class UnitEntryComponent implements OnInit {
   }
 
   addUpgrade(upgrade: UnitUpgrade): void {
-    let costMultiplier = this.getUpgradeCostMultiplier(upgrade);
-    this.unitEntry.basePoints += (costMultiplier * upgrade.cost);
-    
+
     upgrade.current += 1;
-    
+
     this.disableMutExUpgrades(upgrade, true);
     
+    let newType = "";
     switch(upgrade.upgradeType.type) {
       case 'weapon':
-        this.currentWeaponNames.push(reference.weapons.find(i => i.id === upgrade.upgradeType.id).name);
+        newType = reference.weapons.find(i => i.id === upgrade.upgradeType.id).name;
+        if(this.currentWeaponNames.indexOf(newType) == -1) {
+          this.currentWeaponNames.push(reference.weapons.find(i => i.id === upgrade.upgradeType.id).name);
+        }
         break;
       case 'ability':
-        this.currentAbilityNames.push(reference.abilities.find(i => i.id === upgrade.upgradeType.id).label);
+        if(this.currentWeaponNames.indexOf(newType) == -1) {
+          this.currentAbilityNames.push(reference.abilities.find(i => i.id === upgrade.upgradeType.id).label);
+        }
         break;
       case 'extraBase':
         this.unitEntry.squadComposition += 1;
         break;
       default:
-    } 
+    }
+
+    this.recalcTotalUnitPoints();
   }
 
   removeUpgrade(upgrade: UnitUpgrade): void {
-    let costMultiplier = this.getUpgradeCostMultiplier(upgrade);
-    this.unitEntry.basePoints -= (costMultiplier * upgrade.cost);
-    
+
     if(upgrade.current > 0) {
       upgrade.current -= 1;
     }
@@ -146,13 +154,13 @@ export class UnitEntryComponent implements OnInit {
     switch(upgrade.upgradeType.type) {
       case 'weapon':
         index = this.currentWeaponNames.indexOf(reference.weapons.find(i => i.id === upgrade.upgradeType.id).name, 0);
-        if (index > -1) {
+        if (index > -1 && upgrade.current == 0) {
           this.currentWeaponNames.splice(index, 1);
         }
         break;
       case 'ability':
         index = this.currentAbilityNames.indexOf(reference.abilities.find(i => i.id === upgrade.upgradeType.id).label, 0);
-        if (index > -1) {
+        if (index > -1 && upgrade.current == 0) {
           this.currentAbilityNames.splice(index, 1);
         }
         break;
@@ -161,26 +169,35 @@ export class UnitEntryComponent implements OnInit {
         break;
       default:
     } 
+
+    this.recalcTotalUnitPoints();
   }
 
-  getUpgradeCostMultiplier(upgrade: UnitUpgrade): number {
-    if(upgrade.multiplier === 'baseCount') {
-      return this.unitEntry.squadComposition;
-    } else if (!isNaN(parseInt(upgrade.multiplier))) {
-      return parseInt(upgrade.multiplier);
-    } else {
-      return 1;
-    }
+  recalcTotalUnitPoints(): void {
+
+    let totalPoints = this.unitEntry.basePoints;// * this.unitEntry.squadComposition;
+
+    this.unitEntry.upgrades.forEach(upg => {
+      if(upg.current > 0) {
+        if(upg.hasOwnProperty('multiplyCostByBases')) {
+          totalPoints += upg.cost * this.unitEntry.squadComposition;
+        } else {
+          totalPoints += upg.cost * upg.current;
+        }
+      }
+    });
+
+    this.unitEntry.currentPoints = totalPoints;
   }
 
-  disableMutExUpgrades(upgrade: UnitUpgrade, isAdd: boolean): void {
-    if (upgrade.upgradeType.hasOwnProperty('mutuallyExclusive')) {
-      let mutExUpgrades = upgrade.upgradeType.mutuallyExclusive;
+  disableMutExUpgrades(currUpgrade: UnitUpgrade, disable: boolean): void {
+    if (currUpgrade.upgradeType.hasOwnProperty('mutuallyExclusive')) {
+      let mutExUpgrades = currUpgrade.upgradeType.mutuallyExclusive;
 
-      this.unitEntry.upgrades.forEach(upgrade => {
+      this.unitEntry.upgrades.forEach(upg => {
         //Find each upgrade that matches the mutex property and where that property value is named in this upgrades list of mutex upgrades
-        if(upgrade.upgradeType.hasOwnProperty(upgrade.upgradeType.type) && mutExUpgrades.includes(upgrade[upgrade.upgradeType.type])) {
-          upgrade.disabled = isAdd;
+        if(upg.upgradeType.type == currUpgrade.upgradeType.type && mutExUpgrades.includes(upg.upgradeType.id)) {
+          upg.disabled = disable;
         }
       });
     }

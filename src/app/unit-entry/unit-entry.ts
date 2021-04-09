@@ -1,6 +1,7 @@
 export interface UnitEntry {
   name: string;
   basePoints: number;
+  currentPoints?: number;
   move: number;
   totalIntegrity: number;
   defense: UnitDefense;
@@ -34,7 +35,7 @@ export interface UnitUpgrade {
   limitValue?: number;
 
   cost: number;
-  multiplier?: string;
+  multiplyCostByBases?: boolean;
   
   upgradeType: UnitUpgradeType;
 }

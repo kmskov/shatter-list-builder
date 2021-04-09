@@ -150,7 +150,7 @@
           {
             "label": "Arm all bases with anti-tank grenades at 5 pts per base.",
             "cost": 5,
-            "multiplier": "baseCount",
+            "multiplyCostByBases": true,
             "upgradeType": {
               "type": "weapon",
               "id": "antiTankGrenade"
