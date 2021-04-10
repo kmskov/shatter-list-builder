@@ -1,13 +1,9 @@
-<mat-expansion-panel *ngFor="let unitType of unitTypes" hideToggle [expanded]="true">
+<mat-expansion-panel *ngFor="let unitType of unitTypes" hideToggle [expanded]="unitType.current < unitType.max" [disabled]="unitType.current == unitType.max">
   <mat-expansion-panel-header >
-    <mat-panel-title>
-      {{unitType.label}}
-    </mat-panel-title>
-    <mat-panel-description>
-      {{unitType.min}}-{{unitType.max}}
-    </mat-panel-description>
+    <mat-panel-title>{{unitType.label}}</mat-panel-title>
+    <mat-panel-description>{{unitType.min}}-{{unitType.max}}</mat-panel-description>
   </mat-expansion-panel-header>
-  <mat-action-list>
-    <button mat-list-item *ngFor="let unit of faction[unitType.id]; let i = index" class="unit-name" (click)="addUnit(factionName, unitType.id, i)">{{unit.name}}</button>
+  <mat-action-list [disabled]="unitType.current == unitType.max">
+    <button mat-list-item *ngFor="let unit of faction[unitType.id]" class="unit-name" (click)="addUnit(factionName, unitType.id, unit.id)">{{unit.name}}</button>
   </mat-action-list>
 </mat-expansion-panel>

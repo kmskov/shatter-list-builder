@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { UnitType } from '../unit-type';
+import { UnitType } from './unit-type';
 import { UnitSelection } from '../unit-selection';
 import factions from '../factions.json';
 import rosters from '../rosters.json';
@@ -24,17 +24,26 @@ export class UnitSelectorComponent implements OnInit {
   ngOnInit() {
     console.log('unit-selector.ngOnInit starting');
 
-    this.unitTypes = rosters.base;
-
     this.faction = factions[this.factionName];
+
+    this.unitTypes = rosters.base;
+    this.unitTypes.forEach(type => {
+      type.current = 0;
+    });
 
     console.log('unit-selector.ngOnInit finished');
   }
 
-  addUnit(faction: string, unitType: string, index: number) {
-    console.log('addUnit: ' + faction + ', ' + unitType + ', ' + index)
-    let unitSelection = {factionName: faction, unitType: unitType, index: index};
-    this.unitSelectionEvent.emit(unitSelection)
+  addUnit(faction: string, unitType: string, unitId: string) {
+    this.unitTypes.find(i => i.id == unitType).current += 1;
+    console.log('add unit: ' + JSON.stringify(this.unitTypes.find(i => i.id == unitType)));
+    let unitSelection = {factionName: faction, unitType: unitType, id: unitId};
+    this.unitSelectionEvent.emit(unitSelection);
+  }
+
+  removeUnit(unitType: string, unitId: string) {
+    console.log('remove unit: ' + JSON.stringify(this.unitTypes.find(i => i.id == unitType)));
+    this.unitTypes.find(i => i.id == unitType).current -= 1;
   }
 
 }

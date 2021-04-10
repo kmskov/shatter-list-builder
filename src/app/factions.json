@@ -16,6 +16,7 @@
     ],
     "hq": [
       { "name": "Vlast Infantry Commander",
+        "id": "infantryCommander",
         "basePoints": 35,
         "move": 6,
         "totalIntegrity": 3,
@@ -75,6 +76,7 @@
         ]
       },
       { "name": "Vlast Tank Commander",
+        "id": "tankCommander",
         "basePoints": 125,
         "move": 9,
         "totalIntegrity": 6,
@@ -116,6 +118,7 @@
     ],
     "core": [
       { "name": "Vlast Guards Infantry Platoon",
+        "id": "guardsInfantry",
         "basePoints": 30,
         "move": 6,
         "totalIntegrity": 3,

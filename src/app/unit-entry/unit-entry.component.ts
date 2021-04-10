@@ -31,7 +31,7 @@ export class UnitEntryComponent implements OnInit {
   ngOnInit() {
     console.log('unit-entry.ngOnInit starting');
 
-    this.unitEntry = factions[this.unitSelection.factionName][this.unitSelection.unitType][this.unitSelection.index];
+    this.unitEntry = factions[this.unitSelection.factionName][this.unitSelection.unitType].find(i => i.id === this.unitSelection.id);
 
     this.loadWeaponsAndUpgrades();
     this.loadAbilities();
@@ -207,6 +207,7 @@ export class UnitEntryComponent implements OnInit {
   }
 
   removeUnit(): void {
+    this.updateListPoints(-1 * this.unitEntry.currentPoints);
     this.unitRemovalEvent.emit(this.unitSelection);
   }
 

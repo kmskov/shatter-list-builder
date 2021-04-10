@@ -1,5 +1,6 @@
 export interface UnitEntry {
   name: string;
+  id: string;
   basePoints: number;
   currentPoints?: number;
   move: number;
