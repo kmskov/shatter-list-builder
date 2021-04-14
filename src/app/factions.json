@@ -1,5 +1,39 @@
 {
+  "crystallumHordes": {
+    "name": "Crystallum Hordes",
+    "commandPolicies": [],
+    "hq": [],
+    "core": [],
+    "armoredSupport": [],
+    "fireSupport": [],
+    "airSupport": [],
+    "special": [],
+    "transport": []
+  },
+  "atlanticCouncil": {
+    "name": "Atlantic Council",
+    "commandPolicies": [],
+    "hq": [],
+    "core": [],
+    "armoredSupport": [],
+    "fireSupport": [],
+    "airSupport": [],
+    "special": [],
+    "transport": []
+  },
+  "fed": {
+    "name": "Federation of Columbia",
+    "commandPolicies": [],
+    "hq": [],
+    "core": [],
+    "armoredSupport": [],
+    "fireSupport": [],
+    "airSupport": [],
+    "special": [],
+    "transport": []
+  },
   "vlast": {
+    "name": "Vlast",
     "commandPolicies": [
       {
         "name": "Only Cowards Retreat!",
@@ -200,6 +234,32 @@
     ],
     "special": [
 
+    ],
+    "transport": [
+      { "name": "BMP-4U",
+        "id": "bmp4u",
+        "basePoints": 70,
+        "move": 10,
+        "totalIntegrity": 5,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["Vehicle", "Tracked"],
+        "squadComposition": 1,
+        "weapons": ["heavyAcceleratorCannon", "tankCQC"],
+        "abilities": ["smoke", "weakFrame"],
+        "upgrades": [
+          {
+            "label": "Arm any BMP-4U with an Anti-Tank Rocket for 2 points per vehicle.",
+            "cost": 2,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankRocket"
+            }
+          }
+        ]
+      }
     ]
   }
 }

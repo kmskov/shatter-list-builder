@@ -3,44 +3,42 @@
     {
       "id":"infantryCommand1", 
       "label":"Command 1", 
-      "type": "passive",
-      "description":"Infantry commanders can issue command policies from the general infantry policy and Vlast infantry policy charts."
+      "type": "passive"
     },
     {
       "id":"infantryCommand2", 
       "label":"Command 2", 
-      "type": "passive",
-      "description":"Infantry commanders can issue command policies from the general infantry policy and Vlast infantry policy charts."
+      "type": "passive"
     },
     {
       "id":"infantryCommand3", 
       "label":"Command 3", 
-      "type": "passive",
-      "description":"Infantry commanders can issue command policies from the general infantry policy and Vlast infantry policy charts."
+      "type": "passive"
     },
     {
       "id":"vehicleCommand1", 
       "label":"Command 1", 
-      "type": "passive",
-      "description":"Tank commanders can issue command policies from the general vehicle policy and Vlast vehicle policy charts."
+      "type": "passive"
     },
     {
       "id":"vehicleCommand2", 
       "label":"Command 2", 
-      "type": "passive",
-      "description":"Tank commanders can issue command policies from the general vehicle policy and Vlast vehicle policy charts."
+      "type": "passive"
     },
     {
       "id":"vehicleCommand3", 
       "label":"Command 3", 
-      "type": "passive",
-      "description":"Tank commanders can issue command policies from the general vehicle policy and Vlast vehicle policy charts."
+      "type": "passive"
     },
     {
       "id":"weakFrame", 
       "label":"Weak Frame", 
-      "type": "passive",
-      "description":"Weak Frame description."
+      "type": "passive"
+    },
+    {
+      "id": "smoke",
+      "label": "Smoke",
+      "type": "active"
     }
   ],
   "weapons": [
@@ -172,6 +170,20 @@
         "melee": false
       }, 
       "damage": 1
+    },
+    {
+      "id":"antiTankRocket", 
+      "name": "Anti-Tank Rocket", 
+      "type": "explosive", 
+      "tags":["pierce 2", "disposable 2"], 
+      "rof": 1, 
+      "range":
+      {
+        "min":0,
+        "max":10,
+        "melee": false
+      }, 
+      "damage": 2
     }
   ]
 }

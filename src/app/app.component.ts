@@ -14,11 +14,15 @@ export class AppComponent {
   currPointsTotal = 0;
 
   currentList: UnitSelection[] = [];
+  unitTypeSortOrder: string[] = ['hq', 'core', 'armoredSupport', 'fireSupport' , 'airSupport', 'special'];
 
   @ViewChild(UnitSelectorComponent) unitSelectionCmp: UnitSelectorComponent;
 
   addUnit(unitSelection: UnitSelection): void {
     this.currentList.push(unitSelection);
+    this.currentList.sort((a: UnitSelection, b: UnitSelection) => {
+      return this.unitTypeSortOrder.indexOf(a.unitType) - this.unitTypeSortOrder.indexOf(b.unitType);
+    });
   }
 
   removeUnit(unitSelection: UnitSelection): void {
@@ -26,7 +30,7 @@ export class AppComponent {
     if (index > -1) {
       this.currentList.splice(index, 1);
     }
-    this.unitSelectionCmp.removeUnit(unitSelection.unitType, unitSelection.id);
+    this.unitSelectionCmp.removeUnit(unitSelection.unitType);
   }
 
   updatePoints(difference: number): void {

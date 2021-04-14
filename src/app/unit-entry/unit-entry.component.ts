@@ -31,7 +31,8 @@ export class UnitEntryComponent implements OnInit {
   ngOnInit() {
     console.log('unit-entry.ngOnInit starting');
 
-    this.unitEntry = factions[this.unitSelection.factionName][this.unitSelection.unitType].find(i => i.id === this.unitSelection.id);
+    const factionUnit = factions[this.unitSelection.factionName][this.unitSelection.unitType].find(i => i.id === this.unitSelection.id);
+    this.unitEntry = (JSON.parse(JSON.stringify(factionUnit))); // Deep clone
 
     this.loadWeaponsAndUpgrades();
     this.loadAbilities();
@@ -45,11 +46,11 @@ export class UnitEntryComponent implements OnInit {
 
   loadIntegrity(): void {
     for (let i = 1, j = 0; i <= this.unitEntry.totalIntegrity; i++) {
-      if ("criticalThreshold" in this.unitEntry && i === this.unitEntry.criticalThreshold[j].box) {
+      if ('criticalThreshold' in this.unitEntry && i === this.unitEntry.criticalThreshold[j].box) {
         this.integrity.push(this.unitEntry.criticalThreshold[j].effect);
         j = j++;
       } else {
-        this.integrity.push("normal");
+        this.integrity.push('normal');
       }
     }
   }
@@ -59,7 +60,7 @@ export class UnitEntryComponent implements OnInit {
       this.weaponIds.push(weapon);
     });
     this.unitEntry.upgrades.forEach(upgradeEntry => {
-      if (upgradeEntry.upgradeType.type == 'weapon') {
+      if (upgradeEntry.upgradeType.type === 'weapon') {
         this.weaponIds.push(upgradeEntry.upgradeType.id);
       }
 
@@ -76,7 +77,7 @@ export class UnitEntryComponent implements OnInit {
     });
 
     this.weaponIds.forEach(weaponId => {
-      let weaponEntry = reference.weapons.find(i => i.id === weaponId);
+      const weaponEntry = reference.weapons.find(i => i.id === weaponId);
       this.weaponEntries.push(weaponEntry);
 
       if ( this.unitEntry.weapons.indexOf(weaponEntry.id) > -1) {
@@ -84,12 +85,12 @@ export class UnitEntryComponent implements OnInit {
       }
     });
 
-    this.weaponEntries.sort(function(a: any, b: any) {
-      if(a.range.melee===true && b.range.melee === true) {
+    this.weaponEntries.sort((a: any, b: any) => {
+      if (a.range.melee === true && b.range.melee === true) {
         return 0;
-      } else if(a.range.melee===true && b.range.melee !== true) {
+      } else if (a.range.melee === true && b.range.melee !== true) {
         return 1;
-      } else if (b.range.melee===true && a.range.melee !== true) {
+      } else if (b.range.melee === true && a.range.melee !== true) {
         return -1;
       } else {
         return a.range.max - b.range.max;
@@ -98,14 +99,14 @@ export class UnitEntryComponent implements OnInit {
   }
 
   loadAbilities(): void {
-    var abilityIds = [];
-    
+    const abilityIds = [];
+
     this.unitEntry.abilities.forEach(ability => {
       abilityIds.push(ability);
     });
 
     abilityIds.forEach(abilityId => {
-      let abilityEntry = reference.abilities.find(i => i.id === abilityId);
+      const abilityEntry = reference.abilities.find(i => i.id === abilityId);
       this.abilityEntries.push(abilityEntry);
 
       if ( this.unitEntry.abilities.indexOf(abilityEntry.id) > -1) {
@@ -119,22 +120,24 @@ export class UnitEntryComponent implements OnInit {
     upgrade.current += 1;
 
     this.disableMutExUpgrades(upgrade, true);
-    
-    let newType = "";
-    switch(upgrade.upgradeType.type) {
+
+    let newType = '';
+    switch (upgrade.upgradeType.type) {
       case 'weapon':
         newType = reference.weapons.find(i => i.id === upgrade.upgradeType.id).name;
-        if(this.currentWeaponNames.indexOf(newType) == -1) {
+        if (this.currentWeaponNames.indexOf(newType) === -1) {
           this.currentWeaponNames.push(reference.weapons.find(i => i.id === upgrade.upgradeType.id).name);
         }
         break;
       case 'ability':
-        if(this.currentWeaponNames.indexOf(newType) == -1) {
+        if (this.currentWeaponNames.indexOf(newType) === -1) {
           this.currentAbilityNames.push(reference.abilities.find(i => i.id === upgrade.upgradeType.id).label);
         }
         break;
       case 'extraBase':
         this.unitEntry.squadComposition += 1;
+        break;
+      case 'transport':
         break;
       default:
     }
@@ -144,23 +147,23 @@ export class UnitEntryComponent implements OnInit {
 
   removeUpgrade(upgrade: UnitUpgrade): void {
 
-    if(upgrade.current > 0) {
+    if (upgrade.current > 0) {
       upgrade.current -= 1;
     }
 
     this.disableMutExUpgrades(upgrade, false);
 
     let index = -1;
-    switch(upgrade.upgradeType.type) {
+    switch (upgrade.upgradeType.type) {
       case 'weapon':
         index = this.currentWeaponNames.indexOf(reference.weapons.find(i => i.id === upgrade.upgradeType.id).name, 0);
-        if (index > -1 && upgrade.current == 0) {
+        if (index > -1 && upgrade.current === 0) {
           this.currentWeaponNames.splice(index, 1);
         }
         break;
       case 'ability':
         index = this.currentAbilityNames.indexOf(reference.abilities.find(i => i.id === upgrade.upgradeType.id).label, 0);
-        if (index > -1 && upgrade.current == 0) {
+        if (index > -1 && upgrade.current === 0) {
           this.currentAbilityNames.splice(index, 1);
         }
         break;
@@ -168,19 +171,19 @@ export class UnitEntryComponent implements OnInit {
         this.unitEntry.squadComposition -= 1;
         break;
       default:
-    } 
+    }
 
     this.recalcTotalUnitPoints();
   }
 
   recalcTotalUnitPoints(): void {
 
-    var difference:number = 0;
+    let difference = 0;
     let totalPoints = this.unitEntry.basePoints;
 
     this.unitEntry.upgrades.forEach(upg => {
-      if(upg.current > 0) {
-        if(upg.hasOwnProperty('multiplyCostByBases')) {
+      if (upg.current > 0) {
+        if (upg.hasOwnProperty('multiplyCostByBases')) {
           totalPoints += upg.cost * this.unitEntry.squadComposition;
         } else {
           totalPoints += upg.cost * upg.current;
@@ -195,11 +198,11 @@ export class UnitEntryComponent implements OnInit {
 
   disableMutExUpgrades(currUpgrade: UnitUpgrade, disable: boolean): void {
     if (currUpgrade.upgradeType.hasOwnProperty('mutuallyExclusive')) {
-      let mutExUpgrades = currUpgrade.upgradeType.mutuallyExclusive;
+      const mutExUpgrades = currUpgrade.upgradeType.mutuallyExclusive;
 
       this.unitEntry.upgrades.forEach(upg => {
-        //Find each upgrade that matches the mutex property and where that property value is named in this upgrades list of mutex upgrades
-        if(upg.upgradeType.type == currUpgrade.upgradeType.type && mutExUpgrades.includes(upg.upgradeType.id)) {
+        // Find each upgrade that matches the mutex property and where that property value is named in this upgrades list of mutex upgrades
+        if (upg.upgradeType.type === currUpgrade.upgradeType.type && mutExUpgrades.includes(upg.upgradeType.id)) {
           upg.disabled = disable;
         }
       });

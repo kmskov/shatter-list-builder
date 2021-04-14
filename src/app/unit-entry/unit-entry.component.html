@@ -10,56 +10,59 @@
 
     <div class="flex" fxLayout="row wrap" fxLayoutGap="10px grid" fxFill>
 
-      <div fxFlex="50" fxLayout="row" class="unit-move">
+      <div fxFlex="35" fxLayout="row" class="unit-move">
         <h4 class="attribute-title">Move:</h4>
         <p fxFlexOffset="5" class="attribute">{{unitEntry.move}}</p>
       </div>
 
-      <div fxFlex="50" fxLayout="row" class="unit-defense">
+      <div fxFlex="35" fxLayout="row" class="unit-defense">
         <h4 class="attribute-title">Defense:</h4>
         <p fxFlexOffset="5" class="attribute">( {{unitEntry.defense.dice}}D {{unitEntry.defense.save}} )</p>
       </div>
 
-      <div fxFlex="50" fxLayout="row" class="unit-tags">
-        <h4 class="attribute-title">Unit Tags:</h4>
-        <p fxFlexOffset="5" *ngFor="let tag of unitEntry.unitTags">{{tag}}</p>
+      <div fxFlex="30" fxLayout="row" class="unit-integrity">
+        <h4 class="attribute-title">Integrity:</h4>
+        <p fxFlexOffset="5" class="attribute">{{unitEntry.totalIntegrity}}</p>
+        <!-- integrity box layout
+        <div fxFlexOffset="2.5" fxLayout="row wrap">
+          <div *ngFor="let curr of integrity; let i=index;" class="attribute integrity-box" [class.threshold]="curr != 'normal'"></div>
+        </div>
+        -->
       </div>
 
-      <div fxFlex="50" fxLayout="row" class="unit-breakvalue">
+      <div fxFlex="35" fxLayout="row" class="unit-breakvalue">
         <h4 class="attribute-title">Break Value:</h4>
         <p fxFlexOffset="5" class="attribute">{{unitEntry.breakValue}}</p>
       </div>
 
-      <div fxFlex="50" fxLayout="row" class="unit-weapons">
+      <div fxFlex="35" fxLayout="row" class="unit-tags">
+        <h4 class="attribute-title">Unit Tags:</h4>
+        <p fxFlexOffset="5" *ngFor="let tag of unitEntry.unitTags">{{tag}}</p>
+      </div>
+
+      <div fxFlex="30" fxLayout="row" class="unit-composition">
+        <h4 class="attribute-title">Unit Size:</h4>
+        <p fxFlexOffset="5" class="attribute">{{unitEntry.squadComposition}} Team(s)</p>
+      </div>
+
+      <div fxFlex="100" fxLayout="row" class="unit-weapons">
         <h4 class="attribute-title">Weapons:</h4>
-        <div fxFlexOffset="5" fxLayout="row wrap">
+        <div fxFlexOffset="2.5" fxLayout="row wrap">
           <p *ngFor="let weapon of currentWeaponNames; let isLast=last" class="attribute">{{weapon}}{{isLast ? '' : ',&nbsp;'}}</p>
         </div>
       </div>
 
-      <div fxFlex="50" fxLayout="row" class="unit-composition">
-        <h4 class="attribute-title">Unit Composition:</h4>
-        <p fxFlexOffset="5" class="attribute">{{unitEntry.squadComposition}} Teams</p>
-      </div>
-
-      <div fxFlex="100" fxLayout="row" class="unit-integrity">
-        <h4 class="attribute-title">Integrity:</h4>
+      <div fxFlex="100" fxLayout="row">
+        <h4 class="attribute-title">Abilities:</h4>
         <div fxFlexOffset="2.5" fxLayout="row wrap">
-          <div *ngFor="let curr of integrity; let i=index;" class="attribute integrity-box" [class.threshold]="curr != 'normal'"></div>
+          <p class="attribute" *ngFor="let ability of abilityEntries; let isLast=last">{{ability.label}} ({{ability.type | titlecase}}){{isLast ? '' : ',&nbsp;'}}</p>
         </div>
       </div>
 
-      <div fxFlex="100" fxLayout="column">
-        <h4 class="attribute-title">Abilities:</h4>
-        <mat-list class="unit-abilities" dense>
-          <mat-list-item *ngFor="let ability of abilityEntries">
-            <p class="attribute">{{ability.label}} ({{ability.type | titlecase}}) - {{ability.description}}</p>
-          </mat-list-item>
-        </mat-list>
-      </div>
-
-      <div fxFlex="100" fxLayout="column">
-        <h4 class="attribute-title">Upgrades:</h4>
+      <mat-expansion-panel *ngIf="unitEntry.upgrades" fxFlex="100" fxLayout="column">
+        <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center" >
+          <mat-panel-title class="unit-title"><h4 class="attribute-title">Upgrades:</h4></mat-panel-title>
+        </mat-expansion-panel-header>
         <mat-list class="unit-upgrades" dense>
           <mat-list-item class="unit-upgrade" *ngFor="let upgrade of unitEntry.upgrades" [disabled]="upgrade.disabled">
             <button mat-icon-button (click)="removeUpgrade(upgrade)" class="upgrade" [disabled]="upgrade.disabled || upgrade.current == 0">
@@ -72,10 +75,12 @@
             <p class="upgrade-current" *ngIf="upgrade.current > 0">[{{upgrade.current}}]</p>
           </mat-list-item>
         </mat-list>
-      </div>
+      </mat-expansion-panel>
 
-      <div fxFlex="100" fxLayout="column">
-        <h4 class="attribute-title">Weapons:</h4>
+      <mat-expansion-panel *ngIf="weaponEntries" fxFlex="100" fxLayout="column">
+        <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center" >
+          <mat-panel-title class="unit-title"><h4 class="attribute-title">Weapon Details:</h4></mat-panel-title>
+        </mat-expansion-panel-header>
 
         <table mat-table [dataSource]="weaponEntries" class="weapon-summary">
 
@@ -115,7 +120,10 @@
           <tr mat-header-row *matHeaderRowDef="['name','type','tags','rof','range','damage']"></tr>
           <tr mat-row *matRowDef="let row; columns: ['name','type','tags','rof','range','damage'];"></tr>
         </table>
-      </div>
+      </mat-expansion-panel>
+<!-- TODO implement transport
+      <app-unit-entry *ngIf="unitTransport" [unitSelection]="unitTransport" (unitRemovalEvent)="removeTransport($event)" (pointsUpdateEvent)="updatePoints($event)"></app-unit-entry>
+-->
     </div>
 
 </mat-expansion-panel>

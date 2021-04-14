@@ -1,7 +1,9 @@
-<div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="grid" fxFill >
-  <h1 fxFlex="50" fxFlexOffset="10">{{title}}</h1>
-  <h2 fxFlex="20">Faction: {{currFactionName | titlecase}}</h2>
-  <h2 fxFlex="20">Total Points: {{currPointsTotal}}</h2>
+<div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="5px grid" fxFill >
+  <div fxFlex="100" fxLayout="row" class="mat-app-primary">
+    <h1 background="primary" fxFlex="50" fxFlexOffset="10">{{title}}</h1>
+    <h2 fxFlex="20">Faction: {{currFactionName | titlecase}}</h2>
+    <h2 fxFlex="20">Total Points: {{currPointsTotal}}</h2>
+  </div>
 
   <app-unit-selector fxFlex="35" [factionName]="currFactionName" (unitSelectionEvent)="addUnit($event)"></app-unit-selector>
 

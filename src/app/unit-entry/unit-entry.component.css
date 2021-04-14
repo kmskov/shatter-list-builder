@@ -51,6 +51,10 @@ table {
   margin: auto;
 }
 
+.unit-abilities .mat-list-item {
+  height: 30px;
+}
+
 .unit-upgrades .mat-list-item {
   height: 30px;
 }
