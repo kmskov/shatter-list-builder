@@ -34,10 +34,10 @@ export class UnitSelectorComponent implements OnInit {
     // console.log('unit-selector.ngOnInit finished');
   }
 
-  addUnit(faction: string, unitType: string, unitId: string) {
-    this.unitTypes.find(i => i.id === unitType).current += 1;
+  addUnit(faction: string, type: string, unitId: string) {
+    this.unitTypes.find(i => i.id === type).current += 1;
     // console.log('add unit: ' + JSON.stringify(this.unitTypes.find(i => i.id === unitType)));
-    const unitSelection = {factionName: faction, unitType: unitType, id: unitId};
+    const unitSelection = {factionName: faction, unitType: type, id: unitId};
     this.unitSelectionEvent.emit(unitSelection);
   }
 

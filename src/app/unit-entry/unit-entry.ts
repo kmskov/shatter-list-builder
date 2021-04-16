@@ -26,23 +26,23 @@ export interface UnitDefense {
 }
 
 export interface UnitCriticalThreshold {
-  box: number,
-  effect: string
+  box: number;
+  effect: string;
 }
 
 
 export interface UnitUpgrade {
   label: string;
-  
-  current?: number; //how many of these have been selected so far
-  disabled?: boolean; //can this be selected currently
+
+  current?: number; // how many of these have been selected so far
+  disabled?: boolean; // can this be selected currently
 
   limit?: any;
   limitValue?: number;
 
   cost?: number;
   multiplyCostByBases?: boolean;
-  
+
   upgradeType: UnitUpgradeType;
 }
 

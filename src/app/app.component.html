@@ -1,11 +1,20 @@
 <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="5px grid" fxFill >
   <div fxFlex="100" fxLayout="row" class="mat-app-primary">
     <h1 background="primary" fxFlex="50" fxFlexOffset="10">{{title}}</h1>
-    <h2 fxFlex="20">Faction: {{currFactionName | titlecase}}</h2>
+    <h2 fxFlex="30">Faction: {{currFactionLabel | titlecase}}</h2>
     <h2 fxFlex="20">Total Points: {{currPointsTotal}}</h2>
   </div>
 
-  <app-unit-selector fxFlex="35" [factionName]="currFactionName" (unitSelectionEvent)="addUnit($event)"></app-unit-selector>
+  <div fxFlex="35" fxLayout="column" fxLayoutGap="5px">
+    <mat-button-toggle-group fxLayout="row wrap" fxLayoutGap="grid">
+      <mat-button-toggle fxFlex="50" (click)="selectFaction('crystallumHordes')">Crystallum Hordes</mat-button-toggle>
+      <mat-button-toggle fxFlex="50" (click)="selectFaction('atlanticCouncil')">Atlantic Council</mat-button-toggle>
+      <mat-button-toggle fxFlex="50" (click)="selectFaction('fed')">Federation of Columbia</mat-button-toggle>
+      <mat-button-toggle fxFlex="50" (click)="selectFaction('vlast')">Vlast</mat-button-toggle>
+    </mat-button-toggle-group>
+
+    <app-unit-selector *ngIf="currFactionName" [factionName]="currFactionName" (unitSelectionEvent)="addUnit($event)"></app-unit-selector>
+  </div>
 
   <div fxFlex fxLayout="column" fxLayoutAlight="start center" class="flex unit-entries">
     <app-unit-entry *ngFor="let unit of currentList" [unitSelection]="unit" (unitRemovalEvent)="removeUnit($event)" (pointsUpdateEvent)="updatePoints($event)"></app-unit-entry>

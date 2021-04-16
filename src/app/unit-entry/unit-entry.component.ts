@@ -125,7 +125,6 @@ export class UnitEntryComponent implements OnInit {
   }
 
   addUpgrade(upgrade: UnitUpgrade): void {
-    console.log(JSON.stringify(upgrade));
 
     upgrade.current += 1;
 
@@ -150,7 +149,7 @@ export class UnitEntryComponent implements OnInit {
         break;
       case 'transport':
         if (this.unitTransport === undefined) {
-          this.unitTransport = {factionName: this.unitSelection.factionName, unitType: 'transport', id: upgrade.upgradeType.id}
+          this.unitTransport = {factionName: this.unitSelection.factionName, unitType: 'transport', id: upgrade.upgradeType.id};
         } else {
           this.unitTransportEntryCmp.addTransport();
         }
