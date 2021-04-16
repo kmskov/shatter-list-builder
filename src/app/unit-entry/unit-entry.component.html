@@ -10,44 +10,44 @@
 
     <div class="flex" fxLayout="row wrap" fxLayoutGap="10px grid" fxFill>
 
-      <div fxFlex="35" fxLayout="row" class="unit-move">
+      <div fxFlex="25" fxLayout="row" class="unit-move">
         <h4 class="attribute-title">Move:</h4>
         <p fxFlexOffset="5" class="attribute">{{unitEntry.move}}</p>
       </div>
 
-      <div fxFlex="35" fxLayout="row" class="unit-defense">
+      <div fxFlex="25" fxLayout="row" class="unit-defense">
         <h4 class="attribute-title">Defense:</h4>
         <p fxFlexOffset="5" class="attribute">( {{unitEntry.defense.dice}}D {{unitEntry.defense.save}} )</p>
       </div>
 
-      <div fxFlex="30" fxLayout="row" class="unit-integrity">
+      <div fxFlex="25" fxLayout="row" class="unit-integrity">
         <h4 class="attribute-title">Integrity:</h4>
         <p fxFlexOffset="5" class="attribute">{{unitEntry.totalIntegrity}}</p>
       </div>
 
-      <div fxFlex="35" fxLayout="row" class="unit-breakvalue">
+      <div fxFlex="25" fxLayout="row" class="unit-breakvalue">
         <h4 class="attribute-title">Break Value:</h4>
         <p fxFlexOffset="5" class="attribute">{{unitEntry.breakValue}}</p>
       </div>
 
-      <div fxFlex="35" fxLayout="row" class="unit-tags">
+      <div fxFlex="50" fxLayout="row" class="unit-tags">
         <h4 class="attribute-title">Unit Tags:</h4>
-        <p fxFlexOffset="5" *ngFor="let tag of unitEntry.unitTags">{{tag}}</p>
+        <p fxFlexOffset="2.5" *ngFor="let tag of unitEntry.unitTags">{{tag}}</p>
       </div>
 
-      <div fxFlex="30" fxLayout="row" class="unit-composition">
+      <div fxFlex="50" fxLayout="row" class="unit-composition">
         <h4 class="attribute-title">Unit Size:</h4>
-        <p fxFlexOffset="5" class="attribute">{{unitEntry.squadComposition}} Team(s)</p>
+        <p fxFlexOffset="2.5" class="attribute">{{unitEntry.squadComposition}} Model(s)</p>
       </div>
 
-      <div fxFlex="100" fxLayout="row" class="unit-weapons">
+      <div fxFlex="50" fxLayout="row" class="unit-weapons">
         <h4 class="attribute-title">Weapons:</h4>
         <div fxFlexOffset="2.5" fxLayout="row wrap">
           <p *ngFor="let weapon of currentWeaponNames; let isLast=last" class="attribute">{{weapon}}{{isLast ? '' : ',&nbsp;'}}</p>
         </div>
       </div>
 
-      <div fxFlex="100" fxLayout="row">
+      <div fxFlex="50" fxLayout="row">
         <h4 class="attribute-title">Abilities:</h4>
         <div fxFlexOffset="2.5" fxLayout="row wrap">
           <p class="attribute" *ngFor="let ability of abilityEntries; let isLast=last">{{ability.label}} ({{ability.type | titlecase}}){{isLast ? '' : ',&nbsp;'}}</p>
