@@ -22,7 +22,7 @@ export class UnitSelectorComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('unit-selector.ngOnInit starting');
+    // console.log('unit-selector.ngOnInit starting');
 
     this.faction = factions[this.factionName];
 
@@ -31,7 +31,7 @@ export class UnitSelectorComponent implements OnInit {
       type.current = 0;
     });
 
-    console.log('unit-selector.ngOnInit finished');
+    // console.log('unit-selector.ngOnInit finished');
   }
 
   addUnit(faction: string, unitType: string, unitId: string) {

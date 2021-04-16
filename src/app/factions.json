@@ -1,7 +1,6 @@
 {
   "crystallumHordes": {
     "name": "Crystallum Hordes",
-    "commandPolicies": [],
     "hq": [],
     "core": [],
     "armoredSupport": [],
@@ -12,7 +11,6 @@
   },
   "atlanticCouncil": {
     "name": "Atlantic Council",
-    "commandPolicies": [],
     "hq": [],
     "core": [],
     "armoredSupport": [],
@@ -23,7 +21,6 @@
   },
   "fed": {
     "name": "Federation of Columbia",
-    "commandPolicies": [],
     "hq": [],
     "core": [],
     "armoredSupport": [],
@@ -34,20 +31,6 @@
   },
   "vlast": {
     "name": "Vlast",
-    "commandPolicies": [
-      {
-        "name": "Only Cowards Retreat!",
-        "rule": "Choose a friendly infantry unit and immediately destroy one model in the unit. That unit immediately gains +3 to its break value until the end of the turn and immediately makes a rally check if it has a broken marker on it."
-      },
-      {
-        "name": "Engage The Enemy",
-        "rule": "Choose a friendly non-transport vehicle unit and immediately move D3 inches, vehicles may not change their facing when utilizing this move. The unit will be slowed by difficult terrain as normal and cannot enter dangerous terrain."
-      },
-      {
-        "name": "Redeploy to the Front",
-        "rule": "Choose a friendly infantry unit that has been upgraded with transport vehicles. All infantry models within 1” of their unit’s transport vehicles may immediately embark. If the chosen infantry unit is already embarked within their transport vehicles, they may disembark within 3” of their vehicles."
-      }
-    ],
     "hq": [
       { "name": "Vlast Infantry Commander",
         "id": "infantryCommander",
@@ -65,12 +48,11 @@
         "abilities": ["infantryCommand1"],
         "upgrades": [
           {
-            "label": "The command base may be mounted in a BMP-770 Transport (see transport unit entry).",
-            "cost": 65,
+            "label": "The command base may be mounted in a BMP-4U Transport.",
             "upgradeType": {
               "type": "transport",
-              "id": "BMP-770 Transport",
-              "mutuallyExclusive": ["BTR-551 Transport"]
+              "id": "bmp4u",
+              "mutuallyExclusive": ["btr90u"]
             }
           },
           {
@@ -153,7 +135,7 @@
     "core": [
       { "name": "Vlast Guards Infantry Platoon",
         "id": "guardsInfantry",
-        "basePoints": 30,
+        "basePoints": 10,
         "move": 6,
         "totalIntegrity": 3,
         "defense": {
@@ -176,12 +158,11 @@
           },
           {
             "label": "All bases in the unit may be mounted in BMP-770 Transports (see transport unit entry)",
-            "cost": 65,
             "limit": "baseCount",
             "upgradeType": {
               "type": "transport",
-              "id": "BMP-770 Transport",
-              "mutuallyExclusive": ["BTR-551 Transport"]
+              "id": "bmp4u",
+              "mutuallyExclusive": ["btr90u"]
             }
           },
           {
@@ -247,12 +228,14 @@
         },
         "unitTags": ["Vehicle", "Tracked"],
         "squadComposition": 1,
+        "transportCapacity": 2,
         "weapons": ["heavyAcceleratorCannon", "tankCQC"],
         "abilities": ["smoke", "weakFrame"],
         "upgrades": [
           {
             "label": "Arm any BMP-4U with an Anti-Tank Rocket for 2 points per vehicle.",
             "cost": 2,
+            "limit": "baseCount",
             "upgradeType": {
               "type": "weapon",
               "id": "antiTankRocket"

@@ -1,18 +1,23 @@
 export interface UnitEntry {
   name: string;
   id: string;
+
   basePoints: number;
   currentPoints?: number;
+
   move: number;
   totalIntegrity: number;
-  defense: UnitDefense;
-  unitTags: string[];
-  breakValue: number;
   criticalThreshold?: UnitCriticalThreshold[];
+  defense: UnitDefense;
+  breakValue: number;
+
   squadComposition: number;
+  unitTags: string[];
   weapons: string[];
   abilities: string[];
   upgrades: UnitUpgrade[];
+
+  transportCapacity?: number;
 }
 
 export interface UnitDefense {
@@ -35,7 +40,7 @@ export interface UnitUpgrade {
   limit?: any;
   limitValue?: number;
 
-  cost: number;
+  cost?: number;
   multiplyCostByBases?: boolean;
   
   upgradeType: UnitUpgradeType;

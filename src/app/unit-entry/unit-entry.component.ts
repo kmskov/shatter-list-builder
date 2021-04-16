@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import factions from '../factions.json';
 import reference from '../reference.json';
 import { UnitEntry, UnitUpgrade } from './unit-entry';
@@ -23,13 +23,18 @@ export class UnitEntryComponent implements OnInit {
 
   integrity: string[] = [];
 
+  unitTransport: UnitSelection;
+  transportPoints = 0;
+
+  @ViewChild(UnitEntryComponent) unitTransportEntryCmp: UnitEntryComponent;
+
   @Output() unitRemovalEvent = new EventEmitter<UnitSelection>();
   @Output() pointsUpdateEvent = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() {
-    console.log('unit-entry.ngOnInit starting');
+    // console.log('unit-entry.ngOnInit starting');
 
     const factionUnit = factions[this.unitSelection.factionName][this.unitSelection.unitType].find(i => i.id === this.unitSelection.id);
     this.unitEntry = (JSON.parse(JSON.stringify(factionUnit))); // Deep clone
@@ -41,7 +46,7 @@ export class UnitEntryComponent implements OnInit {
     this.unitEntry.currentPoints = 0;
     this.recalcTotalUnitPoints();
 
-    console.log('unit-entry.ngOnInit finished');
+    // console.log('unit-entry.ngOnInit finished');
   }
 
   loadIntegrity(): void {
@@ -70,6 +75,10 @@ export class UnitEntryComponent implements OnInit {
         upgradeEntry.limitValue = this.unitEntry.squadComposition;
       } else { // it's a number
         upgradeEntry.limitValue = upgradeEntry.limit;
+      }
+
+      if (upgradeEntry.cost === undefined) {
+        upgradeEntry.cost = 0;
       }
 
       upgradeEntry.current = 0;
@@ -116,6 +125,7 @@ export class UnitEntryComponent implements OnInit {
   }
 
   addUpgrade(upgrade: UnitUpgrade): void {
+    console.log(JSON.stringify(upgrade));
 
     upgrade.current += 1;
 
@@ -136,8 +146,17 @@ export class UnitEntryComponent implements OnInit {
         break;
       case 'extraBase':
         this.unitEntry.squadComposition += 1;
+        this.updateAllBaseCountLimits();
         break;
       case 'transport':
+        if (this.unitTransport === undefined) {
+          this.unitTransport = {factionName: this.unitSelection.factionName, unitType: 'transport', id: upgrade.upgradeType.id}
+        } else {
+          this.unitTransportEntryCmp.addTransport();
+        }
+        if (upgrade.limit === 'baseCount') {
+          this.updateBaseCountLimit(upgrade, upgrade.upgradeType.id);
+        }
         break;
       default:
     }
@@ -169,6 +188,18 @@ export class UnitEntryComponent implements OnInit {
         break;
       case 'extraBase':
         this.unitEntry.squadComposition -= 1;
+        this.updateAllBaseCountLimits();
+        break;
+      case 'transport':
+        if (upgrade.current === 0) {
+          this.unitTransport = undefined;
+          this.transportPoints = 0;
+        } else {
+          this.unitTransportEntryCmp.subtractTransport();
+        }
+        if (upgrade.limit === 'baseCount') {
+          this.updateBaseCountLimit(upgrade, upgrade.upgradeType.id);
+        }
         break;
       default:
     }
@@ -176,24 +207,32 @@ export class UnitEntryComponent implements OnInit {
     this.recalcTotalUnitPoints();
   }
 
-  recalcTotalUnitPoints(): void {
-
-    let difference = 0;
-    let totalPoints = this.unitEntry.basePoints;
-
+  updateAllBaseCountLimits(): void {
     this.unitEntry.upgrades.forEach(upg => {
-      if (upg.current > 0) {
-        if (upg.hasOwnProperty('multiplyCostByBases')) {
-          totalPoints += upg.cost * this.unitEntry.squadComposition;
-        } else {
-          totalPoints += upg.cost * upg.current;
-        }
+      if (upg.limit === 'baseCount') {
+        this.updateBaseCountLimit(upg, upg.upgradeType.type === 'transport' ? upg.upgradeType.id : undefined);
       }
     });
+  }
 
-    difference = totalPoints - this.unitEntry.currentPoints;
-    this.unitEntry.currentPoints = totalPoints;
-    this.updateListPoints(difference);
+  updateBaseCountLimit(upgrade: UnitUpgrade, transportId: string): void {
+    let transportCapacity = 1;
+    if (transportId !== undefined) {
+      transportCapacity = factions[this.unitSelection.factionName].transport.find(i => i.id === transportId).transportCapacity;
+    }
+    upgrade.limitValue = Math.round(this.unitEntry.squadComposition / transportCapacity);
+  }
+
+  addTransport(): void {
+    this.unitEntry.squadComposition += 1;
+    this.updateAllBaseCountLimits();
+    this.recalcTotalUnitPoints();
+  }
+
+  subtractTransport(): void {
+    this.unitEntry.squadComposition -= 1;
+    this.updateAllBaseCountLimits();
+    this.recalcTotalUnitPoints();
   }
 
   disableMutExUpgrades(currUpgrade: UnitUpgrade, disable: boolean): void {
@@ -209,6 +248,26 @@ export class UnitEntryComponent implements OnInit {
     }
   }
 
+  recalcTotalUnitPoints(): void {
+
+    let difference = 0;
+    let totalPoints = (this.unitEntry.basePoints * this.unitEntry.squadComposition) + this.transportPoints;
+
+    this.unitEntry.upgrades.forEach(upg => {
+      if (upg.current > 0 && upg.upgradeType.type !== 'extraBase')  {
+        if (upg.hasOwnProperty('multiplyCostByBases')) {
+          totalPoints += upg.cost * this.unitEntry.squadComposition;
+        } else {
+          totalPoints += upg.cost * upg.current;
+        }
+      }
+    });
+
+    difference = totalPoints - this.unitEntry.currentPoints;
+    this.unitEntry.currentPoints = totalPoints;
+    this.updateListPoints(difference);
+  }
+
   removeUnit(): void {
     this.updateListPoints(-1 * this.unitEntry.currentPoints);
     this.unitRemovalEvent.emit(this.unitSelection);
@@ -216,6 +275,11 @@ export class UnitEntryComponent implements OnInit {
 
   updateListPoints(difference: number): void {
     this.pointsUpdateEvent.emit(difference);
+  }
+
+  updateTransportPoints(difference: number): void {
+    this.transportPoints += difference;
+    this.recalcTotalUnitPoints();
   }
 
 }

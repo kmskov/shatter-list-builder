@@ -3,7 +3,7 @@
   <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center" >
     <mat-panel-title class="unit-title"><h2>{{unitEntry.name}}</h2></mat-panel-title>
     <mat-panel-description fxFlex="20" class="unit-current-points"><h2>{{unitEntry.currentPoints}}</h2></mat-panel-description>
-    <button mat-icon-button fxFlex="10" color="warn" (click)="removeUnit()">
+    <button mat-icon-button *ngIf="unitSelection.unitType !== 'transport'" fxFlex="10" color="warn" (click)="removeUnit()">
       <mat-icon class="remove-unit">delete</mat-icon>
     </button>
   </mat-expansion-panel-header>
@@ -68,11 +68,12 @@
             <button mat-icon-button (click)="removeUpgrade(upgrade)" class="upgrade" [disabled]="upgrade.disabled || upgrade.current == 0">
               <mat-icon>remove_circle_outline</mat-icon>
             </button>
-            <button mat-icon-button (click)="addUpgrade(upgrade)" class="upgrade" [disabled]="upgrade.disabled || upgrade.current == upgrade.limitValue">
+            <button mat-icon-button (click)="addUpgrade(upgrade)" class="upgrade" [disabled]="upgrade.disabled || upgrade.current >= upgrade.limitValue">
               <mat-icon>add_circle_outline</mat-icon>
             </button>
             <p class="attribute">{{upgrade.label}}</p>
             <p class="upgrade-current" *ngIf="upgrade.current > 0">[{{upgrade.current}}]</p>
+            <mat-icon color="warn" *ngIf="upgrade.current > upgrade.limitValue">error</mat-icon>
           </mat-list-item>
         </mat-list>
       </mat-expansion-panel>
@@ -121,9 +122,14 @@
           <tr mat-row *matRowDef="let row; columns: ['name','type','tags','rof','range','damage'];"></tr>
         </table>
       </mat-expansion-panel>
-<!-- TODO implement transport
-      <app-unit-entry *ngIf="unitTransport" [unitSelection]="unitTransport" (unitRemovalEvent)="removeTransport($event)" (pointsUpdateEvent)="updatePoints($event)"></app-unit-entry>
--->
+
+      <mat-expansion-panel *ngIf="unitTransport" [expanded]="true" fxFlex="100" fxLayout="column">
+        <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center" >
+          <mat-panel-title class="unit-title"><h4 class="attribute-title">Transport:</h4></mat-panel-title>
+        </mat-expansion-panel-header>
+      
+        <app-unit-entry *ngIf="unitTransport" [unitSelection]="unitTransport" (pointsUpdateEvent)="updateTransportPoints($event)"></app-unit-entry>
+      </mat-expansion-panel>
     </div>
 
 </mat-expansion-panel>
