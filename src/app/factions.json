@@ -32,9 +32,9 @@
   "vlast": {
     "name": "Vlast",
     "hq": [
-      { "name": "Vlast Infantry Commander",
+      { "name": "Infantry Commander",
         "id": "infantryCommander",
-        "basePoints": 35,
+        "basePoints": 12,
         "move": 6,
         "totalIntegrity": 3,
         "defense": {
@@ -56,24 +56,32 @@
             }
           },
           {
-            "label": "Arm the command base with anti-tank grenades at 5 pts.",
-            "cost": 5,
+            "label": "The command base may be mounted in a BMP-90U Transport.",
+            "upgradeType": {
+              "type": "transport",
+              "id": "btr90u",
+              "mutuallyExclusive": ["bmp4u"]
+            }
+          },
+          {
+            "label": "Arm the command base with anti-tank grenades at 2 pts.",
+            "cost": 2,
             "upgradeType": {
               "type": "weapon",
               "id": "antiTankGrenade"
             }
           },
           {
-            "label": "Arm the command base with an RPG 204 at 10 pts.",
-            "cost": 10,
+            "label": "Arm the command base with an RPG 10 at 10 pts.",
+            "cost": 3,
             "upgradeType": {
               "type": "weapon",
-              "id": "rpg204"
+              "id": "rpg10"
             }
           },
           {
-            "label": "The command base may either upgrade its command value to 2 for 25 pts.",
-            "cost": 25,
+            "label": "The command base may either upgrade its command value to 2 for 5 pts.",
+            "cost": 5,
             "upgradeType": {
               "type": "ability",
               "id": "infantryCommand2",
@@ -81,8 +89,8 @@
             }
           },
           {
-            "label": "The command base may either upgrade its command value to 3 for 50 pts.",
-            "cost": 50,
+            "label": "The command base may either upgrade its command value to 3 for 10 pts.",
+            "cost": 10,
             "upgradeType": {
               "type": "ability",
               "id": "infantryCommand3",
@@ -91,29 +99,24 @@
           }
         ]
       },
-      { "name": "Vlast Tank Commander",
+      { "name": "Tank Commander",
         "id": "tankCommander",
-        "basePoints": 125,
-        "move": 9,
+        "basePoints": 39,
+        "move": 10,
         "totalIntegrity": 6,
         "defense": {
           "dice": 2,
           "save": "5+"
         },
-        "criticalThreshold": [
-          { "box": 4,
-            "effect": "Reactor Damaged"
-          }
-        ],
         "unitTags": ["Vehicle (Tracked)"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["heavyAcceleratorCannon", "vehicleSRPK", "tankCQC"],
+        "weapons": ["heavyAcceleratorCannon", "vehicleSRPK", "vehicleCQC"],
         "abilities": ["vehicleCommand1", "weakFrame"],
         "upgrades": [
           {
-            "label": "The command base may either upgrade its command value to 2 for 25 pts.",
-            "cost": 25,
+            "label": "The command base may either upgrade its command value to 2 for 5 pts.",
+            "cost": 5,
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand2",
@@ -121,8 +124,8 @@
             }
           },
           {
-            "label": "The command base may either upgrade its command value to 3 for 50 pts.",
-            "cost": 50,
+            "label": "The command base may either upgrade its command value to 3 for 10 pts.",
+            "cost": 10,
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand3",
@@ -133,9 +136,9 @@
       }
     ],
     "core": [
-      { "name": "Vlast Guards Infantry Platoon",
+      { "name": "Guards Infantry Platoon",
         "id": "guardsInfantry",
-        "basePoints": 10,
+        "basePoints": 5,
         "move": 6,
         "totalIntegrity": 3,
         "defense": {
@@ -149,15 +152,15 @@
         "abilities": [],
         "upgrades": [
           {
-            "label": "Add up to 3 more infantry bases at 10 pts per base.",
-            "cost": 10,
+            "label": "Add up to 3 more infantry bases at 5 pts per base.",
+            "cost": 5,
             "limit": 3,
             "upgradeType": {
               "type": "extraBase"
             } 
           },
           {
-            "label": "All bases in the unit may be mounted in BMP-770 Transports (see transport unit entry)",
+            "label": "All bases in the unit may be mounted in BMP-4U Transports (see transport unit entry)",
             "limit": "baseCount",
             "upgradeType": {
               "type": "transport",
@@ -166,8 +169,17 @@
             }
           },
           {
-            "label": "Arm all bases with anti-tank grenades at 5 pts per base.",
-            "cost": 5,
+            "label": "All bases in the unit may be mounted in BTR-90U Transports (see transport unit entry)",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "btr90u",
+              "mutuallyExclusive": ["bmp4u"]
+            }
+          },
+          {
+            "label": "Arm all bases with Anti-Tank grenades at 2 pts per base.",
+            "cost": 2,
             "multiplyCostByBases": true,
             "upgradeType": {
               "type": "weapon",
@@ -175,17 +187,17 @@
             }
           },
           {
-            "label": "Arm any base with an RPG-204 at 10 pts per base.",
-            "cost": 10,
+            "label": "Arm any base with an RPG 10 at 2 pts per base.",
+            "cost": 2,
             "limit": "baseCount",
             "upgradeType": {
               "type": "weapon",
-              "id": "rpg204"
+              "id": "rpg10"
             }
           },
           {
-            "label": "Replace a single infantry base with an SA 14 team for 30 pts.",
-            "cost": 30,
+            "label": "Replace a single infantry base with an SA 14 team for 5 pts.",
+            "cost": 5,
             "upgradeType": {
               "type": "weapon",
               "id": "sa14",
@@ -193,8 +205,8 @@
             }
           },
           {
-            "label": "Replace a single infantry base with an SRPK team for 35 pts.",
-            "cost": 35,
+            "label": "Replace a single infantry base with an SRPK team for 5 pts.",
+            "cost": 5,
             "upgradeType": {
               "type": "weapon",
               "id": "infantrySRPK",
@@ -202,38 +214,358 @@
             }
           }
         ]
+      },
+      { "name": "Spetsnaz Platoon",
+        "id": "spetsnaz",
+        "basePoints": 11,
+        "move": 6,
+        "totalIntegrity": 3,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["Infantry"],
+        "breakValue": 9,
+        "squadComposition": 3,
+        "weapons": ["aak", "infantryCQC"],
+        "abilities": ["stubborn", "grenadeTubes"],
+        "upgrades": [
+          {
+            "label": "Add up to 2 more infantry bases at 11 points per base.",
+            "cost": 11,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          },
+          {
+            "label": "All bases in the unit may be mounted in BMP-4U Transports (see transport unit entry)",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "bmp4u",
+              "mutuallyExclusive": ["btr90u"]
+            }
+          },
+          {
+            "label": "All bases in the unit may be mounted in BTR-90U Transports (see transport unit entry)",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "btr90u",
+              "mutuallyExclusive": ["bmp4u"]
+            }
+          },
+          {
+            "label": "Arm all bases with Anti-Tank grenades at 2 pts per base.",
+            "cost": 2,
+            "multiplyCostByBases": true,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankGrenade"
+            }
+          },
+          {
+            "label": "Arm any base with an RPG 10 at 2 pts per base.",
+            "cost": 2,
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "weapon",
+              "id": "rpg10"
+            }
+          },
+          {
+            "label": "Replace a single infantry base with a PTR team for 2 pts.",
+            "cost": 2,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "ptr",
+              "mutuallyExclusive": ["infantrySRPK"]
+            }
+          },
+          {
+            "label": "Replace a single infantry base with an SRPK team for 1 pts.",
+            "cost": 1,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "infantrySRPK",
+              "mutuallyExclusive": ["ptr"]
+            }
+          }
+        ]
       }
     ],
     "armoredSupport": [
-
-    ],
-    "fireSupport": [
-
-    ],
-    "airSupport": [
-
-    ],
-    "special": [
-
-    ],
-    "transport": [
-      { "name": "BMP-4U",
-        "id": "bmp4u",
-        "basePoints": 70,
+      { "name": "T-80C-TU Platoon",
+        "id": "t80ctu",
+        "basePoints": 28,
+        "move": 10,
+        "totalIntegrity": 6,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["vehicle", "tracked"],
+        "breakValue": 9,
+        "squadComposition": 3,
+        "weapons": ["heavyAcceleratorCannon", "vehicleSRPK", "vehicleCQC"],
+        "abilities": ["smoke", "weakFrame"],
+        "upgrades": [
+          {
+            "label": "Add up to 3 more tanks at 28 points per model.",
+            "cost": 28,
+            "limit": 3,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          }
+        ]
+      },
+      { "name": "T-72-R Platoon",
+        "id": "t72r",
+        "basePoints": 49,
+        "move": 8,
+        "totalIntegrity": 9,
+        "defense": {
+          "dice": 2,
+          "save": "3+"
+        },
+        "unitTags": ["vehicle", "tracked"],
+        "breakValue": 10,
+        "squadComposition": 1,
+        "weapons": ["railGun", "vehicleSRPK", "vehicleCQC"],
+        "abilities": ["smoke", "crystallumTreatedArmor"],
+        "upgrades": [
+          {
+            "label": "Add up to 2 more tanks at 49 points per model.",
+            "cost": 49,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          }
+        ]
+      },
+      { "name": "BRDM-2B-U Platoon",
+        "id": "brdm2bu",
+        "basePoints": 18,
         "move": 10,
         "totalIntegrity": 5,
         "defense": {
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["Vehicle", "Tracked"],
+        "unitTags": ["vehicle", "wheeled"],
+        "breakValue": 9,
+        "squadComposition": 3,
+        "weapons": ["acceleratorAutocannon", "vehicleCQC"],
+        "abilities": ["weakFrame", "agile"],
+        "upgrades": [
+          {
+            "label": "Add up to 3 more vehicles at 18 points per model.",
+            "cost": 18,
+            "limit": 3,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          },
+          {
+            "label": "Any vehicle in the unit may replace their Accelerator Autocannon with an AA Accelerator Cannon for -3 pts per model",
+            "cost": -3,
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "weapon",
+              "id": "aaAcceleratorAutocannon"
+            }
+          }
+        ]
+      }
+    ],
+    "fireSupport": [
+      { "name": "BM-221",
+        "id": "bm221",
+        "basePoints": 11,
+        "move": 10,
+        "totalIntegrity": 5,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["vehicle", "tracked", "artillery"],
+        "squadComposition": 3,
+        "weapons": ["aaAcceleratorCannon", "vehicleCQC"],
+        "abilities": ["weakFrame"],
+        "upgrades": [
+          {
+            "label": "All vehicles in the unit may replace their AA Accelerator Cannon with a Multi-Launcher for 4 pts per model.",
+            "cost": 4,
+            "multiplyCostByBases": true,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "multiLauncher"
+            }
+          },
+          {
+            "label": "All vehicles in the unit can swap their tracks for wheels at +1 pts per model. The Tracked tag will be replaced with Wheeled.",
+            "cost": 1,
+            "multiplyCostByBases": true,
+            "upgradeType": {
+              "type": "unitTag",
+              "id": "wheeled",
+              "mutuallyExclusive": "tracked"
+            }
+          }
+        ]
+      },
+      { "name": "82mm Mortar Platoon",
+        "id": "82mmMortar",
+        "basePoints": 18,
+        "move": 6,
+        "totalIntegrity": 3,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["infantry", "artillery"],
+        "squadComposition": 3,
+        "weapons": ["mortar", "infantryCQC"],
+        "abilities": [],
+        "upgrades": [
+          {
+            "label": "Add up to 2 more infantry bases at 18 points per base.",
+            "cost": 18,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          },
+          {
+            "label": "All bases in the unit may be mounted in BMP-4U Transports (see transport unit entry)",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "bmp4u",
+              "mutuallyExclusive": ["btr90u"]
+            }
+          },
+          {
+            "label": "All bases in the unit may be mounted in BTR-90U Transports (see transport unit entry)",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "btr90u",
+              "mutuallyExclusive": ["bmp4u"]
+            }
+          },
+          {
+            "label": "Arm all bases with Anti-Tank grenades at 2 pts per base.",
+            "cost": 2,
+            "multiplyCostByBases": true,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankGrenade"
+            }
+          }
+        ]
+      }
+    ],
+    "airSupport": [
+      { "name": "Mi-24 Hind Assault VTOL",
+        "id": "mi24hind",
+        "basePoints": 56,
+        "move": 16,
+        "totalIntegrity": 8,
+        "defense": {
+          "dice": 2,
+          "save": "4+"
+        },
+        "unitTags": ["vehicle", "aerial", "transport"],
+        "squadComposition": 1,
+        "transportCapacity": 6,
+        "weapons": ["atRocket", "rocketSystem", "vehicleSRPK", "vehicleCQC"],
+        "abilities": ["crystallumTreatedArmor"],
+        "upgrades": [
+          {
+            "label": "Arm any BMP-4U with an Anti-Tank Rocket for 2 points per vehicle.",
+            "cost": 2,
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankRocket"
+            }
+          }
+        ]
+      }
+    ],
+    "special": [
+      { "name": "Object 755 Godhammer",
+        "id": "object755godhammer",
+        "basePoints": 69,
+        "move": 4,
+        "totalIntegrity": 9,
+        "defense": {
+          "dice": 2,
+          "save": "3+"
+        },
+        "criticalThreshold": [
+          { "box": 5,
+            "effect": "Motive Systems Damaged"
+          },
+          { "box": 7,
+            "effect": "Reactor Damaged"
+          }
+        ],
+        "unitTags": ["vehicle", "tracked", "artillery", "war machine"],
+        "squadComposition": 1,
+        "weapons": ["d700redemption", "vehicleSRPK", "warmachineCQC"],
+        "abilities": ["defensiveMG", "crystallumTreatedArmor"],
+        "upgrades": []
+      }
+    ],
+    "transport": [
+      { "name": "BMP-4U",
+        "id": "bmp4u",
+        "basePoints": 14,
+        "move": 10,
+        "totalIntegrity": 5,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["vehicle", "tracked"],
         "squadComposition": 1,
         "transportCapacity": 2,
-        "weapons": ["heavyAcceleratorCannon", "tankCQC"],
+        "weapons": ["heavyAcceleratorCannon", "vehicleCQC"],
         "abilities": ["smoke", "weakFrame"],
         "upgrades": [
           {
             "label": "Arm any BMP-4U with an Anti-Tank Rocket for 2 points per vehicle.",
+            "cost": 2,
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankRocket"
+            }
+          }
+        ]
+      },
+      { "name": "BTR-90U",
+        "id": "btr90u",
+        "basePoints": 18,
+        "move": 12,
+        "totalIntegrity": 5,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["vehicle", "wheeled"],
+        "squadComposition": 1,
+        "transportCapacity": 2,
+        "weapons": ["acceleratorAutocannon", "vehicleCQC"],
+        "abilities": ["smoke", "weakFrame"],
+        "upgrades": [
+          {
+            "label": "Arm any BTR-90U with an Anti-Tank Rocket for 2 points per vehicle.",
             "cost": 2,
             "limit": "baseCount",
             "upgradeType": {

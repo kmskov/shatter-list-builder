@@ -39,6 +39,31 @@
       "id": "smoke",
       "label": "Smoke",
       "type": "active"
+    },
+    {
+      "id": "stubborn",
+      "label": "Stubborn",
+      "type": "passive"
+    },
+    {
+      "id": "grenadeTubes",
+      "label": "Grenade Tubes",
+      "type": "active"
+    },
+    {
+      "id": "crystallumTreatedArmor",
+      "label": "Crystallum Treated Armor",
+      "type": "passive"
+    },
+    {
+      "id": "agile",
+      "label": "Agile",
+      "type": "passive"
+    },
+    {
+      "id": "defensiveMG",
+      "label": "Defensive MG",
+      "type": "passive"
     }
   ],
   "weapons": [
@@ -46,7 +71,6 @@
       "id":"ak204", 
       "name": "AK 204", 
       "type": "ballistic", 
-      "mountedOrCarried": "c", 
       "tags":["small arms"], 
       "rof": 2, 
       "range":
@@ -61,7 +85,6 @@
       "id":"infantryCQC", 
       "name": "Infantry CQC", 
       "type": "kinetic", 
-      "mountedOrCarried": "m", 
       "tags":["small arms"], 
       "rof": 1, 
       "range":
@@ -74,7 +97,6 @@
       "id":"antiTankGrenade", 
       "name": "Anti-Tank Grenade", 
       "type": "explosive", 
-      "mountedOrCarried": "c", 
       "tags":["pierce 1", "anti-vehicle device"], 
       "rof": 1, 
       "range":
@@ -84,10 +106,9 @@
       "damage": 2
     },
     {
-      "id":"rpg204", 
-      "name": "RPG 204", 
+      "id":"rpg10", 
+      "name": "RPG 10", 
       "type": "explosive", 
-      "mountedOrCarried": "c", 
       "tags":["pierce 2", "disposable 1"], 
       "rof": 1, 
       "range":
@@ -102,7 +123,6 @@
       "id":"heavyAcceleratorCannon", 
       "name": "Heavy Accelerator Cannon", 
       "type": "ballistic", 
-      "mountedOrCarried": "m", 
       "tags":["pierce 2", "reload quick", "turret"], 
       "rof": 1, 
       "range":
@@ -117,8 +137,7 @@
       "id":"vehicleSRPK", 
       "name": "Vehicle SRPK", 
       "type": "ballistic", 
-      "mountedOrCarried": "m", 
-      "tags":["anti-air"], 
+      "tags":[], 
       "rof": 3, 
       "range":
       {
@@ -129,11 +148,10 @@
       "damage": 1
     },
     {
-      "id":"tankCQC", 
-      "name": "Tank CQC", 
+      "id":"vehicleCQC", 
+      "name": "Vehicle CQC", 
       "type": "kinetic", 
-      "mountedOrCarried": "m", 
-      "tags":[], 
+      "tags":["small arms"], 
       "rof": 1, 
       "range":
       {
@@ -145,7 +163,6 @@
       "id":"sa14", 
       "name": "SA 14", 
       "type": "ballistic", 
-      "mountedOrCarried": "m", 
       "tags":["pierce 2", "anti-air", "reload quick"], 
       "rof": 1, 
       "range":
@@ -160,7 +177,6 @@
       "id":"infantrySRPK", 
       "name": "SRPK", 
       "type": "ballistic", 
-      "mountedOrCarried": "c", 
       "tags":["reload quick"], 
       "rof": 3, 
       "range":
@@ -182,6 +198,160 @@
         "min":0,
         "max":10,
         "melee": false
+      }, 
+      "damage": 2
+    },
+    {
+      "id":"aak", 
+      "name": "AAK", 
+      "type": "ballistic", 
+      "tags":["small arms"], 
+      "rof": 3, 
+      "range":
+      {
+        "min":0,
+        "max":14,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    {
+      "id":"ptr", 
+      "name": "PTR", 
+      "type": "ballistic", 
+      "tags":["reload slow", "sniper", "pierce 2"], 
+      "rof": 2, 
+      "range":
+      {
+        "min":12,
+        "max":24,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    {
+      "id":"railgun", 
+      "name": "Rail Gun", 
+      "type": "ballistic", 
+      "tags":["reload quick", "fusion", "pierce 1", "turret"], 
+      "rof": 1, 
+      "range":
+      {
+        "min":12,
+        "max":32,
+        "melee": false
+      }, 
+      "damage": 3
+    },
+    {
+      "id":"acceleratorAutocannon", 
+      "name": "Accelerator Autocannon", 
+      "type": "ballistic", 
+      "tags":["small arms", "overcharge weapons", "turret"], 
+      "rof": 3, 
+      "range":
+      {
+        "min":0,
+        "max":18,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    {
+      "id":"aaAcceleratorAutocannon", 
+      "name": "AA Accelerator Autocannon", 
+      "type": "ballistic", 
+      "tags":["anti-air", "pierce 1", "turret"], 
+      "rof": 2, 
+      "range":
+      {
+        "min":8,
+        "max":20,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    {
+      "id":"multiLauncher", 
+      "name": "Multi-Launcher", 
+      "type": "explosive", 
+      "tags":["blast", "reload slow", "indirect fire"], 
+      "rof": "D3", 
+      "range":
+      {
+        "min":8,
+        "max":24,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    {
+      "id":"mortar", 
+      "name": "Mortar", 
+      "type": "explosive", 
+      "tags":["blast", "reload quick", "indirect fire"], 
+      "rof": "D3+1", 
+      "range":
+      {
+        "min":8,
+        "max":24,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    {
+      "id":"atRocket", 
+      "name": "AT Rocket", 
+      "type": "explosive", 
+      "tags":["pierce 2", "disposable 2"], 
+      "rof": 2, 
+      "range":
+      {
+        "min":8,
+        "max":24,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    {
+      "id":"rocketSystem", 
+      "name": "Rocket System", 
+      "type": "explosive", 
+      "tags":["pierce 1", "reload quick", "blast"], 
+      "rof": 3, 
+      "range":
+      {
+        "min":8,
+        "max":18,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    {
+      "id":"d700redemption", 
+      "name": "D700 Redemption Howitzer", 
+      "type": "explosive", 
+      "tags":["pierce 2", "reload slow", "blast", "indirect fire"], 
+      "rof": "D3+1", 
+      "range":
+      {
+        "min":12,
+        "max":48,
+        "melee": false
+      }, 
+      "damage": 3
+    },
+    {
+      "id":"warmachineCQC", 
+      "name": "Warmachine CQC", 
+      "type": "kinetic", 
+      "tags":[], 
+      "rof": 1, 
+      "range":
+      {
+        "min":0,
+        "max":0,
+        "melee": true
       }, 
       "damage": 2
     }
