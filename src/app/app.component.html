@@ -1,22 +1,28 @@
 <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="5px grid" fxFill >
   <mat-toolbar fxFlex="100" fxLayout="row" color="primary">
-    <h1 background="primary" fxFlex="50" fxFlexOffset="5">{{title}}</h1>
+    <h1 fxFlex="40" fxFlexOffset="5">{{title}}</h1>
     <h2 fxFlex="30">Current Faction: {{currFactionLabel | titlecase}}</h2>
-    <h2 fxFlex="20">Total Points: {{currPointsTotal}}</h2>
+    <div fxFlex="20" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+      <h2>Total Points: {{currPointsTotal}} / 450</h2>
+      <mat-icon color="warn" *ngIf="currPointsTotal > 450">error</mat-icon>
+    </div>
+    <button fxFlex="10" mat-icon-button (click)="toggleGalleryMode()" [disabled]="currentList.length === 0">
+      <mat-icon>print</mat-icon>
+    </button>
   </mat-toolbar>
 
-  <div fxFlex="35" fxLayout="column" fxLayoutGap="5px">
-    <mat-button-toggle-group fxLayout="row wrap" fxLayoutGap="grid">
-      <mat-button-toggle fxFlex="50" (click)="selectFaction('crystallumHordes')">Crystallum Hordes</mat-button-toggle>
-      <mat-button-toggle fxFlex="50" (click)="selectFaction('atlanticCouncil')">Atlantic Council</mat-button-toggle>
-      <mat-button-toggle fxFlex="50" (click)="selectFaction('fed')">Federation of Columbia</mat-button-toggle>
-      <mat-button-toggle fxFlex="50" (click)="selectFaction('vlast')">Vlast</mat-button-toggle>
+  <div fxFlex="35" fxLayout="column" fxLayoutGap="5px" [fxHide]="isGalleryMode">
+    <mat-button-toggle-group fxLayout="row wrap" fxLayoutGap="grid" value="crystallumHordes">
+      <mat-button-toggle fxFlex="50" (click)="selectFaction('crystallumHordes')" value="crystallumHordes">Crystallum Hordes</mat-button-toggle>
+      <mat-button-toggle fxFlex="50" (click)="selectFaction('atlanticCouncil')" value="atlanticCouncil">Atlantic Council</mat-button-toggle>
+      <mat-button-toggle fxFlex="50" (click)="selectFaction('fed')" value="fed">Federation of Columbia</mat-button-toggle>
+      <mat-button-toggle fxFlex="50" (click)="selectFaction('vlast')" value="vlast">Vlast</mat-button-toggle>
     </mat-button-toggle-group>
 
     <app-unit-selector *ngIf="currFactionName" [factionName]="currFactionName" (unitSelectionEvent)="addUnit($event)"></app-unit-selector>
   </div>
 
-  <div fxFlex fxLayout="column" fxLayoutAlight="start center" class="flex unit-entries">
-    <app-unit-entry *ngFor="let unit of currentList" [unitSelection]="unit" (unitRemovalEvent)="removeUnit($event)" (pointsUpdateEvent)="updatePoints($event)"></app-unit-entry>
+  <div fxFlex fxLayout="row grid" fxLayoutAlight="center center" class="flex unit-entries">
+    <app-unit-entry [fxFlex]="isGalleryMode ? 50 : 100" *ngFor="let unit of currentList" [unitSelection]="unit" (unitRemovalEvent)="removeUnit($event)" (pointsUpdateEvent)="updatePoints($event)" class="unit-entry"></app-unit-entry>
   </div>
 </div>

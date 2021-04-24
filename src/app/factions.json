@@ -333,7 +333,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["railGun", "vehicleSRPK", "vehicleCQC"],
+        "weapons": ["railgun", "vehicleSRPK", "vehicleCQC"],
         "abilities": ["smoke", "crystallumTreatedArmor"],
         "upgrades": [
           {
@@ -392,8 +392,9 @@
           "save": "5+"
         },
         "unitTags": ["vehicle", "tracked", "artillery"],
+        "breakValue": 8,
         "squadComposition": 3,
-        "weapons": ["aaAcceleratorCannon", "vehicleCQC"],
+        "weapons": ["aaAcceleratorAutocannon", "vehicleCQC"],
         "abilities": ["weakFrame"],
         "upgrades": [
           {
@@ -427,6 +428,7 @@
           "save": "5+"
         },
         "unitTags": ["infantry", "artillery"],
+        "breakValue": 8,
         "squadComposition": 3,
         "weapons": ["mortar", "infantryCQC"],
         "abilities": [],
@@ -484,17 +486,7 @@
         "transportCapacity": 6,
         "weapons": ["atRocket", "rocketSystem", "vehicleSRPK", "vehicleCQC"],
         "abilities": ["crystallumTreatedArmor"],
-        "upgrades": [
-          {
-            "label": "Arm any BMP-4U with an Anti-Tank Rocket for 2 points per vehicle.",
-            "cost": 2,
-            "limit": "baseCount",
-            "upgradeType": {
-              "type": "weapon",
-              "id": "antiTankRocket"
-            }
-          }
-        ]
+        "upgrades": []
       }
     ],
     "special": [

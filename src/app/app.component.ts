@@ -1,6 +1,7 @@
-import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef, ViewChildren, QueryList } from '@angular/core';
 import { UnitSelection } from './unit-selection';
 import { UnitSelectorComponent } from './unit-selector/unit-selector.component';
+import { UnitEntryComponent } from './unit-entry/unit-entry.component';
 import factions from './factions.json';
 
 @Component({
@@ -11,14 +12,18 @@ import factions from './factions.json';
 export class AppComponent {
   title = 'Project Shatter - List Builder';
 
-  currFactionName: string; // = 'vlast';
+  currFactionName = 'crystallumHordes';
   currFactionLabel: string;
   currPointsTotal = 0;
 
   currentList: UnitSelection[] = [];
-  unitTypeSortOrder: string[] = ['hq', 'core', 'armoredSupport', 'fireSupport' , 'airSupport', 'special'];
 
+  @ViewChildren(UnitEntryComponent) unitEntries: QueryList<UnitEntryComponent>;
   @ViewChild(UnitSelectorComponent) unitSelectionCmp: UnitSelectorComponent;
+
+  isGalleryMode = false;
+
+  unitTypeSortOrder: string[] = ['hq', 'core', 'armoredSupport', 'fireSupport' , 'airSupport', 'special'];
 
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
@@ -51,5 +56,15 @@ export class AppComponent {
       this.changeDetectorRef.detectChanges();
       this.currFactionLabel = factions[factionName].name;
     }
+  }
+
+  toggleGalleryMode(): void {
+    this.isGalleryMode = !this.isGalleryMode;
+
+    this.unitEntries.forEach(ue => {
+      ue.toggleGalleryMode(this.isGalleryMode);
+    });
+
+    this.changeDetectorRef.detectChanges();
   }
 }

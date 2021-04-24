@@ -26,6 +26,8 @@ export class UnitEntryComponent implements OnInit {
   unitTransport: UnitSelection;
   transportPoints = 0;
 
+  isGalleryMode = false;
+
   @ViewChild(UnitEntryComponent) unitTransportEntryCmp: UnitEntryComponent;
 
   @Output() unitRemovalEvent = new EventEmitter<UnitSelection>();
@@ -95,14 +97,16 @@ export class UnitEntryComponent implements OnInit {
     });
 
     this.weaponEntries.sort((a: any, b: any) => {
-      if (a.range.melee === true && b.range.melee === true) {
-        return 0;
-      } else if (a.range.melee === true && b.range.melee !== true) {
-        return 1;
-      } else if (b.range.melee === true && a.range.melee !== true) {
-        return -1;
-      } else {
-        return a.range.max - b.range.max;
+      if (a.range.melee === false && b.range.melee === false) {
+        const rofA = Number(Number.isInteger(a.rof));
+        const rofB = Number(Number.isInteger(b.rof));
+        if (rofA === rofB) {
+          return a.range.max - b.range.max;
+        } else {
+          return rofA - rofB;
+        }
+       } else {
+        return a.range.melee - b.range.melee;
       }
     });
   }
@@ -281,4 +285,16 @@ export class UnitEntryComponent implements OnInit {
     this.recalcTotalUnitPoints();
   }
 
+  toggleGalleryMode(enable: boolean): void {
+    console.log('unitEntry.name: ' + this.unitEntry.name + ', isGalleryMode: ' + this.isGalleryMode + ', enable: ' + enable);
+    this.isGalleryMode = enable;
+  }
+
+  getNumberArray(length: number): number[] {
+    const a: number[] = [];
+    for (let i = 0; i < length; i++) {
+      a.push(i);
+    }
+    return a;
+  }
 }

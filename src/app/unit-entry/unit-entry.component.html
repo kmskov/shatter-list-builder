@@ -32,7 +32,9 @@
 
       <div fxFlex="50" fxLayout="row" class="unit-tags">
         <h4 class="attribute-title">Unit Tags:</h4>
-        <p fxFlexOffset="2.5" *ngFor="let tag of unitEntry.unitTags">{{tag}}</p>
+        <div fxFlexOffset="2.5" fxLayout="row wrap">
+          <p *ngFor="let tag of unitEntry.unitTags; let isLast=last">{{tag | titlecase}}{{isLast ? '' : ',&nbsp;'}}</p>
+        </div>
       </div>
 
       <div fxFlex="50" fxLayout="row" class="unit-composition">
@@ -53,8 +55,14 @@
           <p class="attribute" *ngFor="let ability of abilityEntries; let isLast=last">{{ability.label}} ({{ability.type | titlecase}}){{isLast ? '' : ',&nbsp;'}}</p>
         </div>
       </div>
-
-      <mat-expansion-panel *ngIf="unitEntry.upgrades" fxFlex="100" fxLayout="column">
+<!-- Does the unit card need this?
+      <div fxFlex="100" fxLayout="row" fxLayoutGap="5px" *ngIf="isGalleryMode">
+        <div fxLayout="row" fxLayoutGap="2px" *ngFor="let u of getNumberArray(unitEntry.squadComposition)">
+          <div *ngFor="let curr of integrity; let i=index;" class="attribute integrity-box" [class.threshold]="curr != 'normal'"></div>
+        </div>
+      </div>
+    -->
+      <mat-expansion-panel *ngIf="unitEntry.upgrades && !isGalleryMode" fxFlex="100" fxLayout="column">
         <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center" >
           <mat-panel-title class="unit-title"><h4 class="attribute-title">Upgrades:</h4></mat-panel-title>
         </mat-expansion-panel-header>

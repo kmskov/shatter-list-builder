@@ -2,7 +2,7 @@ export interface UnitEntry {
   name: string;
   id: string;
 
-  basePoints: number;
+  basePoints: number; // Points per base
   currentPoints?: number;
 
   move: number;
@@ -34,8 +34,8 @@ export interface UnitCriticalThreshold {
 export interface UnitUpgrade {
   label: string;
 
-  current?: number; // how many of these have been selected so far
-  disabled?: boolean; // can this be selected currently
+  current?: number; // How many of these have been selected so far
+  disabled?: boolean; // Can this be selected currently
 
   limit?: any;
   limitValue?: number;
