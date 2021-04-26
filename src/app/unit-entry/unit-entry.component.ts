@@ -20,9 +20,6 @@ export class UnitEntryComponent implements OnInit {
   currentWeaponNames: string[] = [];
 
   abilityEntries: Ability[] = [];
-  currentAbilityNames: string[] = [];
-
-  integrity: string[] = [];
 
   unitTransport: UnitSelection;
   transportPoints = 0;
@@ -42,9 +39,9 @@ export class UnitEntryComponent implements OnInit {
     const factionUnit = factions[this.unitSelection.factionName][this.unitSelection.unitType].find(i => i.id === this.unitSelection.id);
     this.unitEntry = (JSON.parse(JSON.stringify(factionUnit))); // Deep clone
 
-    this.loadWeaponsAndUpgrades();
+    this.loadUpgrades();
+    this.loadWeapons();
     this.loadAbilities();
-    this.loadIntegrity();
 
     this.unitEntry.currentPoints = 0;
     this.recalcTotalUnitPoints();
@@ -52,24 +49,14 @@ export class UnitEntryComponent implements OnInit {
     // console.log('unit-entry.ngOnInit finished');
   }
 
-  loadIntegrity(): void {
-    for (let i = 1, j = 0; i <= this.unitEntry.totalIntegrity; i++) {
-      if ('criticalThreshold' in this.unitEntry && i === this.unitEntry.criticalThreshold[j].box) {
-        this.integrity.push(this.unitEntry.criticalThreshold[j].effect);
-        j = j++;
-      } else {
-        this.integrity.push('normal');
-      }
-    }
-  }
-
-  loadWeaponsAndUpgrades(): void {
-    this.unitEntry.weapons.forEach(weapon => {
-      this.weaponIds.push(weapon);
-    });
+  loadUpgrades(): void {
     this.unitEntry.upgrades.forEach(upgradeEntry => {
       if (upgradeEntry.upgradeType.type === 'weapon') {
         this.weaponIds.push(upgradeEntry.upgradeType.id);
+      } else if (upgradeEntry.upgradeType.type === 'ability') {
+        const newAbility: Ability = (JSON.parse(JSON.stringify(reference.abilities.find(i => i.id === upgradeEntry.upgradeType.id))));
+        newAbility.active = false;
+        this.abilityEntries.push(newAbility);
       }
 
       if (!upgradeEntry.hasOwnProperty('limit')) {
@@ -86,6 +73,12 @@ export class UnitEntryComponent implements OnInit {
 
       upgradeEntry.current = 0;
       upgradeEntry.disabled = false;
+    });
+  }
+
+  loadWeapons(): void {
+    this.unitEntry.weapons.forEach(weapon => {
+      this.weaponIds.push(weapon);
     });
 
     this.weaponIds.forEach(weaponId => {
@@ -113,19 +106,11 @@ export class UnitEntryComponent implements OnInit {
   }
 
   loadAbilities(): void {
-    const abilityIds = [];
-
     this.unitEntry.abilities.forEach(ability => {
-      abilityIds.push(ability);
-    });
-
-    abilityIds.forEach(abilityId => {
-      const abilityEntry = reference.abilities.find(i => i.id === abilityId);
+      const abilityEntry: Ability = (JSON.parse(JSON.stringify(reference.abilities.find(i => i.id === ability))));
+      abilityEntry.active = true;
+      abilityEntry.base = true;
       this.abilityEntries.push(abilityEntry);
-
-      if ( this.unitEntry.abilities.indexOf(abilityEntry.id) > -1) {
-        this.currentAbilityNames.push(abilityEntry.label);
-      }
     });
   }
 
@@ -135,18 +120,23 @@ export class UnitEntryComponent implements OnInit {
 
     this.disableMutExUpgrades(upgrade, true);
 
-    let newType = '';
     switch (upgrade.upgradeType.type) {
       case 'weapon':
-        newType = reference.weapons.find(i => i.id === upgrade.upgradeType.id).name;
-        if (this.currentWeaponNames.indexOf(newType) === -1) {
+        const newWeaponName = reference.weapons.find(i => i.id === upgrade.upgradeType.id).name;
+        if (this.currentWeaponNames.indexOf(newWeaponName) === -1) {
           this.currentWeaponNames.push(reference.weapons.find(i => i.id === upgrade.upgradeType.id).name);
         }
         break;
       case 'ability':
-        if (this.currentWeaponNames.indexOf(newType) === -1) {
-          this.currentAbilityNames.push(reference.abilities.find(i => i.id === upgrade.upgradeType.id).label);
-        }
+        const mutExAbilities = upgrade.upgradeType.mutuallyExclusive;
+        this.abilityEntries.forEach(ab => {
+          if (upgrade.upgradeType.id === ab.id) {
+            ab.active = true;
+          } else if (mutExAbilities.includes(ab.id)) {
+            ab.active = false;
+          }
+        });
+        console.log(JSON.stringify(this.abilityEntries));
         break;
       case 'extraBase':
         this.unitEntry.squadComposition += 1;
@@ -176,19 +166,22 @@ export class UnitEntryComponent implements OnInit {
 
     this.disableMutExUpgrades(upgrade, false);
 
-    let index = -1;
     switch (upgrade.upgradeType.type) {
       case 'weapon':
-        index = this.currentWeaponNames.indexOf(reference.weapons.find(i => i.id === upgrade.upgradeType.id).name, 0);
+        const index = this.currentWeaponNames.indexOf(reference.weapons.find(i => i.id === upgrade.upgradeType.id).name, 0);
         if (index > -1 && upgrade.current === 0) {
           this.currentWeaponNames.splice(index, 1);
         }
         break;
       case 'ability':
-        index = this.currentAbilityNames.indexOf(reference.abilities.find(i => i.id === upgrade.upgradeType.id).label, 0);
-        if (index > -1 && upgrade.current === 0) {
-          this.currentAbilityNames.splice(index, 1);
-        }
+        this.abilityEntries.forEach(ab => {
+          if (upgrade.upgradeType.id === ab.id) {
+            ab.active = false;
+          } else if (ab.base && upgrade.upgradeType.mutuallyExclusive.includes(ab.id)) {
+            ab.active = true;
+          }
+        });
+        console.log(JSON.stringify(this.abilityEntries));
         break;
       case 'extraBase':
         this.unitEntry.squadComposition -= 1;

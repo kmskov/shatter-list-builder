@@ -3,6 +3,7 @@ export interface Ability {
   label: string;
   type: string;
   active?: boolean;
+  base?: boolean;
 }
 
 export interface Weapon {
