@@ -3,67 +3,67 @@
     {
       "id":"infantryCommand1", 
       "label":"Command 1", 
-      "type": "passive"
+      "type": "Passive"
     },
     {
       "id":"infantryCommand2", 
       "label":"Command 2", 
-      "type": "passive"
+      "type": "Passive"
     },
     {
       "id":"infantryCommand3", 
       "label":"Command 3", 
-      "type": "passive"
+      "type": "Passive"
     },
     {
       "id":"vehicleCommand1", 
       "label":"Command 1", 
-      "type": "passive"
+      "type": "Passive"
     },
     {
       "id":"vehicleCommand2", 
       "label":"Command 2", 
-      "type": "passive"
+      "type": "Passive"
     },
     {
       "id":"vehicleCommand3", 
       "label":"Command 3", 
-      "type": "passive"
+      "type": "Passive"
     },
     {
       "id":"weakFrame", 
       "label":"Weak Frame", 
-      "type": "passive"
+      "type": "Passive"
     },
     {
       "id": "smoke",
       "label": "Smoke",
-      "type": "active"
+      "type": "Active"
     },
     {
       "id": "stubborn",
       "label": "Stubborn",
-      "type": "passive"
+      "type": "Passive"
     },
     {
       "id": "grenadeTubes",
       "label": "Grenade Tubes",
-      "type": "active"
+      "type": "Active"
     },
     {
       "id": "crystallumTreatedArmor",
       "label": "Crystallum Treated Armor",
-      "type": "passive"
+      "type": "Passive"
     },
     {
       "id": "agile",
       "label": "Agile",
-      "type": "passive"
+      "type": "Passive"
     },
     {
       "id": "defensiveMG",
       "label": "Defensive MG",
-      "type": "passive"
+      "type": "Passive"
     }
   ],
   "weapons": [

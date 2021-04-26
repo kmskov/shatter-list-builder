@@ -136,7 +136,6 @@ export class UnitEntryComponent implements OnInit {
             ab.active = false;
           }
         });
-        console.log(JSON.stringify(this.abilityEntries));
         break;
       case 'extraBase':
         this.unitEntry.squadComposition += 1;
@@ -181,7 +180,6 @@ export class UnitEntryComponent implements OnInit {
             ab.active = true;
           }
         });
-        console.log(JSON.stringify(this.abilityEntries));
         break;
       case 'extraBase':
         this.unitEntry.squadComposition -= 1;
@@ -280,7 +278,6 @@ export class UnitEntryComponent implements OnInit {
   }
 
   toggleGalleryMode(enable: boolean): void {
-    console.log('unitEntry.toggleGalleryMode unit: ' + this.unitEntry.name + ', enable: ' + enable);
     this.isGalleryMode = enable;
     if (this.unitTransportEntryCmp !== undefined) {
       this.unitTransportEntryCmp.toggleGalleryMode(enable);
@@ -293,5 +290,16 @@ export class UnitEntryComponent implements OnInit {
       a.push(i);
     }
     return a;
+  }
+
+  getAbilityNames(): string[] {
+    // console.log(JSON.stringify(this.abilityEntries));
+    const res: string[] = [];
+    this.abilityEntries.forEach(ab => {
+      if (ab.active) {
+        res.push(ab.label + ' (' + ab.type + ')');
+      }
+    });
+    return res;
   }
 }

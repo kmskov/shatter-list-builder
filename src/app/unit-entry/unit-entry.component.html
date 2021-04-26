@@ -52,9 +52,7 @@
       <div fxFlex="50" fxLayout="row">
         <h4 class="attribute-title">Abilities:</h4>
         <div fxFlexOffset="2.5" fxLayout="row wrap">
-          <div *ngFor="let ability of abilityEntries; let isLast=last">
-            <p class="attribute" *ngIf="ability.active">{{ability.label}} ({{ability.type | titlecase}}){{isLast ? '' : ',&nbsp;'}}</p>
-          </div>
+          <p class="attribute" *ngFor="let ability of getAbilityNames(); let isLast=last">{{ability}}{{isLast ? '' : ',&nbsp;'}}</p>
         </div>
       </div>
 
