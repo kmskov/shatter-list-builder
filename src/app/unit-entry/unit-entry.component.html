@@ -55,13 +55,7 @@
           <p class="attribute" *ngFor="let ability of abilityEntries; let isLast=last">{{ability.label}} ({{ability.type | titlecase}}){{isLast ? '' : ',&nbsp;'}}</p>
         </div>
       </div>
-<!-- Does the unit card need this?
-      <div fxFlex="100" fxLayout="row" fxLayoutGap="5px" *ngIf="isGalleryMode">
-        <div fxLayout="row" fxLayoutGap="2px" *ngFor="let u of getNumberArray(unitEntry.squadComposition)">
-          <div *ngFor="let curr of integrity; let i=index;" class="attribute integrity-box" [class.threshold]="curr != 'normal'"></div>
-        </div>
-      </div>
-    -->
+
       <mat-expansion-panel *ngIf="unitEntry.upgrades && !isGalleryMode" fxFlex="100" fxLayout="column">
         <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center" >
           <mat-panel-title class="unit-title"><h4 class="attribute-title">Upgrades:</h4></mat-panel-title>
@@ -81,7 +75,7 @@
         </mat-list>
       </mat-expansion-panel>
 
-      <mat-expansion-panel *ngIf="weaponEntries" fxFlex="100" fxLayout="column">
+      <mat-expansion-panel *ngIf="weaponEntries && !isGalleryMode" fxFlex="100" fxLayout="column">
         <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center" >
           <mat-panel-title class="unit-title"><h4 class="attribute-title">Weapon Details:</h4></mat-panel-title>
         </mat-expansion-panel-header>
@@ -126,13 +120,7 @@
         </table>
       </mat-expansion-panel>
 
-      <mat-expansion-panel *ngIf="unitTransport" [expanded]="true" fxFlex="100" fxLayout="column">
-        <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center" >
-          <mat-panel-title class="unit-title"><h4 class="attribute-title">Transport:</h4></mat-panel-title>
-        </mat-expansion-panel-header>
-      
-        <app-unit-entry *ngIf="unitTransport" [unitSelection]="unitTransport" (pointsUpdateEvent)="updateTransportPoints($event)"></app-unit-entry>
-      </mat-expansion-panel>
+      <app-unit-entry *ngIf="unitTransport" [unitSelection]="unitTransport" (pointsUpdateEvent)="updateTransportPoints($event)"></app-unit-entry>
     </div>
 
 </mat-expansion-panel>

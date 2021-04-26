@@ -3,6 +3,7 @@ import factions from '../factions.json';
 import reference from '../reference.json';
 import { UnitEntry, UnitUpgrade } from './unit-entry';
 import { UnitSelection } from '../unit-selection';
+import { Weapon, Ability } from '../reference';
 
 @Component({
   selector: 'app-unit-entry',
@@ -15,10 +16,10 @@ export class UnitEntryComponent implements OnInit {
 
   unitEntry: UnitEntry;
   weaponIds: string[] = [];
-  weaponEntries: any[] = [];
+  weaponEntries: Weapon[] = [];
   currentWeaponNames: string[] = [];
 
-  abilityEntries: any[] = [];
+  abilityEntries: Ability[] = [];
   currentAbilityNames: string[] = [];
 
   integrity: string[] = [];
@@ -96,7 +97,7 @@ export class UnitEntryComponent implements OnInit {
       }
     });
 
-    this.weaponEntries.sort((a: any, b: any) => {
+    this.weaponEntries.sort((a: Weapon, b: Weapon) => {
       if (a.range.melee === false && b.range.melee === false) {
         const rofA = Number(Number.isInteger(a.rof));
         const rofB = Number(Number.isInteger(b.rof));
@@ -106,7 +107,7 @@ export class UnitEntryComponent implements OnInit {
           return rofA - rofB;
         }
        } else {
-        return a.range.melee - b.range.melee;
+        return (a.range.melee ? 1 : 0) - (b.range.melee ? 1 : 0);
       }
     });
   }
@@ -286,8 +287,11 @@ export class UnitEntryComponent implements OnInit {
   }
 
   toggleGalleryMode(enable: boolean): void {
-    console.log('unitEntry.name: ' + this.unitEntry.name + ', isGalleryMode: ' + this.isGalleryMode + ', enable: ' + enable);
+    console.log('unitEntry.toggleGalleryMode unit: ' + this.unitEntry.name + ', enable: ' + enable);
     this.isGalleryMode = enable;
+    if (this.unitTransportEntryCmp !== undefined) {
+      this.unitTransportEntryCmp.toggleGalleryMode(enable);
+    }
   }
 
   getNumberArray(length: number): number[] {

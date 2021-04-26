@@ -7,7 +7,7 @@
       <mat-icon color="warn" *ngIf="currPointsTotal > 450">error</mat-icon>
     </div>
     <button fxFlex="10" mat-icon-button (click)="toggleGalleryMode()" [disabled]="currentList.length === 0">
-      <mat-icon>print</mat-icon>
+      <mat-icon>view_compact</mat-icon>
     </button>
   </mat-toolbar>
 
@@ -22,7 +22,7 @@
     <app-unit-selector *ngIf="currFactionName" [factionName]="currFactionName" (unitSelectionEvent)="addUnit($event)"></app-unit-selector>
   </div>
 
-  <div fxFlex fxLayout="row grid" fxLayoutAlight="center center" class="flex unit-entries">
+  <div fxFlex fxLayout="row wrap" fxLayoutGap="5px grid" class="flex unit-entries">
     <app-unit-entry [fxFlex]="isGalleryMode ? 50 : 100" *ngFor="let unit of currentList" [unitSelection]="unit" (unitRemovalEvent)="removeUnit($event)" (pointsUpdateEvent)="updatePoints($event)" class="unit-entry"></app-unit-entry>
   </div>
 </div>
