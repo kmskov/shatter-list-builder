@@ -1,75 +1,73 @@
 {
   "abilities": [
-    {
-      "id":"infantryCommand1", 
+    { "id":"infantryCommand1", 
       "label":"Command 1", 
       "type": "Passive"
     },
-    {
-      "id":"infantryCommand2", 
+    { "id":"infantryCommand2", 
       "label":"Command 2", 
       "type": "Passive"
     },
-    {
-      "id":"infantryCommand3", 
+    { "id":"infantryCommand3", 
       "label":"Command 3", 
       "type": "Passive"
     },
-    {
-      "id":"vehicleCommand1", 
+    { "id":"vehicleCommand1", 
       "label":"Command 1", 
       "type": "Passive"
     },
-    {
-      "id":"vehicleCommand2", 
+    { "id":"vehicleCommand2", 
       "label":"Command 2", 
       "type": "Passive"
     },
-    {
-      "id":"vehicleCommand3", 
+    { "id":"vehicleCommand3", 
       "label":"Command 3", 
       "type": "Passive"
     },
-    {
-      "id":"weakFrame", 
+    { "id":"weakFrame", 
       "label":"Weak Frame", 
       "type": "Passive"
     },
-    {
-      "id": "smoke",
+    { "id": "smoke",
       "label": "Smoke",
       "type": "Active"
     },
-    {
-      "id": "stubborn",
+    { "id": "stubborn",
       "label": "Stubborn",
       "type": "Passive"
     },
-    {
-      "id": "grenadeTubes",
+    { "id": "grenadeTubes",
       "label": "Grenade Tubes",
       "type": "Active"
     },
-    {
-      "id": "crystallumTreatedArmor",
+    { "id": "crystallumTreatedArmor",
       "label": "Crystallum Treated Armor",
       "type": "Passive"
     },
-    {
-      "id": "agile",
+    { "id": "agile",
       "label": "Agile",
       "type": "Passive"
     },
-    {
-      "id": "defensiveMG",
+    { "id": "defensiveMG",
       "label": "Defensive MG",
+      "type": "Passive"
+    },
+    { "id": "transport1",
+      "label": "Transport 1",
+      "type": "Passive"
+    },
+    { "id": "transport2",
+      "label": "Transport 2",
+      "type": "Passive"
+    },
+    { "id": "transport3",
+      "label": "Transport 3",
       "type": "Passive"
     }
   ],
   "weapons": [
-    {
-      "id":"ak204", 
-      "name": "AK 204", 
+    { "id":"ak204", 
+      "name": "AK 214K", 
       "type": "ballistic", 
       "tags":["small arms"], 
       "rof": 2, 
@@ -81,9 +79,8 @@
       }, 
       "damage":1
     },
-    {
-      "id":"infantryCQC", 
-      "name": "Infantry CQC", 
+    { "id":"infantryCQC", 
+      "name": "CQC", 
       "type": "kinetic", 
       "tags":["small arms"], 
       "rof": 1, 
@@ -93,8 +90,7 @@
       }, 
       "damage":1
     },
-    {
-      "id":"antiTankGrenade", 
+    { "id":"antiTankGrenade", 
       "name": "Anti-Tank Grenade", 
       "type": "explosive", 
       "tags":["pierce 1", "anti-vehicle device"], 
@@ -105,11 +101,10 @@
       }, 
       "damage": 2
     },
-    {
-      "id":"rpg10", 
+    { "id":"rpg10", 
       "name": "RPG 10", 
       "type": "explosive", 
-      "tags":["pierce 2", "disposable 1"], 
+      "tags":["pierce 2", "disposable"], 
       "rof": 1, 
       "range":
       {
@@ -119,11 +114,10 @@
       }, 
       "damage": 2
     },
-    {
-      "id":"heavyAcceleratorCannon", 
+    { "id":"heavyAcceleratorCannon", 
       "name": "Heavy Accelerator Cannon", 
       "type": "ballistic", 
-      "tags":["pierce 2", "reload quick", "turret"], 
+      "tags":["pierce 2", "reload 1", "turret"], 
       "rof": 1, 
       "range":
       {
@@ -133,8 +127,7 @@
       }, 
       "damage": 2
     },
-    {
-      "id":"vehicleSRPK", 
+    { "id":"vehicleSRPK", 
       "name": "Vehicle SRPK", 
       "type": "ballistic", 
       "tags":[], 
@@ -147,9 +140,8 @@
       }, 
       "damage": 1
     },
-    {
-      "id":"vehicleCQC", 
-      "name": "Vehicle CQC", 
+    { "id":"vehicleCQC", 
+      "name": "CQC", 
       "type": "kinetic", 
       "tags":["small arms"], 
       "rof": 1, 
@@ -159,11 +151,10 @@
       }, 
       "damage": 1
     },
-    {
-      "id":"sa14", 
+    { "id":"sa14", 
       "name": "SA 14", 
       "type": "ballistic", 
-      "tags":["pierce 2", "anti-air", "reload quick"], 
+      "tags":["pierce 2", "anti-air", "reload 1"], 
       "rof": 1, 
       "range":
       {
@@ -173,8 +164,7 @@
       }, 
       "damage": 2
     },
-    {
-      "id":"infantrySRPK", 
+    { "id":"infantrySRPK", 
       "name": "SRPK", 
       "type": "ballistic", 
       "tags":["reload quick"], 
@@ -187,11 +177,10 @@
       }, 
       "damage": 1
     },
-    {
-      "id":"antiTankRocket", 
+    { "id":"antiTankRocket", 
       "name": "Anti-Tank Rocket", 
       "type": "explosive", 
-      "tags":["pierce 2", "disposable 2"], 
+      "tags":["pierce 2", "disposable"], 
       "rof": 1, 
       "range":
       {
@@ -201,8 +190,7 @@
       }, 
       "damage": 2
     },
-    {
-      "id":"aak", 
+    { "id":"aak", 
       "name": "AAK", 
       "type": "ballistic", 
       "tags":["small arms"], 
@@ -215,11 +203,10 @@
       }, 
       "damage": 1
     },
-    {
-      "id":"ptr", 
+    { "id":"ptr", 
       "name": "PTR", 
       "type": "ballistic", 
-      "tags":["reload slow", "sniper", "pierce 2"], 
+      "tags":["reload 2", "sniper", "pierce 2"], 
       "rof": 2, 
       "range":
       {
@@ -229,11 +216,10 @@
       }, 
       "damage": 2
     },
-    {
-      "id":"railgun", 
+    { "id":"railgun", 
       "name": "Rail Gun", 
       "type": "ballistic", 
-      "tags":["reload quick", "fusion", "pierce 1", "turret"], 
+      "tags":["reload 1", "fusion", "pierce 1", "turret"], 
       "rof": 1, 
       "range":
       {
@@ -243,8 +229,7 @@
       }, 
       "damage": 3
     },
-    {
-      "id":"acceleratorAutocannon", 
+    { "id":"acceleratorAutocannon", 
       "name": "Accelerator Autocannon", 
       "type": "ballistic", 
       "tags":["small arms", "overcharge weapons", "turret"], 
@@ -257,8 +242,7 @@
       }, 
       "damage": 1
     },
-    {
-      "id":"aaAcceleratorAutocannon", 
+    { "id":"aaAcceleratorAutocannon", 
       "name": "AA Accelerator Autocannon", 
       "type": "ballistic", 
       "tags":["anti-air", "pierce 1", "turret"], 
@@ -271,25 +255,23 @@
       }, 
       "damage": 2
     },
-    {
-      "id":"multiLauncher", 
+    { "id":"multiLauncher", 
       "name": "Multi-Launcher", 
       "type": "explosive", 
-      "tags":["blast", "reload slow", "indirect fire"], 
+      "tags":["blast", "reload 2", "indirect fire"], 
       "rof": "D3", 
       "range":
       {
         "min":8,
-        "max":24,
+        "max":32,
         "melee": false
       }, 
       "damage": 2
     },
-    {
-      "id":"mortar", 
+    { "id":"mortar", 
       "name": "Mortar", 
       "type": "explosive", 
-      "tags":["blast", "reload quick", "indirect fire"], 
+      "tags":["blast", "reload 1", "indirect fire"], 
       "rof": "D3+1", 
       "range":
       {
@@ -299,11 +281,10 @@
       }, 
       "damage": 1
     },
-    {
-      "id":"atRocket", 
+    { "id":"atRocket", 
       "name": "AT Rocket", 
       "type": "explosive", 
-      "tags":["pierce 2", "disposable 2"], 
+      "tags":["pierce 2", "disposable"], 
       "rof": 2, 
       "range":
       {
@@ -313,11 +294,10 @@
       }, 
       "damage": 2
     },
-    {
-      "id":"rocketSystem", 
+    { "id":"rocketSystem", 
       "name": "Rocket System", 
       "type": "explosive", 
-      "tags":["pierce 1", "reload quick", "blast"], 
+      "tags":["pierce 1", "reload 1", "blast"], 
       "rof": 3, 
       "range":
       {
@@ -327,22 +307,20 @@
       }, 
       "damage": 1
     },
-    {
-      "id":"d700redemption", 
+    { "id":"d700redemption", 
       "name": "D700 Redemption Howitzer", 
       "type": "explosive", 
-      "tags":["pierce 2", "reload slow", "blast", "indirect fire"], 
+      "tags":["pierce 2", "reload 2", "blast", "indirect fire"], 
       "rof": "D3+1", 
       "range":
       {
         "min":12,
-        "max":48,
+        "max":40,
         "melee": false
       }, 
       "damage": 3
     },
-    {
-      "id":"warmachineCQC", 
+    { "id":"warmachineCQC", 
       "name": "Warmachine CQC", 
       "type": "kinetic", 
       "tags":[], 

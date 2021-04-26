@@ -151,6 +151,17 @@ export class UnitEntryComponent implements OnInit {
           this.updateBaseCountLimit(upgrade, upgrade.upgradeType.id);
         }
         break;
+      case 'unitTag':
+        this.unitEntry.unitTags.push(upgrade.upgradeType.id);
+        if (upgrade.upgradeType.hasOwnProperty('mutuallyExclusive')) {
+          upgrade.upgradeType.mutuallyExclusive.forEach(mutEx => {
+            const tagIndex = this.unitEntry.unitTags.indexOf(mutEx);
+            if (tagIndex > -1) {
+              this.unitEntry.unitTags.splice(tagIndex, 1);
+            }
+          });
+        }
+        break;
       default:
     }
 
@@ -167,9 +178,9 @@ export class UnitEntryComponent implements OnInit {
 
     switch (upgrade.upgradeType.type) {
       case 'weapon':
-        const index = this.currentWeaponNames.indexOf(reference.weapons.find(i => i.id === upgrade.upgradeType.id).name, 0);
-        if (index > -1 && upgrade.current === 0) {
-          this.currentWeaponNames.splice(index, 1);
+        const weapIndex = this.currentWeaponNames.indexOf(reference.weapons.find(i => i.id === upgrade.upgradeType.id).name, 0);
+        if (weapIndex > -1 && upgrade.current === 0) {
+          this.currentWeaponNames.splice(weapIndex, 1);
         }
         break;
       case 'ability':
@@ -194,6 +205,17 @@ export class UnitEntryComponent implements OnInit {
         }
         if (upgrade.limit === 'baseCount') {
           this.updateBaseCountLimit(upgrade, upgrade.upgradeType.id);
+        }
+        break;
+      case 'unitTag':
+        const tagIndex = this.unitEntry.unitTags.indexOf(upgrade.upgradeType.id);
+        if (tagIndex > -1) {
+          this.unitEntry.unitTags.splice(tagIndex, 1);
+        }
+        if (upgrade.upgradeType.hasOwnProperty('mutuallyExclusive')) {
+          upgrade.upgradeType.mutuallyExclusive.forEach(mutEx => { // Honestly this doesn't work for unit tags that have multiple
+            this.unitEntry.unitTags.push(mutEx);                   // mutex tags but there are no such instances yet so...
+          });
         }
         break;
       default:
