@@ -1,3 +1,11 @@
 .hidden {
   display: none !important;
 }
+
+table {
+  width: 100%;
+}
+
+.weapon-summary {
+  margin: 0;
+}

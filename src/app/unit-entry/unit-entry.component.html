@@ -1,128 +1,144 @@
 <mat-expansion-panel *ngIf="unitEntry" class="unit-entry" hideToggle [expanded]="true">
 
-  <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center" >
-    <mat-panel-title class="unit-title"><h2>{{unitEntry.name}}</h2></mat-panel-title>
-    <mat-panel-description fxFlex="20" class="unit-current-points"><h2>{{unitEntry.currentPoints}}</h2></mat-panel-description>
-    <button mat-icon-button *ngIf="unitSelection.unitType !== 'transport' && !isGalleryMode" fxFlex="10" color="warn" (click)="removeUnit()">
+  <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-panel-title class="unit-title">
+      <h2>{{unitEntry.name}}</h2>
+    </mat-panel-title>
+    <mat-panel-description fxFlex="20" class="unit-current-points">
+      <h2>{{unitEntry.currentPoints}}</h2>
+    </mat-panel-description>
+    <button mat-icon-button *ngIf="unitSelection.unitType !== 'transport' && !isGalleryMode" fxFlex="10" color="warn"
+      (click)="removeUnit()">
       <mat-icon class="remove-unit">delete</mat-icon>
     </button>
   </mat-expansion-panel-header>
 
-    <div class="flex" fxLayout="row wrap" fxLayoutGap="10px grid" fxFill>
+  <div class="flex" fxLayout="row wrap" fxLayoutGap="10px grid" fxFill>
 
-      <div fxFlex="25" fxLayout="row" class="unit-move">
-        <h4 class="attribute-title">Move:</h4>
-        <p fxFlexOffset="5" class="attribute">{{unitEntry.move}}</p>
-      </div>
-
-      <div fxFlex="25" fxLayout="row" class="unit-defense">
-        <h4 class="attribute-title">Defense:</h4>
-        <p fxFlexOffset="5" class="attribute">( {{unitEntry.defense.dice}}D {{unitEntry.defense.save}} )</p>
-      </div>
-
-      <div fxFlex="25" fxLayout="row" class="unit-integrity">
-        <h4 class="attribute-title">Integrity:</h4>
-        <p fxFlexOffset="5" class="attribute">{{unitEntry.totalIntegrity}}</p>
-      </div>
-
-      <div fxFlex="25" fxLayout="row" class="unit-breakvalue">
-        <h4 class="attribute-title">Break Value:</h4>
-        <p fxFlexOffset="5" class="attribute">{{unitEntry.breakValue}}</p>
-      </div>
-
-      <div fxFlex="50" fxLayout="row" class="unit-tags">
-        <h4 class="attribute-title">Unit Tags:</h4>
-        <div fxFlexOffset="2.5" fxLayout="row wrap">
-          <p *ngFor="let tag of unitEntry.unitTags; let isLast=last">{{tag | titlecase}}{{isLast ? '' : ',&nbsp;'}}</p>
-        </div>
-      </div>
-
-      <div fxFlex="50" fxLayout="row" class="unit-composition">
-        <h4 class="attribute-title">Unit Size:</h4>
-        <p fxFlexOffset="2.5" class="attribute">{{unitEntry.squadComposition}} Model(s)</p>
-      </div>
-
-      <div fxFlex="50" fxLayout="row" class="unit-weapons">
-        <h4 class="attribute-title">Weapons:</h4>
-        <div fxFlexOffset="2.5" fxLayout="row wrap">
-          <p *ngFor="let weapon of currentWeaponNames; let isLast=last" class="attribute">{{weapon}}{{isLast ? '' : ',&nbsp;'}}</p>
-        </div>
-      </div>
-
-      <div fxFlex="50" fxLayout="row">
-        <h4 class="attribute-title">Abilities:</h4>
-        <div fxFlexOffset="2.5" fxLayout="row wrap">
-          <p class="attribute" *ngFor="let ability of getAbilityNames(); let isLast=last">{{ability}}{{isLast ? '' : ',&nbsp;'}}</p>
-        </div>
-      </div>
-
-      <mat-expansion-panel *ngIf="unitEntry.upgrades && !isGalleryMode" fxFlex="100" fxLayout="column">
-        <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center" >
-          <mat-panel-title class="unit-title"><h4 class="attribute-title">Upgrades:</h4></mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-list class="unit-upgrades" dense>
-          <mat-list-item class="unit-upgrade" *ngFor="let upgrade of unitEntry.upgrades" [disabled]="upgrade.disabled">
-            <button mat-icon-button (click)="removeUpgrade(upgrade)" class="upgrade" [disabled]="upgrade.disabled || upgrade.current == 0">
-              <mat-icon>remove_circle_outline</mat-icon>
-            </button>
-            <button mat-icon-button (click)="addUpgrade(upgrade)" class="upgrade" [disabled]="upgrade.disabled || upgrade.current >= upgrade.limitValue">
-              <mat-icon>add_circle_outline</mat-icon>
-            </button>
-            <p class="attribute">{{upgrade.label}}</p>
-            <p class="upgrade-current" *ngIf="upgrade.current > 0">[{{upgrade.current}}]</p>
-            <mat-icon color="warn" *ngIf="upgrade.current > upgrade.limitValue">error</mat-icon>
-          </mat-list-item>
-        </mat-list>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel *ngIf="weaponEntries && !isGalleryMode" fxFlex="100" fxLayout="column">
-        <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center" >
-          <mat-panel-title class="unit-title"><h4 class="attribute-title">Weapon Details:</h4></mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <table mat-table [dataSource]="weaponEntries" class="weapon-summary">
-
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let weapon"> {{weapon.name}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="type">
-            <th mat-header-cell *matHeaderCellDef> Type </th>
-            <td mat-cell *matCellDef="let weapon"> {{weapon.type | titlecase}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="tags">
-            <th mat-header-cell *matHeaderCellDef> Tags </th>
-            <td mat-cell *matCellDef="let weapon"> 
-              <span *ngFor="let tag of weapon.tags; let isLast=last">{{tag | titlecase}}{{isLast ? '' : ', '}}</span> 
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="rof">
-            <th mat-header-cell class="center-text" *matHeaderCellDef> Rate of Fire </th>
-            <td mat-cell class="center-text" *matCellDef="let weapon"> {{weapon.rof}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="range">
-            <th mat-header-cell class="center-text" *matHeaderCellDef> Range </th>
-            <ng-container *matCellDef="let weapon">
-              <td mat-cell class="center-text" *ngIf="weapon.range.melee===true;else range">M</td>
-              <ng-template #range><td mat-cell class="center-text">{{weapon.range.min}}-{{weapon.range.max}}"</td></ng-template>
-            </ng-container>
-          </ng-container>
-
-          <ng-container matColumnDef="damage">
-            <th mat-header-cell class="center-text" *matHeaderCellDef> Damage </th>
-            <td mat-cell class="center-text" *matCellDef="let weapon"> {{weapon.damage}} </td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="['name','type','tags','rof','range','damage']"></tr>
-          <tr mat-row *matRowDef="let row; columns: ['name','type','tags','rof','range','damage'];"></tr>
-        </table>
-      </mat-expansion-panel>
-
-      <app-unit-entry *ngIf="unitTransport" [unitSelection]="unitTransport" (pointsUpdateEvent)="updateTransportPoints($event)"></app-unit-entry>
+    <div fxFlex="25" fxLayout="row" class="unit-move">
+      <h4 class="attribute-title">Move:</h4>
+      <p fxFlexOffset="5" class="attribute">{{unitEntry.move}}</p>
     </div>
+
+    <div fxFlex="25" fxLayout="row" class="unit-defense">
+      <h4 class="attribute-title">Defense:</h4>
+      <p fxFlexOffset="5" class="attribute">( {{unitEntry.defense.dice}}D {{unitEntry.defense.save}} )</p>
+    </div>
+
+    <div fxFlex="25" fxLayout="row" class="unit-integrity">
+      <h4 class="attribute-title">Integrity:</h4>
+      <p fxFlexOffset="5" class="attribute">{{unitEntry.totalIntegrity}}</p>
+    </div>
+
+    <div fxFlex="25" fxLayout="row" class="unit-breakvalue">
+      <h4 class="attribute-title">Break Value:</h4>
+      <p fxFlexOffset="5" class="attribute">{{unitEntry.breakValue}}</p>
+    </div>
+
+    <div fxFlex="50" fxLayout="row" class="unit-tags">
+      <h4 class="attribute-title">Unit Tags:</h4>
+      <div fxFlexOffset="2.5" fxLayout="row wrap">
+        <p *ngFor="let tag of unitEntry.unitTags; let isLast=last">{{tag | titlecase}}{{isLast ? '' : ',&nbsp;'}}</p>
+      </div>
+    </div>
+
+    <div fxFlex="50" fxLayout="row" class="unit-composition">
+      <h4 class="attribute-title">Unit Size:</h4>
+      <p fxFlexOffset="2.5" class="attribute">{{unitEntry.squadComposition}} Model(s)</p>
+    </div>
+
+    <div fxFlex="50" fxLayout="row" class="unit-weapons">
+      <h4 class="attribute-title">Weapons:</h4>
+      <div fxFlexOffset="2.5" fxLayout="row wrap">
+        <p *ngFor="let weapon of getWeaponNames(); let isLast=last" class="attribute">
+          {{weapon}}{{isLast ? '' : ',&nbsp;'}}</p>
+      </div>
+    </div>
+
+    <div fxFlex="50" fxLayout="row">
+      <h4 class="attribute-title">Abilities:</h4>
+      <div fxFlexOffset="2.5" fxLayout="row wrap">
+        <p class="attribute" *ngFor="let ability of getAbilityNames(); let isLast=last">
+          {{ability}}{{isLast ? '' : ',&nbsp;'}}</p>
+      </div>
+    </div>
+
+    <mat-expansion-panel *ngIf="unitEntry.upgrades && !isGalleryMode" fxFlex="100" fxLayout="column">
+      <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-panel-title class="unit-title">
+          <h4 class="attribute-title">Upgrades:</h4>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list class="unit-upgrades" dense>
+        <mat-list-item class="unit-upgrade" *ngFor="let upgrade of unitEntry.upgrades" [disabled]="upgrade.disabled">
+          <button mat-icon-button (click)="removeUpgrade(upgrade)" class="upgrade"
+            [disabled]="upgrade.disabled || upgrade.current == 0">
+            <mat-icon>remove_circle_outline</mat-icon>
+          </button>
+          <button mat-icon-button (click)="addUpgrade(upgrade)" class="upgrade"
+            [disabled]="upgrade.disabled || upgrade.current >= upgrade.limitValue">
+            <mat-icon>add_circle_outline</mat-icon>
+          </button>
+          <p class="attribute">{{upgrade.label}}</p>
+          <p class="upgrade-current" *ngIf="upgrade.current > 0">[{{upgrade.current}}]</p>
+          <mat-icon color="warn" *ngIf="upgrade.current > upgrade.limitValue">error</mat-icon>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel *ngIf="weaponEntries && !isGalleryMode" fxFlex="100" fxLayout="column">
+      <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-panel-title class="unit-title">
+          <h4 class="attribute-title">Weapon Details:</h4>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <table mat-table [dataSource]="weaponEntries" class="weapon-summary">
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let weapon"> {{weapon.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef> Type </th>
+          <td mat-cell *matCellDef="let weapon"> {{weapon.type | titlecase}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tags">
+          <th mat-header-cell *matHeaderCellDef> Tags </th>
+          <td mat-cell *matCellDef="let weapon">
+            <span *ngFor="let tag of weapon.tags; let isLast=last">{{tag | titlecase}}{{isLast ? '' : ', '}}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rof">
+          <th mat-header-cell class="center-text" *matHeaderCellDef> Rate of Fire </th>
+          <td mat-cell class="center-text" *matCellDef="let weapon"> {{weapon.rof}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="range">
+          <th mat-header-cell class="center-text" *matHeaderCellDef> Range </th>
+          <ng-container *matCellDef="let weapon">
+            <td mat-cell class="center-text" *ngIf="weapon.range.melee===true;else range">M</td>
+            <ng-template #range>
+              <td mat-cell class="center-text">{{weapon.range.min}}-{{weapon.range.max}}"</td>
+            </ng-template>
+          </ng-container>
+        </ng-container>
+
+        <ng-container matColumnDef="damage">
+          <th mat-header-cell class="center-text" *matHeaderCellDef> Damage </th>
+          <td mat-cell class="center-text" *matCellDef="let weapon"> {{weapon.damage}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['name','type','tags','rof','range','damage']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['name','type','tags','rof','range','damage'];"></tr>
+      </table>
+    </mat-expansion-panel>
+
+    <app-unit-entry *ngIf="unitTransport" [unitSelection]="unitTransport"
+      (pointsUpdateEvent)="updateTransportPoints($event)"></app-unit-entry>
+  </div>
 
 </mat-expansion-panel>

@@ -1,5 +1,5 @@
 import { Component, ViewChild, ChangeDetectorRef, ViewChildren, QueryList } from '@angular/core';
-import { UnitSelection } from './unit-selection';
+import { UnitSelection, Weapon, weaponSort } from './common';
 import { UnitSelectorComponent } from './unit-selector/unit-selector.component';
 import { UnitEntryComponent } from './unit-entry/unit-entry.component';
 import factions from './factions.json';
@@ -17,6 +17,8 @@ export class AppComponent {
   currPointsTotal = 0;
 
   currentList: UnitSelection[] = [];
+
+  weaponSummary = new Map<string, Weapon>();
 
   @ViewChildren(UnitEntryComponent) unitEntries: QueryList<UnitEntryComponent>;
   @ViewChild(UnitSelectorComponent) unitSelectionCmp: UnitSelectorComponent;
@@ -60,11 +62,33 @@ export class AppComponent {
 
   toggleGalleryMode(): void {
     this.isGalleryMode = !this.isGalleryMode;
+    this.weaponSummary.clear();
 
     this.unitEntries.forEach(ue => {
       ue.toggleGalleryMode(this.isGalleryMode);
     });
 
     this.changeDetectorRef.detectChanges();
+  }
+
+  addWeapons(weapons: Weapon[]): void {
+    // console.log(JSON.stringify(weapons));
+    weapons.forEach(weap => {
+      if (!this.weaponSummary.has(weap.id)) {
+        this.weaponSummary.set(weap.id, weap);
+      }
+    });
+  }
+
+  getWeaponEntries(): Weapon[] {
+    const res: Weapon[] = [];
+    const it = this.weaponSummary.values();
+    let weap = it.next();
+    while (!weap.done) {
+      res.push(weap.value);
+      weap = it.next();
+    }
+    res.sort(weaponSort);
+    return res;
   }
 }

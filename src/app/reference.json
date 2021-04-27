@@ -79,7 +79,7 @@
       }, 
       "damage":1
     },
-    { "id":"infantryCQC", 
+    { "id":"cqc", 
       "name": "CQC", 
       "type": "kinetic", 
       "tags":["small arms"], 
@@ -137,17 +137,6 @@
         "min":8,
         "max":30,
         "melee": false
-      }, 
-      "damage": 1
-    },
-    { "id":"vehicleCQC", 
-      "name": "CQC", 
-      "type": "kinetic", 
-      "tags":["small arms"], 
-      "rof": 1, 
-      "range":
-      {
-        "melee": true
       }, 
       "damage": 1
     },

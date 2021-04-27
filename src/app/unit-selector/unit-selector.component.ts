@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UnitType } from './unit-type';
-import { UnitSelection } from '../unit-selection';
+import { UnitSelection } from '../common';
 import factions from '../factions.json';
 import rosters from '../rosters.json';
 

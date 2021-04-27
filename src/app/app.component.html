@@ -1,4 +1,4 @@
-<div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="5px grid" fxFill >
+<div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="5px grid" fxFill>
   <mat-toolbar fxFlex="100" fxLayout="row" color="primary">
     <h1 fxFlex="40" fxFlexOffset="5">{{title}}</h1>
     <h2 fxFlex="30">Current Faction: {{currFactionLabel | titlecase}}</h2>
@@ -13,16 +13,67 @@
 
   <div fxFlex="35" fxLayout="column" fxLayoutGap="5px" [fxHide]="isGalleryMode">
     <mat-button-toggle-group fxLayout="row wrap" fxLayoutGap="grid" value="crystallumHordes">
-      <mat-button-toggle fxFlex="50" (click)="selectFaction('crystallumHordes')" value="crystallumHordes">Crystallum Hordes</mat-button-toggle>
-      <mat-button-toggle fxFlex="50" (click)="selectFaction('atlanticCouncil')" value="atlanticCouncil">Atlantic Council</mat-button-toggle>
-      <mat-button-toggle fxFlex="50" (click)="selectFaction('fed')" value="fed">Federation of Columbia</mat-button-toggle>
+      <mat-button-toggle fxFlex="50" (click)="selectFaction('crystallumHordes')" value="crystallumHordes">Crystallum
+        Hordes</mat-button-toggle>
+      <mat-button-toggle fxFlex="50" (click)="selectFaction('atlanticCouncil')" value="atlanticCouncil">Atlantic Council
+      </mat-button-toggle>
+      <mat-button-toggle fxFlex="50" (click)="selectFaction('fed')" value="fed">Federation of Columbia
+      </mat-button-toggle>
       <mat-button-toggle fxFlex="50" (click)="selectFaction('vlast')" value="vlast">Vlast</mat-button-toggle>
     </mat-button-toggle-group>
 
-    <app-unit-selector *ngIf="currFactionName" [factionName]="currFactionName" (unitSelectionEvent)="addUnit($event)"></app-unit-selector>
+    <app-unit-selector *ngIf="currFactionName" [factionName]="currFactionName" (unitSelectionEvent)="addUnit($event)">
+    </app-unit-selector>
   </div>
 
   <div fxFlex fxLayout="row wrap" fxLayoutGap="5px grid" class="flex unit-entries">
-    <app-unit-entry [fxFlex]="isGalleryMode ? 50 : 100" *ngFor="let unit of currentList" [unitSelection]="unit" (unitRemovalEvent)="removeUnit($event)" (pointsUpdateEvent)="updatePoints($event)" class="unit-entry"></app-unit-entry>
+    <app-unit-entry [fxFlex]="isGalleryMode ? 50 : 100" *ngFor="let unit of currentList" [unitSelection]="unit"
+      (unitRemovalEvent)="removeUnit($event)" (pointsUpdateEvent)="updatePoints($event)"
+      (weaponsExportEvent)="addWeapons($event)"></app-unit-entry>
+  </div>
+
+  <div fxFlex="100" *ngIf="weaponSummary.size > 0">
+    <table mat-table [dataSource]="getWeaponEntries()" class="weapon-summary">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let weapon"> {{weapon.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let weapon"> {{weapon.type | titlecase}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tags">
+        <th mat-header-cell *matHeaderCellDef> Tags </th>
+        <td mat-cell *matCellDef="let weapon">
+          <span *ngFor="let tag of weapon.tags; let isLast=last">{{tag | titlecase}}{{isLast ? '' : ', '}}</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="rof">
+        <th mat-header-cell class="center-text" *matHeaderCellDef> Rate of Fire </th>
+        <td mat-cell class="center-text" *matCellDef="let weapon"> {{weapon.rof}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="range">
+        <th mat-header-cell class="center-text" *matHeaderCellDef> Range </th>
+        <ng-container *matCellDef="let weapon">
+          <td mat-cell class="center-text" *ngIf="weapon.range.melee===true;else range">M</td>
+          <ng-template #range>
+            <td mat-cell class="center-text">{{weapon.range.min}}-{{weapon.range.max}}"</td>
+          </ng-template>
+        </ng-container>
+      </ng-container>
+
+      <ng-container matColumnDef="damage">
+        <th mat-header-cell class="center-text" *matHeaderCellDef> Damage </th>
+        <td mat-cell class="center-text" *matCellDef="let weapon"> {{weapon.damage}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['name','type','tags','rof','range','damage']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['name','type','tags','rof','range','damage'];"></tr>
+    </table>
   </div>
 </div>

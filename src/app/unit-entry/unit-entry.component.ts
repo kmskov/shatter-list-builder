@@ -2,8 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angu
 import factions from '../factions.json';
 import reference from '../reference.json';
 import { UnitEntry, UnitUpgrade } from './unit-entry';
-import { UnitSelection } from '../unit-selection';
-import { Weapon, Ability } from '../reference';
+import { UnitSelection, Weapon, Ability, weaponSort } from '../common';
 
 @Component({
   selector: 'app-unit-entry',
@@ -15,10 +14,8 @@ export class UnitEntryComponent implements OnInit {
   @Input() unitSelection: UnitSelection;
 
   unitEntry: UnitEntry;
-  weaponIds: string[] = [];
-  weaponEntries: Weapon[] = [];
-  currentWeaponNames: string[] = [];
 
+  weaponEntries: Weapon[] = [];
   abilityEntries: Ability[] = [];
 
   unitTransport: UnitSelection;
@@ -30,6 +27,7 @@ export class UnitEntryComponent implements OnInit {
 
   @Output() unitRemovalEvent = new EventEmitter<UnitSelection>();
   @Output() pointsUpdateEvent = new EventEmitter<number>();
+  @Output() weaponsExportEvent = new EventEmitter<Weapon[]>();
 
   constructor() { }
 
@@ -52,7 +50,9 @@ export class UnitEntryComponent implements OnInit {
   loadUpgrades(): void {
     this.unitEntry.upgrades.forEach(upgradeEntry => {
       if (upgradeEntry.upgradeType.type === 'weapon') {
-        this.weaponIds.push(upgradeEntry.upgradeType.id);
+        const newWeapon: Weapon = (JSON.parse(JSON.stringify(reference.weapons.find(i => i.id === upgradeEntry.upgradeType.id))));
+        newWeapon.active = false;
+        this.weaponEntries.push(newWeapon);
       } else if (upgradeEntry.upgradeType.type === 'ability') {
         const newAbility: Ability = (JSON.parse(JSON.stringify(reference.abilities.find(i => i.id === upgradeEntry.upgradeType.id))));
         newAbility.active = false;
@@ -73,36 +73,21 @@ export class UnitEntryComponent implements OnInit {
 
       upgradeEntry.current = 0;
       upgradeEntry.disabled = false;
+
+      if (upgradeEntry.upgradeType.mutuallyExclusive === undefined) {
+        upgradeEntry.upgradeType.mutuallyExclusive = [];
+      }
     });
   }
 
   loadWeapons(): void {
     this.unitEntry.weapons.forEach(weapon => {
-      this.weaponIds.push(weapon);
-    });
-
-    this.weaponIds.forEach(weaponId => {
-      const weaponEntry = reference.weapons.find(i => i.id === weaponId);
+      const weaponEntry: Weapon = (JSON.parse(JSON.stringify(reference.weapons.find(i => i.id === weapon))));
+      weaponEntry.active = true;
       this.weaponEntries.push(weaponEntry);
-
-      if ( this.unitEntry.weapons.indexOf(weaponEntry.id) > -1) {
-        this.currentWeaponNames.push(weaponEntry.name);
-      }
     });
 
-    this.weaponEntries.sort((a: Weapon, b: Weapon) => {
-      if (a.range.melee === false && b.range.melee === false) {
-        const rofA = Number(Number.isInteger(a.rof));
-        const rofB = Number(Number.isInteger(b.rof));
-        if (rofA === rofB) {
-          return a.range.max - b.range.max;
-        } else {
-          return rofA - rofB;
-        }
-       } else {
-        return (a.range.melee ? 1 : 0) - (b.range.melee ? 1 : 0);
-      }
-    });
+    this.weaponEntries.sort(weaponSort);
   }
 
   loadAbilities(): void {
@@ -122,10 +107,14 @@ export class UnitEntryComponent implements OnInit {
 
     switch (upgrade.upgradeType.type) {
       case 'weapon':
-        const newWeaponName = reference.weapons.find(i => i.id === upgrade.upgradeType.id).name;
-        if (this.currentWeaponNames.indexOf(newWeaponName) === -1) {
-          this.currentWeaponNames.push(reference.weapons.find(i => i.id === upgrade.upgradeType.id).name);
-        }
+        const mutExWeapons = upgrade.upgradeType.mutuallyExclusive;
+        this.weaponEntries.forEach(we => {
+          if (upgrade.upgradeType.id === we.id) {
+            we.active = true;
+          } else if (mutExWeapons.includes(we.id)) {
+            we.active = false;
+          }
+        });
         break;
       case 'ability':
         const mutExAbilities = upgrade.upgradeType.mutuallyExclusive;
@@ -178,10 +167,13 @@ export class UnitEntryComponent implements OnInit {
 
     switch (upgrade.upgradeType.type) {
       case 'weapon':
-        const weapIndex = this.currentWeaponNames.indexOf(reference.weapons.find(i => i.id === upgrade.upgradeType.id).name, 0);
-        if (weapIndex > -1 && upgrade.current === 0) {
-          this.currentWeaponNames.splice(weapIndex, 1);
-        }
+        this.weaponEntries.forEach(we => {
+          if (upgrade.upgradeType.id === we.id) {
+            we.active = false;
+          } else if (upgrade.upgradeType.mutuallyExclusive.includes(we.id)) {
+            we.active = true;
+          }
+        });
         break;
       case 'ability':
         this.abilityEntries.forEach(ab => {
@@ -304,6 +296,15 @@ export class UnitEntryComponent implements OnInit {
     if (this.unitTransportEntryCmp !== undefined) {
       this.unitTransportEntryCmp.toggleGalleryMode(enable);
     }
+    if (enable) {
+      const currWeapons: Weapon[] = [];
+      this.weaponEntries.forEach(curr => {
+        if (curr.active) {
+          currWeapons.push(curr);
+        }
+      });
+      this.weaponsExportEvent.emit(currWeapons);
+    }
   }
 
   getNumberArray(length: number): number[] {
@@ -314,12 +315,22 @@ export class UnitEntryComponent implements OnInit {
     return a;
   }
 
+  getWeaponNames(): string[] {
+    const res: string[] = [];
+    this.weaponEntries.forEach(curr => {
+      if (curr.active) {
+        res.push(curr.name);
+      }
+    });
+    return res;
+  }
+
   getAbilityNames(): string[] {
     // console.log(JSON.stringify(this.abilityEntries));
     const res: string[] = [];
-    this.abilityEntries.forEach(ab => {
-      if (ab.active) {
-        res.push(ab.label + ' (' + ab.type + ')');
+    this.abilityEntries.forEach(curr => {
+      if (curr.active) {
+        res.push(curr.label + ' (' + curr.type + ')');
       }
     });
     return res;

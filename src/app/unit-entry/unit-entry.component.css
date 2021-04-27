@@ -24,13 +24,6 @@ mat-card {
   padding: 0;
 }
 
-.integrity-box {
-  border-style: solid;
-  border-width: thin;
-  margin-right: 3px;
-  padding: 2px 6px;
-}
-
 .remove-unit {
   float: right;
 }

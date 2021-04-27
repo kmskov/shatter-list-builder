@@ -44,7 +44,7 @@
         "unitTags": ["infantry"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["ak204", "infantryCQC"],
+        "weapons": ["ak204", "cqc"],
         "abilities": ["infantryCommand1"],
         "upgrades": [
           {
@@ -111,7 +111,7 @@
         "unitTags": ["vehicle", "wheeled"],
         "breakValue": 9,
         "squadComposition": 1,
-        "weapons": ["acceleratorAutocannon", "vehicleCQC"],
+        "weapons": ["acceleratorAutocannon", "cqc"],
         "abilities": ["vehicleCommand1","weakFrame", "agile"],
         "upgrades": [
           {
@@ -138,7 +138,8 @@
             "limit": "baseCount",
             "upgradeType": {
               "type": "weapon",
-              "id": "aaAcceleratorAutocannon"
+              "id": "aaAcceleratorAutocannon",
+              "mutuallyExclusive": ["acceleratorAutocannon"]
             }
           }
         ]
@@ -155,7 +156,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["heavyAcceleratorCannon", "vehicleSRPK", "vehicleCQC"],
+        "weapons": ["heavyAcceleratorCannon", "vehicleSRPK", "cqc"],
         "abilities": ["vehicleCommand1", "weakFrame"],
         "upgrades": [
           {
@@ -190,7 +191,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["railgun", "vehicleSRPK", "vehicleCQC"],
+        "weapons": ["railgun", "vehicleSRPK", "cqc"],
         "abilities": ["vehicleCommand1","smoke", "crystallumTreatedArmor"],
         "upgrades": [
           {
@@ -227,7 +228,7 @@
         "unitTags": ["infantry"],
         "breakValue": 8,
         "squadComposition": 3,
-        "weapons": ["ak204", "infantryCQC"],
+        "weapons": ["ak204", "cqc"],
         "abilities": [],
         "upgrades": [
           {
@@ -306,7 +307,7 @@
         "unitTags": ["infantry"],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["aak", "infantryCQC"],
+        "weapons": ["aak", "cqc"],
         "abilities": ["stubborn", "grenadeTubes"],
         "upgrades": [
           {
@@ -387,7 +388,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["heavyAcceleratorCannon", "vehicleSRPK", "vehicleCQC"],
+        "weapons": ["heavyAcceleratorCannon", "vehicleSRPK", "cqc"],
         "abilities": ["smoke", "weakFrame"],
         "upgrades": [
           {
@@ -412,7 +413,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["railgun", "vehicleSRPK", "vehicleCQC"],
+        "weapons": ["railgun", "vehicleSRPK", "cqc"],
         "abilities": ["smoke", "crystallumTreatedArmor"],
         "upgrades": [
           {
@@ -437,7 +438,7 @@
         "unitTags": ["vehicle", "wheeled"],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["acceleratorAutocannon", "vehicleCQC"],
+        "weapons": ["acceleratorAutocannon", "cqc"],
         "abilities": ["weakFrame", "agile"],
         "upgrades": [
           {
@@ -454,7 +455,8 @@
             "limit": "baseCount",
             "upgradeType": {
               "type": "weapon",
-              "id": "aaAcceleratorAutocannon"
+              "id": "aaAcceleratorAutocannon",
+              "mutuallyExclusive": ["acceleratorAutocannon"]
             }
           }
         ]
@@ -473,7 +475,7 @@
         "unitTags": ["vehicle", "tracked", "artillery"],
         "breakValue": 8,
         "squadComposition": 3,
-        "weapons": ["aaAcceleratorAutocannon", "vehicleCQC"],
+        "weapons": ["aaAcceleratorAutocannon", "cqc"],
         "abilities": ["weakFrame"],
         "upgrades": [
           {
@@ -482,7 +484,8 @@
             "multiplyCostByBases": true,
             "upgradeType": {
               "type": "weapon",
-              "id": "multiLauncher"
+              "id": "multiLauncher",
+              "mutuallyExclusive": ["aaAcceleratorAutocannon"]
             }
           },
           {
@@ -509,7 +512,7 @@
         "unitTags": ["infantry", "artillery"],
         "breakValue": 8,
         "squadComposition": 3,
-        "weapons": ["mortar", "infantryCQC"],
+        "weapons": ["mortar", "cqc"],
         "abilities": [],
         "upgrades": [
           {
@@ -562,7 +565,7 @@
         },
         "unitTags": ["vehicle", "aerial", "transport"],
         "squadComposition": 1,
-        "weapons": ["atRocket", "rocketSystem", "vehicleSRPK", "vehicleCQC"],
+        "weapons": ["atRocket", "rocketSystem", "vehicleSRPK", "cqc"],
         "abilities": ["crystallumTreatedArmor"],
         "upgrades": []
       }
@@ -605,7 +608,7 @@
         "unitTags": ["vehicle", "tracked"],
         "squadComposition": 1,
         "transportCapacity": 2,
-        "weapons": ["heavyAcceleratorCannon", "vehicleCQC"],
+        "weapons": ["heavyAcceleratorCannon", "cqc"],
         "abilities": ["smoke", "weakFrame"],
         "upgrades": [
           {
@@ -631,7 +634,7 @@
         "unitTags": ["vehicle", "wheeled"],
         "squadComposition": 1,
         "transportCapacity": 3,
-        "weapons": ["acceleratorAutocannon", "vehicleCQC"],
+        "weapons": ["acceleratorAutocannon", "cqc"],
         "abilities": ["smoke", "weakFrame"],
         "upgrades": [
           {
