@@ -7,29 +7,21 @@ export interface UnitEntry {
 
   move: number;
   totalIntegrity: number;
-  criticalThreshold?: UnitCriticalThreshold[];
   defense: UnitDefense;
   breakValue: number;
 
   squadComposition: number;
   unitTags: string[];
+  mutEx?: string[];
   weapons: string[];
   abilities: string[];
   upgrades: UnitUpgrade[];
-
-  transportCapacity?: number;
 }
 
 export interface UnitDefense {
   dice: number;
   save: string;
 }
-
-export interface UnitCriticalThreshold {
-  box: number;
-  effect: string;
-}
-
 
 export interface UnitUpgrade {
   label: string;

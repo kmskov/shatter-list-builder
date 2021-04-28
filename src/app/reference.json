@@ -1,68 +1,116 @@
 {
   "abilities": [
     { "id":"infantryCommand1", 
-      "label":"Command 1", 
-      "type": "Passive"
+      "label":"Command (1)", 
+      "type": "P"
     },
     { "id":"infantryCommand2", 
-      "label":"Command 2", 
-      "type": "Passive"
+      "label":"Command (2)", 
+      "type": "P"
     },
     { "id":"infantryCommand3", 
-      "label":"Command 3", 
-      "type": "Passive"
+      "label":"Command (3)", 
+      "type": "P"
     },
     { "id":"vehicleCommand1", 
-      "label":"Command 1", 
-      "type": "Passive"
+      "label":"Command (1)", 
+      "type": "P"
     },
     { "id":"vehicleCommand2", 
-      "label":"Command 2", 
-      "type": "Passive"
+      "label":"Command (2)", 
+      "type": "P"
     },
     { "id":"vehicleCommand3", 
-      "label":"Command 3", 
-      "type": "Passive"
+      "label":"Command (3)", 
+      "type": "P"
     },
     { "id":"weakFrame", 
-      "label":"Weak Frame", 
-      "type": "Passive"
+      "label":"Weak Frame (5+)", 
+      "type": "P"
     },
     { "id": "smoke",
       "label": "Smoke",
-      "type": "Active"
+      "type": "A"
     },
     { "id": "stubborn",
       "label": "Stubborn",
-      "type": "Passive"
+      "type": "P"
     },
     { "id": "grenadeTubes",
       "label": "Grenade Tubes",
-      "type": "Active"
+      "type": "A"
     },
     { "id": "crystallumTreatedArmor",
       "label": "Crystallum Treated Armor",
-      "type": "Passive"
+      "type": "P"
     },
     { "id": "agile",
       "label": "Agile",
-      "type": "Passive"
+      "type": "P"
     },
     { "id": "defensiveMG",
       "label": "Defensive MG",
-      "type": "Passive"
+      "type": "P"
     },
     { "id": "transport1",
-      "label": "Transport 1",
-      "type": "Passive"
+      "label": "Transport (1)",
+      "type": "P"
     },
     { "id": "transport2",
-      "label": "Transport 2",
-      "type": "Passive"
+      "label": "Transport (2)",
+      "type": "P"
     },
     { "id": "transport3",
-      "label": "Transport 3",
-      "type": "Passive"
+      "label": "Transport (3)",
+      "type": "P"
+    },
+    { "id": "opticCamoSystems",
+      "label": "Optic Camo Systems",
+      "type": "P"
+    },
+    { "id": "kineticThermalPlating",
+      "label": "Kinetic Thermal Plating",
+      "type": "P"
+    },
+    { "id": "panoramicCockpit",
+      "label": "Panoramic Cockpit",
+      "type": "P"
+    },
+    { "id": "selfRepairModule",
+      "label": "Self-Repaid Module",
+      "type": "P"
+    },
+    { "id": "critThreshold1",
+      "label": "Critical Threshold (1)",
+      "type": "P"
+    },
+    { "id": "critThreshold2",
+      "label": "Critical Threshold (2)",
+      "type": "P"
+    },
+    { "id": "critThreshold3",
+      "label": "Critical Threshold (3)",
+      "type": "P"
+    },
+    { "id": "critThreshold4",
+      "label": "Critical Threshold (4)",
+      "type": "P"
+    },
+    { "id": "critThreshold5",
+      "label": "Critical Threshold (5)",
+      "type": "P"
+    },
+    { "id": "critThreshold6",
+      "label": "Critical Threshold (6)",
+      "type": "P"
+    },
+    { "id": "critThreshold7",
+      "label": "Critical Threshold (7)",
+      "type": "P"
+    },
+    { "id": "critThreshold8",
+      "label": "Critical Threshold (8)",
+      "type": "P"
     }
   ],
   "weapons": [
@@ -321,6 +369,199 @@
         "melee": true
       }, 
       "damage": 2
+    },
+    { "id": "l2TorchRifle",
+      "name": "L2 T.O.R.C.H. Rifle", 
+      "type": "energy", 
+      "tags":["small arms"], 
+      "rof": 2, 
+      "range":
+      {
+        "min":0,
+        "max":12,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "lat6Suckerpunch",
+      "name": "LAT6 Suckerpunch", 
+      "type": "explosive", 
+      "tags":["pierce 2", "disposable"], 
+      "rof": 1, 
+      "range":
+      {
+        "min":0,
+        "max":12,
+        "melee": false
+      }, 
+      "damage": 3
+    },
+    { "id": "s2TorchAntiMatterCannon",
+      "name": "S2 T.O.R.C.H. Anti-Material Cannon", 
+      "type": "energy", 
+      "tags":["pierce 2", "reload 1", "turret"], 
+      "rof": 1, 
+      "range":
+      {
+        "min": 8,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 3
+    },
+    { "id": "dualC2TorchLaserArray",
+      "name": "Dual C2 T.O.R.C.H. Laser Array", 
+      "type": "energy", 
+      "tags":["pierce 1", "reload 1", "turret"], 
+      "rof": 2, 
+      "range":
+      {
+        "min": 8,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "torchMGSystem",
+      "name": "T.O.R.C.H. MG System", 
+      "type": "energy", 
+      "tags":["small arms", "pierce 1"], 
+      "rof": 3, 
+      "range":
+      {
+        "min": 8,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "torchMGSuperGatling",
+      "name": "T.O.R.C.H. MG Super Gatling", 
+      "type": "energy", 
+      "tags":["reload 1", "turret"], 
+      "rof": 5, 
+      "range":
+      {
+        "min": 8,
+        "max": 20,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "xsc2SuperTorchCannon",
+      "name": "XSC2 SUPER T.O.R.C.H. Cannon", 
+      "type": "energy", 
+      "tags":["pierce 1", "overcharge weapons", "reload 1", "turret"], 
+      "rof": 1, 
+      "range":
+      {
+        "min": 8,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 3
+    },
+    { "id": "at6Peregrine",
+      "name": "AT6 Peregrine", 
+      "type": "ballistic", 
+      "tags":["pierce 2", "anti-air", "reload 1"], 
+      "rof": 1, 
+      "range":
+      {
+        "min": 8,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    { "id": "xl3AntiMaterialRifle",
+      "name": "XL3 Anti-Material Rifle", 
+      "type": "energy", 
+      "tags":["pierce 1", "beam"], 
+      "rof": 1, 
+      "range":
+      {
+        "min": 0,
+        "max": 10,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    { "id": "x3RoseCombatSuit",
+      "name": "X3 R.O.S.E Combat Suit", 
+      "type": "energy", 
+      "tags":["beam"], 
+      "rof": 1, 
+      "range":
+      {
+        "melee": true
+      }, 
+      "damage": 1
+    },
+    { "id": "slc2TorchHowitzer",
+      "name": "SLC2 T.O.R.C.H. Howitzer", 
+      "type": "explosive", 
+      "tags":["pierce 1", "reload 1", "indirect fire", "refractor system"], 
+      "rof": "D3+1", 
+      "range":
+      {
+        "min": 10,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "slc3TorchArcCannon",
+      "name": "SLC2 T.O.R.C.H. Howitzer", 
+      "type": "explosive", 
+      "tags":["EMP rounds", "reload 1"], 
+      "rof": 2, 
+      "range":
+      {
+        "min": 0,
+        "max": 18,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "torchStraferCannon",
+      "name": "T.O.R.C.H. Strafer Cannon", 
+      "type": "energy", 
+      "tags":["pierce 1", "spread"], 
+      "rof": 4, 
+      "range":
+      {
+        "min": 8,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "torchLL2Autocannon",
+      "name": "T.O.R.C.H. LL2 Autocannon", 
+      "type": "energy", 
+      "tags":["pierce 1", "turret"], 
+      "rof": 2, 
+      "range":
+      {
+        "min": 8,
+        "max": 20,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "samLauncher",
+      "name": "SAM Launcher", 
+      "type": "explosive", 
+      "tags":["pierce 1", "reload 1", "anti-air", "turret"], 
+      "rof": 3, 
+      "range":
+      {
+        "min": 8,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 1
     }
   ]
 }

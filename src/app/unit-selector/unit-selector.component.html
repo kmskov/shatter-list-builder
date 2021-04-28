@@ -5,7 +5,7 @@
     <mat-panel-description>{{unitType.min}}-{{unitType.max}}</mat-panel-description>
   </mat-expansion-panel-header>
   <mat-action-list [disabled]="unitType.current == unitType.max">
-    <button mat-list-item *ngFor="let unit of faction[unitType.id]" class="unit-name"
-      (click)="addUnit(factionName, unitType.id, unit.id)">{{unit.name}}</button>
+    <button mat-list-item *ngFor="let unit of faction[unitType.id]" [disabled]="disabledSelections.includes(unit.id)" 
+      (click)="addUnit(factionName, unitType.id, unit.id, unit.mutEx)">{{unit.name}}</button>
   </mat-action-list>
 </mat-expansion-panel>

@@ -21,13 +21,622 @@
   },
   "fed": {
     "name": "Federation of Columbia",
-    "hq": [],
-    "core": [],
-    "armoredSupport": [],
-    "fireSupport": [],
-    "airSupport": [],
-    "special": [],
-    "transport": []
+    "hq": [
+      { "name": "Infantry Commander",
+        "id": "infantryCommander",
+        "basePoints": 11,
+        "move": 6,
+        "totalIntegrity": 3,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["infantry"],
+        "breakValue": 10,
+        "squadComposition": 1,
+        "weapons": ["l2TorchRifle", "cqc"],
+        "abilities": ["infantryCommand1"],
+        "upgrades": [
+          {
+            "label": "The command base may be mounted in a TM-5 CABBIE Transport.",
+            "upgradeType": {
+              "type": "transport",
+              "id": "tm5Cabbie",
+              "mutuallyExclusive": ["jp7Detroit"]
+            }
+          },
+          {
+            "label": "The command base may be mounted in a JP-7 Detroit Transport.",
+            "upgradeType": {
+              "type": "transport",
+              "id": "jp7Detroit",
+              "mutuallyExclusive": ["tm5Cabbie"]
+            }
+          },
+          {
+            "label": "Arm the command base with anti-tank grenades at 2 pts.",
+            "cost": 2,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankGrenade"
+            }
+          },
+          {
+            "label": "Arm the command base with an LAT6 Suckerpunch at 2 pts.",
+            "cost": 2,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "lat6Suckerpunch"
+            }
+          },
+          {
+            "label": "The command base may either upgrade its command value to 2 for 4 pts.",
+            "cost": 5,
+            "upgradeType": {
+              "type": "ability",
+              "id": "infantryCommand2",
+              "mutuallyExclusive": ["infantryCommand1", "infantryCommand3"]
+            }
+          },
+          {
+            "label": "The command base may either upgrade its command value to 3 for 8 pts.",
+            "cost": 10,
+            "upgradeType": {
+              "type": "ability",
+              "id": "infantryCommand3",
+              "mutuallyExclusive": ["infantryCommand1", "infantryCommand2"]
+            }
+          }
+        ]
+      },
+      { "name": "Tank Commander in M1 Rough Rider",
+        "id": "tankCommanderM1RoughRider",
+        "basePoints": 30,
+        "move": 12,
+        "totalIntegrity": 5,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["vehicle", "wheeled"],
+        "breakValue": 10,
+        "squadComposition": 1,
+        "weapons": ["s2TorchAntiMatterCannon", "cqc"],
+        "abilities": ["vehicleCommand1","opticCamoSystems"],
+        "upgrades": [
+          {
+            "label": "The command base may either upgrade its command value to 2 for 4 pts.",
+            "cost": 4,
+            "upgradeType": {
+              "type": "ability",
+              "id": "vehicleCommand2",
+              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+            }
+          },
+          {
+            "label": "The command base may either upgrade its command value to 3 for 8 pts.",
+            "cost": 8,
+            "upgradeType": {
+              "type": "ability",
+              "id": "vehicleCommand3",
+              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+            }
+          },
+          {
+            "label": "The vehicle may replace their S2 TORCH with an SAM Launcher for 0 pts per model",
+            "cost": 0,
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "weapon",
+              "id": "samLauncher",
+              "mutuallyExclusive": ["s2TorchAntiMatterCannon"]
+            }
+          }
+        ]
+      },
+      { "name": "Tank Commander in M2-A1 Grant",
+        "id": "tankCommanderM2A1Grant",
+        "basePoints": 39,
+        "move": 10,
+        "totalIntegrity": 7,
+        "defense": {
+          "dice": 2,
+          "save": "4+"
+        },
+        "unitTags": ["vehicle", "tracked"],
+        "breakValue": 10,
+        "squadComposition": 1,
+        "weapons": ["dualC2TorchLaserArray", "torchMGSystem", "cqc"],
+        "abilities": ["vehicleCommand1", "smoke", "kineticThermalPlating"],
+        "upgrades": [
+          {
+            "label": "The command base may either upgrade its command value to 2 for 4 pts.",
+            "cost": 4,
+            "upgradeType": {
+              "type": "ability",
+              "id": "vehicleCommand2",
+              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+            }
+          },
+          {
+            "label": "The command base may either upgrade its command value to 3 for 8 pts.",
+            "cost": 8,
+            "upgradeType": {
+              "type": "ability",
+              "id": "vehicleCommand3",
+              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+            }
+          }
+        ]
+      },
+      { "name": "Tank Commander in SM1 Roosevelt",
+        "id": "tankCommanderSM1Roosevelt",
+        "basePoints": 49,
+        "move": 8,
+        "totalIntegrity": 8,
+        "defense": {
+          "dice": 2,
+          "save": "4+"
+        },
+        "unitTags": ["vehicle", "tracked"],
+        "breakValue": 10,
+        "squadComposition": 1,
+        "weapons": ["torchMGSuperGatling", "torchMGSystem", "cqc"],
+        "abilities": ["vehicleCommand1","smoke", "kineticThermalPlating"],
+        "upgrades": [
+          {
+            "label": "The command base may either upgrade its command value to 2 for 4 pts.",
+            "cost": 4,
+            "upgradeType": {
+              "type": "ability",
+              "id": "vehicleCommand2",
+              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+            }
+          },
+          {
+            "label": "The command base may either upgrade its command value to 3 for 8 pts.",
+            "cost": 8,
+            "upgradeType": {
+              "type": "ability",
+              "id": "vehicleCommand3",
+              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+            }
+          }
+        ]
+      },
+      { "name": "Tank Commander in XSM1 Columbia",
+        "id": "tankCommanderXSM1Columbia",
+        "basePoints": 65,
+        "move": 6,
+        "totalIntegrity": 11,
+        "defense": {
+          "dice": 2,
+          "save": "3+"
+        },
+        "unitTags": ["vehicle", "tracked", "war machine"],
+        "mutEx": ["tankCommanderXSM1Columbia", "xsm1Columbia"],
+        "breakValue": 10,
+        "squadComposition": 1,
+        "weapons": ["xsc2SuperTorchCannon", "torchMGSystem", "warmachineCQC"],
+        "abilities": ["vehicleCommand1","panoramicCockpit", "kineticThermalPlating", "selfRepairModule", "critThreshold3", "critThreshold8"],
+        "upgrades": [
+          {
+            "label": "The command base may either upgrade its command value to 2 for 4 pts.",
+            "cost": 4,
+            "upgradeType": {
+              "type": "ability",
+              "id": "vehicleCommand2",
+              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+            }
+          },
+          {
+            "label": "The command base may either upgrade its command value to 3 for 8 pts.",
+            "cost": 8,
+            "upgradeType": {
+              "type": "ability",
+              "id": "vehicleCommand3",
+              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+            }
+          }
+        ]
+      }
+    ],
+    "core": [
+      { "name": "Ranger Platoon",
+        "id": "ranger",
+        "basePoints": 5,
+        "move": 6,
+        "totalIntegrity": 3,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["infantry"],
+        "breakValue": 9,
+        "squadComposition": 3,
+        "weapons": ["l2TorchRifle", "cqc"],
+        "abilities": [],
+        "upgrades": [
+          {
+            "label": "Add up to 3 more infantry bases at 5 pts per base.",
+            "cost": 5,
+            "limit": 3,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          },
+          {
+            "label": "All bases in the unit may be mounted in a TM-5 CABBIE Transport.",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "tm5Cabbie",
+              "mutuallyExclusive": ["jp7Detroit"]
+            }
+          },
+          {
+            "label": "All bases in the unit may be mounted in a JP-7 Detroit Transport.",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "jp7Detroit",
+              "mutuallyExclusive": ["tm5Cabbie"]
+            }
+          },
+          {
+            "label": "Arm all bases with anti-tank grenades at 2 pts per base.",
+            "cost": 2,
+            "multiplyCostByBases": true,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankGrenade"
+            }
+          },
+          {
+            "label": "Arm any base with an LAT6 Suckerpunch at 2 pts per base.",
+            "limit": "baseCount",
+            "cost": 2,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "lat6Suckerpunch"
+            }
+          },
+          {
+            "label": "Replace a single infantry base with an AT6 Peregrine team for 7 points.",
+            "cost": 7,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "at6Peregrine"
+            }
+          }
+        ]
+      },
+      { "name": "Minuteman Platoon",
+        "id": "minuteman",
+        "basePoints": 12,
+        "move": 6,
+        "totalIntegrity": 3,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["infantry"],
+        "breakValue": 10,
+        "squadComposition": 3,
+        "weapons": ["xl3AntiMaterialRifle", "x3RoseCombatSuit"],
+        "abilities": [],
+        "upgrades": [
+          {
+            "label": "Add up to 2 more infantry bases at 12 points per base.",
+            "cost": 12,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          },
+          {
+            "label": "All bases in the unit may be mounted in a TM-5 CABBIE Transport.",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "tm5Cabbie",
+              "mutuallyExclusive": ["jp7Detroit"]
+            }
+          },
+          {
+            "label": "All bases in the unit may be mounted in a JP-7 Detroit Transport.",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "jp7Detroit",
+              "mutuallyExclusive": ["tm5Cabbie"]
+            }
+          },
+          {
+            "label": "Arm all bases with Anti-Tank grenades at 2 pts per base.",
+            "cost": 2,
+            "multiplyCostByBases": true,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankGrenade"
+            }
+          },
+          {
+            "label": "Arm any base with an LAT6 Suckerpunch at 2 pts per base.",
+            "limit": "baseCount",
+            "cost": 2,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "lat6Suckerpunch"
+            }
+          }
+        ]
+      }
+    ],
+    "armoredSupport": [
+      { "name": "M1 Rough Rider Platoon",
+        "id": "m1RoughRider",
+        "basePoints": 24,
+        "move": 12,
+        "totalIntegrity": 5,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["vehicle", "wheeled"],
+        "breakValue": 9,
+        "squadComposition": 3,
+        "weapons": ["s2TorchAntiMatterCannon", "cqc"],
+        "abilities": ["opticCamoSystems"],
+        "upgrades": [
+          {
+            "label": "Add up to 2 more Battle Tanks for 24 pts per model.",
+            "cost": 24,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          },
+          {
+            "label": "The vehicle may replace their S2 TORCH with an SAM Launcher for 0 pts per model",
+            "cost": 0,
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "weapon",
+              "id": "samLauncher",
+              "mutuallyExclusive": ["s2TorchAntiMatterCannon"]
+            }
+          }
+        ]
+      },
+      { "name": "M2-A1 Grant Tank Platoon",
+        "id": "m2a1Grant",
+        "basePoints": 33,
+        "move": 10,
+        "totalIntegrity": 7,
+        "defense": {
+          "dice": 2,
+          "save": "4+"
+        },
+        "unitTags": ["vehicle", "tracked"],
+        "breakValue": 10,
+        "squadComposition": 3,
+        "weapons": ["dualC2TorchLaserArray", "torchMGSystem", "cqc"],
+        "abilities": ["smoke", "kineticThermalPlating"],
+        "upgrades": [
+          {
+            "label": "Add up to 2 more Battle Tanks for 33 pts per model.",
+            "cost": 33,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          }
+        ]
+      },
+      { "name": "SM1 Roosevelt Tank Platoon",
+        "id": "sm1Roosevelt",
+        "basePoints": 44,
+        "move": 8,
+        "totalIntegrity": 8,
+        "defense": {
+          "dice": 2,
+          "save": "4+"
+        },
+        "unitTags": ["vehicle", "tracked"],
+        "breakValue": 10,
+        "squadComposition": 1,
+        "weapons": ["torchMGSuperGatling", "torchMGSystem", "cqc"],
+        "abilities": ["smoke", "kineticThermalPlating"],
+        "upgrades": [
+           {
+            "label": "Add up to 2 more Battle Tanks for 44 pts per model.",
+            "cost": 44,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          }
+        ]
+      }
+    ],
+    "fireSupport": [
+      { "name": "AM1 Skyscraper SPG Platoon",
+        "id": "am1Skyscraper",
+        "basePoints": 20,
+        "move": 10,
+        "totalIntegrity": 6,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["vehicle", "tracked", "artillery"],
+        "breakValue": 9,
+        "squadComposition": 3,
+        "weapons": ["slc2TorchHowitzer", "cqc"],
+        "abilities": [],
+        "upgrades": [
+          {
+            "label": "All vehicles in the unit may replace their SLC2 TORCH Howitzer with a Multi-Launcher for +1 pts per model.",
+            "cost": 1,
+            "multiplyCostByBases": true,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "multiLauncher",
+              "mutuallyExclusive": ["slc2TorchHowitzer"]
+            }
+          }
+        ]
+      },
+      { "name": "AG1 B.R.I.D.G.E. Fixed Gun Platoon",
+        "id": "ag1Bridge",
+        "basePoints": 8,
+        "move": 6,
+        "totalIntegrity": 3,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["infantry", "artillery"],
+        "breakValue": 9,
+        "squadComposition": 3,
+        "weapons": ["slc3TorchArcCannon", "cqc"],
+        "abilities": [],
+        "upgrades": [
+          {
+            "label": "Add up to 2 more infantry bases at 8 points per base.",
+            "cost": 8,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          },
+          {
+            "label": "All bases in the unit may be mounted in a TM-5 CABBIE Transport.",
+            "upgradeType": {
+              "type": "transport",
+              "id": "tm5Cabbie",
+              "mutuallyExclusive": ["jp7Detroit"]
+            }
+          },
+          {
+            "label": "All bases in the unit may be mounted in a JP-7 Detroit Transport.",
+            "upgradeType": {
+              "type": "transport",
+              "id": "jp7Detroit",
+              "mutuallyExclusive": ["tm5Cabbie"]
+            }
+          },
+          {
+            "label": "Arm all bases with Anti-Tank grenades at 2 pts per base.",
+            "cost": 2,
+            "multiplyCostByBases": true,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankGrenade"
+            }
+          }
+        ]
+      }
+    ],
+    "airSupport": [
+      { "name": "F42 Bluebird",
+        "id": "f42Bluebird",
+        "basePoints": 37,
+        "move": 20,
+        "totalIntegrity": 7,
+        "defense": {
+          "dice": 2,
+          "save": "4+"
+        },
+        "unitTags": ["vehicle", "aerial"],
+        "squadComposition": 1,
+        "weapons": ["torchStraferCannon"],
+        "abilities": ["opticCamoSystems"],
+        "upgrades": [
+          {
+            "label": "Arm the Bluebird with up to 4 anti-tank rockets for 1 point each.",
+            "cost": 1,
+            "limit": 4,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankRocket"
+            }
+          }
+        ]
+      }
+    ],
+    "special": [
+      { "name": "XSM1 Columbia Super-Heavy Tank",
+        "id": "xsm1Columbia",
+        "basePoints": 60,
+        "move": 6,
+        "totalIntegrity": 11,
+        "defense": {
+          "dice": 2,
+          "save": "3+"
+        },
+        "unitTags": ["vehicle", "tracked", "war machine"],
+        "mutEx": ["tankCommanderXSM1Columbia"],
+        "breakValue": 10,
+        "squadComposition": 1,
+        "weapons": ["xsc2SuperTorchCannon", "torchMGSystem", "warmachineCQC"],
+        "abilities": ["panoramicCockpit", "kineticThermalPlating", "selfRepairModule", "critThreshold3", "critThreshold8"],
+        "upgrades": []
+      }
+    ],
+    "transport": [
+      { "name": "TM-5 CABBIE",
+        "id": "tm5Cabbie",
+        "basePoints": 16,
+        "move": 10,
+        "totalIntegrity": 6,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["vehicle", "tracked"],
+        "squadComposition": 1,
+        "weapons": ["torchLL2Autocannon", "l2TorchRifle", "cqc"],
+        "abilities": ["smoke", "transport2"],
+        "upgrades": [
+          {
+            "label": "Arm any TM-5 CABBIE with an anti-tank rocket at 1 pts per vehicle.",
+            "cost": 1,
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankRocket"
+            }
+          }
+        ]
+      },
+      { "name": "JP-7 Detroit",
+        "id": "jp7Detroit",
+        "basePoints": 8,
+        "move": 12,
+        "totalIntegrity": 4,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["vehicle", "wheeled"],
+        "squadComposition": 1,
+        "weapons": ["l2TorchRifle", "cqc"],
+        "abilities": ["transport1"],
+        "upgrades": [
+          {
+            "label": "Arm any JP-7 Detroit with an anti-tank rocket at 1 pts per vehicle.",
+            "cost": 1,
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankRocket"
+            }
+          }
+        ]
+      }
+    ]
   },
   "vlast": {
     "name": "Vlast",
@@ -102,14 +711,14 @@
       { "name": "Tank Commander in BRDM-2B-U",
         "id": "tankCommanderBRDM",
         "basePoints": 23,
-        "move": 10,
+        "move": 12,
         "totalIntegrity": 5,
         "defense": {
           "dice": 2,
           "save": "5+"
         },
         "unitTags": ["vehicle", "wheeled"],
-        "breakValue": 9,
+        "breakValue": 10,
         "squadComposition": 1,
         "weapons": ["acceleratorAutocannon", "cqc"],
         "abilities": ["vehicleCommand1","weakFrame", "agile"],
@@ -180,7 +789,7 @@
         ]
       },
       { "name": "Tank Commander in T-72-R",
-        "id": "t72r",
+        "id": "tankCommanderT72r",
         "basePoints": 38,
         "move": 8,
         "totalIntegrity": 8,
@@ -463,7 +1072,7 @@
       }
     ],
     "fireSupport": [
-      { "name": "BM-221",
+      { "name": "BM-221 Platoon",
         "id": "bm221",
         "basePoints": 11,
         "move": 10,
@@ -580,17 +1189,9 @@
           "dice": 2,
           "save": "3+"
         },
-        "criticalThreshold": [
-          { "box": 5,
-            "effect": "Motive Systems Damaged"
-          },
-          { "box": 7,
-            "effect": "Reactor Damaged"
-          }
-        ],
         "unitTags": ["vehicle", "tracked", "artillery", "war machine"],
         "squadComposition": 1,
-        "weapons": ["d700redemption", "vehicleSRPK", "warmachineCQC"],
+        "weapons": ["d700redemption", "vehicleSRPK", "warmachineCQC", "critThreshold3", "critThreshold8"],
         "abilities": ["defensiveMG", "crystallumTreatedArmor"],
         "upgrades": []
       }
@@ -607,9 +1208,8 @@
         },
         "unitTags": ["vehicle", "tracked"],
         "squadComposition": 1,
-        "transportCapacity": 2,
         "weapons": ["heavyAcceleratorCannon", "cqc"],
-        "abilities": ["smoke", "weakFrame"],
+        "abilities": ["smoke", "weakFrame", "transport2"],
         "upgrades": [
           {
             "label": "Arm any BMP-4U with an Anti-Tank Rocket for 1 points per vehicle.",
@@ -633,9 +1233,8 @@
         },
         "unitTags": ["vehicle", "wheeled"],
         "squadComposition": 1,
-        "transportCapacity": 3,
         "weapons": ["acceleratorAutocannon", "cqc"],
-        "abilities": ["smoke", "weakFrame"],
+        "abilities": ["smoke", "weakFrame", "transport3"],
         "upgrades": [
           {
             "label": "Arm any BTR-90U with an Anti-Tank Rocket for 1 points per vehicle.",

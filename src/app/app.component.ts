@@ -41,7 +41,7 @@ export class AppComponent {
     if (index > -1) {
       this.currentList.splice(index, 1);
     }
-    this.unitSelectionCmp.removeUnit(unitSelection.unitType);
+    this.unitSelectionCmp.removeUnit(unitSelection.unitType, unitSelection.id);
   }
 
   updatePoints(difference: number): void {

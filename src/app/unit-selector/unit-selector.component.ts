@@ -17,6 +17,8 @@ export class UnitSelectorComponent implements OnInit {
 
   unitTypes: UnitType[];
 
+  disabledSelections: string[] = [];
+
   @Output() unitSelectionEvent = new EventEmitter<UnitSelection>();
 
   constructor() { }
@@ -34,16 +36,33 @@ export class UnitSelectorComponent implements OnInit {
     // console.log('unit-selector.ngOnInit finished');
   }
 
-  addUnit(faction: string, type: string, unitId: string) {
+  addUnit(faction: string, type: string, unitId: string, mutEx: string[]) {
     this.unitTypes.find(i => i.id === type).current += 1;
-    // console.log('add unit: ' + JSON.stringify(this.unitTypes.find(i => i.id === unitType)));
-    const unitSelection = {factionName: faction, unitType: type, id: unitId};
+
+    if (mutEx !== undefined) {
+      mutEx.forEach(m => {
+        if (!this.disabledSelections.includes(m)) {
+          this.disabledSelections.push(m);
+        }
+      });
+    }
+
+    const unitSelection = { factionName: faction, unitType: type, id: unitId };
     this.unitSelectionEvent.emit(unitSelection);
   }
 
-  removeUnit(unitType: string) {
-    // console.log('remove unit: ' + JSON.stringify(this.unitTypes.find(i => i.id === unitType)));
+  removeUnit(unitType: string, unitId: string) {
     this.unitTypes.find(i => i.id === unitType).current -= 1;
+
+    const mutEx = this.faction[unitType].find(i => i.id === unitId).mutEx;
+    if (mutEx !== undefined) {
+      mutEx.forEach(m => {
+        const idx = this.disabledSelections.indexOf(m);
+        if (idx > -1) {
+          this.disabledSelections.splice(idx, 1);
+        }
+      });
+    }
   }
 
 }

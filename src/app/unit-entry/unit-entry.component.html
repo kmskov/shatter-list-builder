@@ -44,7 +44,7 @@
 
     <div fxFlex="50" fxLayout="row" class="unit-composition">
       <h4 class="attribute-title">Unit Size:</h4>
-      <p fxFlexOffset="2.5" class="attribute">{{unitEntry.squadComposition}} Model(s)</p>
+      <p fxFlexOffset="2.5" class="attribute">{{unitEntry.squadComposition}} Model{{unitEntry.squadComposition > 1 ? 's' : ''}}</p>
     </div>
 
     <div fxFlex="50" fxLayout="row" class="unit-weapons">
