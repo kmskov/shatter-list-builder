@@ -12,7 +12,7 @@ import factions from './factions.json';
 export class AppComponent {
   title = 'Project Shatter - List Builder';
 
-  currFactionName = 'crystallumHordes';
+  currFactionName = 'atlanticCouncil';
   currFactionLabel: string;
   currPointsTotal = 0;
 

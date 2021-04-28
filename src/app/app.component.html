@@ -12,11 +12,11 @@
   </mat-toolbar>
 
   <div fxFlex="35" fxLayout="column" fxLayoutGap="5px" [fxHide]="isGalleryMode">
-    <mat-button-toggle-group fxLayout="row wrap" fxLayoutGap="grid" value="crystallumHordes">
-      <mat-button-toggle fxFlex="50" (click)="selectFaction('crystallumHordes')" value="crystallumHordes">Crystallum
-        Hordes</mat-button-toggle>
+    <mat-button-toggle-group fxLayout="row wrap" fxLayoutGap="grid" value="atlanticCouncil">
       <mat-button-toggle fxFlex="50" (click)="selectFaction('atlanticCouncil')" value="atlanticCouncil">Atlantic Council
       </mat-button-toggle>
+      <mat-button-toggle fxFlex="50" (click)="selectFaction('crystallumHordes')" value="crystallumHordes" disabled>Crystallum
+        Hordes</mat-button-toggle>
       <mat-button-toggle fxFlex="50" (click)="selectFaction('fed')" value="fed">Federation of Columbia
       </mat-button-toggle>
       <mat-button-toggle fxFlex="50" (click)="selectFaction('vlast')" value="vlast">Vlast</mat-button-toggle>
@@ -26,7 +26,7 @@
     </app-unit-selector>
   </div>
 
-  <div fxFlex fxLayout="row wrap" fxLayoutGap="5px grid" class="flex unit-entries">
+  <div fxFlex fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="5px grid" class="flex unit-entries">
     <app-unit-entry [fxFlex]="isGalleryMode ? 50 : 100" *ngFor="let unit of currentList" [unitSelection]="unit"
       (unitRemovalEvent)="removeUnit($event)" (pointsUpdateEvent)="updatePoints($event)"
       (weaponsExportEvent)="addWeapons($event)"></app-unit-entry>
