@@ -15,6 +15,7 @@ export interface UnitEntry {
   mutEx?: string[];
   weapons: string[];
   abilities: string[];
+  transportCapacity?: number;
   upgrades: UnitUpgrade[];
 }
 

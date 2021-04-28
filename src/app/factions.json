@@ -11,13 +11,552 @@
   },
   "atlanticCouncil": {
     "name": "Atlantic Council",
-    "hq": [],
-    "core": [],
-    "armoredSupport": [],
-    "fireSupport": [],
-    "airSupport": [],
-    "special": [],
-    "transport": []
+    "hq": [
+      { "name": "Infantry Commander",
+        "id": "infantryCommander",
+        "basePoints": 12,
+        "move": 6,
+        "totalIntegrity": 3,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["infantry"],
+        "breakValue": 10,
+        "squadComposition": 1,
+        "weapons": ["crystalMusket", "cqc"],
+        "abilities": ["infantryCommand1"],
+        "upgrades": [
+          {
+            "label": "The command base may be mounted in a Crusader APC Transport.",
+            "upgradeType": {
+              "type": "transport",
+              "id": "crusader",
+              "mutuallyExclusive": ["staghound"]
+            }
+          },
+          {
+            "label": "The command base may be mounted in a Staghound Transport.",
+            "upgradeType": {
+              "type": "transport",
+              "id": "staghound",
+              "mutuallyExclusive": ["crusader"]
+            }
+          },
+          {
+            "label": "Arm the command base with anti-tank grenades at 2 pts.",
+            "cost": 2,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankGrenade"
+            }
+          },
+          {
+            "label": "Arm the command base with an Anti-Tank Hand Cannon at 6 pts.",
+            "cost": 6,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "atHandCannon"
+            }
+          },
+          {
+            "label": "The command base may either upgrade its command value to 2 for 4 pts.",
+            "cost": 4,
+            "upgradeType": {
+              "type": "ability",
+              "id": "infantryCommand2",
+              "mutuallyExclusive": ["infantryCommand1", "infantryCommand3"]
+            }
+          },
+          {
+            "label": "The command base may either upgrade its command value to 3 for 8 pts.",
+            "cost": 8,
+            "upgradeType": {
+              "type": "ability",
+              "id": "infantryCommand3",
+              "mutuallyExclusive": ["infantryCommand1", "infantryCommand2"]
+            }
+          }
+        ]
+      },
+      { "name": "Tank Commander in Renard",
+        "id": "tankCommanderRenard",
+        "basePoints": 25,
+        "move": 12,
+        "totalIntegrity": 5,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["vehicle", "wheeled"],
+        "breakValue": 10,
+        "squadComposition": 1,
+        "weapons": ["shardLauncher", "cqc"],
+        "abilities": ["vehicleCommand1","agile"],
+        "upgrades": [
+          {
+            "label": "The command base may either upgrade its command value to 2 for 4 pts.",
+            "cost": 4,
+            "upgradeType": {
+              "type": "ability",
+              "id": "vehicleCommand2",
+              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+            }
+          },
+          {
+            "label": "The command base may either upgrade its command value to 3 for 8 pts.",
+            "cost": 8,
+            "upgradeType": {
+              "type": "ability",
+              "id": "vehicleCommand3",
+              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+            }
+          }
+        ]
+      },
+      { "name": "Tank Commander in Chevalier",
+        "id": "tankCommanderChevalier",
+        "basePoints": 40,
+        "move": 12,
+        "totalIntegrity": 7,
+        "defense": {
+          "dice": 2,
+          "save": "4+"
+        },
+        "unitTags": ["vehicle", "tracked"],
+        "breakValue": 10,
+        "squadComposition": 1,
+        "weapons": ["crystalLance", "shardLauncher", "cqc"],
+        "abilities": ["vehicleCommand1", "smoke", "agile"],
+        "upgrades": [
+          {
+            "label": "The command base may either upgrade its command value to 2 for 4 pts.",
+            "cost": 4,
+            "upgradeType": {
+              "type": "ability",
+              "id": "vehicleCommand2",
+              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+            }
+          },
+          {
+            "label": "The command base may either upgrade its command value to 3 for 8 pts.",
+            "cost": 8,
+            "upgradeType": {
+              "type": "ability",
+              "id": "vehicleCommand3",
+              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+            }
+          },
+          {
+            "label": "The command tank may replace their Crystal Lance with a Delayed Burst Shard Launcher for 2 points.",
+            "cost": 2,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "dbShardLauncher",
+              "mutuallyExclusive": ["crystalLance"]
+            }
+          }
+        ]
+      },
+      { "name": "Tank Commander in Aegis",
+        "id": "tankCommanderAegis",
+        "basePoints": 48,
+        "move": 8,
+        "totalIntegrity": 8,
+        "defense": {
+          "dice": 2,
+          "save": "4+"
+        },
+        "unitTags": ["vehicle", "tracked"],
+        "breakValue": 10,
+        "squadComposition": 1,
+        "weapons": ["shardCannon", "shardLauncher", "cqc"],
+        "abilities": ["vehicleCommand1","smoke", "solidDefense"],
+        "upgrades": [
+          {
+            "label": "The command base may either upgrade its command value to 2 for 4 pts.",
+            "cost": 4,
+            "upgradeType": {
+              "type": "ability",
+              "id": "vehicleCommand2",
+              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+            }
+          },
+          {
+            "label": "The command base may either upgrade its command value to 3 for 8 pts.",
+            "cost": 8,
+            "upgradeType": {
+              "type": "ability",
+              "id": "vehicleCommand3",
+              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+            }
+          }
+        ]
+      }
+    ],
+    "core": [
+      { "name": "Gendarmes Platoon",
+        "id": "gendarmes",
+        "basePoints": 7,
+        "move": 6,
+        "totalIntegrity": 3,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["infantry"],
+        "breakValue": 10,
+        "squadComposition": 3,
+        "weapons": ["crystalMusket", "cqc"],
+        "abilities": [],
+        "upgrades": [
+          {
+            "label": "Add up to 3 more infantry bases at 7 pts per base.",
+            "cost": 7,
+            "limit": 3,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          },
+          {
+            "label": "All bases in the unit may be mounted in a Crusader APC Transport.",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "crusader",
+              "mutuallyExclusive": ["staghound"]
+            }
+          },
+          {
+            "label": "All bases in the unit may be mounted in a Staghound Transport.",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "staghound",
+              "mutuallyExclusive": ["crusader"]
+            }
+          },
+          {
+            "label": "Arm all bases with anti-tank grenades at 2 pts per base.",
+            "cost": 2,
+            "multiplyCostByBases": true,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankGrenade"
+            }
+          },
+          {
+            "label": "Arm any base with an Anti-Tank Hand Cannon at 6 pts per base.",
+            "limit": "baseCount",
+            "cost": 6,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "atHandCannon"
+            }
+          }
+        ]
+      },
+      { "name": "Men-At-Arms Platoon",
+        "id": "menatarms",
+        "basePoints": 12,
+        "move": 6,
+        "totalIntegrity": 3,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["infantry"],
+        "breakValue": 10,
+        "squadComposition": 3,
+        "weapons": ["pikeArquebus", "riflePike"],
+        "abilities": [],
+        "upgrades": [
+          {
+            "label": "Add up to 2 more infantry bases at 12 points per base.",
+            "cost": 12,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          },
+          {
+            "label": "All bases in the unit may be mounted in a Crusader APC Transport.",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "crusader",
+              "mutuallyExclusive": ["staghound"]
+            }
+          },
+          {
+            "label": "All bases in the unit may be mounted in a Staghound Transport.",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "staghound",
+              "mutuallyExclusive": ["crusader"]
+            }
+          },
+          {
+            "label": "Arm all bases with Anti-Tank grenades at 2 pts per base.",
+            "cost": 2,
+            "multiplyCostByBases": true,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankGrenade"
+            }
+          }
+        ]
+      }
+    ],
+    "armoredSupport": [
+      { "name": "Renard Platoon",
+        "id": "renard",
+        "basePoints": 19,
+        "move": 12,
+        "totalIntegrity": 5,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["vehicle", "wheeled"],
+        "breakValue": 9,
+        "squadComposition": 3,
+        "weapons": ["shardLauncher", "cqc"],
+        "abilities": ["agile"],
+        "upgrades": [
+          {
+            "label": "Add up to 2 more vehicles for 19 pts per model.",
+            "cost": 24,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          }
+        ]
+      },
+      { "name": "Chevalier Platoon",
+        "id": "m2a1Grant",
+        "basePoints": 35,
+        "move": 12,
+        "totalIntegrity": 7,
+        "defense": {
+          "dice": 2,
+          "save": "4+"
+        },
+        "unitTags": ["vehicle", "tracked"],
+        "breakValue": 10,
+        "squadComposition": 3,
+        "weapons": ["crystalLance", "shardLauncher", "cqc"],
+        "abilities": ["smoke", "agile"],
+        "upgrades": [
+          {
+            "label": "Add up to 2 more Battle Tanks for 35 pts per model.",
+            "cost": 33,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          },
+          {
+            "label": "Any vehicle may replace their Crystal Lance with an Delayed Burst Shard Launcher for 2 points per model",
+            "cost": 2,
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "weapon",
+              "id": "dbShardLauncher",
+              "mutuallyExclusive": ["crystalLance"]
+            }
+          }
+        ]
+      },
+      { "name": "Aegis Platoon",
+        "id": "aegis",
+        "basePoints": 43,
+        "move": 8,
+        "totalIntegrity": 8,
+        "defense": {
+          "dice": 2,
+          "save": "4+"
+        },
+        "unitTags": ["vehicle", "tracked"],
+        "breakValue": 10,
+        "squadComposition": 1,
+        "weapons": ["shardCannon", "shardLauncher", "cqc"],
+        "abilities": ["smoke", "solidDefense"],
+        "upgrades": [
+           {
+            "label": "Add up to 2 more Battle Tanks for 44 pts per model.",
+            "cost": 43,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          }
+        ]
+      }
+    ],
+    "fireSupport": [
+      { "name": "Starling Battery",
+        "id": "starling",
+        "basePoints": 17,
+        "move": 10,
+        "totalIntegrity": 5,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["vehicle", "tracked", "artillery"],
+        "breakValue": 9,
+        "squadComposition": 3,
+        "weapons": ["shardHowitzer", "cqc"],
+        "abilities": [],
+        "upgrades": [
+          {
+            "label": "All vehicles in the unit may replace their Shard Howitzer with a Multi-Launcher for 3 points per model.",
+            "cost": 3,
+            "multiplyCostByBases": true,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "multiLauncher",
+              "mutuallyExclusive": ["shardHowitzer"]
+            }
+          }
+        ]
+      },
+      { "name": "Hedgehog Artillery Platoon",
+        "id": "hedgehog",
+        "basePoints": 18,
+        "move": 6,
+        "totalIntegrity": 3,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["infantry", "artillery"],
+        "breakValue": 10,
+        "squadComposition": 3,
+        "weapons": ["shardMortar", "cqc"],
+        "abilities": [],
+        "upgrades": [
+          {
+            "label": "Add up to 2 more infantry bases at 18 points per base.",
+            "cost": 8,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          },
+          {
+            "label": "All bases in the unit may be mounted in a Crusader APC Transport.",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "crusader",
+              "mutuallyExclusive": ["staghound"]
+            }
+          },
+          {
+            "label": "All bases in the unit may be mounted in a Staghound Transport.",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "staghound",
+              "mutuallyExclusive": ["crusader"]
+            }
+          }
+        ]
+      }
+    ],
+    "airSupport": [
+      { "name": "Harrier II VTOL",
+        "id": "harrierII",
+        "basePoints": 40,
+        "move": 24,
+        "totalIntegrity": 6,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["vehicle", "aerial"],
+        "squadComposition": 1,
+        "weapons": ["amCrystalLance", "rocketSystem"],
+        "abilities": ["solidDefense"],
+        "upgrades": []
+      }
+    ],
+    "special": [
+      { "name": "Dover Deflector",
+        "id": "dover",
+        "basePoints": 56,
+        "move": 6,
+        "totalIntegrity": 9,
+        "defense": {
+          "dice": 2,
+          "save": "3+"
+        },
+        "unitTags": ["vehicle", "tracked", "war machine"],
+        "breakValue": 10,
+        "squadComposition": 1,
+        "weapons": ["crystalFusilier", "shardLauncher", "warmachineCQC"],
+        "abilities": ["mightyBulwark", "smoke", "selfRepairModule", "energyDispersionField", "critThreshold2", "critThreshold5"],
+        "upgrades": []
+      }
+    ],
+    "transport": [
+      { "name": "Crusader APC",
+        "id": "crusader",
+        "basePoints": 17,
+        "move": 10,
+        "totalIntegrity": 6,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["vehicle", "tracked"],
+        "squadComposition": 1,
+        "transportCapacity": 2,
+        "weapons": ["crystalFusilier", "crystalMusket", "cqc"],
+        "abilities": ["smoke", "transport2"],
+        "upgrades": [
+          {
+            "label": "Arm any Crusader APC with an anti-tank rocket at 1 pts per vehicle.",
+            "cost": 1,
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankRocket"
+            }
+          }
+        ]
+      },
+      { "name": "Staghound",
+        "id": "staghound",
+        "basePoints": 10,
+        "move": 12,
+        "totalIntegrity": 4,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["vehicle", "wheeled"],
+        "squadComposition": 1,
+        "transportCapacity": 1,
+        "weapons": ["crystalMusket", "cqc"],
+        "abilities": ["transport1", "agile"],
+        "upgrades": [
+          {
+            "label": "Arm any Staghound with an anti-tank rocket at 1 point per vehicle.",
+            "cost": 1,
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankRocket"
+            }
+          }
+        ]
+      }
+    ]
   },
   "fed": {
     "name": "Federation of Columbia",
@@ -71,7 +610,7 @@
           },
           {
             "label": "The command base may either upgrade its command value to 2 for 4 pts.",
-            "cost": 5,
+            "cost": 4,
             "upgradeType": {
               "type": "ability",
               "id": "infantryCommand2",
@@ -80,7 +619,7 @@
           },
           {
             "label": "The command base may either upgrade its command value to 3 for 8 pts.",
-            "cost": 10,
+            "cost": 8,
             "upgradeType": {
               "type": "ability",
               "id": "infantryCommand3",
@@ -315,7 +854,7 @@
         "id": "minuteman",
         "basePoints": 12,
         "move": 6,
-        "totalIntegrity": 3,
+        "totalIntegrity": 4,
         "defense": {
           "dice": 2,
           "save": "5+"
@@ -597,6 +1136,7 @@
         },
         "unitTags": ["vehicle", "tracked"],
         "squadComposition": 1,
+        "transportCapacity": 2,
         "weapons": ["torchLL2Autocannon", "l2TorchRifle", "cqc"],
         "abilities": ["smoke", "transport2"],
         "upgrades": [
@@ -622,6 +1162,7 @@
         },
         "unitTags": ["vehicle", "wheeled"],
         "squadComposition": 1,
+        "transportCapacity": 1,
         "weapons": ["l2TorchRifle", "cqc"],
         "abilities": ["transport1"],
         "upgrades": [
@@ -690,7 +1231,7 @@
           },
           {
             "label": "The command base may either upgrade its command value to 2 for 4 pts.",
-            "cost": 5,
+            "cost": 4,
             "upgradeType": {
               "type": "ability",
               "id": "infantryCommand2",
@@ -699,7 +1240,7 @@
           },
           {
             "label": "The command base may either upgrade its command value to 3 for 8 pts.",
-            "cost": 10,
+            "cost": 8,
             "upgradeType": {
               "type": "ability",
               "id": "infantryCommand3",
@@ -1208,6 +1749,7 @@
         },
         "unitTags": ["vehicle", "tracked"],
         "squadComposition": 1,
+        "transportCapacity": 2,
         "weapons": ["heavyAcceleratorCannon", "cqc"],
         "abilities": ["smoke", "weakFrame", "transport2"],
         "upgrades": [
@@ -1233,6 +1775,7 @@
         },
         "unitTags": ["vehicle", "wheeled"],
         "squadComposition": 1,
+        "transportCapacity": 3,
         "weapons": ["acceleratorAutocannon", "cqc"],
         "abilities": ["smoke", "weakFrame", "transport3"],
         "upgrades": [

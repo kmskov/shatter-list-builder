@@ -111,6 +111,21 @@
     { "id": "critThreshold8",
       "label": "Critical Threshold (8)",
       "type": "P"
+    },
+    {
+      "id": "solidDefense",
+      "label": "Solid Defense",
+      "type": "P"
+    },
+    {
+      "id": "mightyBulwark",
+      "label": "Mighty Bulwark",
+      "type": "A"
+    },
+    {
+      "id": "energyDispersionField",
+      "label": "Energy Dispersion Field",
+      "type": "P"
     }
   ],
   "weapons": [
@@ -559,6 +574,160 @@
       {
         "min": 8,
         "max": 24,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "crystalMusket",
+      "name": "Crystal Musket", 
+      "type": "energy", 
+      "tags":["pierce 1", "small arms"], 
+      "rof": 1, 
+      "range":
+      {
+        "min": 0,
+        "max": 14,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "atHandCannon",
+      "name": "Anti-Tank Hand Cannon", 
+      "type": "explosive", 
+      "tags":["pierce 2", "reload 1"], 
+      "rof": 1, 
+      "range":
+      {
+        "min": 0,
+        "max": 10,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    { "id": "shardLauncher",
+      "name": "Shard Launcher", 
+      "type": "ballistic", 
+      "tags":["small arms", "spread", "turret"], 
+      "rof": 3, 
+      "range":
+      {
+        "min": 0,
+        "max": 18,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "crystalLance",
+      "name": "Crystal Lance", 
+      "type": "energy", 
+      "tags":["pierce 1", "turret"], 
+      "rof": 1, 
+      "range":
+      {
+        "min": 0,
+        "max": 18,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    { "id": "dbShardLauncher",
+      "name": "Delayed Burst Shard Launcher", 
+      "type": "energy", 
+      "tags":["anti-air", "EMP rounds", "spread", "turret"], 
+      "rof": 1, 
+      "range":
+      {
+        "min": 8,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 3
+    },
+    { "id": "shardCannon",
+      "name": "Shard Cannon", 
+      "type": "energy", 
+      "tags":["pierce 2", "reload 1", "turret"], 
+      "rof": 1, 
+      "range":
+      {
+        "min": 10,
+        "max": 32,
+        "melee": false
+      }, 
+      "damage": 3
+    },
+    { "id": "pikeArquebus",
+      "name": "Pike Arquebus", 
+      "type": "energy", 
+      "tags":["small arms", "pierce 1"], 
+      "rof": 1, 
+      "range":
+      {
+        "min": 0,
+        "max": 8,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "riflePike",
+      "name": "Rifle Pike", 
+      "type": "energy", 
+      "tags":["reach", "fusion"], 
+      "rof": 2, 
+      "range":
+      {
+        "melee": true
+      }, 
+      "damage": 1
+    },
+    { "id": "shardHowitzer",
+      "name": "Shard Howitzer", 
+      "type": "ballistic", 
+      "tags":["pierce 1", "reload 2", "indirect fire"], 
+      "rof": "D3+1", 
+      "range":
+      {
+        "min": 8,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    { "id": "shardMortar",
+      "name": "Shard Mortar", 
+      "type": "explosive", 
+      "tags":["blast", "reload 1", "indirect fire", "small arms"], 
+      "rof": "D3+1", 
+      "range":
+      {
+        "min": 8,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "amCrystalLance",
+      "name": "Aerial Mounted Crystal Lance", 
+      "type": "energy", 
+      "tags":["pierce 1"], 
+      "rof": 1, 
+      "range":
+      {
+        "min": 0,
+        "max": 18,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    { "id": "crystalFusilier",
+      "name": "Crystal Fusilier", 
+      "type": "energy", 
+      "tags":["pierce 1", "turret"], 
+      "rof": 2, 
+      "range":
+      {
+        "min": 8,
+        "max": 20,
         "melee": false
       }, 
       "damage": 1

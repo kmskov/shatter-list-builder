@@ -63,7 +63,7 @@
       </div>
     </div>
 
-    <mat-expansion-panel *ngIf="unitEntry.upgrades && !isGalleryMode" fxFlex="100" fxLayout="column">
+    <mat-expansion-panel *ngIf="unitEntry.upgrades && unitEntry.upgrades.length > 0 && !isGalleryMode" fxFlex="100" fxLayout="column">
       <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center">
         <mat-panel-title class="unit-title">
           <h4 class="attribute-title">Upgrades:</h4>
