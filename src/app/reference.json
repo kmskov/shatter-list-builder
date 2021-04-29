@@ -126,6 +126,11 @@
       "id": "energyDispersionField",
       "label": "Energy Dispersion Field",
       "type": "P"
+    },
+    {
+      "id": "shield1",
+      "label": "Shield (1)",
+      "type": "P"
     }
   ],
   "weapons": [

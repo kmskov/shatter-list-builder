@@ -253,6 +253,15 @@
               "type": "weapon",
               "id": "atHandCannon"
             }
+          },
+          {
+            "label": "Give all models Shield 1 for 2 points per base.",
+            "cost": 2,
+            "multiplyCostByBases": true,
+            "upgradeType": {
+              "type": "ability",
+              "id": "shield1"
+            }
           }
         ]
       },
@@ -304,6 +313,15 @@
             "upgradeType": {
               "type": "weapon",
               "id": "antiTankGrenade"
+            }
+          },
+          {
+            "label": "Give all models Shield 1 for 2 points per base.",
+            "cost": 2,
+            "multiplyCostByBases": true,
+            "upgradeType": {
+              "type": "ability",
+              "id": "shield1"
             }
           }
         ]
