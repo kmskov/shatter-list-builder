@@ -13,7 +13,7 @@ export class AppComponent {
   title = 'Project Shatter - List Builder';
 
   currFactionName = 'atlanticCouncil';
-  currFactionLabel: string;
+  currFactionLabel = factions[this.currFactionName].name;
   currPointsTotal = 0;
 
   currentList: UnitSelection[] = [];
