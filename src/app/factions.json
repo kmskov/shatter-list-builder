@@ -76,6 +76,14 @@
               "id": "infantryCommand3",
               "mutuallyExclusive": ["infantryCommand1", "infantryCommand2"]
             }
+          },
+          {
+            "label": "The command base may take Shield 1 for 2 points..",
+            "cost": 2,
+            "upgradeType": {
+              "type": "ability",
+              "id": "shield1"
+            }
           }
         ]
       },
@@ -382,8 +390,7 @@
             "limit": "baseCount",
             "upgradeType": {
               "type": "weapon",
-              "id": "dbShardLauncher",
-              "mutuallyExclusive": ["crystalLance"]
+              "id": "dbShardLauncher"
             }
           }
         ]
