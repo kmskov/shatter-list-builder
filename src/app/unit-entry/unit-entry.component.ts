@@ -21,6 +21,7 @@ export class UnitEntryComponent implements OnInit {
   unitTransport: UnitSelection;
   transportPoints = 0;
 
+  isExpanded = true;
   isGalleryMode = false;
 
   @ViewChild(UnitEntryComponent) unitTransportEntryCmp: UnitEntryComponent;
@@ -132,7 +133,7 @@ export class UnitEntryComponent implements OnInit {
         break;
       case 'transport':
         if (this.unitTransport === undefined) {
-          this.unitTransport = {factionName: this.unitSelection.factionName, unitType: 'transport', id: upgrade.upgradeType.id};
+          this.unitTransport = { factionName: this.unitSelection.factionName, unitType: 'transport', id: upgrade.upgradeType.id };
         } else {
           this.unitTransportEntryCmp.addTransport();
         }
@@ -263,7 +264,7 @@ export class UnitEntryComponent implements OnInit {
     let totalPoints = (this.unitEntry.basePoints * this.unitEntry.squadComposition) + this.transportPoints;
 
     this.unitEntry.upgrades.forEach(upg => {
-      if (upg.current > 0 && upg.upgradeType.type !== 'extraBase')  {
+      if (upg.current > 0 && upg.upgradeType.type !== 'extraBase') {
         if (upg.hasOwnProperty('multiplyCostByBases')) {
           totalPoints += upg.cost * this.unitEntry.squadComposition;
         } else {
@@ -297,14 +298,25 @@ export class UnitEntryComponent implements OnInit {
       this.unitTransportEntryCmp.toggleGalleryMode(enable);
     }
     if (enable) {
-      const currWeapons: Weapon[] = [];
-      this.weaponEntries.forEach(curr => {
-        if (curr.active) {
-          currWeapons.push(curr);
-        }
-      });
+      this.isExpanded = enable;
+      const currWeapons: Weapon[] = this.getActiveWeapons();
+      if (this.unitTransportEntryCmp !== undefined) {
+        this.unitTransportEntryCmp.getActiveWeapons().forEach(we => {
+          currWeapons.push(we);
+        });
+      }
       this.weaponsExportEvent.emit(currWeapons);
     }
+  }
+
+  getActiveWeapons(): Weapon[] {
+    const currWeapons: Weapon[] = [];
+    this.weaponEntries.forEach(curr => {
+      if (curr.active) {
+        currWeapons.push(curr);
+      }
+    });
+    return currWeapons;
   }
 
   getNumberArray(length: number): number[] {

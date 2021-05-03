@@ -2,10 +2,15 @@
   display: none !important;
 }
 
-table {
-  width: 100%;
+.faction-selector {
+  word-wrap: normal;
 }
 
-.weapon-summary {
-  margin: 0;
+/* app-unit-entry.gallery {
+  width: 50%;
 }
+
+div.gallery {
+  height: 500px;
+} */
+

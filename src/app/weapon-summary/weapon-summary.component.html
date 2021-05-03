@@ -1,0 +1,42 @@
+<table mat-table [dataSource]="weaponList" class="weapon-summary">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let weapon"> {{weapon.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let weapon"> {{weapon.type | titlecase}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="tags">
+    <th mat-header-cell *matHeaderCellDef> Tags </th>
+    <td mat-cell *matCellDef="let weapon">
+      <span *ngFor="let tag of weapon.tags; let isLast=last">{{tag | titlecase}}{{isLast ? '' : ', '}}</span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="rof">
+    <th mat-header-cell class="center-text" *matHeaderCellDef> Rate of Fire </th>
+    <td mat-cell class="center-text" *matCellDef="let weapon"> {{weapon.rof}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="range">
+    <th mat-header-cell class="center-text" *matHeaderCellDef> Range </th>
+    <ng-container *matCellDef="let weapon">
+      <td mat-cell class="center-text" *ngIf="weapon.range.melee===true;else range">M</td>
+      <ng-template #range>
+        <td mat-cell class="center-text">{{weapon.range.min}}-{{weapon.range.max}}"</td>
+      </ng-template>
+    </ng-container>
+  </ng-container>
+
+  <ng-container matColumnDef="damage">
+    <th mat-header-cell class="center-text" *matHeaderCellDef> Damage </th>
+    <td mat-cell class="center-text" *matCellDef="let weapon"> {{weapon.damage}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="['name','type','tags','rof','range','damage']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['name','type','tags','rof','range','damage'];"></tr>
+</table>

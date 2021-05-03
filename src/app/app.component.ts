@@ -16,7 +16,10 @@ export class AppComponent {
   currFactionLabel = factions[this.currFactionName].name;
   currPointsTotal = 0;
 
-  currentList: UnitSelection[] = [];
+  pointsLimit = 450;
+  isOverPointsLimit = false;
+
+  currUnitList: UnitSelection[] = [];
 
   weaponSummary = new Map<string, Weapon>();
 
@@ -25,34 +28,44 @@ export class AppComponent {
 
   isGalleryMode = false;
 
-  unitTypeSortOrder: string[] = ['hq', 'core', 'armoredSupport', 'fireSupport' , 'airSupport', 'special'];
+  unitTypeSortOrder: string[] = ['hq', 'core', 'armoredSupport', 'fireSupport', 'airSupport', 'special'];
+
+  factionSummary: any[] = [{ id: 'atlanticCouncil', name: 'Atlantic Council', disabled: false },
+                  { id: 'crystallumHordes', name: 'Crystallum Hordes', disabled: true  },
+                  { id: 'fed', name: 'Federation of Columbia', disabled: false  },
+                  { id: 'vlast', name: 'Vlast', disabled: false  }]
 
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
   addUnit(unitSelection: UnitSelection): void {
-    this.currentList.push(unitSelection);
-    this.currentList.sort((a: UnitSelection, b: UnitSelection) => {
+    this.currUnitList.push(unitSelection);
+    this.currUnitList.sort((a: UnitSelection, b: UnitSelection) => {
       return this.unitTypeSortOrder.indexOf(a.unitType) - this.unitTypeSortOrder.indexOf(b.unitType);
     });
   }
 
   removeUnit(unitSelection: UnitSelection): void {
-    const index = this.currentList.indexOf(unitSelection, 0);
+    const index = this.currUnitList.indexOf(unitSelection, 0);
     if (index > -1) {
-      this.currentList.splice(index, 1);
+      this.currUnitList.splice(index, 1);
     }
     this.unitSelectionCmp.removeUnit(unitSelection.unitType, unitSelection.id);
   }
 
   updatePoints(difference: number): void {
     this.currPointsTotal += difference;
+    if (this.currPointsTotal > this.pointsLimit) {
+      this.isOverPointsLimit = true;
+    } else {
+      this.isOverPointsLimit = false;
+    }
   }
 
   selectFaction(factionName: string): void {
     if (factionName !== this.currFactionName) {
       this.currFactionName = undefined;
       this.changeDetectorRef.detectChanges();
-      this.currentList = [];
+      this.currUnitList = [];
       this.currPointsTotal = 0;
       this.currFactionName = factionName;
       this.changeDetectorRef.detectChanges();

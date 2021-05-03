@@ -3,77 +3,31 @@
     <h1 fxFlex="40" fxFlexOffset="5">{{title}}</h1>
     <h2 fxFlex="30">Current Faction: {{currFactionLabel | titlecase}}</h2>
     <div fxFlex="20" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
-      <h2>Total Points: {{currPointsTotal}} / 450</h2>
-      <mat-icon color="warn" *ngIf="currPointsTotal > 450">error</mat-icon>
+      <h2>Total Points: {{currPointsTotal}} / {{pointsLimit}}</h2>
+      <mat-icon color="warn" *ngIf="isOverPointsLimit">error</mat-icon>
     </div>
-    <button fxFlex="10" mat-icon-button (click)="toggleGalleryMode()" [disabled]="currentList.length === 0">
+    <button fxFlex="10" mat-icon-button (click)="toggleGalleryMode()" [disabled]="currUnitList.length === 0">
       <mat-icon>view_compact</mat-icon>
     </button>
   </mat-toolbar>
 
   <div fxFlex="25" fxLayout="column" fxLayoutGap="5px" [fxHide]="isGalleryMode">
     <mat-button-toggle-group fxLayout="row wrap" fxLayoutGap="grid" value="atlanticCouncil">
-      <mat-button-toggle fxFlex="50" (click)="selectFaction('atlanticCouncil')" value="atlanticCouncil">Atlantic Council
-      </mat-button-toggle>
-      <mat-button-toggle fxFlex="50" (click)="selectFaction('crystallumHordes')" value="crystallumHordes" disabled>Crystallum
-        Hordes</mat-button-toggle>
-      <mat-button-toggle fxFlex="50" (click)="selectFaction('fed')" value="fed">Federation of Columbia
-      </mat-button-toggle>
-      <mat-button-toggle fxFlex="50" (click)="selectFaction('vlast')" value="vlast">Vlast</mat-button-toggle>
+      <mat-button-toggle *ngFor="let fac of factionSummary" fxFlex="50" (click)="selectFaction(fac.id)" [value]="fac.id"
+        [disabled]="fac.disabled" class="faction-selector">{{fac.name}}</mat-button-toggle>
     </mat-button-toggle-group>
 
     <app-unit-selector *ngIf="currFactionName" [factionName]="currFactionName" (unitSelectionEvent)="addUnit($event)">
     </app-unit-selector>
   </div>
 
-  <div fxFlex fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="5px grid" class="flex unit-entries">
-    <app-unit-entry [fxFlex]="isGalleryMode ? 50 : 100" *ngFor="let unit of currentList" [unitSelection]="unit"
-      (unitRemovalEvent)="removeUnit($event)" (pointsUpdateEvent)="updatePoints($event)"
-      (weaponsExportEvent)="addWeapons($event)"></app-unit-entry>
+  <div [fxFlex]="isGalleryMode ? 100 : 75" fxLayout="row wrap" fxLayoutGap="5px grid" [class.gallery]="isGalleryMode">
+    <app-unit-entry *ngFor="let unit of currUnitList, let i = index" [fxFlex]="isGalleryMode ? 50 : 100"
+      [unitSelection]="unit" (unitRemovalEvent)="removeUnit($event)" (pointsUpdateEvent)="updatePoints($event)"
+      (weaponsExportEvent)="addWeapons($event)" [class.gallery]="isGalleryMode"></app-unit-entry>
   </div>
 
-  <div fxFlex="100" *ngIf="weaponSummary.size > 0">
-    <table mat-table [dataSource]="getWeaponEntries()" class="weapon-summary">
-
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let weapon"> {{weapon.name}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="type">
-        <th mat-header-cell *matHeaderCellDef> Type </th>
-        <td mat-cell *matCellDef="let weapon"> {{weapon.type | titlecase}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="tags">
-        <th mat-header-cell *matHeaderCellDef> Tags </th>
-        <td mat-cell *matCellDef="let weapon">
-          <span *ngFor="let tag of weapon.tags; let isLast=last">{{tag | titlecase}}{{isLast ? '' : ', '}}</span>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="rof">
-        <th mat-header-cell class="center-text" *matHeaderCellDef> Rate of Fire </th>
-        <td mat-cell class="center-text" *matCellDef="let weapon"> {{weapon.rof}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="range">
-        <th mat-header-cell class="center-text" *matHeaderCellDef> Range </th>
-        <ng-container *matCellDef="let weapon">
-          <td mat-cell class="center-text" *ngIf="weapon.range.melee===true;else range">M</td>
-          <ng-template #range>
-            <td mat-cell class="center-text">{{weapon.range.min}}-{{weapon.range.max}}"</td>
-          </ng-template>
-        </ng-container>
-      </ng-container>
-
-      <ng-container matColumnDef="damage">
-        <th mat-header-cell class="center-text" *matHeaderCellDef> Damage </th>
-        <td mat-cell class="center-text" *matCellDef="let weapon"> {{weapon.damage}} </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="['name','type','tags','rof','range','damage']"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['name','type','tags','rof','range','damage'];"></tr>
-    </table>
+  <div fxFlex="100" *ngIf="weaponSummary.size > 0" class="weapon-summary">
+    <app-weapon-summary [weaponList]="getWeaponEntries()"></app-weapon-summary>
   </div>
 </div>

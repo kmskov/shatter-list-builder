@@ -1,6 +1,7 @@
 {
   "crystallumHordes": {
     "name": "Crystallum Hordes",
+    "diabled": true,
     "hq": [],
     "core": [],
     "armoredSupport": [],
@@ -11,6 +12,7 @@
   },
   "atlanticCouncil": {
     "name": "Atlantic Council",
+    "diabled": false,
     "hq": [
       { "name": "Infantry Commander",
         "id": "infantryCommander",
@@ -585,6 +587,7 @@
   },
   "fed": {
     "name": "Federation of Columbia",
+    "diabled": false,
     "hq": [
       { "name": "Infantry Commander",
         "id": "infantryCommander",
@@ -1206,6 +1209,7 @@
   },
   "vlast": {
     "name": "Vlast",
+    "diabled": false,
     "hq": [
       { "name": "Infantry Commander",
         "id": "infantryCommander",
@@ -1231,7 +1235,7 @@
             }
           },
           {
-            "label": "The command base may be mounted in a BMP-90U Transport.",
+            "label": "The command base may be mounted in a BTR-90U Transport.",
             "upgradeType": {
               "type": "transport",
               "id": "btr90u",
@@ -1757,8 +1761,8 @@
         },
         "unitTags": ["vehicle", "tracked", "artillery", "war machine"],
         "squadComposition": 1,
-        "weapons": ["d700redemption", "vehicleSRPK", "warmachineCQC", "critThreshold3", "critThreshold8"],
-        "abilities": ["defensiveMG", "crystallumTreatedArmor"],
+        "weapons": ["d700redemption", "vehicleSRPK", "warmachineCQC"],
+        "abilities": ["defensiveMG", "crystallumTreatedArmor", "critThreshold3", "critThreshold6"],
         "upgrades": []
       }
     ],

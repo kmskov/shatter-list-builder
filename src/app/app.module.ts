@@ -15,12 +15,14 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { WeaponSummaryComponent } from './weapon-summary/weapon-summary.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UnitEntryComponent,
-    UnitSelectorComponent
+    UnitSelectorComponent,
+    WeaponSummaryComponent
   ],
   imports: [
     BrowserModule,
