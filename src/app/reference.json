@@ -118,9 +118,9 @@
       "type": "P"
     },
     {
-      "id": "mightyBulwark",
-      "label": "Mighty Bulwark",
-      "type": "A"
+      "id": "closeCombatExpert",
+      "label": "Close Combat Expert",
+      "type": "P"
     },
     {
       "id": "energyDispersionField",

@@ -277,7 +277,7 @@
       },
       { "name": "Men-At-Arms Platoon",
         "id": "menatarms",
-        "basePoints": 12,
+        "basePoints": 11,
         "move": 6,
         "totalIntegrity": 3,
         "defense": {
@@ -288,11 +288,11 @@
         "breakValue": 10,
         "squadComposition": 3,
         "weapons": ["pikeArquebus", "riflePike"],
-        "abilities": [],
+        "abilities": ["closeCombatExpert"],
         "upgrades": [
           {
-            "label": "Add up to 2 more infantry bases at 12 points per base.",
-            "cost": 12,
+            "label": "Add up to 2 more infantry bases at 11 points per base.",
+            "cost": 11,
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
@@ -515,7 +515,7 @@
     "special": [
       { "name": "Dover Deflector",
         "id": "dover",
-        "basePoints": 56,
+        "basePoints": 52,
         "move": 6,
         "totalIntegrity": 9,
         "defense": {
@@ -526,7 +526,7 @@
         "breakValue": 10,
         "squadComposition": 1,
         "weapons": ["crystalFusilier", "shardLauncher", "warmachineCQC"],
-        "abilities": ["mightyBulwark", "smoke", "selfRepairModule", "energyDispersionField", "critThreshold2", "critThreshold5"],
+        "abilities": ["smoke", "selfRepairModule", "energyDispersionField", "critThreshold2", "critThreshold5"],
         "upgrades": []
       }
     ],
@@ -1360,7 +1360,7 @@
       },
       { "name": "Tank Commander in T-72-R",
         "id": "tankCommanderT72r",
-        "basePoints": 38,
+        "basePoints": 45,
         "move": 8,
         "totalIntegrity": 8,
         "defense": {
@@ -1582,7 +1582,7 @@
       },
       { "name": "T-72-R Platoon",
         "id": "t72r",
-        "basePoints": 41,
+        "basePoints": 40,
         "move": 8,
         "totalIntegrity": 8,
         "defense": {
@@ -1596,8 +1596,8 @@
         "abilities": ["smoke", "crystallumTreatedArmor"],
         "upgrades": [
           {
-            "label": "Add up to 2 more tanks at 49 points per model.",
-            "cost": 41,
+            "label": "Add up to 2 more tanks at 40 points per model.",
+            "cost": 40,
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
@@ -1735,7 +1735,7 @@
     "airSupport": [
       { "name": "Mi-24 Hind Assault VTOL",
         "id": "mi24hind",
-        "basePoints": 49,
+        "basePoints": 48,
         "move": 16,
         "totalIntegrity": 8,
         "defense": {
@@ -1752,7 +1752,7 @@
     "special": [
       { "name": "Object 755 Godhammer",
         "id": "object755godhammer",
-        "basePoints": 64,
+        "basePoints": 59,
         "move": 4,
         "totalIntegrity": 9,
         "defense": {
