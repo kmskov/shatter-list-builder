@@ -37,6 +37,6 @@
     <td mat-cell class="center-text" *matCellDef="let weapon"> {{weapon.damage}} </td>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="['name','type','tags','rof','range','damage']"></tr>
-  <tr mat-row *matRowDef="let row; columns: ['name','type','tags','rof','range','damage'];"></tr>
+  <tr mat-header-row *matHeaderRowDef="headers"></tr>
+  <tr mat-row *matRowDef="let row; columns: headers;"></tr>
 </table>

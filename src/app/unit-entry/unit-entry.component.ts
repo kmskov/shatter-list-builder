@@ -112,6 +112,9 @@ export class UnitEntryComponent implements OnInit {
         this.weaponEntries.forEach(we => {
           if (upgrade.upgradeType.id === we.id) {
             we.active = true;
+            if (upgrade.limitValue > 1) {
+              we.number = upgrade.current;
+            }
           } else if (mutExWeapons.includes(we.id)) {
             we.active = false;
           }
@@ -169,10 +172,16 @@ export class UnitEntryComponent implements OnInit {
     switch (upgrade.upgradeType.type) {
       case 'weapon':
         this.weaponEntries.forEach(we => {
-          if (upgrade.upgradeType.id === we.id) {
-            we.active = false;
-          } else if (upgrade.upgradeType.mutuallyExclusive.includes(we.id)) {
-            we.active = true;
+          if (upgrade.current === 0) {
+            if (upgrade.upgradeType.id === we.id) {
+              we.active = false;
+            } else if (upgrade.upgradeType.mutuallyExclusive.includes(we.id)) {
+              we.active = true;
+            }
+          } else {
+            if (upgrade.upgradeType.id === we.id && upgrade.limitValue > 1) {
+              we.number = upgrade.current;
+            }
           }
         });
         break;
@@ -325,16 +334,6 @@ export class UnitEntryComponent implements OnInit {
       a.push(i);
     }
     return a;
-  }
-
-  getWeaponNames(): string[] {
-    const res: string[] = [];
-    this.weaponEntries.forEach(curr => {
-      if (curr.active) {
-        res.push(curr.name);
-      }
-    });
-    return res;
   }
 
   getAbilityNames(): string[] {

@@ -20,7 +20,9 @@ export interface Weapon {
   rof: any;
   range: WeaponRange;
   damage: number;
+
   active?: boolean;
+  number?: number;
 }
 
 export function weaponSort(a: Weapon, b: Weapon) {

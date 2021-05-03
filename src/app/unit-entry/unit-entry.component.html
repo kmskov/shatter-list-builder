@@ -50,8 +50,8 @@
     <div fxFlex="50" fxLayout="row" class="unit-weapons">
       <h4 class="attribute-title">Weapons:</h4>
       <div fxFlexOffset="2.5" fxLayout="row wrap">
-        <p *ngFor="let weapon of getWeaponNames(); let isLast=last" class="attribute">
-          {{weapon}}{{isLast ? '' : ',&nbsp;'}}</p>
+        <p *ngFor="let weapon of getActiveWeapons(); let isLast=last" class="attribute">
+          {{weapon.name}}{{weapon.number > 0 ? ' [' + weapon.number + ']' : ''}}{{isLast ? '' : ',&nbsp;'}}</p>
       </div>
     </div>
 
