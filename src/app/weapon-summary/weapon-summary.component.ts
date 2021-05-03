@@ -13,6 +13,9 @@ export class WeaponSummaryComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.weaponList.forEach(we => {
+      we.tags.sort();
+    });
   }
 
 }
