@@ -81,7 +81,7 @@
           </button>
           <p class="attribute">{{upgrade.label}}</p>
           <p class="upgrade-current" *ngIf="upgrade.current > 0">[{{upgrade.current}}]</p>
-          <mat-icon color="warn" *ngIf="upgrade.current > upgrade.limitValue">error</mat-icon>
+          <mat-icon color="warn" *ngIf="showUpgradeWarning(upgrade)">error</mat-icon>
         </mat-list-item>
       </mat-list>
     </mat-expansion-panel>

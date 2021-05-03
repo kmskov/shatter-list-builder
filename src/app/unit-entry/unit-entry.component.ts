@@ -242,6 +242,16 @@ export class UnitEntryComponent implements OnInit {
     upgrade.limitValue = Math.round(this.unitEntry.squadComposition / transportCapacity);
   }
 
+  showUpgradeWarning(upgrade: UnitUpgrade): boolean {
+    let res = false;
+    if (upgrade.current > upgrade.limitValue) {
+      res = true;
+    } else if (upgrade.upgradeType.type === 'transport' && upgrade.current > 0 && upgrade.current !== upgrade.limitValue) {
+      res = true;
+    }
+    return res;
+  }
+
   addTransport(): void {
     this.unitEntry.squadComposition += 1;
     this.updateAllBaseCountLimits();
@@ -341,7 +351,11 @@ export class UnitEntryComponent implements OnInit {
     const res: string[] = [];
     this.abilityEntries.forEach(curr => {
       if (curr.active) {
-        res.push(curr.label + ' (' + curr.type + ')');
+        let label =  curr.label;
+        if (curr.type === 'A') {
+          label += ' [A]';
+        }
+        res.push(label);
       }
     });
     return res;
