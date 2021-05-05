@@ -118,7 +118,8 @@ export class AppComponent {
         hc2 += unitEntryHeights[j];
         j -= 1;
       }
-    } while (i < j);
+      console.log('i: ' + i + ', hc1: ' + hc1 + ', j: ' + j + ', hc2: ' + hc2);
+    } while (i <= j);
 
     return hc1 >= hc2 ? hc1 + 10 : hc2 + 10;
   }
