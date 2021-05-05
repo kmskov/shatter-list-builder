@@ -25,6 +25,12 @@ export interface Weapon {
   number?: number;
 }
 
+export interface WeaponRange {
+  min?: number;
+  max?: number;
+  melee: boolean;
+}
+
 export function weaponSort(a: Weapon, b: Weapon) {
   if (a.range.melee === b.range.melee) {
     return a.name.localeCompare(b.name);
@@ -33,8 +39,6 @@ export function weaponSort(a: Weapon, b: Weapon) {
   }
 }
 
-export interface WeaponRange {
-  min?: number;
-  max?: number;
-  melee: boolean;
+export function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }

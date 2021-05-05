@@ -21,10 +21,9 @@
     </app-unit-selector>
   </div>
 
-  <div [fxFlex]="isGalleryMode ? 100 : 75" fxLayout="row wrap" fxLayoutGap="5px grid" [class.gallery]="isGalleryMode">
-    <app-unit-entry *ngFor="let unit of currUnitList, let i = index" [fxFlex]="isGalleryMode ? 50 : 100"
-      [unitSelection]="unit" (unitRemovalEvent)="removeUnit($event)" (pointsUpdateEvent)="updatePoints($event)"
-      (weaponsExportEvent)="addWeapons($event)" [class.gallery]="isGalleryMode"></app-unit-entry>
+  <div [fxFlex]="isGalleryMode ? 100 : 75" fxLayout="column wrap" fxLayoutGap="5px grid" [style.height.px]="isGalleryMode ? unitEntryDivHeight : undefined">
+    <app-unit-entry *ngFor="let unit of currUnitList, let i = index" [unitSelection]="unit" (unitRemovalEvent)="removeUnit($event)" 
+      (pointsUpdateEvent)="updatePoints($event)" (weaponsExportEvent)="addWeapons($event)" [class.gallery]="isGalleryMode"></app-unit-entry>
   </div>
 
   <div fxFlex="100" *ngIf="weaponSummary.size > 0" class="weapon-summary">

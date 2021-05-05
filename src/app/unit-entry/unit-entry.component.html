@@ -1,4 +1,4 @@
-<mat-expansion-panel *ngIf="unitEntry" class="unit-entry" hideToggle [expanded]="isExpanded">
+<mat-expansion-panel *ngIf="unitEntry" hideToggle="true" [expanded]="isExpanded === true" (closed)="setExpanded()">
 
   <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="space-between center">
     <mat-panel-title class="unit-title">

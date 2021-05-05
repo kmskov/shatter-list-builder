@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import factions from '../factions.json';
 import reference from '../reference.json';
 import { UnitEntry, UnitUpgrade } from './unit-entry';
@@ -30,7 +30,7 @@ export class UnitEntryComponent implements OnInit {
   @Output() pointsUpdateEvent = new EventEmitter<number>();
   @Output() weaponsExportEvent = new EventEmitter<Weapon[]>();
 
-  constructor() { }
+  constructor(private el: ElementRef, private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit() {
     // console.log('unit-entry.ngOnInit starting');
@@ -46,6 +46,14 @@ export class UnitEntryComponent implements OnInit {
     this.recalcTotalUnitPoints();
 
     // console.log('unit-entry.ngOnInit finished');
+  }
+
+  getComponentHeight(): number {
+    return this.el.nativeElement.offsetHeight;
+  }
+
+  setExpanded(): void {
+    this.isExpanded = false;
   }
 
   loadUpgrades(): void {
@@ -101,7 +109,6 @@ export class UnitEntryComponent implements OnInit {
   }
 
   addUpgrade(upgrade: UnitUpgrade): void {
-
     upgrade.current += 1;
 
     this.disableMutExUpgrades(upgrade, true);
@@ -138,7 +145,7 @@ export class UnitEntryComponent implements OnInit {
         if (this.unitTransport === undefined) {
           this.unitTransport = { factionName: this.unitSelection.factionName, unitType: 'transport', id: upgrade.upgradeType.id };
         } else {
-          this.unitTransportEntryCmp.addTransport();
+          this.unitTransportEntryCmp.addTransport(1);
         }
         if (upgrade.limit === 'baseCount') {
           this.updateBaseCountLimit(upgrade, upgrade.upgradeType.id);
@@ -203,7 +210,7 @@ export class UnitEntryComponent implements OnInit {
           this.unitTransport = undefined;
           this.transportPoints = 0;
         } else {
-          this.unitTransportEntryCmp.subtractTransport();
+          this.unitTransportEntryCmp.addTransport(-1);
         }
         if (upgrade.limit === 'baseCount') {
           this.updateBaseCountLimit(upgrade, upgrade.upgradeType.id);
@@ -252,14 +259,8 @@ export class UnitEntryComponent implements OnInit {
     return res;
   }
 
-  addTransport(): void {
-    this.unitEntry.squadComposition += 1;
-    this.updateAllBaseCountLimits();
-    this.recalcTotalUnitPoints();
-  }
-
-  subtractTransport(): void {
-    this.unitEntry.squadComposition -= 1;
+  addTransport(num: number): void {
+    this.unitEntry.squadComposition += num;
     this.updateAllBaseCountLimits();
     this.recalcTotalUnitPoints();
   }
@@ -278,7 +279,6 @@ export class UnitEntryComponent implements OnInit {
   }
 
   recalcTotalUnitPoints(): void {
-
     let difference = 0;
     let totalPoints = (this.unitEntry.basePoints * this.unitEntry.squadComposition) + this.transportPoints;
 
@@ -317,7 +317,8 @@ export class UnitEntryComponent implements OnInit {
       this.unitTransportEntryCmp.toggleGalleryMode(enable);
     }
     if (enable) {
-      this.isExpanded = enable;
+      this.isExpanded = true;
+      this.changeDetectorRef.detectChanges();
       const currWeapons: Weapon[] = this.getActiveWeapons();
       if (this.unitTransportEntryCmp !== undefined) {
         this.unitTransportEntryCmp.getActiveWeapons().forEach(we => {
@@ -338,20 +339,12 @@ export class UnitEntryComponent implements OnInit {
     return currWeapons;
   }
 
-  getNumberArray(length: number): number[] {
-    const a: number[] = [];
-    for (let i = 0; i < length; i++) {
-      a.push(i);
-    }
-    return a;
-  }
-
   getAbilityNames(): string[] {
     // console.log(JSON.stringify(this.abilityEntries));
     const res: string[] = [];
     this.abilityEntries.forEach(curr => {
       if (curr.active) {
-        let label =  curr.label;
+        let label = curr.label;
         if (curr.type === 'A') {
           label += ' [A]';
         }
