@@ -515,9 +515,9 @@
     "special": [
       { "name": "Dover Deflector",
         "id": "dover",
-        "basePoints": 52,
+        "basePoints": 49,
         "move": 6,
-        "totalIntegrity": 9,
+        "totalIntegrity": 10,
         "defense": {
           "dice": 2,
           "save": "3+"
@@ -526,8 +526,18 @@
         "breakValue": 10,
         "squadComposition": 1,
         "weapons": ["crystalFusilier", "shardLauncher", "warmachineCQC"],
-        "abilities": ["smoke", "selfRepairModule", "energyDispersionField", "critThreshold2", "critThreshold5"],
-        "upgrades": []
+        "abilities": ["smoke", "selfRepairModule", "energyDispersionField", "critThreshold2", "critThreshold6"],
+        "upgrades": [
+          {
+            "label": "Arm the vehicle with up to 2 anti-tank rockets at 1 pts per rocket.",
+            "cost": 1,
+            "limit": 2,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankRocket"
+            }
+          }
+        ]
       }
     ],
     "transport": [
