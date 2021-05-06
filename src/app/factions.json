@@ -773,7 +773,7 @@
       },
       { "name": "Tank Commander in XSM1 Columbia",
         "id": "tankCommanderXSM1Columbia",
-        "basePoints": 65,
+        "basePoints": 61,
         "move": 6,
         "totalIntegrity": 11,
         "defense": {
@@ -785,7 +785,7 @@
         "breakValue": 10,
         "squadComposition": 1,
         "weapons": ["xsc2SuperTorchCannon", "torchMGSystem", "warmachineCQC"],
-        "abilities": ["vehicleCommand1","panoramicCockpit", "kineticThermalPlating", "selfRepairModule", "critThreshold3", "critThreshold8"],
+        "abilities": ["vehicleCommand1","panoramicCockpit", "kineticThermalPlating", "selfRepairModule", "critThreshold3", "critThreshold7"],
         "upgrades": [
           {
             "label": "The command base may either upgrade its command value to 2 for 4 pts.",
@@ -1136,7 +1136,7 @@
     "special": [
       { "name": "XSM1 Columbia Super-Heavy Tank",
         "id": "xsm1Columbia",
-        "basePoints": 60,
+        "basePoints": 56,
         "move": 6,
         "totalIntegrity": 11,
         "defense": {
@@ -1148,7 +1148,7 @@
         "breakValue": 10,
         "squadComposition": 1,
         "weapons": ["xsc2SuperTorchCannon", "torchMGSystem", "warmachineCQC"],
-        "abilities": ["panoramicCockpit", "kineticThermalPlating", "selfRepairModule", "critThreshold3", "critThreshold8"],
+        "abilities": ["panoramicCockpit", "kineticThermalPlating", "selfRepairModule", "critThreshold3", "critThreshold7"],
         "upgrades": []
       }
     ],
@@ -1280,7 +1280,7 @@
       },
       { "name": "Tank Commander in BRDM-2B-U",
         "id": "tankCommanderBRDM",
-        "basePoints": 23,
+        "basePoints": 24,
         "move": 12,
         "totalIntegrity": 5,
         "defense": {
@@ -1336,7 +1336,7 @@
         "breakValue": 10,
         "squadComposition": 1,
         "weapons": ["heavyAcceleratorCannon", "vehicleSRPK", "cqc"],
-        "abilities": ["vehicleCommand1", "weakFrame"],
+        "abilities": ["vehicleCommand1", "weakFrame", "smoke"],
         "upgrades": [
           {
             "label": "The command base may either upgrade its command value to 2 for 4 pts.",
