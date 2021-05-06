@@ -110,7 +110,7 @@ export class AppComponent {
     let hc1 = unitEntryHeights[0];
     let hc2 = 0;
 
-    do {
+    for (let g = 1; g < unitEntryHeights.length; g++) {
       if (hc1 <= hc2) {
         hc1 += unitEntryHeights[i];
         i += 1;
@@ -119,7 +119,7 @@ export class AppComponent {
         j -= 1;
       }
       console.log('i: ' + i + ', hc1: ' + hc1 + ', j: ' + j + ', hc2: ' + hc2);
-    } while (i <= j);
+    }
 
     return hc1 >= hc2 ? hc1 + 10 : hc2 + 10;
   }
