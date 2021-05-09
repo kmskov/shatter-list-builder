@@ -246,7 +246,7 @@ export class UnitEntryComponent implements OnInit {
     if (transportId !== undefined) {
       transportCapacity = factions[this.unitSelection.factionName].transport.find(i => i.id === transportId).transportCapacity;
     }
-    upgrade.limitValue = Math.round(this.unitEntry.squadComposition / transportCapacity);
+    upgrade.limitValue = Math.ceil(this.unitEntry.squadComposition / transportCapacity);
   }
 
   showUpgradeWarning(upgrade: UnitUpgrade): boolean {
