@@ -1,18 +1,310 @@
 {
   "crystallumHordes": {
     "name": "Crystallum Hordes",
-    "diabled": true,
-    "hq": [],
-    "core": [],
-    "armoredSupport": [],
-    "fireSupport": [],
+    "enabled": true,
+    "hq": [
+      { "name": "Command Node",
+        "id": "commandNode",
+        "basePoints": 24,
+        "move": 0,
+        "totalIntegrity": 8,
+        "defense": {
+          "dice": 2,
+          "save": "4+"
+        },
+        "unitTags": ["infantry"],
+        "breakValue": 9,
+        "squadComposition": 1,
+        "weapons": ["psychicBlast"],
+        "abilities": ["infantryCommand1", "immobile", "fearless"],
+        "upgrades": [
+          {
+            "label": "The command node may either upgrade its command value to 2 for 4 pts.",
+            "cost": 4,
+            "upgradeType": {
+              "type": "ability",
+              "id": "infantryCommand2",
+              "mutuallyExclusive": ["infantryCommand1", "infantryCommand3"]
+            }
+          },
+          {
+            "label": "The command node may either upgrade its command value to 3 for 8 pts.",
+            "cost": 8,
+            "upgradeType": {
+              "type": "ability",
+              "id": "infantryCommand3",
+              "mutuallyExclusive": ["infantryCommand1", "infantryCommand2"]
+            }
+          }
+        ]
+      }
+    ],
+    "core": [
+      { "name": "Shattered Men Horde",
+        "id": "shatteredMen",
+        "basePoints": 4,
+        "move": 6,
+        "totalIntegrity": 3,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["infantry"],
+        "breakValue": 9,
+        "squadComposition": 3,
+        "weapons": ["crystallumClaws"],
+        "abilities": ["fearless"],
+        "upgrades": [
+          {
+            "label": "Add up to 3 more infantry bases at 4 pts per base.",
+            "cost": 4,
+            "limit": 3,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          },
+          {
+            "label": "The shattered men horde may be mounted in Crystallum Drill Transports.",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "drill"
+            }
+          }
+        ]
+      },
+      { "name": "Brute Horde",
+        "id": "brutes",
+        "basePoints": 13,
+        "move": 4,
+        "totalIntegrity": 4,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["infantry"],
+        "breakValue": 9,
+        "squadComposition": 3,
+        "weapons": ["monstrousCrystallumClaws"],
+        "abilities": ["crystallumTreatedArmor", "fearless"],
+        "upgrades": [
+          {
+            "label": "Add up to 2 more infantry bases at 13 points per base.",
+            "cost": 11,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          }
+        ]
+      },
+      { "name": "Assassin Platoon",
+        "id": "assassins",
+        "basePoints": 7,
+        "move": 6,
+        "totalIntegrity": 3,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["infantry"],
+        "breakValue": 9,
+        "squadComposition": 3,
+        "weapons": ["crystallumCarbine", "crystallumClaws"],
+        "abilities": ["fearless"],
+        "upgrades": [
+          {
+            "label": "Add up to 3 more infantry bases at 7 points per base.",
+            "cost": 7,
+            "limit": 3,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          },
+          {
+            "label": "The assassin platoon may be mounted in Crystallum Drill Transports.",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "drill"
+            }
+          },
+          {
+            "label": "Upgrade any model's Carbine to a Sniper for 3 points per base..",
+            "cost": 3,
+            "multiplyCostByBases": true,
+            "upgradeType": {
+              "type": "weapon",
+              "id": "crystallumSniper",
+              "mutuallyExclusive": ["crystallumCarbine"]
+            }
+          }
+        ]
+      }
+    ],
+    "armoredSupport": [
+      { "name": "Metallic Crawler Platoon",
+        "id": "metallicCrawler",
+        "basePoints": 28,
+        "move": 10,
+        "totalIntegrity": 7,
+        "defense": {
+          "dice": 2,
+          "save": "4+"
+        },
+        "unitTags": ["vehicle", "tracked"],
+        "breakValue": 9,
+        "squadComposition": 3,
+        "weapons": ["empAutocannon", "crystallumMachineGun", "cqc"],
+        "abilities": ["weakFrame"],
+        "upgrades": [
+          {
+            "label": "Add up to 2 more vehicles for 28 pts per model.",
+            "cost": 28,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          },
+          {
+            "label": "Upgrade any model's EMP Autocannon to an AA Gun for -1 pts",
+            "cost": -1,
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "weapon",
+              "id": "crystallumAAGun"
+            }
+          }
+        ]
+      },
+      { "name": "Metallic Shambler Platoon",
+        "id": "metallicShambler",
+        "basePoints": 18,
+        "move": 8,
+        "totalIntegrity": 7,
+        "defense": {
+          "dice": 2,
+          "save": "4+"
+        },
+        "unitTags": ["vehicle", "walker"],
+        "breakValue": 9,
+        "squadComposition": 3,
+        "weapons": ["heavyScavangedWeapon", "cqc"],
+        "abilities": ["weakFrame"],
+        "upgrades": [
+          {
+            "label": "Add up to 2 more shamblers for 18 pts per model.",
+            "cost": 18,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          }
+        ]
+      },
+      { "name": "Walker Node",
+        "id": "walkerNode",
+        "basePoints": 22,
+        "move": 8,
+        "totalIntegrity": 7,
+        "defense": {
+          "dice": 2,
+          "save": "4+"
+        },
+        "unitTags": ["vehicle", "walker"],
+        "breakValue": 9,
+        "squadComposition": 1,
+        "weapons": ["psychicBlast", "cqc"],
+        "abilities": ["commandNetwork", "weakFrame"],
+        "upgrades": [
+           {
+            "label": "Add 1 more walker node for 22 points.",
+            "cost": 22,
+            "limit": 1,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          }
+        ]
+      }
+    ],
+    "fireSupport": [
+      { "name": "Skyfire Platoon",
+        "id": "skyfire",
+        "basePoints": 18,
+        "move": 6,
+        "totalIntegrity": 4,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["infantry", "artillery"],
+        "breakValue": 9,
+        "squadComposition": 3,
+        "weapons": ["crystalHowitzer", "cqc"],
+        "abilities": ["fearless"],
+        "upgrades": [
+           {
+            "label": "Add 2 more artillery bases for 18 points per base.",
+            "cost": 18,
+            "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          }
+        ]
+      }
+    ],
     "airSupport": [],
-    "special": [],
-    "transport": []
+    "special": [
+      { "name": "Monstrocity",
+        "id": "monstrocity",
+        "basePoints": 57,
+        "move": 8,
+        "totalIntegrity": 11,
+        "defense": {
+          "dice": 2,
+          "save": "3+"
+        },
+        "unitTags": ["vehicle", "walker", "war machine"],
+        "breakValue": 10,
+        "squadComposition": 1,
+        "weapons": ["massiveScavangedWeapon", "colossalCrystallumClaws"],
+        "abilities": ["crystallumTreatedArmor", "panoramicCockpit", "critThreshold7", "critThreshold3"],
+        "upgrades": [
+           {
+            "label": "Add 1 more monstrocity for 57 points.",
+            "cost": 57,
+            "limit": 1,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          }
+        ]
+      }
+    ],
+    "transport": [
+      { "name": "Drill Transport",
+        "id": "drill",
+        "basePoints": 19,
+        "move": 8,
+        "totalIntegrity": 5,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["vehicle", "tracked"],
+        "squadComposition": 1,
+        "transportCapacity": 3,
+        "weapons": ["crystallumMachineGun", "drill"],
+        "abilities": ["fearless", "transport3", "arriveAnywhere", "weakFrame"],
+        "upgrades": []
+      }
+    ]
   },
   "atlanticCouncil": {
     "name": "Atlantic Council",
-    "diabled": false,
+    "enabled": true,
     "hq": [
       { "name": "Infantry Commander",
         "id": "infantryCommander",
@@ -597,7 +889,7 @@
   },
   "fed": {
     "name": "Federation of Columbia",
-    "diabled": false,
+    "enabled": true,
     "hq": [
       { "name": "Infantry Commander",
         "id": "infantryCommander",
@@ -1219,7 +1511,7 @@
   },
   "vlast": {
     "name": "Vlast",
-    "diabled": false,
+    "enabled": true,
     "hq": [
       { "name": "Infantry Commander",
         "id": "infantryCommander",

@@ -131,6 +131,26 @@
       "id": "shield1",
       "label": "Shield (1)",
       "type": "P"
+    },
+    {
+      "id": "arriveAnywhere",
+      "label": "Arrive Anywhere",
+      "type": "A"
+    },
+    {
+      "id": "fearless",
+      "label": "Fearless",
+      "type": "P"
+    },
+    {
+      "id": "commandNetwork",
+      "label": "Command Network",
+      "type": "P"
+    },
+    {
+      "id": "immobile",
+      "label": "Immobile",
+      "type": "P"
     }
   ],
   "weapons": [
@@ -736,6 +756,167 @@
         "melee": false
       }, 
       "damage": 1
+    },
+    { "id": "psychicBlast",
+      "name": "Psychic Blast", 
+      "type": "energy", 
+      "tags":["pierce 1", "point blank"], 
+      "rof": 2, 
+      "range":
+      {
+        "min": 0,
+        "max": 14,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    { "id": "crystallumClaws",
+      "name": "Crystallum Claws", 
+      "type": "kinetic", 
+      "tags":["pierce 1", "small arms"], 
+      "rof": 1, 
+      "range":
+      {
+        "melee": true
+      }, 
+      "damage": 1
+    },
+    { "id": "monstrousCrystallumClaws",
+      "name": "Monstrous Crystallum Claws", 
+      "type": "kinetic", 
+      "tags":["pierce 1", "disruptor field"], 
+      "rof": 2, 
+      "range":
+      {
+        "melee": true
+      }, 
+      "damage": 2
+    },
+    { "id": "crystallumCarbine",
+      "name": "Crystallum Carbine", 
+      "type": "ballistic", 
+      "tags":["EMP rounds", "small arms"], 
+      "rof": 2, 
+      "range":
+      {
+        "min": 0,
+        "max": 10,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "crystallumSniper",
+      "name": "Crystallum Sniper", 
+      "type": "ballistic", 
+      "tags":["pierce 1", "disruptor field", "sniper", "reload 1"], 
+      "rof": 1, 
+      "range":
+      {
+        "min": 12,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    { "id": "empAutocannon",
+      "name": "EMP Autocannon", 
+      "type": "ballistic", 
+      "tags":["EMP rounds", "turret"], 
+      "rof": 3, 
+      "range":
+      {
+        "min": 8,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "crystallumMachineGun",
+      "name": "Crystallum Machine Gun", 
+      "type": "ballistic", 
+      "tags":["small arms", "overcharge weapons"], 
+      "rof": 2, 
+      "range":
+      {
+        "min": 0,
+        "max": 18,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "crystallumAAGun",
+      "name": "Crystallum AA Gun", 
+      "type": "ballistic", 
+      "tags":["pierce 1", "anti-air"], 
+      "rof": 2, 
+      "range":
+      {
+        "min": 8,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    { "id": "heavyScavangedWeapon",
+      "name": "Heavy Scavanged Weapon System", 
+      "type": "ballistic", 
+      "tags":["pierce 1", "reload 1", "disruptor field"], 
+      "rof": 1, 
+      "range":
+      {
+        "min": 8,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 3
+    },
+    { "id": "crystalHowitzer",
+      "name": "Crystal Howitzer", 
+      "type": "ballistic", 
+      "tags":["pierce 1", "reload 2", "indirect fire"], 
+      "rof": "D3+1", 
+      "range":
+      {
+        "min": 8,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    { "id": "massiveScavangedWeapon",
+      "name": "Massive Scavanged Weapon System", 
+      "type": "ballistic", 
+      "tags":["pierce 2", "reload 2"], 
+      "rof": 3, 
+      "range":
+      {
+        "min": 12,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 3
+    },
+    { "id": "colossalCrystallumClaws",
+      "name": "Colossal Crystallum Claws", 
+      "type": "kinetic", 
+      "tags":["pierce 2", "disruptor field"], 
+      "rof": 3, 
+      "range":
+      {
+        "melee": true
+      }, 
+      "damage": 3
+    },
+    { "id": "drill",
+      "name": "Drill", 
+      "type": "kinetic", 
+      "tags":["pierce 1"], 
+      "rof": 1, 
+      "range":
+      {
+        "melee": true
+      }, 
+      "damage": 2
     }
   ]
 }

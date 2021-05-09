@@ -33,7 +33,7 @@ export class AppComponent {
   unitTypeSortOrder: string[] = ['hq', 'core', 'armoredSupport', 'fireSupport', 'airSupport', 'special'];
 
   factionSummary: any[] = [{ id: 'atlanticCouncil', name: 'Atlantic Council', disabled: false },
-  { id: 'crystallumHordes', name: 'Crystallum Hordes', disabled: true },
+  { id: 'crystallumHordes', name: 'Crystallum Hordes', disabled: false },
   { id: 'fed', name: 'Federation of Columbia', disabled: false },
   { id: 'vlast', name: 'Vlast', disabled: false }];
 
