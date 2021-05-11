@@ -73,11 +73,11 @@
         <mat-list-item class="unit-upgrade" *ngFor="let upgrade of unitEntry.upgrades" [disabled]="upgrade.disabled">
           <button mat-icon-button (click)="removeUpgrade(upgrade)" class="upgrade"
             [disabled]="upgrade.disabled || upgrade.current == 0">
-            <mat-icon>remove_circle_outline</mat-icon>
+            <mat-icon>remove_circle</mat-icon>
           </button>
           <button mat-icon-button (click)="addUpgrade(upgrade)" class="upgrade"
             [disabled]="upgrade.disabled || upgrade.current >= upgrade.limitValue">
-            <mat-icon>add_circle_outline</mat-icon>
+            <mat-icon>add_circle</mat-icon>
           </button>
           <p class="attribute">{{upgrade.label}}</p>
           <p class="upgrade-current" *ngIf="upgrade.current > 0">[{{upgrade.current}}]</p>
