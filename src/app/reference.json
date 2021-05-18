@@ -928,6 +928,19 @@
         "melee": true
       }, 
       "damage": 3
+    },
+    { "id": "bomb",
+      "name": "Bomb", 
+      "type": "explosive", 
+      "tags":["disposable", "pierce 1", "disruptor field"], 
+      "rof": 2, 
+      "range":
+      {
+        "min": 0,
+        "max": 12,
+        "melee": false
+      }, 
+      "damage": 2
     }
   ]
 }

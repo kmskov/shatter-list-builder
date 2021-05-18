@@ -271,7 +271,41 @@
         ]
       }
     ],
-    "airSupport": [],
+    "airSupport": [
+      { "name": "Crystaline Carrions",
+        "id": "crystalineCarrions",
+        "basePoints": 13,
+        "move": 14,
+        "totalIntegrity": 3,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["infantry", "aerial"],
+        "squadComposition": 3,
+        "weapons": ["crystallumCarbine"],
+        "abilities": ["fearless"],
+        "upgrades": [
+          {
+            "label": "Add 3 more bases for 13 points per base.",
+            "cost": 13,
+            "limit": 3,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          },
+          {
+            "label": "Arm any base with a bomb at 1 point per base.",
+            "cost": 1,
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "weapon",
+              "id": "bomb"
+            }
+          }
+        ]
+      }
+    ],
     "special": [
       { "name": "Monstrocity",
         "id": "monstrocity",
