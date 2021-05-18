@@ -773,8 +773,8 @@
     { "id": "crystallumClaws",
       "name": "Crystallum Claws", 
       "type": "kinetic", 
-      "tags":["pierce 1", "small arms"], 
-      "rof": 1, 
+      "tags":["small arms"], 
+      "rof": 2, 
       "range":
       {
         "melee": true
@@ -795,7 +795,7 @@
     { "id": "crystallumCarbine",
       "name": "Crystallum Carbine", 
       "type": "ballistic", 
-      "tags":["EMP rounds", "small arms"], 
+      "tags":["small arms"], 
       "rof": 2, 
       "range":
       {
@@ -825,8 +825,8 @@
       "rof": 3, 
       "range":
       {
-        "min": 8,
-        "max": 24,
+        "min": 0,
+        "max": 18,
         "melee": false
       }, 
       "damage": 1
@@ -917,6 +917,17 @@
         "melee": true
       }, 
       "damage": 2
+    },
+    { "id": "explode",
+      "name": "Explode", 
+      "type": "explosive", 
+      "tags":["small arms", "blast", "self-destruct"], 
+      "rof": 1, 
+      "range":
+      {
+        "melee": true
+      }, 
+      "damage": 3
     }
   ]
 }

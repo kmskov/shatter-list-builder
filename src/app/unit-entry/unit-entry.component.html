@@ -4,7 +4,7 @@
     <mat-panel-title class="unit-title">
       <h2>{{unitEntry.name}}</h2>
     </mat-panel-title>
-    <mat-panel-description fxFlex="20" class="unit-current-points">
+    <mat-panel-description fxFlex="20" *ngIf="!(unitSelection.unitType === 'transport' && isGalleryMode)" class="unit-current-points">
       <h2>{{unitEntry.currentPoints}}</h2>
     </mat-panel-description>
     <button mat-icon-button *ngIf="unitSelection.unitType !== 'transport' && !isGalleryMode" fxFlex="10" color="warn"

@@ -5,7 +5,7 @@
     "hq": [
       { "name": "Command Node",
         "id": "commandNode",
-        "basePoints": 24,
+        "basePoints": 25,
         "move": 0,
         "totalIntegrity": 8,
         "defense": {
@@ -16,7 +16,7 @@
         "breakValue": 9,
         "squadComposition": 1,
         "weapons": ["psychicBlast"],
-        "abilities": ["infantryCommand1", "immobile", "fearless"],
+        "abilities": ["infantryCommand1", "immobile", "fearless", "commandNetwork"],
         "upgrades": [
           {
             "label": "The command node may either upgrade its command value to 2 for 4 pts.",
@@ -34,6 +34,14 @@
               "type": "ability",
               "id": "infantryCommand3",
               "mutuallyExclusive": ["infantryCommand1", "infantryCommand2"]
+            }
+          },
+          {
+            "label": "Add up to 2 Walker Nodes for 20 pts per model.",
+            "limit": 2,
+            "upgradeType": {
+              "type": "transport",
+              "id": "walkerNode"
             }
           }
         ]
@@ -94,13 +102,21 @@
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
+          },
+          {
+            "label": "The brutes may be mounted in Crystallum Drill Transports.",
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "transport",
+              "id": "drill"
+            }
           }
         ]
       },
       { "name": "Assassin Platoon",
         "id": "assassins",
-        "basePoints": 7,
+        "basePoints": 6,
         "move": 6,
         "totalIntegrity": 3,
         "defense": {
@@ -114,8 +130,8 @@
         "abilities": ["fearless"],
         "upgrades": [
           {
-            "label": "Add up to 3 more infantry bases at 7 points per base.",
-            "cost": 7,
+            "label": "Add up to 3 more infantry bases at 6 points per base.",
+            "cost": 6,
             "limit": 3,
             "upgradeType": {
               "type": "extraBase"
@@ -145,7 +161,7 @@
     "armoredSupport": [
       { "name": "Metallic Crawler Platoon",
         "id": "metallicCrawler",
-        "basePoints": 28,
+        "basePoints": 29,
         "move": 10,
         "totalIntegrity": 7,
         "defense": {
@@ -159,8 +175,8 @@
         "abilities": ["weakFrame"],
         "upgrades": [
           {
-            "label": "Add up to 2 more vehicles for 28 pts per model.",
-            "cost": 28,
+            "label": "Add up to 2 more vehicles for 29 pts per model.",
+            "cost": 29,
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
@@ -201,31 +217,6 @@
             } 
           }
         ]
-      },
-      { "name": "Walker Node",
-        "id": "walkerNode",
-        "basePoints": 22,
-        "move": 8,
-        "totalIntegrity": 7,
-        "defense": {
-          "dice": 2,
-          "save": "4+"
-        },
-        "unitTags": ["vehicle", "walker"],
-        "breakValue": 9,
-        "squadComposition": 1,
-        "weapons": ["psychicBlast", "cqc"],
-        "abilities": ["commandNetwork", "weakFrame"],
-        "upgrades": [
-           {
-            "label": "Add 1 more walker node for 22 points.",
-            "cost": 22,
-            "limit": 1,
-            "upgradeType": {
-              "type": "extraBase"
-            } 
-          }
-        ]
       }
     ],
     "fireSupport": [
@@ -248,6 +239,31 @@
             "label": "Add 2 more artillery bases for 18 points per base.",
             "cost": 18,
             "limit": 2,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          }
+        ]
+      },
+      { "name": "Shard Burstling Brood",
+        "id": "shardBurstling",
+        "basePoints": 7,
+        "move": 8,
+        "totalIntegrity": 3,
+        "defense": {
+          "dice": 2,
+          "save": "5+"
+        },
+        "unitTags": ["infantry"],
+        "breakValue": 9,
+        "squadComposition": 3,
+        "weapons": ["explode"],
+        "abilities": ["fearless"],
+        "upgrades": [
+           {
+            "label": "Add 3 more bases for 7 points per base.",
+            "cost": 7,
+            "limit": 3,
             "upgradeType": {
               "type": "extraBase"
             } 
@@ -298,7 +314,42 @@
         "transportCapacity": 3,
         "weapons": ["crystallumMachineGun", "drill"],
         "abilities": ["fearless", "transport3", "arriveAnywhere", "weakFrame"],
-        "upgrades": []
+        "upgrades": [
+          {
+            "label": "Arm any Drill transport with an anti-tank rocket at 1 pts per vehicle.",
+            "cost": 1,
+            "limit": "baseCount",
+            "upgradeType": {
+              "type": "weapon",
+              "id": "antiTankRocket"
+            }
+          }
+        ]
+      },
+      { "name": "Walker Node",
+        "id": "walkerNode",
+        "basePoints": 22,
+        "move": 8,
+        "totalIntegrity": 7,
+        "defense": {
+          "dice": 2,
+          "save": "4+"
+        },
+        "unitTags": ["vehicle", "walker"],
+        "breakValue": 9,
+        "squadComposition": 1,
+        "weapons": ["psychicBlast", "cqc"],
+        "abilities": ["commandNetwork", "weakFrame"],
+        "upgrades": [
+           {
+            "label": "Add 1 more walker node for 22 points.",
+            "cost": 22,
+            "limit": 1,
+            "upgradeType": {
+              "type": "extraBase"
+            } 
+          }
+        ]
       }
     ]
   },
