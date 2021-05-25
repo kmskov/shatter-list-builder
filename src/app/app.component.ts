@@ -83,15 +83,19 @@ export class AppComponent {
     this.unitEntries.forEach(ue => {
       ue.toggleGalleryMode(isEnable);
     });
-    await sleep(200);
+    await sleep(100 * this.unitEntries.length);
 
     if (isEnable) {
-      this.getUnitEntryComponentsHeights();
-      this.unitEntryDivHeight = this.getUnitEntryElementHeight();
+      this.unitEntryDivHeight = await this.getUnitEntryElementHeight();
     }
 
     this.isGalleryMode = !this.isGalleryMode;
     this.changeDetectorRef.detectChanges();
+
+    if (isEnable) {
+      window.print();
+      this.toggleGalleryMode(); // turn it back off
+    }
   }
 
   getUnitEntryComponentsHeights(): number[] {
@@ -118,14 +122,12 @@ export class AppComponent {
         hc2 += unitEntryHeights[j];
         j -= 1;
       }
-      console.log('i: ' + i + ', hc1: ' + hc1 + ', j: ' + j + ', hc2: ' + hc2);
     }
 
-    return hc1 >= hc2 ? hc1 + 10 : hc2 + 10;
+    return (hc1 >= hc2 ? hc1 : hc2) + 50;
   }
 
   addWeapons(weapons: Weapon[]): void {
-    // console.log(JSON.stringify(weapons));
     weapons.forEach(weap => {
       if (!this.weaponSummary.has(weap.id)) {
         this.weaponSummary.set(weap.id, weap);

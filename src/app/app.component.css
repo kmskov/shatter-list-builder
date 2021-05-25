@@ -9,3 +9,7 @@
 app-unit-entry.gallery {
   width: 50%;
 }
+
+@media print{
+  .do-not-print{display:none !important;}
+}
