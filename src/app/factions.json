@@ -5,7 +5,7 @@
     "hq": [
       { "name": "Command Node",
         "id": "commandNode",
-        "basePoints": 25,
+        "basePoints": 26,
         "move": 0,
         "totalIntegrity": 8,
         "defense": {
@@ -37,7 +37,7 @@
             }
           },
           {
-            "label": "Add up to 2 Walker Nodes for 20 pts per model.",
+            "label": "Add up to 2 Walker Nodes for 23 pts per model.",
             "limit": 2,
             "upgradeType": {
               "type": "transport",
@@ -58,7 +58,7 @@
           "save": "5+"
         },
         "unitTags": ["infantry"],
-        "breakValue": 9,
+        "breakValue": 8,
         "squadComposition": 3,
         "weapons": ["crystallumClaws"],
         "abilities": ["fearless"],
@@ -83,7 +83,7 @@
       },
       { "name": "Brute Horde",
         "id": "brutes",
-        "basePoints": 13,
+        "basePoints": 14,
         "move": 4,
         "totalIntegrity": 4,
         "defense": {
@@ -126,13 +126,13 @@
         "unitTags": ["infantry"],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["crystallumCarbine", "crystallumClaws"],
-        "abilities": ["fearless"],
+        "weapons": ["crystallumCarbine", "infantrycqc"],
+        "abilities": ["stubborn"],
         "upgrades": [
           {
-            "label": "Add up to 3 more infantry bases at 6 points per base.",
+            "label": "Add up to 2 more infantry bases at 6 points per base.",
             "cost": 6,
-            "limit": 3,
+            "limit": 2,
             "upgradeType": {
               "type": "extraBase"
             } 
@@ -171,7 +171,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["empAutocannon", "crystallumMachineGun", "cqc"],
+        "weapons": ["empAutocannon", "crystallumMachineGun", "vehiclecqc"],
         "abilities": ["weakFrame"],
         "upgrades": [
           {
@@ -205,7 +205,7 @@
         "unitTags": ["vehicle", "walker"],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["heavyScavangedWeapon", "cqc"],
+        "weapons": ["heavyScavangedWeapon", "vehiclecqc"],
         "abilities": ["weakFrame"],
         "upgrades": [
           {
@@ -222,7 +222,7 @@
     "fireSupport": [
       { "name": "Skyfire Platoon",
         "id": "skyfire",
-        "basePoints": 18,
+        "basePoints": 19,
         "move": 6,
         "totalIntegrity": 4,
         "defense": {
@@ -232,12 +232,12 @@
         "unitTags": ["infantry", "artillery"],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["crystalHowitzer", "cqc"],
+        "weapons": ["crystalHowitzer", "infantrycqc"],
         "abilities": ["fearless"],
         "upgrades": [
            {
-            "label": "Add 2 more artillery bases for 18 points per base.",
-            "cost": 18,
+            "label": "Add 2 more artillery bases for 19 points per base.",
+            "cost": 19,
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
@@ -247,7 +247,7 @@
       },
       { "name": "Shard Burstling Brood",
         "id": "shardBurstling",
-        "basePoints": 7,
+        "basePoints": 8,
         "move": 8,
         "totalIntegrity": 3,
         "defense": {
@@ -261,8 +261,8 @@
         "abilities": ["fearless"],
         "upgrades": [
            {
-            "label": "Add 3 more bases for 7 points per base.",
-            "cost": 7,
+            "label": "Add 3 more bases for 8 points per base.",
+            "cost": 8,
             "limit": 3,
             "upgradeType": {
               "type": "extraBase"
@@ -274,7 +274,7 @@
     "airSupport": [
       { "name": "Crystaline Carrions",
         "id": "crystalineCarrions",
-        "basePoints": 13,
+        "basePoints": 15,
         "move": 14,
         "totalIntegrity": 3,
         "defense": {
@@ -284,20 +284,20 @@
         "unitTags": ["infantry", "aerial"],
         "squadComposition": 3,
         "weapons": ["crystallumCarbine"],
-        "abilities": ["fearless"],
+        "abilities": ["stubborn"],
         "upgrades": [
           {
-            "label": "Add 3 more bases for 13 points per base.",
-            "cost": 13,
+            "label": "Add 2 more bases for 15 points per base.",
+            "cost": 15,
             "limit": 3,
             "upgradeType": {
               "type": "extraBase"
             } 
           },
           {
-            "label": "Arm any base with a bomb at 1 point per base.",
+            "label": "Arm up to two models with a bomb at 1 point per base.",
             "cost": 1,
-            "limit": "baseCount",
+            "limit": 2,
             "upgradeType": {
               "type": "weapon",
               "id": "bomb"
@@ -336,7 +336,7 @@
     "transport": [
       { "name": "Drill Transport",
         "id": "drill",
-        "basePoints": 19,
+        "basePoints": 20,
         "move": 8,
         "totalIntegrity": 5,
         "defense": {
@@ -372,8 +372,8 @@
         "unitTags": ["vehicle", "walker"],
         "breakValue": 9,
         "squadComposition": 1,
-        "weapons": ["psychicBlast", "cqc"],
-        "abilities": ["commandNetwork", "weakFrame"],
+        "weapons": ["psychicBlast", "vehiclecqc"],
+        "abilities": ["commandNetwork", "weakFrame", "fearless"],
         "upgrades": [
            {
             "label": "Add 1 more walker node for 22 points.",
@@ -403,7 +403,7 @@
         "unitTags": ["infantry"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["crystalMusket", "cqc"],
+        "weapons": ["crystalMusket", "infantrycqc"],
         "abilities": ["infantryCommand1"],
         "upgrades": [
           {
@@ -478,7 +478,7 @@
         "unitTags": ["vehicle", "wheeled"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["shardLauncher", "cqc"],
+        "weapons": ["shardLauncher", "vehiclecqc"],
         "abilities": ["vehicleCommand1","agile"],
         "upgrades": [
           {
@@ -513,7 +513,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["crystalLance", "shardLauncher", "cqc"],
+        "weapons": ["crystalLance", "shardLauncher", "vehiclecqc"],
         "abilities": ["vehicleCommand1", "smoke", "agile"],
         "upgrades": [
           {
@@ -557,7 +557,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["shardCannon", "shardLauncher", "cqc"],
+        "weapons": ["shardCannon", "shardLauncher", "vehiclecqc"],
         "abilities": ["vehicleCommand1","smoke", "solidDefense"],
         "upgrades": [
           {
@@ -594,7 +594,7 @@
         "unitTags": ["infantry"],
         "breakValue": 10,
         "squadComposition": 3,
-        "weapons": ["crystalMusket", "cqc"],
+        "weapons": ["crystalMusket", "infantrycqc"],
         "abilities": [],
         "upgrades": [
           {
@@ -727,7 +727,7 @@
         "unitTags": ["vehicle", "wheeled"],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["shardLauncher", "cqc"],
+        "weapons": ["shardLauncher", "vehiclecqc"],
         "abilities": ["agile"],
         "upgrades": [
           {
@@ -752,7 +752,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 10,
         "squadComposition": 3,
-        "weapons": ["crystalLance", "shardLauncher", "cqc"],
+        "weapons": ["crystalLance", "shardLauncher", "vehiclecqc"],
         "abilities": ["smoke", "agile"],
         "upgrades": [
           {
@@ -786,7 +786,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["shardCannon", "shardLauncher", "cqc"],
+        "weapons": ["shardCannon", "shardLauncher", "vehiclecqc"],
         "abilities": ["smoke", "solidDefense"],
         "upgrades": [
            {
@@ -813,7 +813,7 @@
         "unitTags": ["vehicle", "tracked", "artillery"],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["shardHowitzer", "cqc"],
+        "weapons": ["shardHowitzer", "vehiclecqc"],
         "abilities": [],
         "upgrades": [
           {
@@ -840,7 +840,7 @@
         "unitTags": ["infantry", "artillery"],
         "breakValue": 10,
         "squadComposition": 3,
-        "weapons": ["shardMortar", "cqc"],
+        "weapons": ["shardMortar", "infantrycqc"],
         "abilities": [],
         "upgrades": [
           {
@@ -875,7 +875,7 @@
     "airSupport": [
       { "name": "Harrier II VTOL",
         "id": "harrierII",
-        "basePoints": 40,
+        "basePoints": 42,
         "move": 24,
         "totalIntegrity": 6,
         "defense": {
@@ -930,7 +930,7 @@
         "unitTags": ["vehicle", "tracked"],
         "squadComposition": 1,
         "transportCapacity": 2,
-        "weapons": ["crystalFusilier", "crystalMusket", "cqc"],
+        "weapons": ["crystalFusilier", "crystalMusket", "vehiclecqc"],
         "abilities": ["smoke", "transport2"],
         "upgrades": [
           {
@@ -956,7 +956,7 @@
         "unitTags": ["vehicle", "wheeled"],
         "squadComposition": 1,
         "transportCapacity": 1,
-        "weapons": ["crystalMusket", "cqc"],
+        "weapons": ["crystalMusket", "vehiclecqc"],
         "abilities": ["transport1", "agile"],
         "upgrades": [
           {
@@ -988,7 +988,7 @@
         "unitTags": ["infantry"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["l2TorchRifle", "cqc"],
+        "weapons": ["l2TorchRifle", "infantrycqc"],
         "abilities": ["infantryCommand1"],
         "upgrades": [
           {
@@ -1055,7 +1055,7 @@
         "unitTags": ["vehicle", "wheeled"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["s2TorchAntiMatterCannon", "cqc"],
+        "weapons": ["s2TorchAntiMatterCannon", "vehiclecqc"],
         "abilities": ["vehicleCommand1","opticCamoSystems"],
         "upgrades": [
           {
@@ -1100,7 +1100,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["dualC2TorchLaserArray", "torchMGSystem", "cqc"],
+        "weapons": ["dualC2TorchLaserArray", "torchMGSystem", "vehiclecqc"],
         "abilities": ["vehicleCommand1", "smoke", "kineticThermalPlating"],
         "upgrades": [
           {
@@ -1135,7 +1135,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["torchMGSuperGatling", "torchMGSystem", "cqc"],
+        "weapons": ["torchMGSuperGatling", "torchMGSystem", "vehiclecqc"],
         "abilities": ["vehicleCommand1","smoke", "kineticThermalPlating"],
         "upgrades": [
           {
@@ -1208,7 +1208,7 @@
         "unitTags": ["infantry"],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["l2TorchRifle", "cqc"],
+        "weapons": ["l2TorchRifle", "infantrycqc"],
         "abilities": [],
         "upgrades": [
           {
@@ -1340,7 +1340,7 @@
         "unitTags": ["vehicle", "wheeled"],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["s2TorchAntiMatterCannon", "cqc"],
+        "weapons": ["s2TorchAntiMatterCannon", "vehiclecqc"],
         "abilities": ["opticCamoSystems"],
         "upgrades": [
           {
@@ -1375,7 +1375,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 10,
         "squadComposition": 3,
-        "weapons": ["dualC2TorchLaserArray", "torchMGSystem", "cqc"],
+        "weapons": ["dualC2TorchLaserArray", "torchMGSystem", "vehiclecqc"],
         "abilities": ["smoke", "kineticThermalPlating"],
         "upgrades": [
           {
@@ -1400,7 +1400,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["torchMGSuperGatling", "torchMGSystem", "cqc"],
+        "weapons": ["torchMGSuperGatling", "torchMGSystem", "vehiclecqc"],
         "abilities": ["smoke", "kineticThermalPlating"],
         "upgrades": [
            {
@@ -1427,7 +1427,7 @@
         "unitTags": ["vehicle", "tracked", "artillery"],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["slc2TorchHowitzer", "cqc"],
+        "weapons": ["slc2TorchHowitzer", "vehiclecqc"],
         "abilities": [],
         "upgrades": [
           {
@@ -1454,7 +1454,7 @@
         "unitTags": ["infantry", "artillery"],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["slc3TorchArcCannon", "cqc"],
+        "weapons": ["slc3TorchArcCannon", "infantrycqc"],
         "abilities": [],
         "upgrades": [
           {
@@ -1496,7 +1496,7 @@
     "airSupport": [
       { "name": "F42 Bluebird",
         "id": "f42Bluebird",
-        "basePoints": 37,
+        "basePoints": 39,
         "move": 20,
         "totalIntegrity": 7,
         "defense": {
@@ -1552,7 +1552,7 @@
         "unitTags": ["vehicle", "tracked"],
         "squadComposition": 1,
         "transportCapacity": 2,
-        "weapons": ["torchLL2Autocannon", "l2TorchRifle", "cqc"],
+        "weapons": ["torchLL2Autocannon", "l2TorchRifle", "vehiclecqc"],
         "abilities": ["smoke", "transport2"],
         "upgrades": [
           {
@@ -1578,7 +1578,7 @@
         "unitTags": ["vehicle", "wheeled"],
         "squadComposition": 1,
         "transportCapacity": 1,
-        "weapons": ["l2TorchRifle", "cqc"],
+        "weapons": ["l2TorchRifle", "vehiclecqc"],
         "abilities": ["transport1"],
         "upgrades": [
           {
@@ -1610,7 +1610,7 @@
         "unitTags": ["infantry"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["ak204", "cqc"],
+        "weapons": ["ak204", "infantrycqc"],
         "abilities": ["infantryCommand1"],
         "upgrades": [
           {
@@ -1677,7 +1677,7 @@
         "unitTags": ["vehicle", "wheeled"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["acceleratorAutocannon", "cqc"],
+        "weapons": ["acceleratorAutocannon", "vehiclecqc"],
         "abilities": ["vehicleCommand1","weakFrame", "agile"],
         "upgrades": [
           {
@@ -1722,7 +1722,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["heavyAcceleratorCannon", "vehicleSRPK", "cqc"],
+        "weapons": ["heavyAcceleratorCannon", "vehicleSRPK", "vehiclecqc"],
         "abilities": ["vehicleCommand1", "weakFrame", "smoke"],
         "upgrades": [
           {
@@ -1757,7 +1757,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["railgun", "vehicleSRPK", "cqc"],
+        "weapons": ["railgun", "vehicleSRPK", "vehiclecqc"],
         "abilities": ["vehicleCommand1","smoke", "crystallumTreatedArmor"],
         "upgrades": [
           {
@@ -1794,7 +1794,7 @@
         "unitTags": ["infantry"],
         "breakValue": 8,
         "squadComposition": 3,
-        "weapons": ["ak204", "cqc"],
+        "weapons": ["ak204", "infantrycqc"],
         "abilities": [],
         "upgrades": [
           {
@@ -1873,7 +1873,7 @@
         "unitTags": ["infantry"],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["aak", "cqc"],
+        "weapons": ["aak", "infantrycqc"],
         "abilities": ["stubborn", "grenadeTubes"],
         "upgrades": [
           {
@@ -1954,7 +1954,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["heavyAcceleratorCannon", "vehicleSRPK", "cqc"],
+        "weapons": ["heavyAcceleratorCannon", "vehicleSRPK", "vehiclecqc"],
         "abilities": ["smoke", "weakFrame"],
         "upgrades": [
           {
@@ -1979,7 +1979,7 @@
         "unitTags": ["vehicle", "tracked"],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["railgun", "vehicleSRPK", "cqc"],
+        "weapons": ["railgun", "vehicleSRPK", "vehiclecqc"],
         "abilities": ["smoke", "crystallumTreatedArmor"],
         "upgrades": [
           {
@@ -2004,7 +2004,7 @@
         "unitTags": ["vehicle", "wheeled"],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["acceleratorAutocannon", "cqc"],
+        "weapons": ["acceleratorAutocannon", "vehiclecqc"],
         "abilities": ["weakFrame", "agile"],
         "upgrades": [
           {
@@ -2041,7 +2041,7 @@
         "unitTags": ["vehicle", "tracked", "artillery"],
         "breakValue": 8,
         "squadComposition": 3,
-        "weapons": ["aaAcceleratorAutocannon", "cqc"],
+        "weapons": ["aaAcceleratorAutocannon", "vehiclecqc"],
         "abilities": ["weakFrame"],
         "upgrades": [
           {
@@ -2078,7 +2078,7 @@
         "unitTags": ["infantry", "artillery"],
         "breakValue": 8,
         "squadComposition": 3,
-        "weapons": ["mortar", "cqc"],
+        "weapons": ["mortar", "infantrycqc"],
         "abilities": [],
         "upgrades": [
           {
@@ -2122,7 +2122,7 @@
     "airSupport": [
       { "name": "Mi-24 Hind Assault VTOL",
         "id": "mi24hind",
-        "basePoints": 48,
+        "basePoints": 50,
         "move": 16,
         "totalIntegrity": 8,
         "defense": {
@@ -2131,7 +2131,7 @@
         },
         "unitTags": ["vehicle", "aerial", "transport"],
         "squadComposition": 1,
-        "weapons": ["atRocket", "rocketSystem", "vehicleSRPK", "cqc"],
+        "weapons": ["atRocket", "rocketSystem", "vehicleSRPK", "infantrycqc"],
         "abilities": ["crystallumTreatedArmor"],
         "upgrades": []
       }
@@ -2166,7 +2166,7 @@
         "unitTags": ["vehicle", "tracked"],
         "squadComposition": 1,
         "transportCapacity": 2,
-        "weapons": ["heavyAcceleratorCannon", "cqc"],
+        "weapons": ["heavyAcceleratorCannon", "vehiclecqc"],
         "abilities": ["smoke", "weakFrame", "transport2"],
         "upgrades": [
           {
@@ -2192,7 +2192,7 @@
         "unitTags": ["vehicle", "wheeled"],
         "squadComposition": 1,
         "transportCapacity": 3,
-        "weapons": ["acceleratorAutocannon", "cqc"],
+        "weapons": ["acceleratorAutocannon", "vehiclecqc"],
         "abilities": ["smoke", "weakFrame", "transport3"],
         "upgrades": [
           {

@@ -167,8 +167,8 @@
       }, 
       "damage":1
     },
-    { "id":"cqc", 
-      "name": "CQC", 
+    { "id":"infantrycqc", 
+      "name": "Infantry CQC", 
       "type": "kinetic", 
       "tags":["small arms"], 
       "rof": 1, 
@@ -177,6 +177,17 @@
         "melee": true
       }, 
       "damage":1
+    },
+    { "id":"vehiclecqc", 
+      "name": "Vehicle CQC", 
+      "type": "kinetic", 
+      "tags":["small arms"], 
+      "rof": 1, 
+      "range":
+      {
+        "melee": true
+      }, 
+      "damage":2
     },
     { "id":"antiTankGrenade", 
       "name": "Anti-Tank Grenade", 
@@ -795,7 +806,7 @@
     { "id": "crystallumCarbine",
       "name": "Crystallum Carbine", 
       "type": "ballistic", 
-      "tags":["small arms"], 
+      "tags":["EMP rounds", "small arms"], 
       "rof": 2, 
       "range":
       {
