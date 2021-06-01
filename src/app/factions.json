@@ -307,8 +307,8 @@
       }
     ],
     "special": [
-      { "name": "Monstrocity",
-        "id": "monstrocity",
+      { "name": "Monstrosity",
+        "id": "monstrosity",
         "basePoints": 59,
         "move": 8,
         "totalIntegrity": 11,
@@ -323,7 +323,7 @@
         "abilities": ["crystallumTreatedArmor", "panoramicCockpit", "fearless", "critThreshold7", "critThreshold3"],
         "upgrades": [
            {
-            "label": "Add 1 more monstrocity for 59 points.",
+            "label": "Add 1 more monstrosity for 59 points.",
             "cost": 59,
             "limit": 1,
             "upgradeType": {
