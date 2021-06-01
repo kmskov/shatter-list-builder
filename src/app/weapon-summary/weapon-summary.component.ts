@@ -10,7 +10,7 @@ export class WeaponSummaryComponent implements OnInit {
 
   @Input() weaponList: Weapon[] = [];
 
-  headers: string[] = ['name', 'type', 'tags', 'rof', 'range', 'damage'];
+  headers: string[] = ['name', 'tags', 'rof', 'range', 'damage'];
 
   constructor() { }
 

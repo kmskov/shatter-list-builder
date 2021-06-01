@@ -15,7 +15,7 @@ export interface Ability {
 export interface Weapon {
   id: string;
   name: string;
-  type: string;
+  type?: string;
   tags: string[];
   rof: any;
   range: WeaponRange;
