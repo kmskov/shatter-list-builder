@@ -833,20 +833,20 @@
       "name": "EMP Autocannon", 
       "type": "ballistic", 
       "tags":["EMP rounds", "turret"], 
-      "rof": 3, 
+      "rof": 2, 
       "range":
       {
         "min": 0,
         "max": 18,
         "melee": false
       }, 
-      "damage": 1
+      "damage": 2
     },
     { "id": "crystallumMachineGun",
       "name": "Crystallum Machine Gun", 
       "type": "ballistic", 
       "tags":["small arms", "overcharge weapons"], 
-      "rof": 2, 
+      "rof": 3, 
       "range":
       {
         "min": 0,

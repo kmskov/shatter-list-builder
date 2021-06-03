@@ -146,7 +146,7 @@
             }
           },
           {
-            "label": "Upgrade any model's Carbine to a Sniper for 3 points per base..",
+            "label": "Upgrade any model's Carbine to a Sniper for 3 points per base.",
             "cost": 3,
             "multiplyCostByBases": true,
             "upgradeType": {
@@ -161,7 +161,7 @@
     "armoredSupport": [
       { "name": "Metallic Crawler Platoon",
         "id": "metallicCrawler",
-        "basePoints": 29,
+        "basePoints": 31,
         "move": 10,
         "totalIntegrity": 7,
         "defense": {
@@ -175,15 +175,15 @@
         "abilities": ["weakFrame"],
         "upgrades": [
           {
-            "label": "Add up to 2 more vehicles for 29 pts per model.",
-            "cost": 29,
+            "label": "Add up to 2 more vehicles for 31 pts per model.",
+            "cost": 31,
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
             } 
           },
           {
-            "label": "Upgrade any model's EMP Autocannon to an AA Gun for -1 pts",
+            "label": "Upgrade any model's EMP Autocannon to an AA Gun for 0 points.",
             "cost": -1,
             "limit": "baseCount",
             "upgradeType": {
@@ -286,14 +286,6 @@
         "weapons": ["crystallumCarbine"],
         "abilities": ["stubborn"],
         "upgrades": [
-          {
-            "label": "Add 2 more bases for 15 points per base.",
-            "cost": 15,
-            "limit": 3,
-            "upgradeType": {
-              "type": "extraBase"
-            } 
-          },
           {
             "label": "Arm up to two models with a bomb at 1 point per base.",
             "cost": 1,
