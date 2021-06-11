@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { UnitEntryComponent } from './unit-entry/unit-entry.component';
 import { UnitSelectorComponent } from './unit-selector/unit-selector.component';
+import { WeaponSummaryComponent } from './weapon-summary/weapon-summary.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -15,7 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { WeaponSummaryComponent } from './weapon-summary/weapon-summary.component';
+import { MatSortModule } from '@angular/material/sort'
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { WeaponSummaryComponent } from './weapon-summary/weapon-summary.componen
     MatTableModule,
     MatIconModule,
     MatButtonToggleModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

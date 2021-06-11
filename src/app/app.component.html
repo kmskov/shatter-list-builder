@@ -6,6 +6,11 @@
       <h2>Total Points: {{currPointsTotal}} / {{pointsLimit}}</h2>
       <mat-icon color="warn" *ngIf="isOverPointsLimit">error</mat-icon>
     </div>
+    <!--
+    <button fxFlex="5" mat-icon-button (click)="showAllWeapons()" class="do-not-print">
+      <mat-icon>military_tech</mat-icon>
+    </button>
+  -->
     <button fxFlex="10" mat-icon-button (click)="toggleGalleryMode()" [disabled]="currUnitList.length === 0" class="do-not-print">
       <mat-icon>print</mat-icon>
     </button>

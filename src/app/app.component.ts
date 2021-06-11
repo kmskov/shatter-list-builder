@@ -3,6 +3,7 @@ import { UnitSelection, Weapon, weaponSort, sleep } from './common';
 import { UnitSelectorComponent } from './unit-selector/unit-selector.component';
 import { UnitEntryComponent } from './unit-entry/unit-entry.component';
 import factions from './factions.json';
+import refereces from './reference.json';
 
 @Component({
   selector: 'app-root',
@@ -86,7 +87,7 @@ export class AppComponent {
     await sleep(100 * this.unitEntries.length);
 
     if (isEnable) {
-      this.unitEntryDivHeight = await this.getUnitEntryElementHeight();
+      this.unitEntryDivHeight = this.getUnitEntryElementHeight();
     }
 
     this.isGalleryMode = !this.isGalleryMode;
@@ -145,5 +146,13 @@ export class AppComponent {
     }
     res.sort(weaponSort);
     return res;
+  }
+
+  showAllWeapons(): void {
+    refereces.weapons.forEach(weapon => {
+      if (!this.weaponSummary.has(weapon.id)) {
+        this.weaponSummary.set(weapon.id, weapon);
+      }
+    });
   }
 }

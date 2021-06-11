@@ -1,7 +1,7 @@
-<table mat-table [dataSource]="weaponList" class="weapon-summary">
+<table mat-table [dataSource]="weaponList" matSort class="weapon-summary">
 
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
     <td mat-cell *matCellDef="let weapon"> {{weapon.name}} </td>
   </ng-container>
 
@@ -13,12 +13,12 @@
   </ng-container>
 
   <ng-container matColumnDef="rof">
-    <th mat-header-cell class="center-text" *matHeaderCellDef> Rate of Fire </th>
+    <th mat-header-cell class="center-text" *matHeaderCellDef mat-sort-header> Rate of Fire </th>
     <td mat-cell class="center-text" *matCellDef="let weapon"> {{weapon.rof}} </td>
   </ng-container>
 
   <ng-container matColumnDef="range">
-    <th mat-header-cell class="center-text" *matHeaderCellDef> Range </th>
+    <th mat-header-cell class="center-text" *matHeaderCellDef mat-sort-header> Range </th>
     <ng-container *matCellDef="let weapon">
       <td mat-cell class="center-text" *ngIf="weapon.range.melee===true;else range">M</td>
       <ng-template #range>
@@ -28,7 +28,7 @@
   </ng-container>
 
   <ng-container matColumnDef="damage">
-    <th mat-header-cell class="center-text" *matHeaderCellDef> Damage </th>
+    <th mat-header-cell class="center-text" *matHeaderCellDef mat-sort-header> Damage </th>
     <td mat-cell class="center-text" *matCellDef="let weapon"> {{weapon.damage}} </td>
   </ng-container>
 

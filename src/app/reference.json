@@ -151,11 +151,16 @@
       "id": "immobile",
       "label": "Immobile",
       "type": "P"
+    },
+    {
+      "id": "turret",
+      "label": "Turret",
+      "type": "P"
     }
   ],
   "weapons": [
-    { "id":"ak204", 
-      "name": "AK 214K", 
+    { "id":"akAssaultRifle", 
+      "name": "AK Assault Rifle", 
       "type": "ballistic", 
       "tags":["small arms"], 
       "rof": 2, 
@@ -200,8 +205,8 @@
       }, 
       "damage": 2
     },
-    { "id":"rpg10", 
-      "name": "RPG 10", 
+    { "id":"rpg", 
+      "name": "RPG", 
       "type": "explosive", 
       "tags":["pierce 2", "disposable"], 
       "rof": 1, 
@@ -213,10 +218,10 @@
       }, 
       "damage": 2
     },
-    { "id":"heavyAcceleratorCannon", 
-      "name": "Heavy Accelerator Cannon", 
+    { "id":"gaussCannon", 
+      "name": "Gauss Cannon", 
       "type": "ballistic", 
-      "tags":["pierce 2", "reload 1", "turret"], 
+      "tags":["pierce 2", "reload 1"], 
       "rof": 1, 
       "range":
       {
@@ -226,41 +231,28 @@
       }, 
       "damage": 2
     },
-    { "id":"vehicleSRPK", 
-      "name": "Vehicle SRPK", 
+    { "id":"vehicleDShKF", 
+      "name": "Vehicle DShK-F", 
       "type": "ballistic", 
       "tags":[], 
       "rof": 3, 
       "range":
       {
         "min":8,
-        "max":30,
+        "max":24,
         "melee": false
       }, 
       "damage": 1
     },
-    { "id":"sa14", 
-      "name": "SA 14", 
+    { "id":"DShKF", 
+      "name": "DShK-F", 
       "type": "ballistic", 
-      "tags":["pierce 2", "anti-air", "reload 1"], 
-      "rof": 1, 
-      "range":
-      {
-        "min":6,
-        "max":24,
-        "melee": false
-      }, 
-      "damage": 2
-    },
-    { "id":"infantrySRPK", 
-      "name": "SRPK", 
-      "type": "ballistic", 
-      "tags":["reload quick"], 
+      "tags":["reload 1"], 
       "rof": 3, 
       "range":
       {
         "min":8,
-        "max":30,
+        "max":24,
         "melee": false
       }, 
       "damage": 1
@@ -278,8 +270,8 @@
       }, 
       "damage": 2
     },
-    { "id":"aak", 
-      "name": "AAK", 
+    { "id":"rpk", 
+      "name": "RPK", 
       "type": "ballistic", 
       "tags":["small arms"], 
       "rof": 3, 
@@ -291,23 +283,10 @@
       }, 
       "damage": 1
     },
-    { "id":"ptr", 
-      "name": "PTR", 
-      "type": "ballistic", 
-      "tags":["reload 2", "sniper", "pierce 2"], 
-      "rof": 2, 
-      "range":
-      {
-        "min":12,
-        "max":24,
-        "melee": false
-      }, 
-      "damage": 2
-    },
     { "id":"railgun", 
       "name": "Rail Gun", 
       "type": "ballistic", 
-      "tags":["reload 1", "fusion", "pierce 1", "turret"], 
+      "tags":["reload 1", "fusion", "pierce 1"], 
       "rof": 1, 
       "range":
       {
@@ -316,32 +295,6 @@
         "melee": false
       }, 
       "damage": 3
-    },
-    { "id":"acceleratorAutocannon", 
-      "name": "Accelerator Autocannon", 
-      "type": "ballistic", 
-      "tags":["small arms", "overcharge weapons", "turret"], 
-      "rof": 3, 
-      "range":
-      {
-        "min":0,
-        "max":18,
-        "melee": false
-      }, 
-      "damage": 1
-    },
-    { "id":"aaAcceleratorAutocannon", 
-      "name": "AA Accelerator Autocannon", 
-      "type": "ballistic", 
-      "tags":["anti-air", "pierce 1", "turret"], 
-      "rof": 2, 
-      "range":
-      {
-        "min":8,
-        "max":20,
-        "melee": false
-      }, 
-      "damage": 2
     },
     { "id":"multiLauncher", 
       "name": "Multi-Launcher", 
@@ -369,8 +322,8 @@
       }, 
       "damage": 1
     },
-    { "id":"atRocket", 
-      "name": "AT Rocket", 
+    { "id":"heavyAPRocket", 
+      "name": "Heavy AP Rocket", 
       "type": "explosive", 
       "tags":["pierce 2", "disposable"], 
       "rof": 2, 
@@ -395,8 +348,8 @@
       }, 
       "damage": 1
     },
-    { "id":"d700redemption", 
-      "name": "D700 Redemption Howitzer", 
+    { "id":"redemption", 
+      "name": "Redemption Heavy Howitzer", 
       "type": "explosive", 
       "tags":["pierce 2", "reload 2", "blast", "indirect fire"], 
       "rof": "D3+1", 
@@ -421,8 +374,8 @@
       }, 
       "damage": 2
     },
-    { "id": "l2TorchRifle",
-      "name": "L2 T.O.R.C.H. Rifle", 
+    { "id": "torchAssaultRifle",
+      "name": "Torch Assault Rifle", 
       "type": "energy", 
       "tags":["small arms"], 
       "rof": 2, 
@@ -434,23 +387,10 @@
       }, 
       "damage": 1
     },
-    { "id": "lat6Suckerpunch",
-      "name": "LAT6 Suckerpunch", 
-      "type": "explosive", 
-      "tags":["pierce 2", "disposable"], 
-      "rof": 1, 
-      "range":
-      {
-        "min":0,
-        "max":12,
-        "melee": false
-      }, 
-      "damage": 3
-    },
-    { "id": "s2TorchAntiMatterCannon",
-      "name": "S2 T.O.R.C.H. Anti-Material Cannon", 
+    { "id": "torchAntiMatCannon",
+      "name": "Torch Anti-Material Cannon", 
       "type": "energy", 
-      "tags":["pierce 2", "reload 1", "turret"], 
+      "tags":["pierce 2", "reload 1"], 
       "rof": 1, 
       "range":
       {
@@ -460,10 +400,10 @@
       }, 
       "damage": 3
     },
-    { "id": "dualC2TorchLaserArray",
-      "name": "Dual C2 T.O.R.C.H. Laser Array", 
+    { "id": "torchLaserArray",
+      "name": "Torch Laser Array", 
       "type": "energy", 
-      "tags":["pierce 1", "reload 1", "turret"], 
+      "tags":["pierce 1", "reload 1"], 
       "rof": 2, 
       "range":
       {
@@ -473,8 +413,8 @@
       }, 
       "damage": 1
     },
-    { "id": "torchMGSystem",
-      "name": "T.O.R.C.H. MG System", 
+    { "id": "torchMG",
+      "name": "Torch MG", 
       "type": "energy", 
       "tags":["small arms", "pierce 1"], 
       "rof": 3, 
@@ -486,10 +426,10 @@
       }, 
       "damage": 1
     },
-    { "id": "torchMGSuperGatling",
-      "name": "T.O.R.C.H. MG Super Gatling", 
+    { "id": "torchGatling",
+      "name": "Torch Gatling Gun", 
       "type": "energy", 
-      "tags":["reload 1", "turret"], 
+      "tags":["reload 1"], 
       "rof": 5, 
       "range":
       {
@@ -499,10 +439,10 @@
       }, 
       "damage": 1
     },
-    { "id": "xsc2SuperTorchCannon",
-      "name": "XSC2 SUPER T.O.R.C.H. Cannon", 
+    { "id": "acceleratorTorchCannon",
+      "name": "Accelerator Torch Cannon", 
       "type": "energy", 
-      "tags":["pierce 1", "overcharge weapons", "reload 1", "turret"], 
+      "tags":["pierce 1", "overcharge weapons", "reload 1"], 
       "rof": 1, 
       "range":
       {
@@ -512,8 +452,8 @@
       }, 
       "damage": 3
     },
-    { "id": "at6Peregrine",
-      "name": "AT6 Peregrine", 
+    { "id": "samLauncher",
+      "name": "SAM Launcher", 
       "type": "ballistic", 
       "tags":["pierce 2", "anti-air", "reload 1"], 
       "rof": 1, 
@@ -539,7 +479,7 @@
       "damage": 2
     },
     { "id": "x3RoseCombatSuit",
-      "name": "X3 R.O.S.E Combat Suit", 
+      "name": "X3 Combat Suit", 
       "type": "energy", 
       "tags":["beam"], 
       "rof": 1, 
@@ -549,8 +489,8 @@
       }, 
       "damage": 1
     },
-    { "id": "slc2TorchHowitzer",
-      "name": "SLC2 T.O.R.C.H. Howitzer", 
+    { "id": "torchHowitzer",
+      "name": "Torch Howitzer", 
       "type": "explosive", 
       "tags":["pierce 1", "reload 1", "indirect fire", "refractor system"], 
       "rof": "D3+1", 
@@ -563,7 +503,7 @@
       "damage": 1
     },
     { "id": "slc3TorchArcCannon",
-      "name": "SLC2 T.O.R.C.H. Howitzer", 
+      "name": "Torch Arc Cannon", 
       "type": "explosive", 
       "tags":["EMP rounds", "reload 1"], 
       "rof": 2, 
@@ -576,7 +516,7 @@
       "damage": 1
     },
     { "id": "torchStraferCannon",
-      "name": "T.O.R.C.H. Strafer Cannon", 
+      "name": "Torch Strafer Cannon", 
       "type": "energy", 
       "tags":["pierce 1", "spread"], 
       "rof": 4, 
@@ -588,10 +528,10 @@
       }, 
       "damage": 1
     },
-    { "id": "torchLL2Autocannon",
-      "name": "T.O.R.C.H. LL2 Autocannon", 
+    { "id": "torchAutocannon",
+      "name": "Torch Autocannon", 
       "type": "energy", 
-      "tags":["pierce 1", "turret"], 
+      "tags":["pierce 1"], 
       "rof": 2, 
       "range":
       {
@@ -601,21 +541,8 @@
       }, 
       "damage": 1
     },
-    { "id": "samLauncher",
-      "name": "SAM Launcher", 
-      "type": "explosive", 
-      "tags":["pierce 1", "reload 1", "anti-air", "turret"], 
-      "rof": 3, 
-      "range":
-      {
-        "min": 8,
-        "max": 24,
-        "melee": false
-      }, 
-      "damage": 1
-    },
-    { "id": "crystalMusket",
-      "name": "Crystal Musket", 
+    { "id": "shardRifle",
+      "name": "Shard Rifle", 
       "type": "energy", 
       "tags":["pierce 1", "small arms"], 
       "rof": 1, 
@@ -640,10 +567,10 @@
       }, 
       "damage": 2
     },
-    { "id": "shardLauncher",
-      "name": "Shard Launcher", 
+    { "id": "shardMG",
+      "name": "Shard MG", 
       "type": "ballistic", 
-      "tags":["small arms", "spread", "turret"], 
+      "tags":["small arms", "spread"], 
       "rof": 3, 
       "range":
       {
@@ -653,97 +580,8 @@
       }, 
       "damage": 1
     },
-    { "id": "crystalLance",
-      "name": "Crystal Lance", 
-      "type": "energy", 
-      "tags":["pierce 1", "turret"], 
-      "rof": 1, 
-      "range":
-      {
-        "min": 0,
-        "max": 18,
-        "melee": false
-      }, 
-      "damage": 2
-    },
-    { "id": "dbShardLauncher",
-      "name": "Delayed Burst Shard Launcher", 
-      "type": "energy", 
-      "tags":["anti-air", "EMP rounds", "spread", "turret"], 
-      "rof": 1, 
-      "range":
-      {
-        "min": 8,
-        "max": 24,
-        "melee": false
-      }, 
-      "damage": 3
-    },
-    { "id": "shardCannon",
-      "name": "Shard Cannon", 
-      "type": "energy", 
-      "tags":["pierce 2", "reload 1", "turret"], 
-      "rof": 1, 
-      "range":
-      {
-        "min": 10,
-        "max": 32,
-        "melee": false
-      }, 
-      "damage": 3
-    },
-    { "id": "pikeArquebus",
-      "name": "Pike Arquebus", 
-      "type": "energy", 
-      "tags":["small arms", "pierce 1"], 
-      "rof": 1, 
-      "range":
-      {
-        "min": 0,
-        "max": 8,
-        "melee": false
-      }, 
-      "damage": 1
-    },
-    { "id": "riflePike",
-      "name": "Rifle Pike", 
-      "type": "energy", 
-      "tags":["reach", "fusion"], 
-      "rof": 2, 
-      "range":
-      {
-        "melee": true
-      }, 
-      "damage": 1
-    },
-    { "id": "shardHowitzer",
-      "name": "Shard Howitzer", 
-      "type": "ballistic", 
-      "tags":["pierce 1", "reload 2", "indirect fire"], 
-      "rof": "D3+1", 
-      "range":
-      {
-        "min": 8,
-        "max": 24,
-        "melee": false
-      }, 
-      "damage": 2
-    },
-    { "id": "shardMortar",
-      "name": "Shard Mortar", 
-      "type": "explosive", 
-      "tags":["blast", "reload 1", "indirect fire", "small arms"], 
-      "rof": "D3+1", 
-      "range":
-      {
-        "min": 8,
-        "max": 24,
-        "melee": false
-      }, 
-      "damage": 1
-    },
-    { "id": "amCrystalLance",
-      "name": "Aerial Mounted Crystal Lance", 
+    { "id": "lanceCannon",
+      "name": "Lance Cannon", 
       "type": "energy", 
       "tags":["pierce 1"], 
       "rof": 1, 
@@ -755,10 +593,73 @@
       }, 
       "damage": 2
     },
-    { "id": "crystalFusilier",
-      "name": "Crystal Fusilier", 
+    { "id": "heavyLanceCannon",
+      "name": "Heavy Lance Cannon", 
       "type": "energy", 
-      "tags":["pierce 1", "turret"], 
+      "tags":["pierce 2", "reload 1"], 
+      "rof": 1, 
+      "range":
+      {
+        "min": 8,
+        "max": 32,
+        "melee": false
+      }, 
+      "damage": 3
+    },
+    { "id": "pikeAntiMatRifle",
+      "name": "Pike Anti-Material Rifle", 
+      "type": "energy", 
+      "tags":["small arms", "pierce 1"], 
+      "rof": 1, 
+      "range":
+      {
+        "min": 0,
+        "max": 8,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "fusionPike",
+      "name": "Fusion Pike", 
+      "type": "energy", 
+      "tags":["reach", "fusion"], 
+      "rof": 2, 
+      "range":
+      {
+        "melee": true
+      }, 
+      "damage": 1
+    },
+    { "id": "heavyHowitzer",
+      "name": "Heavy Howitzer", 
+      "type": "ballistic", 
+      "tags":["pierce 1", "reload 2", "indirect fire"], 
+      "rof": "D3+1", 
+      "range":
+      {
+        "min": 8,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 2
+    },
+    { "id": "mortar",
+      "name": "Mortar", 
+      "type": "explosive", 
+      "tags":["blast", "reload 1", "indirect fire", "small arms"], 
+      "rof": "D3+1", 
+      "range":
+      {
+        "min": 8,
+        "max": 24,
+        "melee": false
+      }, 
+      "damage": 1
+    },
+    { "id": "shardAutocannon",
+      "name": "Shard Autocannon", 
+      "type": "energy", 
+      "tags":["pierce 1"], 
       "rof": 2, 
       "range":
       {
@@ -793,7 +694,7 @@
       "damage": 1
     },
     { "id": "monstrousCrystallumClaws",
-      "name": "Monstrous Crystallum Claws", 
+      "name": "Disruptor Claws", 
       "type": "kinetic", 
       "tags":["pierce 1", "disruptor field"], 
       "rof": 2, 
@@ -803,8 +704,8 @@
       }, 
       "damage": 2
     },
-    { "id": "crystallumCarbine",
-      "name": "Crystallum Carbine", 
+    { "id": "pulseCarbine",
+      "name": "Pulse Carbine", 
       "type": "ballistic", 
       "tags":["EMP rounds", "small arms"], 
       "rof": 2, 
@@ -816,8 +717,8 @@
       }, 
       "damage": 1
     },
-    { "id": "crystallumSniper",
-      "name": "Crystallum Sniper", 
+    { "id": "disruptorSniperRifle",
+      "name": "Disrupter Sniper Rifle", 
       "type": "ballistic", 
       "tags":["pierce 1", "disruptor field", "sniper", "reload 1"], 
       "rof": 1, 
@@ -829,10 +730,10 @@
       }, 
       "damage": 2
     },
-    { "id": "empAutocannon",
-      "name": "EMP Autocannon", 
+    { "id": "pulseAutocannon",
+      "name": "Pulse Autocannon", 
       "type": "ballistic", 
-      "tags":["EMP rounds", "turret"], 
+      "tags":["EMP rounds"], 
       "rof": 2, 
       "range":
       {
@@ -842,8 +743,8 @@
       }, 
       "damage": 2
     },
-    { "id": "crystallumMachineGun",
-      "name": "Crystallum Machine Gun", 
+    { "id": "acceleratorMachineGun",
+      "name": "Accelerator Machine Gun", 
       "type": "ballistic", 
       "tags":["small arms", "overcharge weapons"], 
       "rof": 3, 
@@ -855,21 +756,21 @@
       }, 
       "damage": 1
     },
-    { "id": "crystallumAAGun",
-      "name": "Crystallum AA Gun", 
+    { "id": "flakSystem",
+      "name": "Flak System", 
       "type": "ballistic", 
       "tags":["pierce 1", "anti-air"], 
       "rof": 2, 
       "range":
       {
         "min": 8,
-        "max": 24,
+        "max": 20,
         "melee": false
       }, 
       "damage": 2
     },
-    { "id": "heavyScavangedWeapon",
-      "name": "Heavy Scavanged Weapon System", 
+    { "id": "disrupterWeaponSystem",
+      "name": "Disrupter Weapon System", 
       "type": "ballistic", 
       "tags":["pierce 1", "reload 1", "disruptor field"], 
       "rof": 1, 
@@ -881,8 +782,8 @@
       }, 
       "damage": 3
     },
-    { "id": "crystalHowitzer",
-      "name": "Crystal Howitzer", 
+    { "id": "heavyHowitzer",
+      "name": "Heavy Howitzer", 
       "type": "ballistic", 
       "tags":["pierce 1", "reload 2", "indirect fire"], 
       "rof": "D3+1", 
@@ -894,8 +795,8 @@
       }, 
       "damage": 2
     },
-    { "id": "massiveScavangedWeapon",
-      "name": "Massive Scavanged Weapon System", 
+    { "id": "scavangedWeapon",
+      "name": "Scavanged Weapon System", 
       "type": "ballistic", 
       "tags":["pierce 2", "reload 2"], 
       "rof": 3, 
@@ -907,8 +808,8 @@
       }, 
       "damage": 3
     },
-    { "id": "colossalCrystallumClaws",
-      "name": "Colossal Crystallum Claws", 
+    { "id": "colossalDisruptorClaws",
+      "name": "Colossal Disruptor Claws", 
       "type": "kinetic", 
       "tags":["pierce 2", "disruptor field"], 
       "rof": 3, 
@@ -941,7 +842,7 @@
       "damage": 3
     },
     { "id": "bomb",
-      "name": "Bomb", 
+      "name": "Disruptor Bomb", 
       "type": "explosive", 
       "tags":["disposable", "pierce 1", "disruptor field"], 
       "rof": 2, 

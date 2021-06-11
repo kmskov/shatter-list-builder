@@ -3,7 +3,8 @@
     "name": "Crystallum Hordes",
     "enabled": true,
     "hq": [
-      { "name": "Command Node",
+      {
+        "name": "Command Node",
         "id": "commandNode",
         "basePoints": 26,
         "move": 0,
@@ -12,11 +13,20 @@
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["infantry"],
+        "unitTags": [
+          "infantry"
+        ],
         "breakValue": 9,
         "squadComposition": 1,
-        "weapons": ["psychicBlast"],
-        "abilities": ["infantryCommand1", "immobile", "fearless", "commandNetwork"],
+        "weapons": [
+          "psychicBlast"
+        ],
+        "abilities": [
+          "infantryCommand1",
+          "immobile",
+          "fearless",
+          "commandNetwork"
+        ],
         "upgrades": [
           {
             "label": "The command node may either upgrade its command value to 2 for 4 pts.",
@@ -24,7 +34,10 @@
             "upgradeType": {
               "type": "ability",
               "id": "infantryCommand2",
-              "mutuallyExclusive": ["infantryCommand1", "infantryCommand3"]
+              "mutuallyExclusive": [
+                "infantryCommand1",
+                "infantryCommand3"
+              ]
             }
           },
           {
@@ -33,7 +46,10 @@
             "upgradeType": {
               "type": "ability",
               "id": "infantryCommand3",
-              "mutuallyExclusive": ["infantryCommand1", "infantryCommand2"]
+              "mutuallyExclusive": [
+                "infantryCommand1",
+                "infantryCommand2"
+              ]
             }
           },
           {
@@ -48,7 +64,8 @@
       }
     ],
     "core": [
-      { "name": "Shattered Men Horde",
+      {
+        "name": "Shattered Men Horde",
         "id": "shatteredMen",
         "basePoints": 4,
         "move": 6,
@@ -57,11 +74,17 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry"],
+        "unitTags": [
+          "infantry"
+        ],
         "breakValue": 8,
         "squadComposition": 3,
-        "weapons": ["crystallumClaws"],
-        "abilities": ["fearless"],
+        "weapons": [
+          "crystallumClaws"
+        ],
+        "abilities": [
+          "fearless"
+        ],
         "upgrades": [
           {
             "label": "Add up to 3 more infantry bases at 4 pts per base.",
@@ -69,10 +92,10 @@
             "limit": 3,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           },
           {
-            "label": "The shattered men horde may be mounted in Crystallum Drill Transports.",
+            "label": "The shattered men horde may be mounted in Crystallum Tunnelers.",
             "limit": "baseCount",
             "upgradeType": {
               "type": "transport",
@@ -81,7 +104,8 @@
           }
         ]
       },
-      { "name": "Brute Horde",
+      {
+        "name": "Brute Horde",
         "id": "brutes",
         "basePoints": 14,
         "move": 4,
@@ -90,11 +114,18 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry"],
+        "unitTags": [
+          "infantry"
+        ],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["monstrousCrystallumClaws"],
-        "abilities": ["crystallumTreatedArmor", "fearless"],
+        "weapons": [
+          "monstrousCrystallumClaws"
+        ],
+        "abilities": [
+          "crystallumTreatedArmor",
+          "fearless"
+        ],
         "upgrades": [
           {
             "label": "Add up to 2 more infantry bases at 13 points per base.",
@@ -105,7 +136,7 @@
             }
           },
           {
-            "label": "The brutes may be mounted in Crystallum Drill Transports.",
+            "label": "The brutes may be mounted in Crystallum Tunnelers.",
             "limit": "baseCount",
             "upgradeType": {
               "type": "transport",
@@ -114,7 +145,8 @@
           }
         ]
       },
-      { "name": "Assassin Platoon",
+      {
+        "name": "Assassin Platoon",
         "id": "assassins",
         "basePoints": 6,
         "move": 6,
@@ -123,11 +155,18 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry"],
+        "unitTags": [
+          "infantry"
+        ],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["crystallumCarbine", "infantrycqc"],
-        "abilities": ["stubborn"],
+        "weapons": [
+          "pulseCarbine",
+          "infantrycqc"
+        ],
+        "abilities": [
+          "stubborn"
+        ],
         "upgrades": [
           {
             "label": "Add up to 2 more infantry bases at 6 points per base.",
@@ -135,10 +174,10 @@
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           },
           {
-            "label": "The assassin platoon may be mounted in Crystallum Drill Transports.",
+            "label": "The assassin platoon may be mounted in Crystallum Tunnelers.",
             "limit": "baseCount",
             "upgradeType": {
               "type": "transport",
@@ -146,54 +185,65 @@
             }
           },
           {
-            "label": "Upgrade any model's Carbine to a Sniper for 3 points per base.",
+            "label": "Upgrade any model's Pulse Carbine to a Disruptor Sniper Rifle for 3 points per base.",
+            "limit": "baseCount",
             "cost": 3,
-            "multiplyCostByBases": true,
             "upgradeType": {
               "type": "weapon",
-              "id": "crystallumSniper",
-              "mutuallyExclusive": ["crystallumCarbine"]
+              "id": "disruptorSniperRifle"
             }
           }
         ]
       }
     ],
     "armoredSupport": [
-      { "name": "Metallic Crawler Platoon",
+      {
+        "name": "Metallic Crawler Platoon",
         "id": "metallicCrawler",
-        "basePoints": 31,
+        "basePoints": 29,
         "move": 10,
         "totalIntegrity": 7,
         "defense": {
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["empAutocannon", "crystallumMachineGun", "vehiclecqc"],
-        "abilities": ["weakFrame"],
+        "weapons": [
+          "pulseAutocannon",
+          "acceleratorMachineGun",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "weakFrame",
+          "turret"
+        ],
         "upgrades": [
           {
-            "label": "Add up to 2 more vehicles for 31 pts per model.",
-            "cost": 31,
+            "label": "Add up to 2 more vehicles for 29 pts per model.",
+            "cost": 29,
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           },
           {
-            "label": "Upgrade any model's EMP Autocannon to an AA Gun for 0 points.",
+            "label": "Upgrade any model's Pulse Autocannon to a Flak System for 1 point.",
             "cost": -1,
             "limit": "baseCount",
             "upgradeType": {
               "type": "weapon",
-              "id": "crystallumAAGun"
+              "id": "flakSystem"
             }
           }
         ]
       },
-      { "name": "Metallic Shambler Platoon",
+      {
+        "name": "Metallic Shambler Platoon",
         "id": "metallicShambler",
         "basePoints": 18,
         "move": 8,
@@ -202,11 +252,19 @@
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "walker"],
+        "unitTags": [
+          "vehicle",
+          "walker"
+        ],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["heavyScavangedWeapon", "vehiclecqc"],
-        "abilities": ["weakFrame"],
+        "weapons": [
+          "disrupterWeaponSystem",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "weakFrame"
+        ],
         "upgrades": [
           {
             "label": "Add up to 2 more shamblers for 18 pts per model.",
@@ -214,13 +272,14 @@
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           }
         ]
       }
     ],
     "fireSupport": [
-      { "name": "Skyfire Platoon",
+      {
+        "name": "Skyfire Platoon",
         "id": "skyfire",
         "basePoints": 19,
         "move": 6,
@@ -229,23 +288,32 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry", "artillery"],
+        "unitTags": [
+          "infantry",
+          "artillery"
+        ],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["crystalHowitzer", "infantrycqc"],
-        "abilities": ["fearless"],
+        "weapons": [
+          "heavyHowitzer",
+          "infantrycqc"
+        ],
+        "abilities": [
+          "fearless"
+        ],
         "upgrades": [
-           {
+          {
             "label": "Add 2 more artillery bases for 19 points per base.",
             "cost": 19,
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           }
         ]
       },
-      { "name": "Shard Burstling Brood",
+      {
+        "name": "Shard Burstling Brood",
         "id": "shardBurstling",
         "basePoints": 8,
         "move": 8,
@@ -254,25 +322,32 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry"],
+        "unitTags": [
+          "infantry"
+        ],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["explode"],
-        "abilities": ["fearless"],
+        "weapons": [
+          "explode"
+        ],
+        "abilities": [
+          "fearless"
+        ],
         "upgrades": [
-           {
+          {
             "label": "Add 3 more bases for 8 points per base.",
             "cost": 8,
             "limit": 3,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           }
         ]
       }
     ],
     "airSupport": [
-      { "name": "Crystaline Carrions",
+      {
+        "name": "Crystaline Carrions",
         "id": "crystalineCarrions",
         "basePoints": 15,
         "move": 14,
@@ -281,13 +356,20 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry", "aerial"],
+        "unitTags": [
+          "infantry",
+          "aerial"
+        ],
         "squadComposition": 3,
-        "weapons": ["crystallumCarbine"],
-        "abilities": ["stubborn"],
+        "weapons": [
+          "pulseCarbine"
+        ],
+        "abilities": [
+          "stubborn"
+        ],
         "upgrades": [
           {
-            "label": "Arm up to two models with a bomb at 1 point per base.",
+            "label": "Arm up to 2 models with a Disruptor Bomb at 1 point per model.",
             "cost": 1,
             "limit": 2,
             "upgradeType": {
@@ -299,7 +381,8 @@
       }
     ],
     "special": [
-      { "name": "Monstrosity",
+      {
+        "name": "Monstrosity",
         "id": "monstrosity",
         "basePoints": 59,
         "move": 8,
@@ -308,41 +391,66 @@
           "dice": 2,
           "save": "3+"
         },
-        "unitTags": ["vehicle", "walker", "war machine"],
+        "unitTags": [
+          "vehicle",
+          "walker",
+          "war machine"
+        ],
         "breakValue": 9,
         "squadComposition": 1,
-        "weapons": ["massiveScavangedWeapon", "colossalCrystallumClaws"],
-        "abilities": ["crystallumTreatedArmor", "panoramicCockpit", "fearless", "critThreshold7", "critThreshold3"],
+        "weapons": [
+          "scavangedWeapon",
+          "colossalDisruptorClaws"
+        ],
+        "abilities": [
+          "crystallumTreatedArmor",
+          "panoramicCockpit",
+          "fearless",
+          "critThreshold7",
+          "critThreshold3"
+        ],
         "upgrades": [
-           {
+          {
             "label": "Add 1 more monstrosity for 59 points.",
             "cost": 59,
             "limit": 1,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           }
         ]
       }
     ],
     "transport": [
-      { "name": "Drill Transport",
+      {
+        "name": "Tunneler",
         "id": "drill",
-        "basePoints": 20,
+        "basePoints": 24,
         "move": 8,
         "totalIntegrity": 5,
         "defense": {
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "squadComposition": 1,
         "transportCapacity": 3,
-        "weapons": ["crystallumMachineGun", "drill"],
-        "abilities": ["fearless", "transport3", "arriveAnywhere", "weakFrame"],
+        "weapons": [
+          "acceleratorMachineGun",
+          "drill"
+        ],
+        "abilities": [
+          "fearless",
+          "transport3",
+          "arriveAnywhere",
+          "weakFrame"
+        ],
         "upgrades": [
           {
-            "label": "Arm any Drill transport with an anti-tank rocket at 1 pts per vehicle.",
+            "label": "Arm any Tunneler with an anti-tank rocket at 1 pts per vehicle.",
             "cost": 1,
             "limit": "baseCount",
             "upgradeType": {
@@ -352,28 +460,39 @@
           }
         ]
       },
-      { "name": "Walker Node",
+      {
+        "name": "Walker Node",
         "id": "walkerNode",
-        "basePoints": 22,
+        "basePoints": 23,
         "move": 8,
         "totalIntegrity": 7,
         "defense": {
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "walker"],
+        "unitTags": [
+          "vehicle",
+          "walker"
+        ],
         "breakValue": 9,
         "squadComposition": 1,
-        "weapons": ["psychicBlast", "vehiclecqc"],
-        "abilities": ["commandNetwork", "weakFrame", "fearless"],
+        "weapons": [
+          "psychicBlast",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "commandNetwork",
+          "weakFrame",
+          "fearless"
+        ],
         "upgrades": [
-           {
-            "label": "Add 1 more walker node for 22 points.",
-            "cost": 22,
+          {
+            "label": "Add 1 more walker node for 23 points.",
+            "cost": 23,
             "limit": 1,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           }
         ]
       }
@@ -383,7 +502,8 @@
     "name": "Atlantic Council",
     "enabled": true,
     "hq": [
-      { "name": "Infantry Commander",
+      {
+        "name": "Infantry Commander",
         "id": "infantryCommander",
         "basePoints": 12,
         "move": 6,
@@ -392,18 +512,27 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry"],
+        "unitTags": [
+          "infantry"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["crystalMusket", "infantrycqc"],
-        "abilities": ["infantryCommand1"],
+        "weapons": [
+          "shardRifle",
+          "infantrycqc"
+        ],
+        "abilities": [
+          "infantryCommand1"
+        ],
         "upgrades": [
           {
             "label": "The command base may be mounted in a Crusader APC Transport.",
             "upgradeType": {
               "type": "transport",
               "id": "crusader",
-              "mutuallyExclusive": ["staghound"]
+              "mutuallyExclusive": [
+                "staghound"
+              ]
             }
           },
           {
@@ -411,7 +540,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "staghound",
-              "mutuallyExclusive": ["crusader"]
+              "mutuallyExclusive": [
+                "crusader"
+              ]
             }
           },
           {
@@ -436,7 +567,10 @@
             "upgradeType": {
               "type": "ability",
               "id": "infantryCommand2",
-              "mutuallyExclusive": ["infantryCommand1", "infantryCommand3"]
+              "mutuallyExclusive": [
+                "infantryCommand1",
+                "infantryCommand3"
+              ]
             }
           },
           {
@@ -445,7 +579,10 @@
             "upgradeType": {
               "type": "ability",
               "id": "infantryCommand3",
-              "mutuallyExclusive": ["infantryCommand1", "infantryCommand2"]
+              "mutuallyExclusive": [
+                "infantryCommand1",
+                "infantryCommand2"
+              ]
             }
           },
           {
@@ -458,7 +595,8 @@
           }
         ]
       },
-      { "name": "Tank Commander in Renard",
+      {
+        "name": "Tank Commander in Renard",
         "id": "tankCommanderRenard",
         "basePoints": 25,
         "move": 12,
@@ -467,11 +605,21 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "wheeled"],
+        "unitTags": [
+          "vehicle",
+          "wheeled"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["shardLauncher", "vehiclecqc"],
-        "abilities": ["vehicleCommand1","agile"],
+        "weapons": [
+          "shardMG",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "vehicleCommand1",
+          "agile",
+          "turret"
+        ],
         "upgrades": [
           {
             "label": "The command base may either upgrade its command value to 2 for 4 pts.",
@@ -479,7 +627,10 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand2",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand3"
+              ]
             }
           },
           {
@@ -488,12 +639,16 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand3",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand2"
+              ]
             }
           }
         ]
       },
-      { "name": "Tank Commander in Chevalier",
+      {
+        "name": "Tank Commander in Chevalier",
         "id": "tankCommanderChevalier",
         "basePoints": 40,
         "move": 12,
@@ -502,11 +657,23 @@
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["crystalLance", "shardLauncher", "vehiclecqc"],
-        "abilities": ["vehicleCommand1", "smoke", "agile"],
+        "weapons": [
+          "lanceCannon",
+          "shardMG",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "vehicleCommand1",
+          "smoke",
+          "agile",
+          "turret"
+        ],
         "upgrades": [
           {
             "label": "The command base may either upgrade its command value to 2 for 4 pts.",
@@ -514,7 +681,10 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand2",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand3"
+              ]
             }
           },
           {
@@ -523,34 +693,52 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand3",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand2"
+              ]
             }
           },
           {
-            "label": "The command tank may replace their Crystal Lance with a Delayed Burst Shard Launcher for 2 points.",
-            "cost": 2,
+            "label": "The command tank may replace their Lance Cannon with a Flak System for 0 points.",
+            "cost": 0,
             "upgradeType": {
               "type": "weapon",
-              "id": "dbShardLauncher",
-              "mutuallyExclusive": ["crystalLance"]
+              "id": "flakSystem",
+              "mutuallyExclusive": [
+                "lanceCannon"
+              ]
             }
           }
         ]
       },
-      { "name": "Tank Commander in Aegis",
+      {
+        "name": "Tank Commander in Aegis",
         "id": "tankCommanderAegis",
-        "basePoints": 48,
+        "basePoints": 49,
         "move": 8,
         "totalIntegrity": 8,
         "defense": {
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["shardCannon", "shardLauncher", "vehiclecqc"],
-        "abilities": ["vehicleCommand1","smoke", "solidDefense"],
+        "weapons": [
+          "heavyLanceCannon",
+          "shardMG",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "vehicleCommand1",
+          "smoke",
+          "solidDefense",
+          "turret"
+        ],
         "upgrades": [
           {
             "label": "The command base may either upgrade its command value to 2 for 4 pts.",
@@ -558,7 +746,10 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand2",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand3"
+              ]
             }
           },
           {
@@ -567,14 +758,18 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand3",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand2"
+              ]
             }
           }
         ]
       }
     ],
     "core": [
-      { "name": "Gendarmes Platoon",
+      {
+        "name": "Gendarmes Platoon",
         "id": "gendarmes",
         "basePoints": 7,
         "move": 6,
@@ -583,10 +778,15 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry"],
+        "unitTags": [
+          "infantry"
+        ],
         "breakValue": 10,
         "squadComposition": 3,
-        "weapons": ["crystalMusket", "infantrycqc"],
+        "weapons": [
+          "shardRifle",
+          "infantrycqc"
+        ],
         "abilities": [],
         "upgrades": [
           {
@@ -595,7 +795,7 @@
             "limit": 3,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           },
           {
             "label": "All bases in the unit may be mounted in a Crusader APC Transport.",
@@ -603,7 +803,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "crusader",
-              "mutuallyExclusive": ["staghound"]
+              "mutuallyExclusive": [
+                "staghound"
+              ]
             }
           },
           {
@@ -612,7 +814,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "staghound",
-              "mutuallyExclusive": ["crusader"]
+              "mutuallyExclusive": [
+                "crusader"
+              ]
             }
           },
           {
@@ -644,7 +848,8 @@
           }
         ]
       },
-      { "name": "Men-At-Arms Platoon",
+      {
+        "name": "Men-At-Arms Platoon",
         "id": "menatarms",
         "basePoints": 11,
         "move": 6,
@@ -653,11 +858,18 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry"],
+        "unitTags": [
+          "infantry"
+        ],
         "breakValue": 10,
         "squadComposition": 3,
-        "weapons": ["pikeArquebus", "riflePike"],
-        "abilities": ["closeCombatExpert"],
+        "weapons": [
+          "pikeAntiMatRifle",
+          "fusionPike"
+        ],
+        "abilities": [
+          "closeCombatExpert"
+        ],
         "upgrades": [
           {
             "label": "Add up to 2 more infantry bases at 11 points per base.",
@@ -665,7 +877,7 @@
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           },
           {
             "label": "All bases in the unit may be mounted in a Crusader APC Transport.",
@@ -673,7 +885,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "crusader",
-              "mutuallyExclusive": ["staghound"]
+              "mutuallyExclusive": [
+                "staghound"
+              ]
             }
           },
           {
@@ -682,7 +896,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "staghound",
-              "mutuallyExclusive": ["crusader"]
+              "mutuallyExclusive": [
+                "crusader"
+              ]
             }
           },
           {
@@ -707,7 +923,8 @@
       }
     ],
     "armoredSupport": [
-      { "name": "Renard Platoon",
+      {
+        "name": "Renard Platoon",
         "id": "renard",
         "basePoints": 19,
         "move": 12,
@@ -716,24 +933,34 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "wheeled"],
+        "unitTags": [
+          "vehicle",
+          "wheeled"
+        ],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["shardLauncher", "vehiclecqc"],
-        "abilities": ["agile"],
+        "weapons": [
+          "shardMG",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "agile",
+          "turret"
+        ],
         "upgrades": [
           {
-            "label": "Add up to 2 more vehicles for 19 pts per model.",
+            "label": "Add up to 2 more models for 19 pts per model.",
             "cost": 24,
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           }
         ]
       },
-      { "name": "Chevalier Platoon",
-        "id": "m2a1Grant",
+      {
+        "name": "Chevalier Platoon",
+        "id": "chevalier",
         "basePoints": 35,
         "move": 12,
         "totalIntegrity": 7,
@@ -741,32 +968,43 @@
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "breakValue": 10,
         "squadComposition": 3,
-        "weapons": ["crystalLance", "shardLauncher", "vehiclecqc"],
-        "abilities": ["smoke", "agile"],
+        "weapons": [
+          "lanceCannon",
+          "shardMG",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "smoke",
+          "agile"
+        ],
         "upgrades": [
           {
-            "label": "Add up to 2 more Battle Tanks for 35 pts per model.",
-            "cost": 33,
+            "label": "Add up to 2 more models for 35 pts per model.",
+            "cost": 35,
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           },
           {
-            "label": "Any vehicle may replace their Crystal Lance with an Delayed Burst Shard Launcher for 2 points per model",
-            "cost": 2,
+            "label": "Any vehicle may replace their Lance Cannon with a Flak System for 0 points per model",
+            "cost": 0,
             "limit": "baseCount",
             "upgradeType": {
               "type": "weapon",
-              "id": "dbShardLauncher"
+              "id": "flakSystem"
             }
           }
         ]
       },
-      { "name": "Aegis Platoon",
+      {
+        "name": "Aegis Platoon",
         "id": "aegis",
         "basePoints": 43,
         "move": 8,
@@ -775,52 +1013,76 @@
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["shardCannon", "shardLauncher", "vehiclecqc"],
-        "abilities": ["smoke", "solidDefense"],
+        "weapons": [
+          "heavyLanceCannon",
+          "shardMG",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "smoke",
+          "solidDefense",
+          "turret"
+        ],
         "upgrades": [
-           {
-            "label": "Add up to 2 more Battle Tanks for 44 pts per model.",
+          {
+            "label": "Add up to 2 more models for 43 pts per model.",
             "cost": 43,
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           }
         ]
       }
     ],
     "fireSupport": [
-      { "name": "Starling Battery",
+      {
+        "name": "Starling Battery",
         "id": "starling",
-        "basePoints": 17,
+        "basePoints": 18,
         "move": 10,
         "totalIntegrity": 5,
         "defense": {
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "tracked", "artillery"],
+        "unitTags": [
+          "vehicle",
+          "tracked",
+          "artillery"
+        ],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["shardHowitzer", "vehiclecqc"],
-        "abilities": [],
+        "weapons": [
+          "heavyHowitzer",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "turret"
+        ],
         "upgrades": [
           {
-            "label": "All vehicles in the unit may replace their Shard Howitzer with a Multi-Launcher for 3 points per model.",
+            "label": "All vehicles in the unit may replace their Heavy Howitzer with a Multi-Launcher for 3 points per model.",
             "cost": 3,
             "multiplyCostByBases": true,
             "upgradeType": {
               "type": "weapon",
               "id": "multiLauncher",
-              "mutuallyExclusive": ["shardHowitzer"]
+              "mutuallyExclusive": [
+                "heavyHowitzer"
+              ]
             }
           }
         ]
       },
-      { "name": "Hedgehog Artillery Platoon",
+      {
+        "name": "Hedgehog Artillery Platoon",
         "id": "hedgehog",
         "basePoints": 18,
         "move": 6,
@@ -829,19 +1091,25 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry", "artillery"],
+        "unitTags": [
+          "infantry",
+          "artillery"
+        ],
         "breakValue": 10,
         "squadComposition": 3,
-        "weapons": ["shardMortar", "infantrycqc"],
+        "weapons": [
+          "mortar",
+          "infantrycqc"
+        ],
         "abilities": [],
         "upgrades": [
           {
-            "label": "Add up to 2 more infantry bases at 18 points per base.",
-            "cost": 8,
+            "label": "Add up to 2 more models at 18 points per model.",
+            "cost": 18,
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           },
           {
             "label": "All bases in the unit may be mounted in a Crusader APC Transport.",
@@ -849,7 +1117,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "crusader",
-              "mutuallyExclusive": ["staghound"]
+              "mutuallyExclusive": [
+                "staghound"
+              ]
             }
           },
           {
@@ -858,14 +1128,17 @@
             "upgradeType": {
               "type": "transport",
               "id": "staghound",
-              "mutuallyExclusive": ["crusader"]
+              "mutuallyExclusive": [
+                "crusader"
+              ]
             }
           }
         ]
       }
     ],
     "airSupport": [
-      { "name": "Harrier II VTOL",
+      {
+        "name": "Harrier II VTOL",
         "id": "harrierII",
         "basePoints": 42,
         "move": 24,
@@ -874,15 +1147,24 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "aerial"],
+        "unitTags": [
+          "vehicle",
+          "aerial"
+        ],
         "squadComposition": 1,
-        "weapons": ["amCrystalLance", "rocketSystem"],
-        "abilities": ["solidDefense"],
+        "weapons": [
+          "lanceCannon",
+          "rocketSystem"
+        ],
+        "abilities": [
+          "solidDefense"
+        ],
         "upgrades": []
       }
     ],
     "special": [
-      { "name": "Dover Deflector",
+      {
+        "name": "Dover Deflector",
         "id": "dover",
         "basePoints": 49,
         "move": 6,
@@ -891,11 +1173,26 @@
           "dice": 2,
           "save": "3+"
         },
-        "unitTags": ["vehicle", "tracked", "war machine"],
+        "unitTags": [
+          "vehicle",
+          "tracked",
+          "war machine"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["crystalFusilier", "shardLauncher", "warmachineCQC"],
-        "abilities": ["smoke", "selfRepairModule", "energyDispersionField", "critThreshold2", "critThreshold6"],
+        "weapons": [
+          "shardAutocannon",
+          "shardMG",
+          "warmachineCQC"
+        ],
+        "abilities": [
+          "smoke",
+          "selfRepairModule",
+          "energyDispersionField",
+          "turret",
+          "critThreshold2",
+          "critThreshold6"
+        ],
         "upgrades": [
           {
             "label": "Arm the vehicle with up to 2 anti-tank rockets at 1 pts per rocket.",
@@ -910,7 +1207,8 @@
       }
     ],
     "transport": [
-      { "name": "Crusader APC",
+      {
+        "name": "Crusader APC",
         "id": "crusader",
         "basePoints": 17,
         "move": 10,
@@ -919,11 +1217,22 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "squadComposition": 1,
         "transportCapacity": 2,
-        "weapons": ["crystalFusilier", "crystalMusket", "vehiclecqc"],
-        "abilities": ["smoke", "transport2"],
+        "weapons": [
+          "shardAutocannon",
+          "shardRifle",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "smoke",
+          "transport2",
+          "turret"
+        ],
         "upgrades": [
           {
             "label": "Arm any Crusader APC with an anti-tank rocket at 1 pts per vehicle.",
@@ -936,7 +1245,8 @@
           }
         ]
       },
-      { "name": "Staghound",
+      {
+        "name": "Staghound",
         "id": "staghound",
         "basePoints": 10,
         "move": 12,
@@ -945,11 +1255,20 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "wheeled"],
+        "unitTags": [
+          "vehicle",
+          "wheeled"
+        ],
         "squadComposition": 1,
         "transportCapacity": 1,
-        "weapons": ["crystalMusket", "vehiclecqc"],
-        "abilities": ["transport1", "agile"],
+        "weapons": [
+          "shardRifle",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "transport1",
+          "agile"
+        ],
         "upgrades": [
           {
             "label": "Arm any Staghound with an anti-tank rocket at 1 point per vehicle.",
@@ -968,7 +1287,8 @@
     "name": "Federation of Columbia",
     "enabled": true,
     "hq": [
-      { "name": "Infantry Commander",
+      {
+        "name": "Infantry Commander",
         "id": "infantryCommander",
         "basePoints": 11,
         "move": 6,
@@ -977,18 +1297,27 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry"],
+        "unitTags": [
+          "infantry"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["l2TorchRifle", "infantrycqc"],
-        "abilities": ["infantryCommand1"],
+        "weapons": [
+          "torchAssaultRifle",
+          "infantrycqc"
+        ],
+        "abilities": [
+          "infantryCommand1"
+        ],
         "upgrades": [
           {
             "label": "The command base may be mounted in a TM-5 CABBIE Transport.",
             "upgradeType": {
               "type": "transport",
               "id": "tm5Cabbie",
-              "mutuallyExclusive": ["jp7Detroit"]
+              "mutuallyExclusive": [
+                "jp7Detroit"
+              ]
             }
           },
           {
@@ -996,7 +1325,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "jp7Detroit",
-              "mutuallyExclusive": ["tm5Cabbie"]
+              "mutuallyExclusive": [
+                "tm5Cabbie"
+              ]
             }
           },
           {
@@ -1008,11 +1339,11 @@
             }
           },
           {
-            "label": "Arm the command base with an LAT6 Suckerpunch at 2 pts.",
+            "label": "Arm the command base with an RPG at 2 pts.",
             "cost": 2,
             "upgradeType": {
               "type": "weapon",
-              "id": "lat6Suckerpunch"
+              "id": "rpg"
             }
           },
           {
@@ -1021,7 +1352,10 @@
             "upgradeType": {
               "type": "ability",
               "id": "infantryCommand2",
-              "mutuallyExclusive": ["infantryCommand1", "infantryCommand3"]
+              "mutuallyExclusive": [
+                "infantryCommand1",
+                "infantryCommand3"
+              ]
             }
           },
           {
@@ -1030,12 +1364,16 @@
             "upgradeType": {
               "type": "ability",
               "id": "infantryCommand3",
-              "mutuallyExclusive": ["infantryCommand1", "infantryCommand2"]
+              "mutuallyExclusive": [
+                "infantryCommand1",
+                "infantryCommand2"
+              ]
             }
           }
         ]
       },
-      { "name": "Tank Commander in M1 Rough Rider",
+      {
+        "name": "Tank Commander in M1 Rough Rider",
         "id": "tankCommanderM1RoughRider",
         "basePoints": 30,
         "move": 12,
@@ -1044,11 +1382,22 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "wheeled"],
+        "unitTags": [
+          "vehicle",
+          "wheeled"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["s2TorchAntiMatterCannon", "vehiclecqc"],
-        "abilities": ["vehicleCommand1","opticCamoSystems"],
+        "weapons": [
+          "torchAntiMatCannon",
+          "torchAssaultRifle",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "vehicleCommand1",
+          "opticCamoSystems",
+          "turret"
+        ],
         "upgrades": [
           {
             "label": "The command base may either upgrade its command value to 2 for 4 pts.",
@@ -1056,7 +1405,10 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand2",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand3"
+              ]
             }
           },
           {
@@ -1065,22 +1417,28 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand3",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand2"
+              ]
             }
           },
           {
-            "label": "The vehicle may replace their S2 TORCH with an SAM Launcher for 0 pts per model",
-            "cost": 0,
+            "label": "The vehicle may replace their S2 Torch Anti-Material Cannon with an Flak System for -2 points per model",
+            "cost": -2,
             "limit": "baseCount",
             "upgradeType": {
               "type": "weapon",
-              "id": "samLauncher",
-              "mutuallyExclusive": ["s2TorchAntiMatterCannon"]
+              "id": "flakSystem",
+              "mutuallyExclusive": [
+                "torchAntiMatCannon"
+              ]
             }
           }
         ]
       },
-      { "name": "Tank Commander in M2-A1 Grant",
+      {
+        "name": "Tank Commander in M2-A1 Grant",
         "id": "tankCommanderM2A1Grant",
         "basePoints": 39,
         "move": 10,
@@ -1089,11 +1447,23 @@
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["dualC2TorchLaserArray", "torchMGSystem", "vehiclecqc"],
-        "abilities": ["vehicleCommand1", "smoke", "kineticThermalPlating"],
+        "weapons": [
+          "torchLaserArray",
+          "torchMG",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "vehicleCommand1",
+          "smoke",
+          "kineticThermalPlating",
+          "turret"
+        ],
         "upgrades": [
           {
             "label": "The command base may either upgrade its command value to 2 for 4 pts.",
@@ -1101,7 +1471,10 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand2",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand3"
+              ]
             }
           },
           {
@@ -1110,12 +1483,16 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand3",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand2"
+              ]
             }
           }
         ]
       },
-      { "name": "Tank Commander in SM1 Roosevelt",
+      {
+        "name": "Tank Commander in SM1 Roosevelt",
         "id": "tankCommanderSM1Roosevelt",
         "basePoints": 49,
         "move": 8,
@@ -1124,11 +1501,23 @@
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["torchMGSuperGatling", "torchMGSystem", "vehiclecqc"],
-        "abilities": ["vehicleCommand1","smoke", "kineticThermalPlating"],
+        "weapons": [
+          "torchGatling",
+          "torchMG",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "vehicleCommand1",
+          "smoke",
+          "kineticThermalPlating",
+          "turret"
+        ],
         "upgrades": [
           {
             "label": "The command base may either upgrade its command value to 2 for 4 pts.",
@@ -1136,7 +1525,10 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand2",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand3"
+              ]
             }
           },
           {
@@ -1145,12 +1537,16 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand3",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand2"
+              ]
             }
           }
         ]
       },
-      { "name": "Tank Commander in XSM1 Columbia",
+      {
+        "name": "Tank Commander in XSM1 Columbia",
         "id": "tankCommanderXSM1Columbia",
         "basePoints": 61,
         "move": 6,
@@ -1159,12 +1555,31 @@
           "dice": 2,
           "save": "3+"
         },
-        "unitTags": ["vehicle", "tracked", "war machine"],
-        "mutEx": ["tankCommanderXSM1Columbia", "xsm1Columbia"],
+        "unitTags": [
+          "vehicle",
+          "tracked",
+          "war machine"
+        ],
+        "mutEx": [
+          "tankCommanderXSM1Columbia",
+          "xsm1Columbia"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["xsc2SuperTorchCannon", "torchMGSystem", "warmachineCQC"],
-        "abilities": ["vehicleCommand1","panoramicCockpit", "kineticThermalPlating", "selfRepairModule", "critThreshold3", "critThreshold7"],
+        "weapons": [
+          "acceleratorTorchCannon",
+          "torchMG",
+          "warmachineCQC"
+        ],
+        "abilities": [
+          "vehicleCommand1",
+          "panoramicCockpit",
+          "kineticThermalPlating",
+          "selfRepairModule",
+          "turret",
+          "critThreshold3",
+          "critThreshold7"
+        ],
         "upgrades": [
           {
             "label": "The command base may either upgrade its command value to 2 for 4 pts.",
@@ -1172,7 +1587,10 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand2",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand3"
+              ]
             }
           },
           {
@@ -1181,14 +1599,18 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand3",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand2"
+              ]
             }
           }
         ]
       }
     ],
     "core": [
-      { "name": "Ranger Platoon",
+      {
+        "name": "Ranger Platoon",
         "id": "ranger",
         "basePoints": 5,
         "move": 6,
@@ -1197,10 +1619,15 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry"],
+        "unitTags": [
+          "infantry"
+        ],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["l2TorchRifle", "infantrycqc"],
+        "weapons": [
+          "torchAssaultRifle",
+          "infantrycqc"
+        ],
         "abilities": [],
         "upgrades": [
           {
@@ -1209,7 +1636,7 @@
             "limit": 3,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           },
           {
             "label": "All bases in the unit may be mounted in a TM-5 CABBIE Transport.",
@@ -1217,7 +1644,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "tm5Cabbie",
-              "mutuallyExclusive": ["jp7Detroit"]
+              "mutuallyExclusive": [
+                "jp7Detroit"
+              ]
             }
           },
           {
@@ -1226,7 +1655,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "jp7Detroit",
-              "mutuallyExclusive": ["tm5Cabbie"]
+              "mutuallyExclusive": [
+                "tm5Cabbie"
+              ]
             }
           },
           {
@@ -1239,25 +1670,26 @@
             }
           },
           {
-            "label": "Arm any base with an LAT6 Suckerpunch at 2 pts per base.",
+            "label": "Arm any base with an RPG at 2 pts per base.",
             "limit": "baseCount",
             "cost": 2,
             "upgradeType": {
               "type": "weapon",
-              "id": "lat6Suckerpunch"
+              "id": "rpg"
             }
           },
           {
-            "label": "Replace a single infantry base with an AT6 Peregrine team for 7 points.",
+            "label": "Replace a single infantry base with an SAM Launcher team for 7 points.",
             "cost": 7,
             "upgradeType": {
               "type": "weapon",
-              "id": "at6Peregrine"
+              "id": "samLauncher"
             }
           }
         ]
       },
-      { "name": "Minuteman Platoon",
+      {
+        "name": "Minuteman Platoon",
         "id": "minuteman",
         "basePoints": 12,
         "move": 6,
@@ -1266,10 +1698,15 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry"],
+        "unitTags": [
+          "infantry"
+        ],
         "breakValue": 10,
         "squadComposition": 3,
-        "weapons": ["xl3AntiMaterialRifle", "x3RoseCombatSuit"],
+        "weapons": [
+          "xl3AntiMaterialRifle",
+          "x3RoseCombatSuit"
+        ],
         "abilities": [],
         "upgrades": [
           {
@@ -1278,7 +1715,7 @@
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           },
           {
             "label": "All bases in the unit may be mounted in a TM-5 CABBIE Transport.",
@@ -1286,7 +1723,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "tm5Cabbie",
-              "mutuallyExclusive": ["jp7Detroit"]
+              "mutuallyExclusive": [
+                "jp7Detroit"
+              ]
             }
           },
           {
@@ -1295,32 +1734,26 @@
             "upgradeType": {
               "type": "transport",
               "id": "jp7Detroit",
-              "mutuallyExclusive": ["tm5Cabbie"]
+              "mutuallyExclusive": [
+                "tm5Cabbie"
+              ]
             }
           },
           {
-            "label": "Arm all bases with Anti-Tank grenades at 2 pts per base.",
-            "cost": 2,
-            "multiplyCostByBases": true,
-            "upgradeType": {
-              "type": "weapon",
-              "id": "antiTankGrenade"
-            }
-          },
-          {
-            "label": "Arm any base with an LAT6 Suckerpunch at 2 pts per base.",
+            "label": "Arm any base with an SAM Launcher at 2 pts per base.",
             "limit": "baseCount",
             "cost": 2,
             "upgradeType": {
               "type": "weapon",
-              "id": "lat6Suckerpunch"
+              "id": "samLauncher"
             }
           }
         ]
       }
     ],
     "armoredSupport": [
-      { "name": "M1 Rough Rider Platoon",
+      {
+        "name": "M1 Rough Rider Platoon",
         "id": "m1RoughRider",
         "basePoints": 24,
         "move": 12,
@@ -1329,11 +1762,20 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "wheeled"],
+        "unitTags": [
+          "vehicle",
+          "wheeled"
+        ],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["s2TorchAntiMatterCannon", "vehiclecqc"],
-        "abilities": ["opticCamoSystems"],
+        "weapons": [
+          "torchAntiMatCannon",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "opticCamoSystems",
+          "turret"
+        ],
         "upgrades": [
           {
             "label": "Add up to 2 more Battle Tanks for 24 pts per model.",
@@ -1341,21 +1783,24 @@
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           },
           {
-            "label": "The vehicle may replace their S2 TORCH with an SAM Launcher for 0 pts per model",
+            "label": "The vehicle may replace their Torch Anti-Material Cannon with an Flak System for -2 points per model.",
             "cost": 0,
             "limit": "baseCount",
             "upgradeType": {
               "type": "weapon",
-              "id": "samLauncher",
-              "mutuallyExclusive": ["s2TorchAntiMatterCannon"]
+              "id": "flakSystem",
+              "mutuallyExclusive": [
+                "torchAntiMatCannon"
+              ]
             }
           }
         ]
       },
-      { "name": "M2-A1 Grant Tank Platoon",
+      {
+        "name": "M2-A1 Grant Tank Platoon",
         "id": "m2a1Grant",
         "basePoints": 33,
         "move": 10,
@@ -1364,23 +1809,35 @@
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "breakValue": 10,
         "squadComposition": 3,
-        "weapons": ["dualC2TorchLaserArray", "torchMGSystem", "vehiclecqc"],
-        "abilities": ["smoke", "kineticThermalPlating"],
+        "weapons": [
+          "torchLaserArray",
+          "torchMG",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "smoke",
+          "kineticThermalPlating",
+          "turret"
+        ],
         "upgrades": [
           {
-            "label": "Add up to 2 more Battle Tanks for 33 pts per model.",
+            "label": "Add up to 2 more model for 33 pts per model.",
             "cost": 33,
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           }
         ]
       },
-      { "name": "SM1 Roosevelt Tank Platoon",
+      {
+        "name": "SM1 Roosevelt Tank Platoon",
         "id": "sm1Roosevelt",
         "basePoints": 44,
         "move": 8,
@@ -1389,52 +1846,76 @@
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["torchMGSuperGatling", "torchMGSystem", "vehiclecqc"],
-        "abilities": ["smoke", "kineticThermalPlating"],
+        "weapons": [
+          "torchGatling",
+          "torchMG",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "smoke",
+          "kineticThermalPlating",
+          "turret"
+        ],
         "upgrades": [
-           {
-            "label": "Add up to 2 more Battle Tanks for 44 pts per model.",
+          {
+            "label": "Add up to 2 more models for 44 pts per model.",
             "cost": 44,
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           }
         ]
       }
     ],
     "fireSupport": [
-      { "name": "AM1 Skyscraper SPG Platoon",
+      {
+        "name": "AM1 Skyscraper SPG Platoon",
         "id": "am1Skyscraper",
-        "basePoints": 20,
+        "basePoints": 21,
         "move": 10,
         "totalIntegrity": 6,
         "defense": {
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "tracked", "artillery"],
+        "unitTags": [
+          "vehicle",
+          "tracked",
+          "artillery"
+        ],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["slc2TorchHowitzer", "vehiclecqc"],
-        "abilities": [],
+        "weapons": [
+          "torchHowitzer",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "turret"
+        ],
         "upgrades": [
           {
-            "label": "All vehicles in the unit may replace their SLC2 TORCH Howitzer with a Multi-Launcher for +1 pts per model.",
+            "label": "All vehicles in the unit may replace their Torch Howitzer with a Multi-Launcher for 1 points per model.",
             "cost": 1,
             "multiplyCostByBases": true,
             "upgradeType": {
               "type": "weapon",
               "id": "multiLauncher",
-              "mutuallyExclusive": ["slc2TorchHowitzer"]
+              "mutuallyExclusive": [
+                "torchHowitzer"
+              ]
             }
           }
         ]
       },
-      { "name": "AG1 B.R.I.D.G.E. Fixed Gun Platoon",
+      {
+        "name": "AG1 Bridge Fixed Gun Platoon",
         "id": "ag1Bridge",
         "basePoints": 8,
         "move": 6,
@@ -1443,10 +1924,16 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry", "artillery"],
+        "unitTags": [
+          "infantry",
+          "artillery"
+        ],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["slc3TorchArcCannon", "infantrycqc"],
+        "weapons": [
+          "slc3TorchArcCannon",
+          "infantrycqc"
+        ],
         "abilities": [],
         "upgrades": [
           {
@@ -1455,14 +1942,16 @@
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           },
           {
             "label": "All bases in the unit may be mounted in a TM-5 CABBIE Transport.",
             "upgradeType": {
               "type": "transport",
               "id": "tm5Cabbie",
-              "mutuallyExclusive": ["jp7Detroit"]
+              "mutuallyExclusive": [
+                "jp7Detroit"
+              ]
             }
           },
           {
@@ -1470,7 +1959,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "jp7Detroit",
-              "mutuallyExclusive": ["tm5Cabbie"]
+              "mutuallyExclusive": [
+                "tm5Cabbie"
+              ]
             }
           },
           {
@@ -1486,7 +1977,8 @@
       }
     ],
     "airSupport": [
-      { "name": "F42 Bluebird",
+      {
+        "name": "F42 Bluebird",
         "id": "f42Bluebird",
         "basePoints": 39,
         "move": 20,
@@ -1495,10 +1987,17 @@
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "aerial"],
+        "unitTags": [
+          "vehicle",
+          "aerial"
+        ],
         "squadComposition": 1,
-        "weapons": ["torchStraferCannon"],
-        "abilities": ["opticCamoSystems"],
+        "weapons": [
+          "torchStraferCannon"
+        ],
+        "abilities": [
+          "opticCamoSystems"
+        ],
         "upgrades": [
           {
             "label": "Arm the Bluebird with up to 4 anti-tank rockets for 1 point each.",
@@ -1513,7 +2012,8 @@
       }
     ],
     "special": [
-      { "name": "XSM1 Columbia Super-Heavy Tank",
+      {
+        "name": "XSM1 Columbia Super-Heavy Tank",
         "id": "xsm1Columbia",
         "basePoints": 56,
         "move": 6,
@@ -1522,17 +2022,35 @@
           "dice": 2,
           "save": "3+"
         },
-        "unitTags": ["vehicle", "tracked", "war machine"],
-        "mutEx": ["tankCommanderXSM1Columbia"],
+        "unitTags": [
+          "vehicle",
+          "tracked",
+          "war machine"
+        ],
+        "mutEx": [
+          "tankCommanderXSM1Columbia"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["xsc2SuperTorchCannon", "torchMGSystem", "warmachineCQC"],
-        "abilities": ["panoramicCockpit", "kineticThermalPlating", "selfRepairModule", "critThreshold3", "critThreshold7"],
+        "weapons": [
+          "acceleratorTorchCannon",
+          "torchMG",
+          "warmachineCQC"
+        ],
+        "abilities": [
+          "panoramicCockpit",
+          "kineticThermalPlating",
+          "selfRepairModule",
+          "turret",
+          "critThreshold3",
+          "critThreshold7"
+        ],
         "upgrades": []
       }
     ],
     "transport": [
-      { "name": "TM-5 CABBIE",
+      {
+        "name": "TM-5 CABBIE",
         "id": "tm5Cabbie",
         "basePoints": 16,
         "move": 10,
@@ -1541,11 +2059,22 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "squadComposition": 1,
         "transportCapacity": 2,
-        "weapons": ["torchLL2Autocannon", "l2TorchRifle", "vehiclecqc"],
-        "abilities": ["smoke", "transport2"],
+        "weapons": [
+          "torchAutocannon",
+          "torchAssaultRifle",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "smoke",
+          "transport2",
+          "turret"
+        ],
         "upgrades": [
           {
             "label": "Arm any TM-5 CABBIE with an anti-tank rocket at 1 pts per vehicle.",
@@ -1558,7 +2087,8 @@
           }
         ]
       },
-      { "name": "JP-7 Detroit",
+      {
+        "name": "JP-7 Detroit",
         "id": "jp7Detroit",
         "basePoints": 8,
         "move": 12,
@@ -1567,11 +2097,19 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "wheeled"],
+        "unitTags": [
+          "vehicle",
+          "wheeled"
+        ],
         "squadComposition": 1,
         "transportCapacity": 1,
-        "weapons": ["l2TorchRifle", "vehiclecqc"],
-        "abilities": ["transport1"],
+        "weapons": [
+          "torchAssaultRifle",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "transport1"
+        ],
         "upgrades": [
           {
             "label": "Arm any JP-7 Detroit with an anti-tank rocket at 1 pts per vehicle.",
@@ -1590,7 +2128,8 @@
     "name": "Vlast",
     "enabled": true,
     "hq": [
-      { "name": "Infantry Commander",
+      {
+        "name": "Infantry Commander",
         "id": "infantryCommander",
         "basePoints": 12,
         "move": 6,
@@ -1599,18 +2138,27 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry"],
+        "unitTags": [
+          "infantry"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["ak204", "infantrycqc"],
-        "abilities": ["infantryCommand1"],
+        "weapons": [
+          "akAssaultRifle",
+          "infantrycqc"
+        ],
+        "abilities": [
+          "infantryCommand1"
+        ],
         "upgrades": [
           {
             "label": "The command base may be mounted in a BMP-4U Transport.",
             "upgradeType": {
               "type": "transport",
               "id": "bmp4u",
-              "mutuallyExclusive": ["btr90u"]
+              "mutuallyExclusive": [
+                "btr90u"
+              ]
             }
           },
           {
@@ -1618,7 +2166,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "btr90u",
-              "mutuallyExclusive": ["bmp4u"]
+              "mutuallyExclusive": [
+                "bmp4u"
+              ]
             }
           },
           {
@@ -1630,11 +2180,11 @@
             }
           },
           {
-            "label": "Arm the command base with an RPG 10 at 3 pts.",
-            "cost": 3,
+            "label": "Arm the command base with an RPG at 2 pts.",
+            "cost": 2,
             "upgradeType": {
               "type": "weapon",
-              "id": "rpg10"
+              "id": "rpg"
             }
           },
           {
@@ -1643,7 +2193,10 @@
             "upgradeType": {
               "type": "ability",
               "id": "infantryCommand2",
-              "mutuallyExclusive": ["infantryCommand1", "infantryCommand3"]
+              "mutuallyExclusive": [
+                "infantryCommand1",
+                "infantryCommand3"
+              ]
             }
           },
           {
@@ -1652,12 +2205,16 @@
             "upgradeType": {
               "type": "ability",
               "id": "infantryCommand3",
-              "mutuallyExclusive": ["infantryCommand1", "infantryCommand2"]
+              "mutuallyExclusive": [
+                "infantryCommand1",
+                "infantryCommand2"
+              ]
             }
           }
         ]
       },
-      { "name": "Tank Commander in BRDM-2B-U",
+      {
+        "name": "Tank Commander in BRDM-2B-U",
         "id": "tankCommanderBRDM",
         "basePoints": 24,
         "move": 12,
@@ -1666,11 +2223,22 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "wheeled"],
+        "unitTags": [
+          "vehicle",
+          "wheeled"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["acceleratorAutocannon", "vehiclecqc"],
-        "abilities": ["vehicleCommand1","weakFrame", "agile"],
+        "weapons": [
+          "acceleratorMachineGun",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "vehicleCommand1",
+          "weakFrame",
+          "agile",
+          "turret"
+        ],
         "upgrades": [
           {
             "label": "The command base may either upgrade its command value to 2 for 4 pts.",
@@ -1678,7 +2246,10 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand2",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand3"
+              ]
             }
           },
           {
@@ -1687,22 +2258,28 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand3",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand2"
+              ]
             }
           },
           {
-            "label": "Any vehicle in the unit may replace their Accelerator Autocannon with an AA Accelerator Cannon for -3 pts per model",
+            "label": "Any vehicle in the unit may replace their Accelerator MG with a Flak System for -3 pts per model",
             "cost": -3,
             "limit": "baseCount",
             "upgradeType": {
               "type": "weapon",
-              "id": "aaAcceleratorAutocannon",
-              "mutuallyExclusive": ["acceleratorAutocannon"]
+              "id": "flakSystem",
+              "mutuallyExclusive": [
+                "acceleratorMachineGun"
+              ]
             }
           }
         ]
       },
-      { "name": "Tank Commander in T-80C-TU",
+      {
+        "name": "Tank Commander in T-80C-TU",
         "id": "tankCommanderT80",
         "basePoints": 38,
         "move": 10,
@@ -1711,11 +2288,23 @@
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["heavyAcceleratorCannon", "vehicleSRPK", "vehiclecqc"],
-        "abilities": ["vehicleCommand1", "weakFrame", "smoke"],
+        "weapons": [
+          "gaussCannon",
+          "vehicleDShKF",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "vehicleCommand1",
+          "weakFrame",
+          "smoke",
+          "turret"
+        ],
         "upgrades": [
           {
             "label": "The command base may either upgrade its command value to 2 for 4 pts.",
@@ -1723,7 +2312,10 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand2",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand3"
+              ]
             }
           },
           {
@@ -1732,12 +2324,16 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand3",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand2"
+              ]
             }
           }
         ]
       },
-      { "name": "Tank Commander in T-72-R",
+      {
+        "name": "Tank Commander in T-72-R",
         "id": "tankCommanderT72r",
         "basePoints": 45,
         "move": 8,
@@ -1746,11 +2342,23 @@
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["railgun", "vehicleSRPK", "vehiclecqc"],
-        "abilities": ["vehicleCommand1","smoke", "crystallumTreatedArmor"],
+        "weapons": [
+          "railgun",
+          "vehicleDShKF",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "vehicleCommand1",
+          "smoke",
+          "crystallumTreatedArmor",
+          "turret"
+        ],
         "upgrades": [
           {
             "label": "The command base may either upgrade its command value to 2 for 4 pts.",
@@ -1758,7 +2366,10 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand2",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand3"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand3"
+              ]
             }
           },
           {
@@ -1767,14 +2378,18 @@
             "upgradeType": {
               "type": "ability",
               "id": "vehicleCommand3",
-              "mutuallyExclusive": ["vehicleCommand1","vehicleCommand2"]
+              "mutuallyExclusive": [
+                "vehicleCommand1",
+                "vehicleCommand2"
+              ]
             }
           }
         ]
       }
     ],
     "core": [
-      { "name": "Guards Infantry Platoon",
+      {
+        "name": "Guards Infantry Platoon",
         "id": "guardsInfantry",
         "basePoints": 5,
         "move": 6,
@@ -1783,10 +2398,15 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry"],
+        "unitTags": [
+          "infantry"
+        ],
         "breakValue": 8,
         "squadComposition": 3,
-        "weapons": ["ak204", "infantrycqc"],
+        "weapons": [
+          "akAssaultRifle",
+          "infantrycqc"
+        ],
         "abilities": [],
         "upgrades": [
           {
@@ -1795,7 +2415,7 @@
             "limit": 3,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           },
           {
             "label": "All bases in the unit may be mounted in BMP-4U Transports.",
@@ -1803,7 +2423,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "bmp4u",
-              "mutuallyExclusive": ["btr90u"]
+              "mutuallyExclusive": [
+                "btr90u"
+              ]
             }
           },
           {
@@ -1812,7 +2434,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "btr90u",
-              "mutuallyExclusive": ["bmp4u"]
+              "mutuallyExclusive": [
+                "bmp4u"
+              ]
             }
           },
           {
@@ -1825,35 +2449,40 @@
             }
           },
           {
-            "label": "Arm any base with an RPG 10 at 3 pts per base.",
-            "cost": 3,
+            "label": "Arm any base with an RPG at 2 pts per base.",
+            "cost": 2,
             "limit": "baseCount",
             "upgradeType": {
               "type": "weapon",
-              "id": "rpg10"
+              "id": "rpg"
             }
           },
           {
-            "label": "Replace a single infantry base with an SA 14 team for 6 pts.",
+            "label": "Replace a single infantry base with an SAM Launcher team for 6 pts.",
             "cost": 6,
             "upgradeType": {
               "type": "weapon",
-              "id": "sa14",
-              "mutuallyExclusive": ["infantrySRPK"]
+              "id": "samLauncher",
+              "mutuallyExclusive": [
+                "DShKF"
+              ]
             }
           },
           {
-            "label": "Replace a single infantry base with an SRPK team for 4 pts.",
-            "cost": 4,
+            "label": "Replace a single infantry base with an DShK-F team for 5 pts.",
+            "cost": 5,
             "upgradeType": {
               "type": "weapon",
-              "id": "infantrySRPK",
-              "mutuallyExclusive": ["sa14"]
+              "id": "DShKF",
+              "mutuallyExclusive": [
+                "samLauncher"
+              ]
             }
           }
         ]
       },
-      { "name": "Spetsnaz Platoon",
+      {
+        "name": "Spetsnaz Platoon",
         "id": "spetsnaz",
         "basePoints": 12,
         "move": 6,
@@ -1862,11 +2491,19 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry"],
+        "unitTags": [
+          "infantry"
+        ],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["aak", "infantrycqc"],
-        "abilities": ["stubborn", "grenadeTubes"],
+        "weapons": [
+          "rpk",
+          "infantrycqc"
+        ],
+        "abilities": [
+          "stubborn",
+          "grenadeTubes"
+        ],
         "upgrades": [
           {
             "label": "Add up to 2 more infantry bases at 11 points per base.",
@@ -1874,7 +2511,7 @@
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           },
           {
             "label": "All bases in the unit may be mounted in BMP-4U Transports.",
@@ -1882,7 +2519,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "bmp4u",
-              "mutuallyExclusive": ["btr90u"]
+              "mutuallyExclusive": [
+                "btr90u"
+              ]
             }
           },
           {
@@ -1891,7 +2530,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "btr90u",
-              "mutuallyExclusive": ["bmp4u"]
+              "mutuallyExclusive": [
+                "bmp4u"
+              ]
             }
           },
           {
@@ -1904,37 +2545,42 @@
             }
           },
           {
-            "label": "Arm any base with an RPG 10 at 3 pts per base.",
-            "cost": 3,
+            "label": "Arm any base with an RPG at 2 pts per base.",
+            "cost": 2,
             "limit": "baseCount",
             "upgradeType": {
               "type": "weapon",
-              "id": "rpg10"
+              "id": "rpg"
             }
           },
           {
-            "label": "Replace a single infantry base with a PTR team for 0 pts.",
+            "label": "Replace a single infantry base with a Disruptor Sniper Rifle team for 0 pts.",
             "cost": 0,
             "upgradeType": {
               "type": "weapon",
-              "id": "ptr",
-              "mutuallyExclusive": ["infantrySRPK"]
+              "id": "disruptorSniperRifle",
+              "mutuallyExclusive": [
+                "DShKF"
+              ]
             }
           },
           {
-            "label": "Replace a single infantry base with an SRPK team for 0 pts.",
+            "label": "Replace a single infantry base with an DShK-F team for 0 pts.",
             "cost": 0,
             "upgradeType": {
               "type": "weapon",
-              "id": "infantrySRPK",
-              "mutuallyExclusive": ["ptr"]
+              "id": "DShKF",
+              "mutuallyExclusive": [
+                "disruptorSniperRifle"
+              ]
             }
           }
         ]
       }
     ],
     "armoredSupport": [
-      { "name": "T-80C-TU Platoon",
+      {
+        "name": "T-80C-TU Platoon",
         "id": "t80ctu",
         "basePoints": 32,
         "move": 10,
@@ -1943,23 +2589,35 @@
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["heavyAcceleratorCannon", "vehicleSRPK", "vehiclecqc"],
-        "abilities": ["smoke", "weakFrame"],
+        "weapons": [
+          "gaussCannon",
+          "vehicleDShKF",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "smoke",
+          "weakFrame",
+          "turret"
+        ],
         "upgrades": [
           {
-            "label": "Add up to 3 more tanks at 28 points per model.",
+            "label": "Add up to 3 more tanks at 32 points per model.",
             "cost": 32,
             "limit": 3,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           }
         ]
       },
-      { "name": "T-72-R Platoon",
+      {
+        "name": "T-72-R Platoon",
         "id": "t72r",
         "basePoints": 40,
         "move": 8,
@@ -1968,11 +2626,22 @@
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "breakValue": 10,
         "squadComposition": 1,
-        "weapons": ["railgun", "vehicleSRPK", "vehiclecqc"],
-        "abilities": ["smoke", "crystallumTreatedArmor"],
+        "weapons": [
+          "railgun",
+          "vehicleDShKF",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "smoke",
+          "crystallumTreatedArmor",
+          "turret"
+        ],
         "upgrades": [
           {
             "label": "Add up to 2 more tanks at 40 points per model.",
@@ -1980,11 +2649,12 @@
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           }
         ]
       },
-      { "name": "BRDM-2B-U Platoon",
+      {
+        "name": "BRDM-2B-U Platoon",
         "id": "brdm2bu",
         "basePoints": 18,
         "move": 12,
@@ -1993,11 +2663,21 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "wheeled"],
+        "unitTags": [
+          "vehicle",
+          "wheeled"
+        ],
         "breakValue": 9,
         "squadComposition": 3,
-        "weapons": ["acceleratorAutocannon", "vehiclecqc"],
-        "abilities": ["weakFrame", "agile"],
+        "weapons": [
+          "acceleratorMachineGun",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "weakFrame",
+          "agile",
+          "turret"
+        ],
         "upgrades": [
           {
             "label": "Add up to 3 more vehicles at 18 points per model.",
@@ -2005,23 +2685,26 @@
             "limit": 3,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           },
           {
-            "label": "Any vehicle in the unit may replace their Accelerator Autocannon with an AA Accelerator Cannon for -3 pts per model",
+            "label": "Any vehicle in the unit may replace their Accelerator MG with a Flak System for -3 pts per model",
             "cost": -3,
             "limit": "baseCount",
             "upgradeType": {
               "type": "weapon",
-              "id": "aaAcceleratorAutocannon",
-              "mutuallyExclusive": ["acceleratorAutocannon"]
+              "id": "flakSystem",
+              "mutuallyExclusive": [
+                "acceleratorMachineGun"
+              ]
             }
           }
         ]
       }
     ],
     "fireSupport": [
-      { "name": "BM-221 Platoon",
+      {
+        "name": "BM-221 Platoon",
         "id": "bm221",
         "basePoints": 11,
         "move": 10,
@@ -2030,35 +2713,50 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "tracked", "artillery"],
+        "unitTags": [
+          "vehicle",
+          "tracked",
+          "artillery"
+        ],
         "breakValue": 8,
         "squadComposition": 3,
-        "weapons": ["aaAcceleratorAutocannon", "vehiclecqc"],
-        "abilities": ["weakFrame"],
+        "weapons": [
+          "flakSystem",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "weakFrame",
+          "turret"
+        ],
         "upgrades": [
           {
-            "label": "All vehicles in the unit may replace their AA Accelerator Cannon with a Multi-Launcher for 6 pts per model.",
-            "cost": 6,
+            "label": "All vehicles in the unit may replace their Flak System with a Multi-Launcher for 7 pts per model.",
+            "cost": 7,
             "multiplyCostByBases": true,
             "upgradeType": {
               "type": "weapon",
               "id": "multiLauncher",
-              "mutuallyExclusive": ["aaAcceleratorAutocannon"]
+              "mutuallyExclusive": [
+                "flakSystem"
+              ]
             }
           },
           {
-            "label": "All vehicles in the unit can swap their tracks for wheels at +1 pts per model. The Tracked tag will be replaced with Wheeled.",
+            "label": "All vehicles in the unit can swap their tracks for wheels at 1 pts per model. The Tracked tag will be replaced with Wheeled.",
             "cost": 1,
             "multiplyCostByBases": true,
             "upgradeType": {
               "type": "unitTag",
               "id": "wheeled",
-              "mutuallyExclusive": ["tracked"]
+              "mutuallyExclusive": [
+                "tracked"
+              ]
             }
           }
         ]
       },
-      { "name": "82mm Mortar Platoon",
+      {
+        "name": "82mm Mortar Platoon",
         "id": "82mmMortar",
         "basePoints": 16,
         "move": 6,
@@ -2067,10 +2765,16 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["infantry", "artillery"],
+        "unitTags": [
+          "infantry",
+          "artillery"
+        ],
         "breakValue": 8,
         "squadComposition": 3,
-        "weapons": ["mortar", "infantrycqc"],
+        "weapons": [
+          "mortar",
+          "infantrycqc"
+        ],
         "abilities": [],
         "upgrades": [
           {
@@ -2079,7 +2783,7 @@
             "limit": 2,
             "upgradeType": {
               "type": "extraBase"
-            } 
+            }
           },
           {
             "label": "All bases in the unit may be mounted in BMP-4U Transports.",
@@ -2087,7 +2791,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "bmp4u",
-              "mutuallyExclusive": ["btr90u"]
+              "mutuallyExclusive": [
+                "btr90u"
+              ]
             }
           },
           {
@@ -2096,7 +2802,9 @@
             "upgradeType": {
               "type": "transport",
               "id": "btr90u",
-              "mutuallyExclusive": ["bmp4u"]
+              "mutuallyExclusive": [
+                "bmp4u"
+              ]
             }
           },
           {
@@ -2112,7 +2820,8 @@
       }
     ],
     "airSupport": [
-      { "name": "Mi-24 Hind Assault VTOL",
+      {
+        "name": "Mi-24 Hind Assault VTOL",
         "id": "mi24hind",
         "basePoints": 50,
         "move": 16,
@@ -2121,15 +2830,26 @@
           "dice": 2,
           "save": "4+"
         },
-        "unitTags": ["vehicle", "aerial", "transport"],
+        "unitTags": [
+          "vehicle",
+          "aerial",
+          "transport"
+        ],
         "squadComposition": 1,
-        "weapons": ["atRocket", "rocketSystem", "vehicleSRPK", "infantrycqc"],
-        "abilities": ["crystallumTreatedArmor"],
+        "weapons": [
+          "heavyAPRocket",
+          "rocketSystem",
+          "vehicleDShKF"
+        ],
+        "abilities": [
+          "crystallumTreatedArmor"
+        ],
         "upgrades": []
       }
     ],
     "special": [
-      { "name": "Object 755 Godhammer",
+      {
+        "name": "Object 755 Godhammer",
         "id": "object755godhammer",
         "basePoints": 59,
         "move": 4,
@@ -2138,15 +2858,30 @@
           "dice": 2,
           "save": "3+"
         },
-        "unitTags": ["vehicle", "tracked", "artillery", "war machine"],
+        "unitTags": [
+          "vehicle",
+          "tracked",
+          "artillery",
+          "war machine"
+        ],
         "squadComposition": 1,
-        "weapons": ["d700redemption", "vehicleSRPK", "warmachineCQC"],
-        "abilities": ["defensiveMG", "crystallumTreatedArmor", "critThreshold3", "critThreshold6"],
+        "weapons": [
+          "redemption",
+          "vehicleDShKF",
+          "warmachineCQC"
+        ],
+        "abilities": [
+          "defensiveMG",
+          "crystallumTreatedArmor",
+          "critThreshold3",
+          "critThreshold6"
+        ],
         "upgrades": []
       }
     ],
     "transport": [
-      { "name": "BMP-4U",
+      {
+        "name": "BMP-4U",
         "id": "bmp4u",
         "basePoints": 16,
         "move": 10,
@@ -2155,11 +2890,22 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "tracked"],
+        "unitTags": [
+          "vehicle",
+          "tracked"
+        ],
         "squadComposition": 1,
         "transportCapacity": 2,
-        "weapons": ["heavyAcceleratorCannon", "vehiclecqc"],
-        "abilities": ["smoke", "weakFrame", "transport2"],
+        "weapons": [
+          "gaussCannon",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "smoke",
+          "weakFrame",
+          "transport2",
+          "turret"
+        ],
         "upgrades": [
           {
             "label": "Arm any BMP-4U with an Anti-Tank Rocket for 1 points per vehicle.",
@@ -2172,7 +2918,8 @@
           }
         ]
       },
-      { "name": "BTR-90U",
+      {
+        "name": "BTR-90U",
         "id": "btr90u",
         "basePoints": 18,
         "move": 12,
@@ -2181,11 +2928,22 @@
           "dice": 2,
           "save": "5+"
         },
-        "unitTags": ["vehicle", "wheeled"],
+        "unitTags": [
+          "vehicle",
+          "wheeled"
+        ],
         "squadComposition": 1,
         "transportCapacity": 3,
-        "weapons": ["acceleratorAutocannon", "vehiclecqc"],
-        "abilities": ["smoke", "weakFrame", "transport3"],
+        "weapons": [
+          "acceleratorMachineGun",
+          "vehiclecqc"
+        ],
+        "abilities": [
+          "smoke",
+          "weakFrame",
+          "transport3",
+          "turret"
+        ],
         "upgrades": [
           {
             "label": "Arm any BTR-90U with an Anti-Tank Rocket for 1 points per vehicle.",
