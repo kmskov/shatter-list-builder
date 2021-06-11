@@ -32,7 +32,7 @@
 
     <div fxFlex="25" fxLayout="row" class="unit-breakvalue">
       <h4 class="attribute-title">Break Value:</h4>
-      <p fxFlexOffset="5" class="attribute">{{unitEntry.breakValue}}</p>
+      <p fxFlexOffset="5" class="attribute">{{unitEntry.breakValue < 0 ? '-' : unitEntry.breakValue}}</p>
     </div>
 
     <div fxFlex="50" fxLayout="row" class="unit-tags">

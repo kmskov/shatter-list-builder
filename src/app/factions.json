@@ -16,7 +16,6 @@
         "unitTags": [
           "infantry"
         ],
-        "breakValue": 9,
         "squadComposition": 1,
         "weapons": [
           "psychicBlast"
@@ -77,7 +76,6 @@
         "unitTags": [
           "infantry"
         ],
-        "breakValue": 8,
         "squadComposition": 3,
         "weapons": [
           "crystallumClaws"
@@ -117,7 +115,6 @@
         "unitTags": [
           "infantry"
         ],
-        "breakValue": 9,
         "squadComposition": 3,
         "weapons": [
           "monstrousCrystallumClaws"
@@ -292,7 +289,6 @@
           "infantry",
           "artillery"
         ],
-        "breakValue": 9,
         "squadComposition": 3,
         "weapons": [
           "heavyHowitzer",
@@ -325,7 +321,6 @@
         "unitTags": [
           "infantry"
         ],
-        "breakValue": 9,
         "squadComposition": 3,
         "weapons": [
           "explode"
@@ -396,7 +391,6 @@
           "walker",
           "war machine"
         ],
-        "breakValue": 9,
         "squadComposition": 1,
         "weapons": [
           "scavangedWeapon",
@@ -425,7 +419,7 @@
       {
         "name": "Tunneler",
         "id": "drill",
-        "basePoints": 24,
+        "basePoints": 21,
         "move": 8,
         "totalIntegrity": 5,
         "defense": {
@@ -443,7 +437,6 @@
           "drill"
         ],
         "abilities": [
-          "fearless",
           "transport3",
           "arriveAnywhere",
           "weakFrame"
@@ -474,7 +467,6 @@
           "vehicle",
           "walker"
         ],
-        "breakValue": 9,
         "squadComposition": 1,
         "weapons": [
           "psychicBlast",
@@ -1963,15 +1955,6 @@
                 "tm5Cabbie"
               ]
             }
-          },
-          {
-            "label": "Arm all bases with Anti-Tank grenades at 2 pts per base.",
-            "cost": 2,
-            "multiplyCostByBases": true,
-            "upgradeType": {
-              "type": "weapon",
-              "id": "antiTankGrenade"
-            }
           }
         ]
       }
@@ -2805,15 +2788,6 @@
               "mutuallyExclusive": [
                 "bmp4u"
               ]
-            }
-          },
-          {
-            "label": "Arm all bases with Anti-Tank grenades at 2 pts per base.",
-            "cost": 2,
-            "multiplyCostByBases": true,
-            "upgradeType": {
-              "type": "weapon",
-              "id": "antiTankGrenade"
             }
           }
         ]
